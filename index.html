@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matt Walsh — Fractional Chief Experience Officer</title>
+<meta name="description" content="Matt Walsh is a Fractional CXO specializing in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Matt Walsh <span>CX</span></a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="work.html">Past Projects</a></li>
+      <li><a href="recognition.html">Recognition</a></li>
+      <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Fractional Chief Experience Officer</div>
+    <h1 class="hero-h1" data-parallax="0.04" data-parallax-type="y">Building businesses<br>from the <em>journey</em> up.</h1>
+    <p class="hero-sub">Matt specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives. His work helps leadership teams clarify priorities, accelerate decisions, and build experiences that compound value instead of leaking margin.</p>
+    <div class="hero-btns">
+      <a href="work.html" class="btn-fill">See the work &#8594;</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Replace with actual hero image -->
+    <div style="width:100%;height:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:var(--b);font-size:.85rem;color:var(--muted);font-style:italic;">Hero photograph</span>
+    </div>
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+
+<!-- WHAT MATT DOES -->
+<section class="what-i-do reveal">
+  <div>
+    <div class="kicker">What Matt Does</div>
+    <h2 class="section-h2" data-parallax="0.025" data-parallax-type="y">Experience is<br><em>everything.</em></h2>
+    <p class="wid-desc">Matt works with leadership teams to identify exactly where customer experience is creating — or destroying — enterprise value. Then he builds the strategy, alignment, and execution infrastructure to fix it.</p>
+  </div>
+  <div class="method-list">
+    <div class="method-item">
+      <div class="method-num">01</div>
+      <div>
+        <div class="method-title">CX Strategy &amp; Roadmapping</div>
+        <div class="method-body">Translating business objectives into clear, prioritized experience strategies that the entire organization can align behind — from board deck to backlog.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">02</div>
+      <div>
+        <div class="method-title">Customer Research &amp; Insight</div>
+        <div class="method-body">Rigorous, mixed-method research that surfaces real customer needs, exposes friction points, and gives leadership the clarity to make confident investment decisions.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">03</div>
+      <div>
+        <div class="method-title">Journey Orchestration</div>
+        <div class="method-body">Mapping, designing, and optimizing end-to-end customer journeys across channels — connecting marketing, product, service, and operations into a coherent experience.</div>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">04</div>
+      <div>
+        <div class="method-title">Organizational Alignment</div>
+        <div class="method-body">Building the internal structures, rituals, and incentives that keep experience quality high as organizations scale — because great CX is a team sport.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section class="clients">
+  <div class="clients-inner">
+    <div class="clients-header reveal">
+      <div class="kicker">Clients</div>
+      <h2 class="section-h2" data-parallax="0.02" data-parallax-type="y">Trusted by <em>leaders.</em></h2>
+    </div>
+    <div class="columns-wrap reveal">
+
+      <!-- B2C COLUMN -->
+      <div class="col">
+        <div class="col-header">
+          <div class="col-label">B2C</div>
+          <select class="col-filter" id="b2c-filter" onchange="filterClients('b2c', this.value)">
+            <option value="featured">Featured</option>
+            <option value="food">Food &amp; Bev</option>
+            <option value="retail">Retail</option>
+            <option value="tech-telecom">Tech &amp; Telecom</option>
+            <option value="financial">Financial</option>
+            <option value="media">Media &amp; Ent</option>
+            <option value="automotive">Automotive</option>
+          </select>
+        </div>
+        <div class="vc-list" id="b2c-list">
+          <div class="vc" data-col="b2c" data-cat="food" data-featured="true">Burger King</div>
+          <div class="vc" data-col="b2c" data-cat="food" data-featured="true">Domino's</div>
+          <div class="vc" data-col="b2c" data-cat="financial" data-featured="true">American Express</div>
+          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Nike</div>
+          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Best Buy</div>
+          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Old Navy</div>
+          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Beats By Dre</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Finish Line</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Ariat</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Zappos</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Michaels</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Breville</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Moen</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Algenist</div>
+          <div class="vc" data-col="b2c" data-cat="retail">Larson Doors</div>
+          <div class="vc" data-col="b2c" data-cat="food">Miller</div>
+          <div class="vc" data-col="b2c" data-cat="food">Sprite / Coke Zero</div>
+          <div class="vc" data-col="b2c" data-cat="food">Odell Brewing</div>
+          <div class="vc" data-col="b2c" data-cat="food">Mondelez</div>
+          <div class="vc" data-col="b2c" data-cat="tech-telecom">WOW!</div>
+          <div class="vc" data-col="b2c" data-cat="automotive">Driven Brands / Take 5</div>
+          <div class="vc" data-col="b2c" data-cat="financial">OneMain Financial</div>
+          <div class="vc" data-col="b2c" data-cat="financial">Elevations Credit Union</div>
+          <div class="vc" data-col="b2c" data-cat="financial">Charlesbank</div>
+          <div class="vc" data-col="b2c" data-cat="financial">PAI Partners</div>
+          <div class="vc" data-col="b2c" data-cat="media">Vail Resorts</div>
+          <div class="vc" data-col="b2c" data-cat="media">Toca Boca</div>
+          <div class="vc" data-col="b2c" data-cat="media">Outside</div>
+          <div class="vc" data-col="b2c" data-cat="media">The Planetary Society</div>
+        </div>
+      </div>
+
+      <!-- B2B COLUMN -->
+      <div class="col">
+        <div class="col-header">
+          <div class="col-label">B2B</div>
+          <select class="col-filter" id="b2b-filter" onchange="filterClients('b2b', this.value)">
+            <option value="featured">Featured</option>
+            <option value="technology">Technology</option>
+            <option value="tech-telecom">Technology &amp; Telecom</option>
+            <option value="pe">PE</option>
+            <option value="industrial">Industrial &amp; Services</option>
+          </select>
+        </div>
+        <div class="vc-list" id="b2b-list">
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Google</div>
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Twitter / X</div>
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">LexisNexis</div>
+          <div class="vc" data-col="b2b" data-cat="industrial" data-featured="true">The Hillman Group</div>
+          <div class="vc" data-col="b2b" data-cat="industrial" data-featured="true">Fortune Brands</div>
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">QuantumBlack</div>
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Techstars</div>
+          <div class="vc" data-col="b2b" data-cat="tech-telecom" data-featured="true">WOW!</div>
+          <div class="vc" data-col="b2b" data-cat="pe" data-featured="true">Charlesbank</div>
+          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Elevate</div>
+          <div class="vc" data-col="b2b" data-cat="pe">PAI Partners</div>
+          <div class="vc" data-col="b2b" data-cat="industrial">Uplight</div>
+          <div class="vc" data-col="b2b" data-cat="industrial">Alphia</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FULL-STACK MATT -->
+<section class="network reveal">
+  <div>
+    <div class="kicker">Full-Stack Matt</div>
+    <h2 class="section-h2" data-parallax="0.025" data-parallax-type="y">One engagement.<br><em>Unlimited</em> expertise.</h2>
+    <p class="network-text">When you engage Matt, you're not just getting one person. Through his agency, <strong>Green Stone</strong>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
+    <p class="network-text">That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
+  </div>
+  <div class="network-numbers">
+    <div class="net-num-box">
+      <div class="net-num">220<span>+</span></div>
+      <div class="net-label"><strong>Subject Matter Experts</strong>have already worked on projects with Green Stone</div>
+    </div>
+    <div class="net-num-box">
+      <div class="net-num">23<span>+</span></div>
+      <div class="net-label"><strong>Years of Experience</strong>accelerates the speed and accuracy of insights and execution</div>
+    </div>
+    <div class="net-num-box">
+      <div class="net-num">120<span>+</span></div>
+      <div class="net-label"><strong>Clients Engaged</strong>Green Stone through the last 13 years</div>
+    </div>
+    <div class="net-num-box">
+      <div class="net-num infinity">&#8734;</div>
+      <div class="net-label"><strong>Matt's Gratitude</strong>that he gets to do this for a living</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-h2" data-parallax="0.03" data-parallax-type="y">Let's talk about what's next</h2>
+    <a href="contact.html" class="btn-white">Get in touch &#8594;</a>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</div>
+    <div class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  filterClients('b2c', 'featured');
+  filterClients('b2b', 'featured');
+</script>
+</body>
+</html>
