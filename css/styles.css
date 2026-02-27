@@ -145,7 +145,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(20,28,26,.08);}
 .cta-band{background:var(--teal);padding:5.5rem 3.5rem;}
 .cta-inner{
   max-width:1160px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;gap:4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:4rem;flex-wrap:wrap;
 }
 .cta-h2{
   font-family:var(--f);font-size:2.2rem;font-weight:700;
@@ -283,7 +283,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
   color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;
 }
 .footer-nav a:hover{color:rgba(255,255,255,.65);}
-.footer-meta{font-family:var(--b);font-size:.72rem;color:rgba(255,255,255,.22);}
+.footer-meta{font-family:var(--b);font-size:.72rem;color:rgba(255,255,255,.6);}
 
 /* ============================================
    HOMEPAGE — HERO
@@ -495,7 +495,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 
 /* Left Panel */
 .contact-left{
-  background:var(--ink);padding:5rem 4rem 5rem 3.5rem;
+  background:var(--ink);padding:5rem 4rem 5rem calc(max(3.5rem, (100vw - 1160px) / 2));
   display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
 }
 .contact-left::before{content:'';position:absolute;bottom:-80px;right:-80px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none;}
@@ -520,7 +520,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 .form-sub{font-family:var(--b);font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:2.5rem;}
 
 .contact-form{display:flex;flex-direction:column;gap:1.25rem;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-row{display:flex;flex-direction:column;gap:1.25rem;}
 .field{display:flex;flex-direction:column;gap:.4rem;}
 .field label{font-family:var(--f);font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
 .field label .req{color:var(--teal);}
@@ -546,6 +546,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
   display:inline-flex;align-items:center;gap:.5rem;width:100%;justify-content:center;
 }
 .submit-btn:hover{background:var(--teal2);}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;background:var(--teal);}
 .form-note{font-family:var(--b);font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:.8rem;text-align:center;}
 
 /* Success State */
