@@ -302,7 +302,7 @@ function toggleArticles(e) {
 
 // ── Contact — Form Submission via Google Apps Script ──
 // Replace YOUR_APPS_SCRIPT_URL with your deployed web app URL
-const FORM_ENDPOINT = 'YOUR_APPS_SCRIPT_URL';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby23JRcvVar1LkHf6whcYAWQ3K5wkSqodhqntahlcxjqd6WfxgVv88jGGHBZl_iEeJI8A/exec';
 
 async function handleSubmit(e) {
   e.preventDefault();
