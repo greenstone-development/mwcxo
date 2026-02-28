@@ -19,9 +19,10 @@
 </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
-<nav id="nav">
+<nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Matt Walsh <span>CXO</span></a>
     <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
@@ -38,6 +39,7 @@
 
 
 <!-- HERO -->
+<main id="main">
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Fractional Chief Experience Officer</div>
@@ -107,7 +109,7 @@
       <div class="col">
         <div class="col-header">
           <div class="col-label">B2C</div>
-          <select class="col-filter" id="b2c-filter" onchange="filterClients('b2c', this.value)">
+          <select class="col-filter" id="b2c-filter" aria-label="Filter B2C clients by category" onchange="filterClients('b2c', this.value)">
             <option value="featured">Featured</option>
             <option value="food">Food &amp; Bev</option>
             <option value="retail">Retail</option>
@@ -154,7 +156,7 @@
       <div class="col">
         <div class="col-header">
           <div class="col-label">B2B</div>
-          <select class="col-filter" id="b2b-filter" onchange="filterClients('b2b', this.value)">
+          <select class="col-filter" id="b2b-filter" aria-label="Filter B2B clients by category" onchange="filterClients('b2b', this.value)">
             <option value="featured">Featured</option>
             <option value="technology">Technology</option>
             <option value="tech-telecom">Technology &amp; Telecom</option>
@@ -213,17 +215,19 @@
 </section>
 
 
+</main>
+
 <!-- CTA -->
 <section class="cta-band">
   <div class="cta-inner">
     <h2 class="cta-h2">Let's talk about what's next</h2>
-    <a href="contact.html" class="btn-white">Get in touch &#8594;</a>
+    <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
   </div>
 </section>
 
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-inner">
     <div class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</div>
     <div class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</div>
