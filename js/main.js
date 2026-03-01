@@ -35,8 +35,6 @@ class ParallaxEngine {
     this.ticking = false;
     this.scrollY = 0;
     this.currentScrollY = 0;
-    this.lastScrollY = 0;
-    this.scrollingDown = true;
     this.vh = window.innerHeight;
   }
 
@@ -96,8 +94,6 @@ class ParallaxEngine {
   bindEvents() {
     window.addEventListener('scroll', () => {
       this.scrollY = window.scrollY;
-      this.scrollingDown = this.scrollY > this.lastScrollY;
-      this.lastScrollY = this.scrollY;
       this.ticking = true;
     }, { passive: true });
 
@@ -117,27 +113,10 @@ class ParallaxEngine {
       const progress = (this.vh - rect.top) / (this.vh + rect.height);
       const centered = (progress - 0.5) * 2;
 
-      // Calculate the full parallax value
-      let targetValue;
       if (type === 'y') {
-        targetValue = centered * speed * this.vh;
+        el.style.transform = `translate3d(0,${(centered * speed * this.vh).toFixed(1)}px,0)`;
       } else if (type === 'scale') {
-        targetValue = centered * speed;
-      }
-
-      // When scrolling up, ease toward zero (natural position)
-      if (!this.scrollingDown) {
-        targetValue = 0;
-      }
-
-      // Store and lerp toward target for smooth transitions
-      if (el._parallaxCurrent === undefined) el._parallaxCurrent = 0;
-      el._parallaxCurrent = lerp(el._parallaxCurrent, targetValue, 0.08);
-
-      if (type === 'y') {
-        el.style.transform = `translate3d(0,${el._parallaxCurrent.toFixed(1)}px,0)`;
-      } else if (type === 'scale') {
-        el.style.transform = `scale(${(1 + el._parallaxCurrent).toFixed(4)})`;
+        el.style.transform = `scale(${(1 + centered * speed).toFixed(4)})`;
       }
     });
 
@@ -148,11 +127,7 @@ class ParallaxEngine {
       const rect = parent.getBoundingClientRect();
       if (rect.bottom < -100 || rect.top > this.vh + 100) return;
 
-      const targetOrb = this.scrollingDown ? this.currentScrollY * speed : 0;
-      if (el._orbCurrent === undefined) el._orbCurrent = 0;
-      el._orbCurrent = lerp(el._orbCurrent, targetOrb, 0.08);
-
-      el.style.transform = `translate3d(0,${el._orbCurrent.toFixed(1)}px,0)`;
+      el.style.transform = `translate3d(0,${(this.currentScrollY * speed).toFixed(1)}px,0)`;
     });
 
     requestAnimationFrame(() => this.tick());
