@@ -597,6 +597,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
   .hero{grid-template-columns:1fr;min-height:auto;}
   .hero-left{padding:8rem 1.5rem 4rem;}
   .hero-right{height:50vh;}
+  .hero-right-overlay{display:none;}
 
   .what-i-do{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
   .clients{padding:4rem 1.5rem;}
