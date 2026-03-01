@@ -109,33 +109,51 @@ class ParallaxEngine {
   tick() {
     this.currentScrollY = lerp(this.currentScrollY, this.scrollY, 0.1);
 
-    // Only update parallax transforms when scrolling down
-    if (this.scrollingDown) {
-      // Transform [data-parallax] elements
-      this.elements.forEach(({ el, speed, type }) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+    // Transform [data-parallax] elements
+    this.elements.forEach(({ el, speed, type }) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
 
-        const progress = (this.vh - rect.top) / (this.vh + rect.height);
-        const centered = (progress - 0.5) * 2;
+      const progress = (this.vh - rect.top) / (this.vh + rect.height);
+      const centered = (progress - 0.5) * 2;
 
-        if (type === 'y') {
-          el.style.transform = `translate3d(0,${(centered * speed * this.vh).toFixed(1)}px,0)`;
-        } else if (type === 'scale') {
-          el.style.transform = `scale(${(1 + centered * speed).toFixed(4)})`;
-        }
-      });
+      // Calculate the full parallax value
+      let targetValue;
+      if (type === 'y') {
+        targetValue = centered * speed * this.vh;
+      } else if (type === 'scale') {
+        targetValue = centered * speed;
+      }
 
-      // Float the orbs
-      this.orbs.forEach(({ el, speed }) => {
-        const parent = el.parentElement;
-        if (!parent) return;
-        const rect = parent.getBoundingClientRect();
-        if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+      // When scrolling up, ease toward zero (natural position)
+      if (!this.scrollingDown) {
+        targetValue = 0;
+      }
 
-        el.style.transform = `translate3d(0,${(this.currentScrollY * speed).toFixed(1)}px,0)`;
-      });
-    }
+      // Store and lerp toward target for smooth transitions
+      if (el._parallaxCurrent === undefined) el._parallaxCurrent = 0;
+      el._parallaxCurrent = lerp(el._parallaxCurrent, targetValue, 0.08);
+
+      if (type === 'y') {
+        el.style.transform = `translate3d(0,${el._parallaxCurrent.toFixed(1)}px,0)`;
+      } else if (type === 'scale') {
+        el.style.transform = `scale(${(1 + el._parallaxCurrent).toFixed(4)})`;
+      }
+    });
+
+    // Float the orbs
+    this.orbs.forEach(({ el, speed }) => {
+      const parent = el.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+
+      const targetOrb = this.scrollingDown ? this.currentScrollY * speed : 0;
+      if (el._orbCurrent === undefined) el._orbCurrent = 0;
+      el._orbCurrent = lerp(el._orbCurrent, targetOrb, 0.08);
+
+      el.style.transform = `translate3d(0,${el._orbCurrent.toFixed(1)}px,0)`;
+    });
 
     requestAnimationFrame(() => this.tick());
   }
