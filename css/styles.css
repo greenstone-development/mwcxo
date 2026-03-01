@@ -462,7 +462,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 }
 
 /* Project Grids */
-.proj-grid-container{max-width:1160px;margin:0 auto;}
+.proj-grid-container{max-width:1160px;margin:0 auto;padding-bottom:4rem;}
 .proj-grid-row{
   display:grid;gap:1px;background:var(--line2);
   border:1px solid var(--line2);overflow:hidden;
