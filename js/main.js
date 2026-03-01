@@ -35,6 +35,8 @@ class ParallaxEngine {
     this.ticking = false;
     this.scrollY = 0;
     this.currentScrollY = 0;
+    this.lastScrollY = 0;
+    this.scrollingDown = true;
     this.vh = window.innerHeight;
   }
 
@@ -94,6 +96,8 @@ class ParallaxEngine {
   bindEvents() {
     window.addEventListener('scroll', () => {
       this.scrollY = window.scrollY;
+      this.scrollingDown = this.scrollY > this.lastScrollY;
+      this.lastScrollY = this.scrollY;
       this.ticking = true;
     }, { passive: true });
 
@@ -105,30 +109,33 @@ class ParallaxEngine {
   tick() {
     this.currentScrollY = lerp(this.currentScrollY, this.scrollY, 0.1);
 
-    // Transform [data-parallax] elements
-    this.elements.forEach(({ el, speed, type }) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+    // Only update parallax transforms when scrolling down
+    if (this.scrollingDown) {
+      // Transform [data-parallax] elements
+      this.elements.forEach(({ el, speed, type }) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > this.vh + 100) return;
 
-      const progress = (this.vh - rect.top) / (this.vh + rect.height);
-      const centered = (progress - 0.5) * 2;
+        const progress = (this.vh - rect.top) / (this.vh + rect.height);
+        const centered = (progress - 0.5) * 2;
 
-      if (type === 'y') {
-        el.style.transform = `translate3d(0,${(centered * speed * this.vh).toFixed(1)}px,0)`;
-      } else if (type === 'scale') {
-        el.style.transform = `scale(${(1 + centered * speed).toFixed(4)})`;
-      }
-    });
+        if (type === 'y') {
+          el.style.transform = `translate3d(0,${(centered * speed * this.vh).toFixed(1)}px,0)`;
+        } else if (type === 'scale') {
+          el.style.transform = `scale(${(1 + centered * speed).toFixed(4)})`;
+        }
+      });
 
-    // Float the orbs
-    this.orbs.forEach(({ el, speed }) => {
-      const parent = el.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
-      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+      // Float the orbs
+      this.orbs.forEach(({ el, speed }) => {
+        const parent = el.parentElement;
+        if (!parent) return;
+        const rect = parent.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > this.vh + 100) return;
 
-      el.style.transform = `translate3d(0,${(this.currentScrollY * speed).toFixed(1)}px,0)`;
-    });
+        el.style.transform = `translate3d(0,${(this.currentScrollY * speed).toFixed(1)}px,0)`;
+      });
+    }
 
     requestAnimationFrame(() => this.tick());
   }
