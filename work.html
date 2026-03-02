@@ -710,7 +710,7 @@ function buildCard(p) {
     : '';
 
   return '<div class="project-card">'
-    + '<div class="proj-img"><div class="proj-img-inner">Project image</div></div>'
+    + '<div class="proj-img" style="background-image:url(\'' + p.img + '\');background-size:cover;background-position:center;"><div class="proj-img-inner"></div></div>'
     + '<div class="proj-body">'
     + '<div class="proj-client">' + p.client + '</div>'
     + '<div class="proj-title">' + p.title + '</div>'
