@@ -51,18 +51,18 @@
 <div class="work-filter-tabs" role="tablist" aria-label="Filter projects by category">
   <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
   <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
-  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
   <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
-  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
   <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
+  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
 </div>
 <select class="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
   <option value="recent">Most Recent</option>
   <option value="research">Research &amp; Strategy</option>
-  <option value="branding">Branding</option>
   <option value="digital">Digital Platforms &amp; Products</option>
-  <option value="advertising">Advertising</option>
+  <option value="branding">Branding</option>
   <option value="ecommerce">E-Commerce</option>
+  <option value="advertising">Advertising</option>
 </select>
 
 <!-- PROJECT GRID (rendered by JS) -->
@@ -997,6 +997,12 @@ function renderRecent() {
 function renderCategory(cat) {
   var items = PROJECTS.filter(function(p) { return p.cats.indexOf(cat) !== -1; });
   if (!items.length) return '<p style="font-family:var(--b);font-size:.88rem;color:var(--muted);padding:2rem 0;">No projects in this category yet.</p>';
+
+  // Shuffle items randomly (Fisher-Yates)
+  for (var s = items.length - 1; s > 0; s--) {
+    var r = Math.floor(Math.random() * (s + 1));
+    var tmp = items[s]; items[s] = items[r]; items[r] = tmp;
+  }
 
   var html = '';
   var cols = 3; // start with 3
