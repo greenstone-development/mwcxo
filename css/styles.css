@@ -658,7 +658,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 
   .what-i-do{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
   .work-filter-tabs{padding:0 1.5rem;}
-  .proj-grid-container{padding:0 1.5rem;}
+  .proj-grid-container{padding:0 1.5rem 4rem;}
   .proj-grid-row.cols-3{grid-template-columns:1fr 1fr;}
   .clients{padding:4rem 1.5rem;}
   .columns-wrap{grid-template-columns:1fr;}
