@@ -248,6 +248,7 @@
           <div class="vc" data-col="b2b" data-cat="agencies">Media Arts Lab</div>
           <div class="vc" data-col="b2b" data-cat="technology">Microsoft</div>
           <div class="vc" data-col="b2b" data-cat="industrial">Neptune Retail Solutions</div>
+          <div class="vc" data-col="b2b" data-cat="investment">PAI Partners</div>
           <div class="vc" data-col="b2b" data-cat="industrial">Pocket Outdoor Media</div>
           <div class="vc" data-col="b2b" data-cat="agencies">R/GA</div>
           <div class="vc" data-col="b2b" data-cat="technology">Tecomet</div>
@@ -318,8 +319,10 @@
 
 <script src="js/main.js"></script>
 <script>
-  filterClients('b2c', 'featured');
-  filterClients('b2b', 'featured');
+  document.addEventListener('DOMContentLoaded', function() {
+    filterClients('b2c', 'featured');
+    filterClients('b2b', 'featured');
+  });
 </script>
 </body>
 </html>
