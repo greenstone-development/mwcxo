@@ -54,6 +54,7 @@
   <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
   <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
   <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
 </div>
 <select class="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
   <option value="recent">Most Recent</option>
@@ -61,6 +62,7 @@
   <option value="branding">Branding</option>
   <option value="digital">Digital Platforms &amp; Products</option>
   <option value="advertising">Advertising</option>
+  <option value="ecommerce">E-Commerce</option>
 </select>
 
 <!-- PROJECT GRID (rendered by JS) -->
@@ -207,7 +209,7 @@ var PROJECTS = [
     desc: 'Optimized the Card Shop experience and wove Membership into the shopping journey&mdash;with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.',
     year: '2019',
     sortYear: 2019,
-    cats: ['research','digital'],
+    cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/american-express',
     award: false,
     img: 'images/projects/amex-gs.jpg'
@@ -229,7 +231,7 @@ var PROJECTS = [
     desc: 'Developed brand and digital strategy for the antibody discovery platform&mdash;translating complex biotech into a clear and compelling brand story and web presence.',
     year: '2018',
     sortYear: 2018,
-    cats: ['branding','digital'],
+    cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/abcellera',
     award: false,
     img: 'images/projects/abcellera.jpg'
@@ -240,7 +242,7 @@ var PROJECTS = [
     desc: 'Kedro, McKinsey&rsquo;s open-source Python data science framework, had low adoption. Green Stone delivered brand positioning, messaging, a full rebrand, site design, and development to drive community growth.',
     year: '2020',
     sortYear: 2020,
-    cats: ['branding','digital'],
+    cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/mckinsey-quantumblack-kedro',
     award: false,
     img: 'images/projects/quantumblack.jpg'
@@ -251,7 +253,7 @@ var PROJECTS = [
     desc: 'Built the brand and digital platform for The Doe&mdash;an anonymous storytelling publication designed to bridge divides through shared human experiences.',
     year: '2020',
     sortYear: 2020,
-    cats: ['branding','digital'],
+    cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/thedoe',
     award: false,
     img: 'images/projects/thedoe.jpg'
@@ -273,7 +275,7 @@ var PROJECTS = [
     desc: 'Created brand identity and packaging for Allkind Kombucha&mdash;building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.',
     year: '2021',
     sortYear: 2021,
-    cats: ['branding'],
+    cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/allkind',
     award: false,
     img: 'images/projects/allkind.jpg'
@@ -284,7 +286,7 @@ var PROJECTS = [
     desc: 'Delivered user-centered digital experience design for the insurance giant&mdash;optimizing key digital properties to improve customer engagement and conversion.',
     year: '2017',
     sortYear: 2017,
-    cats: ['digital'],
+    cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/geico',
     award: false,
     img: 'images/projects/geico.jpg'
@@ -295,7 +297,7 @@ var PROJECTS = [
     desc: 'Created brand identity and digital experience for the Apollo program&mdash;bringing a modern design approach to a forward-looking technology initiative.',
     year: '2019',
     sortYear: 2019,
-    cats: ['branding','digital'],
+    cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/apollo',
     award: false,
     img: 'images/projects/apollo.jpg'
@@ -317,7 +319,7 @@ var PROJECTS = [
     desc: 'Brand strategy and digital work for the functional bag brand&mdash;refining positioning and the online experience for the direct-to-consumer market.',
     year: '2018',
     sortYear: 2018,
-    cats: ['branding','digital'],
+    cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/dagne-dover',
     award: false,
     img: 'images/projects/dagnedover.jpg'
@@ -328,7 +330,7 @@ var PROJECTS = [
     desc: 'Transformed Michaels&rsquo; email program from discount-driven to brand-love-driven&mdash;through brand strategy, user research, and a refined visual design system that inspired makers.',
     year: '2019',
     sortYear: 2019,
-    cats: ['research','branding'],
+    cats: ['research','advertising','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/michaels',
     award: false,
     img: 'images/projects/michaels.jpg'
@@ -339,7 +341,7 @@ var PROJECTS = [
     desc: 'Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer&mdash;with research, experience design, visual design, and motion.',
     year: '2018',
     sortYear: 2018,
-    cats: ['research','digital'],
+    cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/finish-line',
     award: false,
     img: 'images/projects/finishline.jpg'
@@ -350,7 +352,7 @@ var PROJECTS = [
     desc: 'Digital experience design for the premium kitchen appliance maker&mdash;elevating the online brand presence and shopping journey.',
     year: '2017',
     sortYear: 2017,
-    cats: ['digital'],
+    cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/breville',
     award: false,
     img: 'images/projects/breville.jpg'
@@ -361,7 +363,7 @@ var PROJECTS = [
     desc: 'Created a distinctive brand identity for eighteen&bull;b&mdash;developing visual system, brand story, and creative direction.',
     year: '2019',
     sortYear: 2019,
-    cats: ['branding'],
+    cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/eighteen-b',
     award: false,
     img: 'images/projects/eighteenb.jpg'
@@ -372,7 +374,7 @@ var PROJECTS = [
     desc: 'Brand and packaging work for the Colorado craft brewing pioneer&mdash;evolving visual identity while honoring decades of brewing heritage.',
     year: '2021',
     sortYear: 2021,
-    cats: ['branding'],
+    cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/odellbrewingco',
     award: false,
     img: 'images/projects/odell.jpg'
@@ -383,7 +385,7 @@ var PROJECTS = [
     desc: 'Helped the freelance management platform clarify brand positioning and build digital experiences to support enterprise workforce solutions.',
     year: '2017',
     sortYear: 2017,
-    cats: ['branding','digital'],
+    cats: ['research','branding','digital'],
     link: 'https://www.greenstone.co/collection/work/workmarket',
     award: false,
     img: 'images/projects/workmarket.jpg'
@@ -394,7 +396,7 @@ var PROJECTS = [
     desc: 'Digital experience work for HBO&rsquo;s Game of Thrones franchise&mdash;extending the cultural phenomenon across digital touchpoints and fan engagement.',
     year: '2014',
     sortYear: 2014,
-    cats: ['digital'],
+    cats: ['digital','advertising'],
     link: 'https://www.greenstone.co/collection/work/got',
     award: false,
     img: 'images/projects/hbo.jpg'
@@ -416,7 +418,7 @@ var PROJECTS = [
     desc: 'Developed brand identity and visual system for Empty Set Designs&mdash;creating a distinctive creative foundation for the studio.',
     year: '2017',
     sortYear: 2017,
-    cats: ['branding'],
+    cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/empty-set-designs',
     award: false,
     img: 'images/projects/emptyset.jpg'
@@ -427,7 +429,7 @@ var PROJECTS = [
     desc: 'Redesigned localmotors.com in two months&mdash;evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.',
     year: '2017',
     sortYear: 2017,
-    cats: ['branding','digital'],
+    cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/local-motors',
     award: false,
     img: 'images/projects/localmotors.jpg'
@@ -449,7 +451,7 @@ var PROJECTS = [
     desc: 'Brand and digital work for the American Association of Advertising Agencies&mdash;modernizing the industry trade group&rsquo;s presence and platform.',
     year: '2026',
     sortYear: 2026,
-    cats: ['branding','digital'],
+    cats: ['research','branding','digital'],
     link: 'https://www.greenstone.co/collection/work/4as',
     award: false,
     img: 'images/projects/4as.jpg'
@@ -471,7 +473,7 @@ var PROJECTS = [
     desc: 'Brand and digital strategy for Simple Energy (now Uplight)&mdash;helping the energy tech company communicate their utility customer engagement platform.',
     year: '2019',
     sortYear: 2019,
-    cats: ['branding','digital'],
+    cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/simple-energy',
     award: false,
     img: 'images/projects/simpleenergy.jpg'
