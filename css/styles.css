@@ -48,6 +48,8 @@ img{display:block;max-width:100%;}
 .btn-fill:focus-visible{outline-color:white;outline-offset:3px;}
 .btn-white:focus-visible{outline-color:var(--ink);outline-offset:3px;}
 .submit-btn:focus-visible{outline-color:white;outline-offset:3px;}
+/* Overlay buttons sit on a dark backdrop — need white rings */
+.cs-close:focus-visible,.cs-nav-btn:focus-visible{outline:2px solid white;outline-offset:3px;}
 
 /* ============================================
    NAV
@@ -494,7 +496,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 .td-project{color:var(--ink);font-weight:500;}
 .level-badge{font-family:var(--f);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:100px;white-space:nowrap;}
 .lv-grand{background:#7B5EA7;color:white;}
-.lv-titanium{background:#9B7EC8;color:white;}
+.lv-titanium{background:#7060A0;color:white;}
 .lv-gold{background:var(--gold);color:white;}
 .lv-silver{background:var(--muted);color:white;}
 .lv-special{background:var(--teal);color:white;}
@@ -543,6 +545,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 }
 .field input::placeholder,.field textarea::placeholder{color:var(--muted);}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(26,107,98,.12);}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.1);}
 .field textarea{resize:vertical;min-height:110px;line-height:1.65;}
 .field select{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A8480' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");

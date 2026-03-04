@@ -311,8 +311,27 @@ async function handleSubmit(e) {
   const success = document.getElementById('successState');
   const errorEl = document.getElementById('formError');
 
-  // Hide any previous error
+  // Clear previous error state
   if (errorEl) errorEl.style.display = 'none';
+  form.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
+
+  // Field-level validation — mark invalid fields before posting
+  const requiredFields = [
+    { el: form.querySelector('#name'),    label: 'Your Name' },
+    { el: form.querySelector('#email'),   label: 'Email' },
+    { el: form.querySelector('#message'), label: 'Message' },
+  ];
+  const missing = requiredFields.filter(f => !f.el || !f.el.value.trim());
+  if (missing.length) {
+    missing.forEach(f => { if (f.el) { f.el.setAttribute('aria-invalid', 'true'); f.el.focus(); } });
+    // Focus the first invalid field
+    if (missing[0].el) missing[0].el.focus();
+    if (errorEl) {
+      errorEl.textContent = 'Please fill in all required fields.';
+      errorEl.style.display = 'block';
+    }
+    return;
+  }
 
   // Gather form data
   const data = {

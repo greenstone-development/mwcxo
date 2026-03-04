@@ -4,11 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Past Projects — Matt Walsh CXO</title>
-<meta name="description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
+<meta name="description" content="45+ projects spanning customer experience strategy, brand identity, digital platforms, and award-winning advertising — for clients including Nike, Domino's, American Express, Best Buy, Volkswagen, and more.">
+<meta name="author" content="Matt Walsh">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mattwalshcxo.com/work.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mattwalshcxo.com/work.html">
+<meta property="og:title" content="Past Projects — Matt Walsh CXO">
+<meta property="og:description" content="45+ projects spanning strategy, branding, digital platforms, and advertising for Nike, Domino's, American Express, Best Buy, Volkswagen, and many more world-class clients.">
+<meta property="og:site_name" content="Matt Walsh CXO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Past Projects — Matt Walsh CXO">
+<meta name="twitter:description" content="Two decades of work spanning strategy, branding, digital platforms, and award-winning advertising.">
+
+<!-- Structured Data: CollectionPage of creative works -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://mattwalshcxo.com/work.html",
+      "name": "Past Projects — Matt Walsh CXO",
+      "description": "A portfolio of 45+ projects spanning customer experience strategy, brand identity, digital platform design, e-commerce, and advertising for world-class clients.",
+      "url": "https://mattwalshcxo.com/work.html",
+      "creator": { "@id": "https://mattwalshcxo.com/#matt-walsh" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mattwalshcxo.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Past Projects", "item": "https://mattwalshcxo.com/work.html" }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Selected Projects by Matt Walsh",
+      "numberOfItems": 45,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Streamlined DTC E-Commerce — Larson Doors", "url": "https://www.greenstone.co/collection/work/larson" },
+        { "@type": "ListItem", "position": 2, "name": "Telecom Acquisition & Retention Platform — WOW!", "url": "https://www.greenstone.co/collection/work/wow" },
+        { "@type": "ListItem", "position": 3, "name": "Brand Transformation for AI Launch — LexisNexis", "url": "https://www.greenstone.co/collection/work/lexisnexis" },
+        { "@type": "ListItem", "position": 4, "name": "Modern DTC E-Commerce — Moen (4x conversion lift)", "url": "https://www.greenstone.co/collection/work/moen" },
+        { "@type": "ListItem", "position": 5, "name": "Enterprise Sports Platform — Elevate Sports Ventures", "url": "https://www.greenstone.co/collection/work/elevate" },
+        { "@type": "ListItem", "position": 6, "name": "Whopper Sacrifice — Burger King (Cannes Titanium, Clio Grand Prix)", "url": "https://mattwalshcxo.com/work.html" },
+        { "@type": "ListItem", "position": 7, "name": "Twelp Force — Best Buy (Cannes Titanium, Grand Prix)", "url": "https://mattwalshcxo.com/work.html" },
+        { "@type": "ListItem", "position": 8, "name": "Small Business Saturday — American Express (Cannes Grand Prix)", "url": "https://mattwalshcxo.com/work.html" },
+        { "@type": "ListItem", "position": 9, "name": "The Tonight Show Digital — NBC (Emmy Award)", "url": "https://mattwalshcxo.com/work.html" },
+        { "@type": "ListItem", "position": 10, "name": "EpicMix — Vail Resorts (Clio Gold)", "url": "https://mattwalshcxo.com/work.html" }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
 <script>
@@ -16,6 +74,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-XLYTNG2EBE');
+</script>
 </script>
 <style>
 /* Case Study Overlay */
@@ -161,7 +220,6 @@
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
 }
-</style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -169,13 +227,13 @@
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Matt Walsh <span>CXO</span></a>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <a href="index.html" class="nav-logo" aria-label="Matt Walsh CXO — Home">Matt Walsh <span>CXO</span></a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links" role="list">
       <li><a href="index.html">Home</a></li>
-      <li><a href="work.html" class="active">Past Projects</a></li>
+      <li><a href="work.html" aria-current="page">Past Projects</a></li>
       <li><a href="recognition.html">Recognition</a></li>
       <li><a href="thought-leadership.html">Thought Leadership</a></li>
       <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
@@ -185,41 +243,44 @@
 
 <main id="main">
 
-<!-- PAGE HERO -->
-<section class="page-hero reveal">
-  <div class="page-hero-inner">
-    <div class="page-kicker kicker">Past Projects</div>
-    <h1 class="page-h1">Two decades of work that moved <em>people, products, and organizations.</em></h1>
+  <!-- PAGE HERO -->
+  <section class="page-hero reveal" aria-labelledby="work-hero-heading">
+    <div class="page-hero-inner">
+      <p class="page-kicker kicker">Past Projects</p>
+      <h1 class="page-h1" id="work-hero-heading">Two decades of work that moved <em>people, products, and organizations.</em></h1>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <div class="work-filter-tabs" role="tablist" aria-label="Filter projects by category">
+    <button class="work-tab active" id="tab-recent"     role="tab" aria-selected="true"  aria-controls="proj-grid-container" data-filter="recent"      onclick="setFilter('recent')">Most Recent</button>
+    <button class="work-tab"        id="tab-research"   role="tab" aria-selected="false" aria-controls="proj-grid-container" data-filter="research"    onclick="setFilter('research')">Research &amp; Strategy</button>
+    <button class="work-tab"        id="tab-digital"    role="tab" aria-selected="false" aria-controls="proj-grid-container" data-filter="digital"     onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
+    <button class="work-tab"        id="tab-branding"   role="tab" aria-selected="false" aria-controls="proj-grid-container" data-filter="branding"    onclick="setFilter('branding')">Branding</button>
+    <button class="work-tab"        id="tab-ecommerce"  role="tab" aria-selected="false" aria-controls="proj-grid-container" data-filter="ecommerce"   onclick="setFilter('ecommerce')">E-Commerce</button>
+    <button class="work-tab"        id="tab-advertising" role="tab" aria-selected="false" aria-controls="proj-grid-container" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
   </div>
-</section>
+  <label for="work-tab-select" class="sr-only">Filter projects by category</label>
+  <select class="work-tab-select" id="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
+    <option value="recent">Most Recent</option>
+    <option value="research">Research &amp; Strategy</option>
+    <option value="digital">Digital Platforms &amp; Products</option>
+    <option value="branding">Branding</option>
+    <option value="ecommerce">E-Commerce</option>
+    <option value="advertising">Advertising</option>
+  </select>
 
-<!-- FILTER TABS -->
-<div class="work-filter-tabs" role="tablist" aria-label="Filter projects by category">
-  <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
-  <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
-  <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
-  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
-  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
-  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
-</div>
-<select class="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
-  <option value="recent">Most Recent</option>
-  <option value="research">Research &amp; Strategy</option>
-  <option value="digital">Digital Platforms &amp; Products</option>
-  <option value="branding">Branding</option>
-  <option value="ecommerce">E-Commerce</option>
-  <option value="advertising">Advertising</option>
-</select>
-
-<!-- PROJECT GRID (rendered by JS) -->
-<div class="proj-grid-container" id="proj-grid-container"></div>
+  <!-- PROJECT GRID (rendered by JS) -->
+  <div class="proj-grid-container" id="proj-grid-container"
+       role="tabpanel" aria-labelledby="tab-recent" tabindex="0"
+       aria-live="polite"></div>
 
 </main>
 
 <!-- CTA -->
-<section class="cta-band">
+<section class="cta-band" aria-label="Contact call to action">
   <div class="cta-inner">
-    <h2 class="cta-h2">Let's talk about what's next</h2>
+    <h2 class="cta-h2">Let&rsquo;s talk about what&rsquo;s next</h2>
     <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
   </div>
 </section>
@@ -227,8 +288,8 @@
 <!-- FOOTER -->
 <footer role="contentinfo">
   <div class="footer-inner">
-    <div class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</div>
-    <div class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</div>
+    <p class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</p>
+    <p class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</p>
   </div>
 </footer>
 
@@ -1171,7 +1232,7 @@ function buildCard(p) {
   var linkHTML = p.link
     ? '<a href="' + p.link + '" target="_blank" rel="noopener" class="proj-link">Launch Case Study <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 3px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>'
     : p.caseStudy
-    ? '<a href="#" class="proj-link" onclick="openCaseStudy(\'' + p.caseStudy + '\');return false;">View Project Details &#8594;</a>'
+    ? '<a href="#" class="proj-link" onclick="openCaseStudy(\'' + p.caseStudy + '\',this);return false;">View Project Details &#8594;</a>'
     : '<span class="proj-link" style="cursor:default;color:var(--muted);opacity:.7;">Details available upon request</span>';
 
   var awardHTML = p.award
@@ -1237,11 +1298,18 @@ function setFilter(val) {
 
   // Update tabs
   document.querySelectorAll('.work-tab').forEach(function(t) {
-    t.classList.toggle('active', t.dataset.filter === val);
+    const isSelected = t.dataset.filter === val;
+    t.classList.toggle('active', isSelected);
+    t.setAttribute('aria-selected', isSelected);
   });
   // Update select
   var sel = document.querySelector('.work-tab-select');
   if (sel) sel.value = val;
+
+  // Sync tabpanel label to the now-active tab
+  var activeTab = document.getElementById('tab-' + val);
+  var panel = document.getElementById('proj-grid-container');
+  if (activeTab && panel) panel.setAttribute('aria-labelledby', activeTab.id);
 
   // Render
   var container = document.getElementById('proj-grid-container');
@@ -1267,8 +1335,8 @@ function setFilter(val) {
 setFilter('recent');
 </script>
 <!-- Case Study Overlay -->
-<div class="cs-overlay" id="csOverlay">
-  <button class="cs-close" onclick="closeCaseStudy()" aria-label="Close case study">&times;</button>
+<div class="cs-overlay" id="csOverlay" role="dialog" aria-modal="true" aria-labelledby="cs-dialog-title">
+  <button class="cs-close" id="csClose" onclick="closeCaseStudy()" aria-label="Close case study">&times;</button>
   <div class="cs-toolbar-line"></div>
   <div id="csContent"></div>
   <div class="cs-nav" id="csNav">
@@ -2579,7 +2647,12 @@ var CASE_STUDIES = {
 var csNavList = [];   // ordered caseStudy keys from the active filtered view
 var csNavIndex = 0;
 
-function openCaseStudy(id) {
+// Track which element triggered the overlay so focus can return on close
+var _csTrigger = null;
+
+function openCaseStudy(id, triggerEl) {
+  if (triggerEl) _csTrigger = triggerEl;
+
   // If opening fresh (not via navigate), rebuild nav list from current rendered cards
   if (csNavList.indexOf(id) === -1) {
     csNavList = [];
@@ -2616,7 +2689,7 @@ function openCaseStudy(id) {
   document.getElementById('csContent').innerHTML =
     '<div class="cs-inner">'
     + '<div class="cs-meta-col">'
-    +   '<div class="cs-title">' + cs.title + '</div>'
+    +   '<div class="cs-title" id="cs-dialog-title">' + cs.title + '</div>'
     +   '<div class="cs-meta-label">Client</div>'
     +   '<div class="cs-meta-value">' + cs.client + '</div>'
     +   '<div class="cs-meta-label">Type</div>'
@@ -2650,6 +2723,10 @@ function openCaseStudy(id) {
   overlay.scrollTop = 0;
   overlay.classList.add('cs-open');
   document.body.style.overflow = 'hidden';
+
+  // Move focus into overlay (close button is first interactive element)
+  var closeBtn = document.getElementById('csClose');
+  if (closeBtn) closeBtn.focus();
 }
 
 function navigateCS(dir) {
@@ -2661,7 +2738,27 @@ function navigateCS(dir) {
 function closeCaseStudy() {
   document.getElementById('csOverlay').classList.remove('cs-open');
   document.body.style.overflow = '';
+  // Return focus to whatever opened the overlay
+  if (_csTrigger) { _csTrigger.focus(); _csTrigger = null; }
 }
+
+// ── Focus Trap ──────────────────────────────────────────
+// Keeps Tab / Shift+Tab cycling within the overlay while it's open.
+document.getElementById('csOverlay').addEventListener('keydown', function(e) {
+  if (e.key !== 'Tab') return;
+  var focusable = Array.from(this.querySelectorAll(
+    'a[href],button:not([disabled]),input,textarea,select,[tabindex]:not([tabindex="-1"])'
+  )).filter(function(el) {
+    return !el.closest('[hidden]') && el.offsetParent !== null;
+  });
+  if (!focusable.length) return;
+  var first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault(); first.focus();
+  }
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
