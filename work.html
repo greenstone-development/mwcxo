@@ -2028,8 +2028,7 @@ function openCaseStudy(id) {
     +   '<div class="cs-meta-value">' + cs.year + '</div>'
     +   '<div class="cs-section-label">Overview</div>'
     +   '<div class="cs-body-text">' + cs.overview + '</div>'
-    +   '<div class="cs-section-label">Recognition</div>'
-    +   recHTML
+    +   (cs.recognition.length ? '<div class="cs-section-label">Recognition</div>' + recHTML : '')
     + '</div>'
     + '<div class="cs-images-col">' + imgHTML + '</div>'
     + '</div>';
