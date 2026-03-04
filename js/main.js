@@ -24,6 +24,19 @@ function toggleNav() {
   }
 }
 
+function closeNav() {
+  const links = document.querySelector('.nav-links');
+  const toggle = document.querySelector('.nav-toggle');
+  if (links && links.classList.contains('open')) {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeNav();
+});
+
 // ── Parallax Engine ────────────────────────────
 // Uses requestAnimationFrame with lerped values for buttery smoothness.
 // Injects subtle floating orbs and applies depth-based transforms.
@@ -32,7 +45,6 @@ class ParallaxEngine {
   constructor() {
     this.elements = [];
     this.orbs = [];
-    this.ticking = false;
     this.scrollY = 0;
     this.currentScrollY = 0;
     this.vh = window.innerHeight;
@@ -94,7 +106,6 @@ class ParallaxEngine {
   bindEvents() {
     window.addEventListener('scroll', () => {
       this.scrollY = window.scrollY;
-      this.ticking = true;
     }, { passive: true });
 
     window.addEventListener('resize', () => {
@@ -156,8 +167,6 @@ class StaggerReveal {
       { parent: '.method-list', children: '.method-item' },
       { parent: '.testimonial-grid', children: '.testimonial-card' },
       { parent: '.project-grid', children: '.project-card' },
-      { parent: '.proj-grid-2', children: '.project-card' },
-      { parent: '.articles-grid', children: '.article-card' },
       { parent: '.network-numbers', children: '.net-num-box' },
     ];
 
@@ -247,10 +256,7 @@ class KickerAnimation {
 document.addEventListener('DOMContentLoaded', () => {
   // Close mobile nav on link click
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      const links = document.querySelector('.nav-links');
-      if (links) links.classList.remove('open');
-    });
+    a.addEventListener('click', closeNav);
   });
 
   new ParallaxEngine().init();
@@ -277,6 +283,7 @@ function toggleTestimonials(e) {
   if (!list || !btn) return;
   const hidden = list.style.display === 'none' || list.style.display === '';
   list.style.display = hidden ? 'block' : 'none';
+  btn.setAttribute('aria-expanded', hidden);
   btn.textContent = hidden ? 'Show fewer testimonials \u2191' : 'View all testimonials \u2192';
 }
 
@@ -287,17 +294,8 @@ function toggleAwards(e) {
   if (!extras.length || !btn) return;
   const hidden = extras[0].style.display === 'none';
   extras.forEach(el => el.style.display = hidden ? 'table-row' : 'none');
+  btn.setAttribute('aria-expanded', hidden);
   btn.textContent = hidden ? 'Show fewer awards \u2191' : 'View full list \u2192';
-}
-
-function toggleArticles(e) {
-  e.preventDefault();
-  const list = document.getElementById('articles-list');
-  const btn = document.getElementById('articles-toggle');
-  if (!list || !btn) return;
-  const hidden = list.style.display === 'none' || list.style.display === '';
-  list.style.display = hidden ? 'block' : 'none';
-  btn.textContent = hidden ? 'Show fewer \u2191' : 'View all \u2192';
 }
 
 // ── Contact — Form Submission via Google Apps Script ──
