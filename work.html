@@ -1190,6 +1190,9 @@ function renderCategory(cat) {
 }
 
 function setFilter(val) {
+  // Invalidate nav list — must be rebuilt from the new rendered grid
+  csNavList = [];
+
   // Update tabs
   document.querySelectorAll('.work-tab').forEach(function(t) {
     t.classList.toggle('active', t.dataset.filter === val);
