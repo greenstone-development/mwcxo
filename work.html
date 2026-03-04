@@ -1039,9 +1039,9 @@ function buildCard(p) {
     + '<div class="proj-body">'
     + '<div class="proj-client">' + p.client + '</div>'
     + '<div class="proj-title">' + p.title + '</div>'
-    + '<p class="proj-scope">' + p.desc + ' <span class="proj-year">(' + p.year + ')</span></p>'
+    + '<p class="proj-scope">' + p.desc + '</p>'
     + awardHTML
-    + linkHTML
+    + '<div class="proj-footer"><span class="proj-year">' + p.year + '</span><span class="proj-footer-dot">&bull;</span>' + linkHTML + '</div>'
     + '</div></div>';
 }
 

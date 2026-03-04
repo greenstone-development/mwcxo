@@ -477,19 +477,26 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 .proj-grid-row.cols-3 .proj-img{height:200px;}
 
 /* Project Link */
+.proj-footer{
+  display:flex;align-items:center;gap:.5rem;
+  margin-top:.8rem;
+}
+.proj-footer-dot{
+  color:var(--line2);font-size:.6rem;
+}
 .proj-link{
   display:inline-flex;align-items:center;gap:.3rem;
   font-family:var(--f);font-size:.72rem;font-weight:600;
   color:var(--teal);text-decoration:none;
-  margin-top:.8rem;transition:color .2s,gap .2s;
+  transition:color .2s,gap .2s;
 }
 .proj-link:hover{color:var(--ink);gap:.5rem;}
 
 /* Project Year */
 .proj-year{
-  font-family:var(--f);font-size:.78rem;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);display:inline-block;margin-top:.15rem;
+  font-family:var(--f);font-size:.72rem;font-weight:500;
+  letter-spacing:.08em;
+  color:var(--muted);
 }
 
 /* Career */
