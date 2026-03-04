@@ -73,7 +73,8 @@ nav.scrolled{box-shadow:0 2px 24px rgba(20,28,26,.08);}
   letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);text-decoration:none;transition:color .2s;
 }
-.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover,.nav-links a.active,.nav-links a[aria-current="page"]{color:var(--ink);}
+.nav-links .nav-cta,.nav-links .nav-cta:hover,.nav-links .nav-cta.active,.nav-links .nav-cta[aria-current="page"]{color:white;}
 .nav-links .nav-cta{
   font-family:var(--f);font-size:.7rem;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;
@@ -519,11 +520,11 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 
 .contact-details{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3.5rem;}
 .contact-detail{display:flex;align-items:flex-start;gap:1rem;}
-.detail-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;margin-top:.05rem;color:rgba(255,255,255,.6);}
-.detail-label{font-family:var(--f);font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.2rem;}
-.detail-value{font-family:var(--b);font-size:.9rem;color:rgba(255,255,255,.75);}
-.detail-value a{color:var(--teal2);text-decoration:none;}
-.detail-value a:hover{text-decoration:underline;}
+.detail-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;margin-top:.05rem;color:rgba(255,255,255,.75);}
+.detail-label{font-family:var(--f);font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.2rem;}
+.detail-value{font-family:var(--b);font-size:.9rem;color:rgba(255,255,255,.9);}
+.detail-value a{color:#6ECFC6;text-decoration:none;transition:color .2s;}
+.detail-value a:hover{color:white;text-decoration:underline;}
 
 /* Right Panel — Form */
 .contact-right{background:var(--bg);padding:5rem 3.5rem 5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
