@@ -82,6 +82,13 @@
   content: '•'; position: absolute; left: 0; color: var(--teal2);
 }
 
+.cs-launch-link {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--f); font-size: .8rem; font-weight: 600;
+  color: var(--teal2); text-decoration: none; margin-top: 1.5rem;
+  transition: opacity .2s;
+}
+.cs-launch-link:hover { opacity: .75; }
 .cs-images-col { display: flex; flex-direction: column; gap: 1.25rem; }
 .cs-images-col img {
   width: 100%; border-radius: 4px; display: block;
@@ -89,36 +96,28 @@
 }
 
 .cs-nav {
-  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-  z-index: 10001; display: flex; align-items: center; gap: .5rem;
-  background: rgba(20,28,26,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
-  padding: .45rem .6rem; white-space: nowrap;
+  position: fixed; top: 1.5rem; left: 1.5rem; z-index: 10001;
+  display: flex; align-items: center; gap: .5rem;
 }
 .cs-nav-btn {
-  display: flex; align-items: center; gap: .4rem;
-  background: none; border: none; color: rgba(255,255,255,.75);
-  font-family: var(--f); font-size: .72rem; font-weight: 600;
-  letter-spacing: .04em; cursor: pointer;
-  padding: .35rem .65rem; border-radius: 999px;
-  transition: background .15s, color .15s;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  color: white; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
 }
-.cs-nav-btn:hover { background: rgba(255,255,255,.12); color: white; }
+.cs-nav-btn:hover { background: rgba(255,255,255,.2); }
 .cs-nav-btn:disabled { opacity: .25; cursor: default; pointer-events: none; }
-.cs-nav-btn svg { flex-shrink: 0; }
 .cs-nav-count {
-  font-family: var(--f); font-size: .68rem; font-weight: 500;
-  color: rgba(255,255,255,.35); padding: 0 .4rem;
-  border-left: 1px solid rgba(255,255,255,.12);
-  border-right: 1px solid rgba(255,255,255,.12);
-  margin: 0 .1rem;
+  font-family: var(--f); font-size: .62rem; font-weight: 600;
+  letter-spacing: .06em; color: rgba(255,255,255,.4);
+  min-width: 2.5rem; text-align: center;
 }
 
 @media(max-width:960px) {
   .cs-inner { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 3rem; }
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
-  .cs-nav { bottom: 1rem; }
 }
 </style>
 </head>
@@ -206,6 +205,7 @@ var PROJECTS = [
     sortYear: 2025,
     cats: ['research','branding','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/larson',
+    caseStudy: 'gs-larson',
     award: false,
     img: 'images/Portfolio/larson/hero_c.jpg'
   },
@@ -217,6 +217,7 @@ var PROJECTS = [
     sortYear: 2026,
     cats: ['research','branding','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/wow',
+    caseStudy: 'gs-wow',
     award: false,
     img: 'images/Portfolio/wow/hero_c.jpg'
   },
@@ -228,6 +229,7 @@ var PROJECTS = [
     sortYear: 2025,
     cats: ['research','branding','advertising','digital'],
     link: 'https://www.greenstone.co/collection/work/lexisnexis',
+    caseStudy: 'gs-lexisnexis',
     award: false,
     img: 'images/Portfolio/lexisnexis/hero_c.jpg'
   },
@@ -239,6 +241,7 @@ var PROJECTS = [
     sortYear: 2024,
     cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/moen',
+    caseStudy: 'gs-moen',
     award: false,
     img: 'images/Portfolio/moen/hero_c.jpg'
   },
@@ -250,6 +253,7 @@ var PROJECTS = [
     sortYear: 2024,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/elevate',
+    caseStudy: 'gs-elevate',
     award: false,
     img: 'images/Portfolio/epic/hero_c.jpg'
   },
@@ -261,6 +265,7 @@ var PROJECTS = [
     sortYear: 2024,
     cats: ['branding'],
     link: 'https://www.greenstone.co/collection/work/techstars',
+    caseStudy: 'gs-techstars',
     award: false,
     img: 'images/Portfolio/techstars/hero_c.jpg'
   },
@@ -272,6 +277,7 @@ var PROJECTS = [
     sortYear: 2023,
     cats: ['research','branding','digital'],
     link: 'https://www.greenstone.co/collection/work/hearthside',
+    caseStudy: 'gs-hearthside',
     award: false,
     img: 'images/Portfolio/hearthside/hero_c.jpg'
   },
@@ -283,6 +289,7 @@ var PROJECTS = [
     sortYear: 2022,
     cats: ['branding','digital'],
     link: 'https://www.greenstone.co/collection/work/whispir',
+    caseStudy: 'gs-whispir',
     award: false,
     img: 'images/Portfolio/whispir/hero_c.jpg'
   },
@@ -294,6 +301,7 @@ var PROJECTS = [
     sortYear: 2020,
     cats: ['branding','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/hillmanminutekey',
+    caseStudy: 'gs-hillman',
     award: false,
     img: 'images/Portfolio/hillman/hero_c.jpg'
   },
@@ -305,6 +313,7 @@ var PROJECTS = [
     sortYear: 2018,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/twitter-help',
+    caseStudy: 'gs-twitter',
     award: false,
     img: 'images/Portfolio/twitter/hero_c.jpg'
   },
@@ -316,6 +325,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/american-express',
+    caseStudy: 'gs-amexcardshop',
     award: false,
     img: 'images/Portfolio/amex_cardshop/hero_c.jpg'
   },
@@ -327,6 +337,7 @@ var PROJECTS = [
     sortYear: 2022,
     cats: ['branding','digital'],
     link: 'https://www.greenstone.co/collection/work/zappi',
+    caseStudy: 'gs-zappi',
     award: false,
     img: 'images/Portfolio/zappi/hero_c.jpg'
   },
@@ -338,6 +349,7 @@ var PROJECTS = [
     sortYear: 2018,
     cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/abcellera',
+    caseStudy: 'gs-abcellera',
     award: false,
     img: 'images/Portfolio/abcellera/hero_c.jpg'
   },
@@ -349,6 +361,7 @@ var PROJECTS = [
     sortYear: 2020,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/mckinsey-quantumblack-kedro',
+    caseStudy: 'gs-quantumblack',
     award: false,
     img: 'images/Portfolio/quantumblack/hero_c.jpg'
   },
@@ -360,6 +373,7 @@ var PROJECTS = [
     sortYear: 2020,
     cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/thedoe',
+    caseStudy: 'gs-thedoe',
     award: false,
     img: 'images/Portfolio/doe/hero_c.jpg'
   },
@@ -371,6 +385,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['research'],
     link: 'https://www.greenstone.co/collection/work/one-main-financial',
+    caseStudy: 'gs-onemain',
     award: false,
     img: 'images/Portfolio/omf/hero_c.jpg'
   },
@@ -382,6 +397,7 @@ var PROJECTS = [
     sortYear: 2021,
     cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/allkind',
+    caseStudy: 'gs-allkind',
     award: false,
     img: 'images/Portfolio/allkind/hero_c.jpg'
   },
@@ -393,6 +409,7 @@ var PROJECTS = [
     sortYear: 2017,
     cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/geico',
+    caseStudy: 'gs-geico',
     award: false,
     img: 'images/Portfolio/geico/hero_c.jpg'
   },
@@ -404,6 +421,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['branding','digital'],
     link: 'https://www.greenstone.co/collection/work/dosist',
+    caseStudy: 'gs-dosist',
     award: false,
     img: 'images/Portfolio/dosist/hero_c.jpg'
   },
@@ -415,6 +433,7 @@ var PROJECTS = [
     sortYear: 2018,
     cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/dagne-dover',
+    caseStudy: 'gs-dagnedover',
     award: false,
     img: 'images/Portfolio/dagnedover/hero_c.jpg'
   },
@@ -426,6 +445,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['research','advertising','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/michaels',
+    caseStudy: 'gs-michaels',
     award: false,
     img: 'images/Portfolio/michaels/hero_c.jpg'
   },
@@ -437,6 +457,7 @@ var PROJECTS = [
     sortYear: 2018,
     cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/finish-line',
+    caseStudy: 'gs-finishline',
     award: false,
     img: 'images/Portfolio/finishline/hero_c.jpg'
   },
@@ -448,6 +469,7 @@ var PROJECTS = [
     sortYear: 2017,
     cats: ['research','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/breville',
+    caseStudy: 'gs-breville',
     award: false,
     img: 'images/Portfolio/breville/hero_c.jpg'
   },
@@ -459,6 +481,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/eighteen-b',
+    caseStudy: 'gs-eighteenb',
     award: false,
     img: 'images/Portfolio/eighteenb/hero_c.jpg'
   },
@@ -470,6 +493,7 @@ var PROJECTS = [
     sortYear: 2021,
     cats: ['digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/odellbrewingco',
+    caseStudy: 'gs-odell',
     award: false,
     img: 'images/Portfolio/odell/hero_c.jpg'
   },
@@ -481,6 +505,7 @@ var PROJECTS = [
     sortYear: 2017,
     cats: ['research','branding','digital'],
     link: 'https://www.greenstone.co/collection/work/workmarket',
+    caseStudy: 'gs-workmarket',
     award: false,
     img: 'images/Portfolio/workmarket/hero_c.jpg'
   },
@@ -492,6 +517,7 @@ var PROJECTS = [
     sortYear: 2014,
     cats: ['digital','advertising'],
     link: 'https://www.greenstone.co/collection/work/got',
+    caseStudy: 'gs-hbo',
     award: false,
     img: 'images/Portfolio/hbo/hero_c.jpg'
   },
@@ -503,6 +529,7 @@ var PROJECTS = [
     sortYear: 2014,
     cats: ['research'],
     link: 'https://www.greenstone.co/collection/work/toca-boca',
+    caseStudy: 'gs-tocaboca',
     award: false,
     img: 'images/Portfolio/tocaboca/hero_c.jpg'
   },
@@ -514,6 +541,7 @@ var PROJECTS = [
     sortYear: 2017,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/empty-set-designs',
+    caseStudy: 'gs-emptyset',
     award: false,
     img: 'images/Portfolio/emptyset/hero_c.jpg'
   },
@@ -525,6 +553,7 @@ var PROJECTS = [
     sortYear: 2017,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/local-motors',
+    caseStudy: 'gs-localmotors',
     award: false,
     img: 'images/Portfolio/localmotors/hero_c.jpg'
   },
@@ -536,6 +565,7 @@ var PROJECTS = [
     sortYear: 2026,
     cats: ['research','branding','digital'],
     link: 'https://www.greenstone.co/collection/work/4as',
+    caseStudy: 'gs-4as',
     award: false,
     img: 'images/Portfolio/4as/hero_c.jpg'
   },
@@ -547,6 +577,7 @@ var PROJECTS = [
     sortYear: 2018,
     cats: ['digital'],
     link: 'https://www.greenstone.co/collection/work/travelaer-lot',
+    caseStudy: 'gs-travelaer',
     award: false,
     img: 'images/Portfolio/travelaer/hero_c.jpg'
   },
@@ -558,6 +589,7 @@ var PROJECTS = [
     sortYear: 2019,
     cats: ['research','digital'],
     link: 'https://www.greenstone.co/collection/work/simple-energy',
+    caseStudy: 'gs-simpleenergy',
     award: false,
     img: 'images/Portfolio/simpleenergy/hero_c.jpg'
   },
@@ -1104,7 +1136,7 @@ function buildCard(p) {
     ? '<div class="proj-awards"><span class="proj-award-tag">' + STAR_SVG + ' Award Winning</span></div>'
     : '';
 
-  return '<div class="project-card">'
+  return '<div class="project-card"' + (p.caseStudy ? ' data-cs="' + p.caseStudy + '"' : '') + '>'
     + '<div class="proj-img" style="background-image:url(\'' + p.img + '\');background-size:cover;background-position:center;"><div class="proj-img-inner"></div></div>'
     + '<div class="proj-body">'
     + '<div class="proj-client">' + p.client + '</div>'
@@ -1195,13 +1227,11 @@ setFilter('recent');
   <div id="csContent"></div>
   <div class="cs-nav" id="csNav">
     <button class="cs-nav-btn" id="csPrev" onclick="navigateCS(-1)" aria-label="Previous project">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 9L4.5 6l3-3"/></svg>
-      Prev
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
     </button>
     <span class="cs-nav-count" id="csNavCount"></span>
     <button class="cs-nav-btn" id="csNext" onclick="navigateCS(1)" aria-label="Next project">
-      Next
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9l3-3-3-3"/></svg>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
     </button>
   </div>
 </div>
@@ -1209,6 +1239,468 @@ setFilter('recent');
 <script>
 // Case study data store
 var CASE_STUDIES = {
+  'gs-larson': {
+    title: 'Streamlined DTC E-Commerce',
+    client: 'Larson Doors',
+    type: 'E-Commerce + Brand',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2025',
+    overview: 'Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties&mdash;all in one intuitive self-service experience.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/larson',
+    images: [
+      'images/Portfolio/larson/hero_c.jpg'
+    ]
+  },
+  'gs-wow': {
+    title: 'Telecom Acquisition &amp; Retention Platform',
+    client: 'WOW!',
+    type: 'Digital + Brand Strategy',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2026',
+    overview: 'Redesigned and evolved WOW!&rsquo;s digital acquisition and servicing journeys&mdash;optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/wow',
+    images: [
+      'images/Portfolio/wow/hero_c.jpg'
+    ]
+  },
+  'gs-lexisnexis': {
+    title: 'Brand Transformation for AI Launch',
+    client: 'LexisNexis',
+    type: 'Brand Strategy + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2025',
+    overview: 'While gearing up for the launch of Lexis+ AI, LexisNexis needed to evolve their brand. Green Stone delivered brand strategy, creative direction, a brand video, photoshoot, and full UX design on a rapid timeline.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/lexisnexis',
+    images: [
+      'images/Portfolio/lexisnexis/hero_c.jpg'
+    ]
+  },
+  'gs-moen': {
+    title: 'Modern DTC E-Commerce',
+    client: 'Moen',
+    type: 'E-Commerce Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2024',
+    overview: 'Designed and built a DTC e-commerce experience in 12 weeks&mdash;paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/moen',
+    images: [
+      'images/Portfolio/moen/hero_c.jpg'
+    ]
+  },
+  'gs-elevate': {
+    title: 'Enterprise Sports Platform',
+    client: 'Elevate Sports Ventures',
+    type: 'Product Strategy + UX',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2024',
+    overview: 'Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions&mdash;merging several products into one connected MVP experience.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/elevate',
+    images: [
+      'images/Portfolio/epic/hero_c.jpg'
+    ]
+  },
+  'gs-techstars': {
+    title: 'Foundercon Event Branding',
+    client: 'Techstars',
+    type: 'Brand Identity + Event Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2024',
+    overview: 'Techstars&rsquo;s Foundercon needed a logo and design system reflecting the energy and humanity of the brand for their first in-person event in three years. Green Stone rapidly developed the direction, system, and event assets.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/techstars',
+    images: [
+      'images/Portfolio/techstars/hero_c.jpg'
+    ]
+  },
+  'gs-hearthside': {
+    title: 'Modern Manufacturing Brand',
+    client: 'Hearthside Food Solutions',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2023',
+    overview: 'The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach&mdash;brought to life across global website properties and a new client servicing portal.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/hearthside',
+    images: [
+      'images/Portfolio/hearthside/hero_c.jpg'
+    ]
+  },
+  'gs-whispir': {
+    title: 'SaaS Brand &amp; Acquisition Journey',
+    client: 'Whispir',
+    type: 'Brand Strategy + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2022',
+    overview: 'To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform&mdash;from ethnographic research through website development.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/whispir',
+    images: [
+      'images/Portfolio/whispir/hero_c.jpg'
+    ]
+  },
+  'gs-hillman': {
+    title: 'MinuteKey Kiosk Experience',
+    client: 'The Hillman Group',
+    type: 'UX + Product Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017&ndash;2020',
+    overview: 'Since 2017, Green Stone has designed and improved MinuteKey&rsquo;s key copying kiosks and digital platforms&mdash;evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/hillmanminutekey',
+    images: [
+      'images/Portfolio/hillman/hero_c.jpg'
+    ]
+  },
+  'gs-twitter': {
+    title: 'Help Center Redesign',
+    client: 'Twitter',
+    type: 'UX Research + Redesign',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2018',
+    overview: 'Twitter&rsquo;s Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience&mdash;reducing pageviews while maintaining sessions, proving the new taxonomy works.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/twitter-help',
+    images: [
+      'images/Portfolio/twitter/hero_c.jpg'
+    ]
+  },
+  'gs-amexcardshop': {
+    title: 'Card Shop Experience Optimization',
+    client: 'American Express',
+    type: 'E-Commerce Optimization',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Optimized the Card Shop experience and wove Membership into the shopping journey&mdash;with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/american-express',
+    images: [
+      'images/Portfolio/amex_cardshop/hero_c.jpg'
+    ]
+  },
+  'gs-zappi': {
+    title: 'Bold Brand Repositioning',
+    client: 'Zappi',
+    type: 'Brand Repositioning + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2022',
+    overview: 'Repositioned Zappi with bold branding to clarify their value proposition&mdash;helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/zappi',
+    images: [
+      'images/Portfolio/zappi/hero_c.jpg'
+    ]
+  },
+  'gs-abcellera': {
+    title: 'Biotech Brand &amp; Digital Strategy',
+    client: 'AbCellera',
+    type: 'Brand + Digital Strategy',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2018',
+    overview: 'Developed brand and digital strategy for the antibody discovery platform&mdash;translating complex biotech into a clear and compelling brand story and web presence.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/abcellera',
+    images: [
+      'images/Portfolio/abcellera/hero_c.jpg'
+    ]
+  },
+  'gs-quantumblack': {
+    title: 'Open-Source Framework Relaunch',
+    client: 'QuantumBlack / McKinsey',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2020',
+    overview: 'Kedro, McKinsey&rsquo;s open-source Python data science framework, had low adoption. Green Stone delivered brand positioning, messaging, a full rebrand, site design, and development to drive community growth.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/mckinsey-quantumblack-kedro',
+    images: [
+      'images/Portfolio/quantumblack/hero_c.jpg'
+    ]
+  },
+  'gs-thedoe': {
+    title: 'Anonymous Media Platform',
+    client: 'The Doe',
+    type: 'Brand + Digital Platform',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2020',
+    overview: 'Built the brand and digital platform for The Doe&mdash;an anonymous storytelling publication designed to bridge divides through shared human experiences.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/thedoe',
+    images: [
+      'images/Portfolio/doe/hero_c.jpg'
+    ]
+  },
+  'gs-onemain': {
+    title: 'Customer Ethnographic Research',
+    client: 'OneMain Financial',
+    type: 'Ethnographic Research',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers&mdash;delivering personas, service blueprints, and video assets to align the organization around real human stories.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/one-main-financial',
+    images: [
+      'images/Portfolio/omf/hero_c.jpg'
+    ]
+  },
+  'gs-allkind': {
+    title: 'Wellness Brand Launch',
+    client: 'Allkind Kombucha',
+    type: 'Brand Identity + Packaging',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2021',
+    overview: 'Created brand identity and packaging for Allkind Kombucha&mdash;building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/allkind',
+    images: [
+      'images/Portfolio/allkind/hero_c.jpg'
+    ]
+  },
+  'gs-geico': {
+    title: 'Digital Experience Design',
+    client: 'GEICO',
+    type: 'Digital Experience Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017',
+    overview: 'Delivered user-centered digital experience design for the insurance giant&mdash;optimizing key digital properties to improve customer engagement and conversion.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/geico',
+    images: [
+      'images/Portfolio/geico/hero_c.jpg'
+    ]
+  },
+  'gs-dosist': {
+    title: 'Cannabis Wellness Brand',
+    client: 'dosist',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Developed brand strategy and digital presence for the cannabis wellness brand&mdash;building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/dosist',
+    images: [
+      'images/Portfolio/dosist/hero_c.jpg'
+    ]
+  },
+  'gs-dagnedover': {
+    title: 'DTC Brand &amp; Digital',
+    client: 'Dagne Dover',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2018',
+    overview: 'Brand strategy and digital work for the functional bag brand&mdash;refining positioning and the online experience for the direct-to-consumer market.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/dagne-dover',
+    images: [
+      'images/Portfolio/dagnedover/hero_c.jpg'
+    ]
+  },
+  'gs-michaels': {
+    title: 'Email Program Transformation',
+    client: 'Michaels',
+    type: 'Email Program Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Transformed Michaels&rsquo; email program from discount-driven to brand-love-driven&mdash;through brand strategy, user research, and a refined visual design system that inspired makers.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/michaels',
+    images: [
+      'images/Portfolio/michaels/hero_c.jpg'
+    ]
+  },
+  'gs-finishline': {
+    title: 'Sneaker Shopping Reimagined',
+    client: 'Finish Line',
+    type: 'E-Commerce + UX',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2018',
+    overview: 'Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer&mdash;with research, experience design, visual design, and motion.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/finish-line',
+    images: [
+      'images/Portfolio/finishline/hero_c.jpg'
+    ]
+  },
+  'gs-breville': {
+    title: 'Premium Appliance Experience',
+    client: 'Breville',
+    type: 'Digital Experience Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017',
+    overview: 'Digital experience design for the premium kitchen appliance maker&mdash;elevating the online brand presence and shopping journey.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/breville',
+    images: [
+      'images/Portfolio/breville/hero_c.jpg'
+    ]
+  },
+  'gs-eighteenb': {
+    title: 'Brand Identity',
+    client: 'eighteen&bull;b',
+    type: 'Brand Identity',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Created a distinctive brand identity for eighteen&bull;b&mdash;developing visual system, brand story, and creative direction.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/eighteen-b',
+    images: [
+      'images/Portfolio/eighteenb/hero_c.jpg'
+    ]
+  },
+  'gs-odell': {
+    title: 'Craft Brewery Brand Evolution',
+    client: 'Odell Brewing Co',
+    type: 'Brand + Packaging',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2021',
+    overview: 'Brand and packaging work for the Colorado craft brewing pioneer&mdash;evolving visual identity while honoring decades of brewing heritage.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/odellbrewingco',
+    images: [
+      'images/Portfolio/odell/hero_c.jpg'
+    ]
+  },
+  'gs-workmarket': {
+    title: 'Workforce Platform Brand',
+    client: 'WorkMarket',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017',
+    overview: 'Helped the freelance management platform clarify brand positioning and build digital experiences to support enterprise workforce solutions.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/workmarket',
+    images: [
+      'images/Portfolio/workmarket/hero_c.jpg'
+    ]
+  },
+  'gs-hbo': {
+    title: 'Game of Thrones Digital',
+    client: 'HBO',
+    type: 'Digital Experience',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2014',
+    overview: 'Digital experience work for HBO&rsquo;s Game of Thrones franchise&mdash;extending the cultural phenomenon across digital touchpoints and fan engagement.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/got',
+    images: [
+      'images/Portfolio/hbo/hero_c.jpg'
+    ]
+  },
+  'gs-tocaboca': {
+    title: 'Play &amp; Family Research',
+    client: 'Toca Boca',
+    type: 'Research + Strategy',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2014',
+    overview: 'Explored the intersection of technology, play, and the modern American family for the Swedish kids&rsquo; app maker&mdash;championing gender-neutral, free-form digital play experiences.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/toca-boca',
+    images: [
+      'images/Portfolio/tocaboca/hero_c.jpg'
+    ]
+  },
+  'gs-emptyset': {
+    title: 'Design Studio Brand',
+    client: 'Empty Set Designs',
+    type: 'Brand Identity',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017',
+    overview: 'Developed brand identity and visual system for Empty Set Designs&mdash;creating a distinctive creative foundation for the studio.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/empty-set-designs',
+    images: [
+      'images/Portfolio/emptyset/hero_c.jpg'
+    ]
+  },
+  'gs-localmotors': {
+    title: 'Community Vehicle Platform',
+    client: 'Local Motors',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2017',
+    overview: 'Redesigned localmotors.com in two months&mdash;evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/local-motors',
+    images: [
+      'images/Portfolio/localmotors/hero_c.jpg'
+    ]
+  },
+  'gs-4as': {
+    title: 'Trade Group Modernization',
+    client: '4A&rsquo;s',
+    type: 'Brand + Digital',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2026',
+    overview: 'Brand and digital work for the American Association of Advertising Agencies&mdash;modernizing the industry trade group&rsquo;s presence and platform.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/4as',
+    images: [
+      'images/Portfolio/4as/hero_c.jpg'
+    ]
+  },
+  'gs-travelaer': {
+    title: 'Travel Experience Design',
+    client: 'Travelaer &amp; LOT',
+    type: 'Digital Experience Design',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2018',
+    overview: 'Digital experience design for the travel technology company and LOT Polish Airlines partnership&mdash;reimagining the booking and travel journey.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/travelaer-lot',
+    images: [
+      'images/Portfolio/travelaer/hero_c.jpg'
+    ]
+  },
+  'gs-simpleenergy': {
+    title: 'Energy Tech Brand &amp; Platform',
+    client: 'Simple Energy',
+    type: 'Brand + Digital Strategy',
+    agency: 'Green Stone',
+    role: 'Principal / Founder',
+    year: '2019',
+    overview: 'Brand and digital strategy for Simple Energy (now Uplight)&mdash;helping the energy tech company communicate their utility customer engagement platform.',
+    recognition: [],
+    link: 'https://www.greenstone.co/collection/work/simple-energy',
+    images: [
+      'images/Portfolio/simpleenergy/hero_c.jpg'
+    ]
+  },
   'tonightshow': {
     title: 'The Tonight Show',
     client: 'NBC',
@@ -1967,7 +2459,7 @@ var CASE_STUDIES = {
     images: [
       'images/Portfolio/mve/NIKE_MVEArcade2.JPG',
       'images/Portfolio/mve/NIKE_Gridiron2004_3.jpg',
-      'images/Portfolio/mve/NIKE_Gridiron2004_2.JPG',
+      'images/Portfolio/mve/NIKE_Grdiron2004_2.JPG',
       'images/Portfolio/mve/NIKE_MVEArcade.JPG'
     ]
   },
@@ -2045,11 +2537,8 @@ function openCaseStudy(id) {
   // If opening fresh (not via navigate), rebuild nav list from current rendered cards
   if (csNavList.indexOf(id) === -1) {
     csNavList = [];
-    document.querySelectorAll('#proj-grid-container .project-card').forEach(function(card) {
-      var btn = card.querySelector('a.proj-link[onclick]');
-      if (!btn) return;
-      var m = btn.getAttribute('onclick').match(/openCaseStudy\('([^']+)'\)/);
-      if (m) csNavList.push(m[1]);
+    document.querySelectorAll('#proj-grid-container .project-card[data-cs]').forEach(function(card) {
+      csNavList.push(card.getAttribute('data-cs'));
     });
   }
 
@@ -2083,6 +2572,7 @@ function openCaseStudy(id) {
     +   '<div class="cs-meta-value">' + cs.year + '</div>'
     +   '<div class="cs-section-label">Overview</div>'
     +   '<div class="cs-body-text">' + cs.overview + '</div>'
+    +   (cs.link ? '<a href="' + cs.link + '" target="_blank" rel="noopener" class="cs-launch-link">Launch Case Study <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>' : '')
     +   (cs.recognition.length ? '<div class="cs-section-label">Recognition</div>' + recHTML : '')
     + '</div>'
     + '<div class="cs-images-col">' + imgHTML + '</div>'
