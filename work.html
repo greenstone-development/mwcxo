@@ -88,10 +88,37 @@
   box-shadow: 0 4px 24px rgba(0,0,0,.3);
 }
 
+.cs-nav {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 10001; display: flex; align-items: center; gap: .5rem;
+  background: rgba(20,28,26,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+  padding: .45rem .6rem; white-space: nowrap;
+}
+.cs-nav-btn {
+  display: flex; align-items: center; gap: .4rem;
+  background: none; border: none; color: rgba(255,255,255,.75);
+  font-family: var(--f); font-size: .72rem; font-weight: 600;
+  letter-spacing: .04em; cursor: pointer;
+  padding: .35rem .65rem; border-radius: 999px;
+  transition: background .15s, color .15s;
+}
+.cs-nav-btn:hover { background: rgba(255,255,255,.12); color: white; }
+.cs-nav-btn:disabled { opacity: .25; cursor: default; pointer-events: none; }
+.cs-nav-btn svg { flex-shrink: 0; }
+.cs-nav-count {
+  font-family: var(--f); font-size: .68rem; font-weight: 500;
+  color: rgba(255,255,255,.35); padding: 0 .4rem;
+  border-left: 1px solid rgba(255,255,255,.12);
+  border-right: 1px solid rgba(255,255,255,.12);
+  margin: 0 .1rem;
+}
+
 @media(max-width:960px) {
   .cs-inner { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 3rem; }
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
+  .cs-nav { bottom: 1rem; }
 }
 </style>
 </head>
@@ -1166,6 +1193,17 @@ setFilter('recent');
 <div class="cs-overlay" id="csOverlay">
   <button class="cs-close" onclick="closeCaseStudy()" aria-label="Close case study">&times;</button>
   <div id="csContent"></div>
+  <div class="cs-nav" id="csNav">
+    <button class="cs-nav-btn" id="csPrev" onclick="navigateCS(-1)" aria-label="Previous project">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 9L4.5 6l3-3"/></svg>
+      Prev
+    </button>
+    <span class="cs-nav-count" id="csNavCount"></span>
+    <button class="cs-nav-btn" id="csNext" onclick="navigateCS(1)" aria-label="Next project">
+      Next
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9l3-3-3-3"/></svg>
+    </button>
+  </div>
 </div>
 
 <script>
@@ -1999,7 +2037,24 @@ var CASE_STUDIES = {
   }
 };
 
+// Nav state
+var csNavList = [];   // ordered caseStudy keys from the active filtered view
+var csNavIndex = 0;
+
 function openCaseStudy(id) {
+  // If opening fresh (not via navigate), rebuild nav list from current rendered cards
+  if (csNavList.indexOf(id) === -1) {
+    csNavList = [];
+    document.querySelectorAll('#proj-grid-container .project-card').forEach(function(card) {
+      var btn = card.querySelector('a.proj-link[onclick]');
+      if (!btn) return;
+      var m = btn.getAttribute('onclick').match(/openCaseStudy\('([^']+)'\)/);
+      if (m) csNavList.push(m[1]);
+    });
+  }
+
+  csNavIndex = csNavList.indexOf(id);
+
   var cs = CASE_STUDIES[id];
   if (!cs) return;
 
@@ -2033,8 +2088,29 @@ function openCaseStudy(id) {
     + '<div class="cs-images-col">' + imgHTML + '</div>'
     + '</div>';
 
-  document.getElementById('csOverlay').classList.add('cs-open');
+  // Update nav controls
+  var nav = document.getElementById('csNav');
+  var total = csNavList.length;
+  if (total > 1) {
+    nav.style.display = 'flex';
+    document.getElementById('csNavCount').textContent = (csNavIndex + 1) + ' / ' + total;
+    document.getElementById('csPrev').disabled = csNavIndex === 0;
+    document.getElementById('csNext').disabled = csNavIndex === total - 1;
+  } else {
+    nav.style.display = 'none';
+  }
+
+  // Scroll overlay to top
+  var overlay = document.getElementById('csOverlay');
+  overlay.scrollTop = 0;
+  overlay.classList.add('cs-open');
   document.body.style.overflow = 'hidden';
+}
+
+function navigateCS(dir) {
+  var next = csNavIndex + dir;
+  if (next < 0 || next >= csNavList.length) return;
+  openCaseStudy(csNavList[next]);
 }
 
 function closeCaseStudy() {
@@ -2042,9 +2118,12 @@ function closeCaseStudy() {
   document.body.style.overflow = '';
 }
 
-// Close on escape key
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('csOverlay').classList.contains('cs-open')) return;
   if (e.key === 'Escape') closeCaseStudy();
+  if (e.key === 'ArrowLeft') navigateCS(-1);
+  if (e.key === 'ArrowRight') navigateCS(1);
 });
 
 // Close on backdrop click
