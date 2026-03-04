@@ -1133,6 +1133,7 @@ var CASE_STUDIES = {
     client: 'Nike',
     type: 'Site Launch',
     agency: 'R/GA',
+    role: 'Lead Interaction Designer',
     year: '2003',
     overview: 'The first version of NikeGridiron featured a series of innovative 3-D micro-games, as well as a number of product features associated with each athlete. The experience was complimented by the presentation of the associated television commercial, directed by David Fincher.',
     recognition: [
@@ -1178,6 +1179,7 @@ function openCaseStudy(id) {
     +   '<div class="cs-meta-value">' + cs.type + '</div>'
     +   '<div class="cs-meta-label">Agency</div>'
     +   '<div class="cs-meta-value">' + cs.agency + '</div>'
+    +   (cs.role ? '<div class="cs-meta-label">My Role</div><div class="cs-meta-value">' + cs.role + '</div>' : '')
     +   '<div class="cs-meta-label">Year</div>'
     +   '<div class="cs-meta-value">' + cs.year + '</div>'
     +   '<div class="cs-section-label">Overview</div>'
