@@ -61,33 +61,62 @@
 .tl-hero .page-h1 em { color: var(--teal2); }
 .tl-hero .page-sub { color: rgba(255,255,255,.6); }
 
-/* Featured articles — large cards */
-.tl-featured {
+/* Content section */
+.tl-content {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 5rem 0 3rem;
+  padding: 5rem 0 5rem;
 }
 
-.tl-featured-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+/* Featured cards — image left / content right */
+.tl-featured-container {
+  border: 1px solid var(--line2);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .tl-featured-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
   background: var(--bg);
-  border: 1px solid var(--line2);
-  border-radius: 4px;
-  padding: 2.2rem;
-  display: flex;
-  flex-direction: column;
-  transition: background .2s, box-shadow .2s;
-  position: relative;
+  transition: background .15s;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+}
+.tl-featured-card:last-child {
+  border-bottom: none;
 }
 .tl-featured-card:hover {
   background: var(--bg2);
-  box-shadow: 0 4px 24px rgba(20,28,26,.06);
+}
+
+.tl-card-img {
+  overflow: hidden;
+}
+.tl-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 180px;
+  transition: transform .4s ease;
+}
+.tl-featured-card:hover .tl-card-img img {
+  transform: scale(1.04);
+}
+
+.tl-card-body {
+  padding: 1.8rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tl-card-meta {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .6rem;
 }
 
 .tl-card-type {
@@ -99,7 +128,6 @@
   padding: .2rem .6rem;
   border-radius: 100px;
   display: inline-block;
-  margin-bottom: 1rem;
   width: fit-content;
 }
 .tl-type-article { background: var(--teal); color: white; }
@@ -113,17 +141,16 @@
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--teal);
-  margin-bottom: .6rem;
 }
 
 .tl-card-title {
   font-family: var(--f);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -.01em;
   color: var(--ink);
-  line-height: 1.3;
-  margin-bottom: .7rem;
+  line-height: 1.25;
+  margin-bottom: .5rem;
 }
 
 .tl-card-desc {
@@ -131,7 +158,7 @@
   font-size: .82rem;
   color: var(--muted);
   line-height: 1.65;
-  flex: 1;
+  margin-bottom: .8rem;
 }
 
 .tl-card-link {
@@ -142,40 +169,19 @@
   text-transform: uppercase;
   color: var(--teal);
   text-decoration: none;
-  margin-top: 1.4rem;
   display: inline-flex;
   align-items: center;
   gap: .3rem;
-  transition: color .2s, gap .2s;
+  transition: color .2s;
 }
-.tl-card-link:hover { color: var(--ink); gap: .5rem; }
+.tl-card-link:hover { color: var(--ink); }
 
-/* Photo break */
-.tl-photo-break {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 1rem 0 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-}
-.tl-photo-break img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+/* Archive list */
+.tl-archive-container {
+  border: 1px solid var(--line2);
   border-radius: 4px;
-}
-
-/* Full list */
-.tl-list-section {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 3rem 0 5rem;
-}
-
-.tl-list {
-  margin-top: 2rem;
-  border-top: 1px solid var(--line);
+  overflow: hidden;
+  margin-top: 2.5rem;
 }
 
 .tl-list-item {
@@ -183,22 +189,23 @@
   grid-template-columns: 1fr auto auto;
   gap: 2rem;
   align-items: center;
-  padding: 1rem 0;
+  padding: .95rem 1.5rem;
   border-bottom: 1px solid var(--line);
-  transition: background .15s;
+  transition: background .15s, padding-left .15s, padding-right .15s;
+  cursor: pointer;
+}
+.tl-list-item:last-child {
+  border-bottom: none;
 }
 .tl-list-item:hover {
   background: var(--bg2);
-  padding-left: .75rem;
-  padding-right: .75rem;
-  margin-left: -.75rem;
-  margin-right: -.75rem;
-  border-radius: 2px;
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
 }
 
 .tl-list-title {
   font-family: var(--f);
-  font-size: .92rem;
+  font-size: .9rem;
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
@@ -231,11 +238,13 @@
 @media(max-width:960px) {
   .tl-hero { padding: 8rem 1.5rem 4rem; }
   .tl-hero::before, .tl-hero::after { display: none; }
-  .tl-featured { padding: 3rem 1.5rem; }
-  .tl-featured-grid { grid-template-columns: 1fr; }
-  .tl-photo-break { grid-template-columns: 1fr; padding: 1rem 1.5rem 2rem; }
-  .tl-list-section { padding: 2rem 1.5rem 4rem; }
-  .tl-list-item { grid-template-columns: 1fr auto; gap: 1rem; }
+  .tl-content { padding: 3rem 1.5rem 4rem; }
+  .tl-featured-card { grid-template-columns: 1fr; }
+  .tl-card-img img { min-height: 200px; max-height: 220px; }
+  .tl-card-body { padding: 1.5rem; }
+  .tl-archive-container { margin-top: 1.5rem; }
+  .tl-list-item { grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 1rem; }
+  .tl-list-item:hover { padding-left: 1.5rem; padding-right: 1.5rem; }
   .tl-list-type { display: none; }
 }
 </style>
@@ -271,53 +280,63 @@
   </div>
 </section>
 
-<!-- FEATURED ARTICLES -->
-<section class="tl-featured reveal" aria-label="Featured articles">
+<!-- FEATURED + ARCHIVE -->
+<section class="tl-content reveal" aria-label="Articles and appearances">
   <div class="section-kicker kicker">Featured</div>
   <h2 class="section-h2">Recent <em>highlights.</em></h2>
 
-  <div class="tl-featured-grid">
+  <!-- Featured cards -->
+  <div class="tl-featured-container" style="margin-top:2.5rem;">
 
-    <div class="tl-featured-card">
-      <span class="tl-card-type tl-type-article">Article</span>
-      <div class="tl-card-pub">LBB &mdash; 2025</div>
-      <div class="tl-card-title">How Green Stone Helped Larson Bring Enterprise E-Commerce to Shopify</div>
-      <p class="tl-card-desc">Several months on from the launch of Larson&rsquo;s new direct-to-consumer site, Green Stone reflects on the technical, data and design challenges behind bringing a complex manufacturing catalogue onto Shopify Enterprise for the first time.</p>
-      <a href="https://lbbonline.com/news/Green-Stone-Larson-E-Commerce-Shopify" target="_blank" rel="noopener" class="tl-card-link">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>
-    </div>
+    <a href="https://lbbonline.com/news/Green-Stone-Larson-E-Commerce-Shopify" target="_blank" rel="noopener" class="tl-featured-card" style="text-decoration:none;">
+      <div class="tl-card-img">
+        <img src="images/Larson_hero_c.jpg" alt="Larson Doors e-commerce site on Shopify Enterprise">
+      </div>
+      <div class="tl-card-body">
+        <div class="tl-card-meta">
+          <span class="tl-card-type tl-type-article">Article</span>
+          <span class="tl-card-pub">LBB &mdash; 2025</span>
+        </div>
+        <div class="tl-card-title">How Green Stone Helped Larson Bring Enterprise E-Commerce to Shopify</div>
+        <p class="tl-card-desc">Several months on from the launch of Larson&rsquo;s new direct-to-consumer site, Green Stone reflects on the technical, data and design challenges behind bringing a complex manufacturing catalogue onto Shopify Enterprise for the first time.</p>
+        <span class="tl-card-link">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></span>
+      </div>
+    </a>
 
-    <div class="tl-featured-card">
-      <span class="tl-card-type tl-type-article">Article</span>
-      <div class="tl-card-pub">LBB &mdash; 2025</div>
-      <div class="tl-card-title">For Matt Walsh, Great Design Always Begins With Empathy</div>
-      <p class="tl-card-desc">The CEO and founder of Green Stone on his lifelong journey through design, philosophy for the craft, and the opportunities stemming from the disruption of AI, as part of LBB&rsquo;s By Design series.</p>
-      <a href="https://lbbonline.com/news/For-Matt-Walsh-Great-Design-Always-Begins-with-Empathy" target="_blank" rel="noopener" class="tl-card-link">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>
-    </div>
+    <a href="https://lbbonline.com/news/For-Matt-Walsh-Great-Design-Always-Begins-with-Empathy" target="_blank" rel="noopener" class="tl-featured-card" style="text-decoration:none;">
+      <div class="tl-card-img">
+        <img src="images/LBB_Empathy_Hero_c.jpg" alt="Matt Walsh portrait for LBB By Design series">
+      </div>
+      <div class="tl-card-body">
+        <div class="tl-card-meta">
+          <span class="tl-card-type tl-type-article">Article</span>
+          <span class="tl-card-pub">LBB &mdash; 2025</span>
+        </div>
+        <div class="tl-card-title">For Matt Walsh, Great Design Always Begins With Empathy</div>
+        <p class="tl-card-desc">The CEO and founder of Green Stone on his lifelong journey through design, philosophy for the craft, and the opportunities stemming from the disruption of AI, as part of LBB&rsquo;s By Design series.</p>
+        <span class="tl-card-link">Read article <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></span>
+      </div>
+    </a>
 
-    <div class="tl-featured-card">
-      <span class="tl-card-type tl-type-podcast">Podcast</span>
-      <div class="tl-card-pub">That Pivotal Moment of Change &mdash; 2025</div>
-      <div class="tl-card-title">Draw the Rectangle: Matt Walsh on Resilience, Reinvention, and Leadership</div>
-      <p class="tl-card-desc">Matt takes us back to where it all began: sitting at his desk on day one of his UX career, staring at a blank screen, unsure of what to do next &mdash; until he simply drew a rectangle and took the first step.</p>
-      <a href="https://www.pivotalmomentspod.com/draw-the-rectangle-matt-walsh-on-resilience-reinvention-and-leadership/" target="_blank" rel="noopener" class="tl-card-link">Listen <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>
-    </div>
+    <a href="https://www.pivotalmomentspod.com/draw-the-rectangle-matt-walsh-on-resilience-reinvention-and-leadership/" target="_blank" rel="noopener" class="tl-featured-card" style="text-decoration:none;">
+      <div class="tl-card-img">
+        <img src="images/PivotalMoment_Hero_c.jpg" alt="Matt Walsh on That Pivotal Moment of Change podcast">
+      </div>
+      <div class="tl-card-body">
+        <div class="tl-card-meta">
+          <span class="tl-card-type tl-type-podcast">Podcast</span>
+          <span class="tl-card-pub">That Pivotal Moment of Change &mdash; 2025</span>
+        </div>
+        <div class="tl-card-title">Draw the Rectangle: Matt Walsh on Resilience, Reinvention, and Leadership</div>
+        <p class="tl-card-desc">Matt takes us back to where it all began: sitting at his desk on day one of his UX career, staring at a blank screen, unsure of what to do next &mdash; until he simply drew a rectangle and took the first step.</p>
+        <span class="tl-card-link">Listen <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 2px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></span>
+      </div>
+    </a>
 
   </div>
-</section>
 
-<!-- PHOTO BREAK -->
-<div class="tl-photo-break">
-  <img src="images/IMG_7040.JPG" alt="Matt Walsh presenting on building Green Stone at a university lecture">
-  <img src="images/sidebar4.jpg" alt="Speaking at a conference with microphone">
-  <img src="images/sidebar6.jpg" alt="Presenting digital work from a podium">
-</div>
-
-<!-- FULL LIST -->
-<section class="tl-list-section reveal" aria-label="All articles and appearances">
-  <div class="section-kicker kicker">Archive</div>
-  <h2 class="section-h2">All articles <em>&amp; appearances.</em></h2>
-
-  <div class="tl-list">
+  <!-- Archive list -->
+  <div class="tl-archive-container">
 
     <div class="tl-list-item">
       <a href="https://www.inc.com/matt-walsh/why-you-should-treat-your-remote-workforce-as-its-own-office.html" target="_blank" rel="noopener" class="tl-list-title">Why You Should Treat Your Remote Workforce as Its Own Office</a>
@@ -440,6 +459,7 @@
     </div>
 
   </div>
+
 </section>
 
 </main>
