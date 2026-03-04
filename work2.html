@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Projects — Matt Walsh CXO</title>
+<meta name="description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLYTNG2EBE');
+</script>
+<style>
+/* Case Study Overlay */
+.cs-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(20,28,26,.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.cs-overlay.cs-open { opacity: 1; visibility: visible; }
+
+.cs-close {
+  position: fixed; top: 1.5rem; right: 1.5rem; z-index: 10001;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  color: white; font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.cs-close:hover { background: rgba(255,255,255,.2); }
+
+.cs-inner {
+  max-width: 1060px; margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+  display: grid; grid-template-columns: 320px 1fr; gap: 4rem;
+}
+
+.cs-meta-col { position: sticky; top: 5rem; align-self: start; }
+
+.cs-title {
+  font-family: var(--f); font-size: 1.6rem; font-weight: 700;
+  color: white; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 2rem;
+}
+
+.cs-meta-label {
+  font-family: var(--f); font-size: .58rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-bottom: .2rem;
+}
+.cs-meta-value {
+  font-family: var(--b); font-size: .85rem; font-weight: 500;
+  color: rgba(255,255,255,.85); margin-bottom: 1.1rem;
+}
+
+.cs-section-label {
+  font-family: var(--f); font-size: .62rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--teal2); margin: 2rem 0 .6rem;
+}
+
+.cs-body-text {
+  font-family: var(--b); font-size: .85rem; font-weight: 400;
+  color: rgba(255,255,255,.7); line-height: 1.75;
+}
+
+.cs-recognition-item {
+  font-family: var(--b); font-size: .82rem;
+  color: rgba(255,255,255,.65); line-height: 1.8;
+  padding-left: .8rem; position: relative;
+}
+.cs-recognition-item::before {
+  content: '•'; position: absolute; left: 0; color: var(--teal2);
+}
+
+.cs-images-col { display: flex; flex-direction: column; gap: 1.25rem; }
+.cs-images-col img {
+  width: 100%; border-radius: 4px; display: block;
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+
+@media(max-width:960px) {
+  .cs-inner { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 3rem; }
+  .cs-meta-col { position: static; }
+  .cs-title { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Matt Walsh <span>CXO</span></a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html" class="active">Past Projects</a></li>
+      <li><a href="recognition.html">Recognition</a></li>
+      <li><a href="thought-leadership.html">Thought Leadership</a></li>
+      <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- PAGE HERO -->
+<section class="page-hero reveal">
+  <div class="page-hero-inner">
+    <div class="page-kicker kicker">Past Projects</div>
+    <h1 class="page-h1">Two decades of work that moved <em>people, products, and organizations.</em></h1>
+  </div>
+</section>
+
+<!-- FILTER TABS -->
+<div class="work-filter-tabs" role="tablist" aria-label="Filter projects by category">
+  <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
+  <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
+  <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
+  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
+  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
+  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+</div>
+<select class="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
+  <option value="recent">Most Recent</option>
+  <option value="research">Research &amp; Strategy</option>
+  <option value="digital">Digital Platforms &amp; Products</option>
+  <option value="branding">Branding</option>
+  <option value="ecommerce">E-Commerce</option>
+  <option value="advertising">Advertising</option>
+</select>
+
+<!-- PROJECT GRID (rendered by JS) -->
+<div class="proj-grid-container" id="proj-grid-container"></div>
+
+</main>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-h2">Let's talk about what's next</h2>
+    <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</div>
+    <div class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* ============================================
+   Past Projects — Data & Filtering
+   ============================================ */
+
+var PROJECTS = [
+  {
+    client: 'Larson Doors',
+    title: 'Streamlined DTC E-Commerce',
+    desc: 'Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties&mdash;all in one intuitive self-service experience.',
+    year: '2025',
+    sortYear: 2025,
+    cats: ['research','branding','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/larson',
+    award: false,
+    img: 'images/Portfolio/larson/hero_c.jpg'
+  },
+  {
+    client: 'WOW!',
+    title: 'Telecom Acquisition &amp; Retention Platform',
+    desc: 'Redesigned and evolved WOW!&rsquo;s digital acquisition and servicing journeys&mdash;optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.',
+    year: '2026',
+    sortYear: 2026,
+    cats: ['research','branding','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/wow',
+    award: false,
+    img: 'images/Portfolio/wow/hero_c.jpg'
+  },
+  {
+    client: 'LexisNexis',
+    title: 'Brand Transformation for AI Launch',
+    desc: 'While gearing up for the launch of Lexis+ AI, LexisNexis needed to evolve their brand. Green Stone delivered brand strategy, creative direction, a brand video, photoshoot, and full UX design on a rapid timeline.',
+    year: '2025',
+    sortYear: 2025,
+    cats: ['research','branding','advertising','digital'],
+    link: 'https://www.greenstone.co/collection/work/lexisnexis',
+    award: false,
+    img: 'images/Portfolio/lexisnexis/hero_c.jpg'
+  },
+  {
+    client: 'Moen',
+    title: 'Modern DTC E-Commerce',
+    desc: 'Designed and built a DTC e-commerce experience in 12 weeks&mdash;paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.',
+    year: '2024',
+    sortYear: 2024,
+    cats: ['research','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/moen',
+    award: false,
+    img: 'images/Portfolio/moen/hero_c.jpg'
+  },
+  {
+    client: 'Elevate Sports Ventures',
+    title: 'Enterprise Sports Platform',
+    desc: 'Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions&mdash;merging several products into one connected MVP experience.',
+    year: '2024',
+    sortYear: 2024,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/elevate',
+    award: false,
+    img: 'images/Portfolio/epic/hero_c.jpg'
+  },
+  {
+    client: 'Techstars',
+    title: 'Foundercon Event Branding',
+    desc: 'Techstars&rsquo;s Foundercon needed a logo and design system reflecting the energy and humanity of the brand for their first in-person event in three years. Green Stone rapidly developed the direction, system, and event assets.',
+    year: '2024',
+    sortYear: 2024,
+    cats: ['branding'],
+    link: 'https://www.greenstone.co/collection/work/techstars',
+    award: false,
+    img: 'images/Portfolio/techstars/hero_c.jpg'
+  },
+  {
+    client: 'Hearthside Food Solutions',
+    title: 'Modern Manufacturing Brand',
+    desc: 'The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach&mdash;brought to life across global website properties and a new client servicing portal.',
+    year: '2023',
+    sortYear: 2023,
+    cats: ['research','branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/hearthside',
+    award: false,
+    img: 'images/Portfolio/hearthside/hero_c.jpg'
+  },
+  {
+    client: 'Whispir',
+    title: 'SaaS Brand &amp; Acquisition Journey',
+    desc: 'To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform&mdash;from ethnographic research through website development.',
+    year: '2022',
+    sortYear: 2022,
+    cats: ['branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/whispir',
+    award: false,
+    img: 'images/Portfolio/whispir/hero_c.jpg'
+  },
+  {
+    client: 'The Hillman Group',
+    title: 'MinuteKey Kiosk Experience',
+    desc: 'Since 2017, Green Stone has designed and improved MinuteKey&rsquo;s key copying kiosks and digital platforms&mdash;evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.',
+    year: '2020',
+    sortYear: 2020,
+    cats: ['branding','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/hillmanminutekey',
+    award: false,
+    img: 'images/Portfolio/hillman/hero_c.jpg'
+  },
+  {
+    client: 'Twitter',
+    title: 'Help Center Redesign',
+    desc: 'Twitter&rsquo;s Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience&mdash;reducing pageviews while maintaining sessions, proving the new taxonomy works.',
+    year: '2018',
+    sortYear: 2018,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/twitter-help',
+    award: false,
+    img: 'images/Portfolio/twitter/hero_c.jpg'
+  },
+  {
+    client: 'American Express',
+    title: 'Card Shop Experience Optimization',
+    desc: 'Optimized the Card Shop experience and wove Membership into the shopping journey&mdash;with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['research','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/american-express',
+    award: false,
+    img: 'images/Portfolio/amex_cardshop/hero_c.jpg'
+  },
+  {
+    client: 'Zappi',
+    title: 'Bold Brand Repositioning',
+    desc: 'Repositioned Zappi with bold branding to clarify their value proposition&mdash;helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.',
+    year: '2022',
+    sortYear: 2022,
+    cats: ['branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/zappi',
+    award: false,
+    img: 'images/Portfolio/zappi/hero_c.jpg'
+  },
+  {
+    client: 'AbCellera',
+    title: 'Biotech Brand &amp; Digital Strategy',
+    desc: 'Developed brand and digital strategy for the antibody discovery platform&mdash;translating complex biotech into a clear and compelling brand story and web presence.',
+    year: '2018',
+    sortYear: 2018,
+    cats: ['digital'],
+    link: 'https://www.greenstone.co/collection/work/abcellera',
+    award: false,
+    img: 'images/Portfolio/abcellera/hero_c.jpg'
+  },
+  {
+    client: 'QuantumBlack / McKinsey',
+    title: 'Open-Source Framework Relaunch',
+    desc: 'Kedro, McKinsey&rsquo;s open-source Python data science framework, had low adoption. Green Stone delivered brand positioning, messaging, a full rebrand, site design, and development to drive community growth.',
+    year: '2020',
+    sortYear: 2020,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/mckinsey-quantumblack-kedro',
+    award: false,
+    img: 'images/Portfolio/quantumblack/hero_c.jpg'
+  },
+  {
+    client: 'The Doe',
+    title: 'Anonymous Media Platform',
+    desc: 'Built the brand and digital platform for The Doe&mdash;an anonymous storytelling publication designed to bridge divides through shared human experiences.',
+    year: '2020',
+    sortYear: 2020,
+    cats: ['digital'],
+    link: 'https://www.greenstone.co/collection/work/thedoe',
+    award: false,
+    img: 'images/Portfolio/doe/hero_c.jpg'
+  },
+  {
+    client: 'OneMain Financial',
+    title: 'Customer Ethnographic Research',
+    desc: 'Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers&mdash;delivering personas, service blueprints, and video assets to align the organization around real human stories.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['research'],
+    link: 'https://www.greenstone.co/collection/work/one-main-financial',
+    award: false,
+    img: 'images/Portfolio/omf/hero_c.jpg'
+  },
+  {
+    client: 'Allkind Kombucha',
+    title: 'Wellness Brand Launch',
+    desc: 'Created brand identity and packaging for Allkind Kombucha&mdash;building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.',
+    year: '2021',
+    sortYear: 2021,
+    cats: ['digital'],
+    link: 'https://www.greenstone.co/collection/work/allkind',
+    award: false,
+    img: 'images/Portfolio/allkind/hero_c.jpg'
+  },
+  {
+    client: 'GEICO',
+    title: 'Digital Experience Design',
+    desc: 'Delivered user-centered digital experience design for the insurance giant&mdash;optimizing key digital properties to improve customer engagement and conversion.',
+    year: '2017',
+    sortYear: 2017,
+    cats: ['research','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/geico',
+    award: false,
+    img: 'images/Portfolio/geico/hero_c.jpg'
+  },
+  {
+    client: 'dosist',
+    title: 'Cannabis Wellness Brand',
+    desc: 'Developed brand strategy and digital presence for the cannabis wellness brand&mdash;building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/dosist',
+    award: false,
+    img: 'images/Portfolio/dosist/hero_c.jpg'
+  },
+  {
+    client: 'Dagne Dover',
+    title: 'DTC Brand &amp; Digital',
+    desc: 'Brand strategy and digital work for the functional bag brand&mdash;refining positioning and the online experience for the direct-to-consumer market.',
+    year: '2018',
+    sortYear: 2018,
+    cats: ['digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/dagne-dover',
+    award: false,
+    img: 'images/Portfolio/dagnedover/hero_c.jpg'
+  },
+  {
+    client: 'Michaels',
+    title: 'Email Program Transformation',
+    desc: 'Transformed Michaels&rsquo; email program from discount-driven to brand-love-driven&mdash;through brand strategy, user research, and a refined visual design system that inspired makers.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['research','advertising','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/michaels',
+    award: false,
+    img: 'images/Portfolio/michaels/hero_c.jpg'
+  },
+  {
+    client: 'Finish Line',
+    title: 'Sneaker Shopping Reimagined',
+    desc: 'Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer&mdash;with research, experience design, visual design, and motion.',
+    year: '2018',
+    sortYear: 2018,
+    cats: ['research','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/finish-line',
+    award: false,
+    img: 'images/Portfolio/finishline/hero_c.jpg'
+  },
+  {
+    client: 'Breville',
+    title: 'Premium Appliance Experience',
+    desc: 'Digital experience design for the premium kitchen appliance maker&mdash;elevating the online brand presence and shopping journey.',
+    year: '2017',
+    sortYear: 2017,
+    cats: ['research','digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/breville',
+    award: false,
+    img: 'images/Portfolio/breville/hero_c.jpg'
+  },
+  {
+    client: 'eighteen&bull;b',
+    title: 'Brand Identity',
+    desc: 'Created a distinctive brand identity for eighteen&bull;b&mdash;developing visual system, brand story, and creative direction.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/eighteen-b',
+    award: false,
+    img: 'images/Portfolio/eighteenb/hero_c.jpg'
+  },
+  {
+    client: 'Odell Brewing Co',
+    title: 'Craft Brewery Brand Evolution',
+    desc: 'Brand and packaging work for the Colorado craft brewing pioneer&mdash;evolving visual identity while honoring decades of brewing heritage.',
+    year: '2021',
+    sortYear: 2021,
+    cats: ['digital','ecommerce'],
+    link: 'https://www.greenstone.co/collection/work/odellbrewingco',
+    award: false,
+    img: 'images/Portfolio/odell/hero_c.jpg'
+  },
+  {
+    client: 'WorkMarket',
+    title: 'Workforce Platform Brand',
+    desc: 'Helped the freelance management platform clarify brand positioning and build digital experiences to support enterprise workforce solutions.',
+    year: '2017',
+    sortYear: 2017,
+    cats: ['research','branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/workmarket',
+    award: false,
+    img: 'images/Portfolio/workmarket/hero_c.jpg'
+  },
+  {
+    client: 'HBO',
+    title: 'Game of Thrones Digital',
+    desc: 'Digital experience work for HBO&rsquo;s Game of Thrones franchise&mdash;extending the cultural phenomenon across digital touchpoints and fan engagement.',
+    year: '2014',
+    sortYear: 2014,
+    cats: ['digital','advertising'],
+    link: 'https://www.greenstone.co/collection/work/got',
+    award: false,
+    img: 'images/Portfolio/hbo/hero_c.jpg'
+  },
+  {
+    client: 'Toca Boca',
+    title: 'Play &amp; Family Research',
+    desc: 'Explored the intersection of technology, play, and the modern American family for the Swedish kids&rsquo; app maker&mdash;championing gender-neutral, free-form digital play experiences.',
+    year: '2014',
+    sortYear: 2014,
+    cats: ['research'],
+    link: 'https://www.greenstone.co/collection/work/toca-boca',
+    award: false,
+    img: 'images/Portfolio/tocaboca/hero_c.jpg'
+  },
+  {
+    client: 'Empty Set Designs',
+    title: 'Design Studio Brand',
+    desc: 'Developed brand identity and visual system for Empty Set Designs&mdash;creating a distinctive creative foundation for the studio.',
+    year: '2017',
+    sortYear: 2017,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/empty-set-designs',
+    award: false,
+    img: 'images/Portfolio/emptyset/hero_c.jpg'
+  },
+  {
+    client: 'Local Motors',
+    title: 'Community Vehicle Platform',
+    desc: 'Redesigned localmotors.com in two months&mdash;evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.',
+    year: '2017',
+    sortYear: 2017,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/local-motors',
+    award: false,
+    img: 'images/Portfolio/localmotors/hero_c.jpg'
+  },
+  {
+    client: '4A&rsquo;s',
+    title: 'Trade Group Modernization',
+    desc: 'Brand and digital work for the American Association of Advertising Agencies&mdash;modernizing the industry trade group&rsquo;s presence and platform.',
+    year: '2026',
+    sortYear: 2026,
+    cats: ['research','branding','digital'],
+    link: 'https://www.greenstone.co/collection/work/4as',
+    award: false,
+    img: 'images/Portfolio/4as/hero_c.jpg'
+  },
+  {
+    client: 'Travelaer &amp; LOT',
+    title: 'Travel Experience Design',
+    desc: 'Digital experience design for the travel technology company and LOT Polish Airlines partnership&mdash;reimagining the booking and travel journey.',
+    year: '2018',
+    sortYear: 2018,
+    cats: ['digital'],
+    link: 'https://www.greenstone.co/collection/work/travelaer-lot',
+    award: false,
+    img: 'images/Portfolio/travelaer/hero_c.jpg'
+  },
+  {
+    client: 'Simple Energy',
+    title: 'Energy Tech Brand &amp; Platform',
+    desc: 'Brand and digital strategy for Simple Energy (now Uplight)&mdash;helping the energy tech company communicate their utility customer engagement platform.',
+    year: '2019',
+    sortYear: 2019,
+    cats: ['research','digital'],
+    link: 'https://www.greenstone.co/collection/work/simple-energy',
+    award: false,
+    img: 'images/Portfolio/simpleenergy/hero_c.jpg'
+  },
+  {
+    client: 'NBC',
+    title: 'The Tonight Show',
+    desc: 'When Jimmy Fallon took over The Tonight Show, CP+B modernized a 60-year-old franchise for the digital age&mdash;deconstructing the hour-long show into atomic content units and designing a responsive website for consumption alongside a fan-engagement app.',
+    year: '2014',
+    sortYear: 2014,
+    cats: ['research','digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/tonightshow/hero_c.jpg'
+  },
+  {
+    client: 'Clinton Global Initiative',
+    title: 'Flash Flood For Good',
+    desc: 'An emergency broadcast system for the internet. People donate their social feeds, and with a single push, a coordinated call-to-action cascades out to millions like falling dominos. The first mission tackled clean drinking water.',
+    year: '2013',
+    sortYear: 2013,
+    cats: ['digital'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/flashflood/hero_c.jpg'
+  },
+  {
+    client: 'Domino&rsquo;s',
+    title: 'Think Oven',
+    desc: 'A social co-creation platform born from Domino&rsquo;s commitment to radical transparency. Customers submit ideas on specific projects&mdash;or pitch anything via the open Idea Box. The best ideas inspire what comes next.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/thinkoven/hero_c.jpg'
+  },
+  {
+    client: 'Domino&rsquo;s',
+    title: 'Pizza Hero',
+    desc: 'A pizza-making game for iPad that trains and challenges players to craft nearly perfect pies by hand. Top scorers&mdash;those who exhibit real pizza-making skill&mdash;receive an invitation to apply for an actual job at Domino&rsquo;s.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/pizzahero/hero_c.jpg'
+  },
+  {
+    client: 'Grey Poupon',
+    title: 'Society of Good Taste',
+    desc: 'The world&rsquo;s most exclusive Facebook page. A dynamic scan of applicants&rsquo; social profiles and posting habits determined worthiness&mdash;those denied had their Like rescinded, while the accepted entered a world of unique gifts and perks.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/societyofgoodtaste/hero_c.jpg'
+  },
+  {
+    client: 'Old Navy',
+    title: 'Snap Appy',
+    desc: 'Turned every Old Navy logo in the world into an interactive gateway. Point the app at any logo on any surface and a reward wheel spins&mdash;landing on style tips, exclusive content, or coupons.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/snapappy/hero_c.jpg'
+  },
+  {
+    client: 'Concerned Children&rsquo;s Advertisers',
+    title: 'GoGoYu',
+    desc: 'One of the first games to translate real-world physical activity into virtual character power. Kids wear a FitBit pedometer, and the more active they are, the stronger their character becomes across 30+ levels of exploration and mini-games.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/gogoyu/hero_c.jpg'
+  },
+  {
+    client: 'Windows Phone',
+    title: 'Who&rsquo;s That Friend',
+    desc: 'The new Windows Phone kept people more connected to their social networks than any other device. A quiz challenged visitors to see how well they really knew their friends&mdash;most were surprised at the gaps.',
+    year: '2012',
+    sortYear: 2012,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/whosthatfriend/hero_c.jpg'
+  },
+  {
+    client: 'Best Buy',
+    title: 'Movie Mode',
+    desc: 'A first-of-its-kind mobile app that let audiences interact with the movie screen in real time. Launching with Despicable Me, it delivered real-time Minion language translations via audio recognition synced between the film and the phone.',
+    year: '2011',
+    sortYear: 2011,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/moviemode/hero_c.jpg'
+  },
+  {
+    client: 'Jell-O',
+    title: 'Jiggle It',
+    desc: 'A celebration of Jell-O&rsquo;s most iconic attribute: the jiggle. This app gave fans a virtual Jell-O cube that danced to whatever music they played&mdash;with dynamically generated choreography from a partnership between top choreographers and programmers.',
+    year: '2011',
+    sortYear: 2011,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/jiggleit/hero_c.jpg'
+  },
+  {
+    client: 'Jell-O',
+    title: 'Temptations Sampling Machine',
+    desc: 'A grown-ups-only sampling station for Jell-O Temptations pudding. The machine&rsquo;s camera scans each visitor&rsquo;s face, measures features to estimate age, and dispenses a pudding only if they&rsquo;re old enough&mdash;sounding an alarm if not.',
+    year: '2011',
+    sortYear: 2011,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/tempations/hero_c.jpg'
+  },
+  {
+    client: 'MDC',
+    title: 'Innovation Center Installation',
+    desc: 'A multi-touch, multi-user Microsoft Surface table for MDC&rsquo;s New York lobby. Visitors browse and stream agency work, then &ldquo;flick&rdquo; content up to a massive wall display for full-screen playback.',
+    year: '2011',
+    sortYear: 2011,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/innovationcenter/hero_c.jpg'
+  },
+  {
+    client: 'American Express Travel',
+    title: 'Nextpedition',
+    desc: 'A custom-made mystery trip built around a traveler&rsquo;s passions. Adventurers discover their travel sign via an online profiler, then let Amex book the entire journey&mdash;no destinations revealed until day-of via a bespoke mobile travel console.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['research','digital'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/nextpedition/hero_c.jpg'
+  },
+  {
+    client: 'American Express OPEN',
+    title: 'Small Business Saturday',
+    desc: 'CP+B and Digitas partnered to launch America&rsquo;s newest shopping holiday. Mass-market awareness drivers were complimented by digital tools and platforms helping small business owners and their customers take full advantage.',
+    year: '2010&ndash;2012',
+    sortYear: 2010,
+    cats: ['research','branding','digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/smallbusinesssaturday/hero_c.jpg'
+  },
+  {
+    client: 'American Express OPEN',
+    title: 'OPEN Forum',
+    desc: 'Part content platform, part online university, part networking tool&mdash;OPEN Forum brought together leading business minds to help small business owners find the information, tools, and connections they need to grow.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['research','digital'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/openforum/hero_c.jpg'
+  },
+  {
+    client: 'Best Buy',
+    title: 'Twelp Force',
+    desc: 'A social platform that tapped into Best Buy&rsquo;s entire Blue Shirt staff worldwide, delivering immediate answers to customers&rsquo; toughest tech questions&mdash;whenever and wherever they needed them.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/twelpforce/hero_c.jpg'
+  },
+  {
+    client: 'Domino&rsquo;s',
+    title: 'Show Us Your Pizza',
+    desc: 'Domino&rsquo;s new pizza didn&rsquo;t need fancy food photography. Customers snapped pics of their pies as-delivered&mdash;the content powered quality control, customer engagement, and subsequent marketing campaigns built on transparency.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['research','digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/suyp/hero_c.jpg'
+  },
+  {
+    client: 'Brammo',
+    title: 'Shocking Barack',
+    desc: 'Two riders retraced the path the Big 3 auto CEOs flew to Washington in private jets&mdash;this time on Brammo electric motorcycles for $4 each. Social followers volunteered couches, food, and connections to Obama along the way.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['digital'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/shockingbarack/hero_c.jpg'
+  },
+  {
+    client: 'B-Cycle',
+    title: 'BCycle Bike Sharing',
+    desc: 'CP+B created a U.S. bike sharing system from scratch&mdash;partnering with Humana for funding and Trek for bike design. The experience design team shaped the consumer journey and digital properties. Now live in a dozen+ cities.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['research','digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/bcycle/hero_c.jpg'
+  },
+  {
+    client: 'Vail Resorts',
+    title: 'EpicMix',
+    desc: 'A revolutionary ski industry product. RF-enabled lift passes automatically track activity&mdash;vertical feet, days skied, routes ridden&mdash;and upload it to a personal dashboard with virtual rewards, tiered levels, and social features for connecting on the mountain.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['research','digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/epicmix/hero_c.jpg'
+  },
+  {
+    client: 'MDC',
+    title: 'MDC-Partners.com',
+    desc: 'An immersive site bringing MDC&rsquo;s &ldquo;Where Great Talent Lives&rdquo; mantra to life&mdash;pulling in social feeds, travel updates, bios, and office overviews from all partner agencies into a single real-time experience.',
+    year: '2010',
+    sortYear: 2010,
+    cats: ['digital'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/mdc/hero_c.jpg'
+  },
+  {
+    client: 'Domino&rsquo;s',
+    title: 'Dominos.com, Pizza Tracker &amp; BFD Builder',
+    desc: 'As Digital AOR, CP+B reimagined the Domino&rsquo;s product journey&mdash;the BFD Builder redefined food customization, Pizza Tracker brought transparency to ordering, and a full site redesign strengthened conversion and brand perception.',
+    year: '2009&ndash;2013',
+    sortYear: 2009,
+    cats: ['research','digital','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/dominos/hero_c.jpg'
+  },
+  {
+    client: 'Domino&rsquo;s',
+    title: 'TiVo Ordering System',
+    desc: 'A one-of-a-kind ordering system launched directly from Domino&rsquo;s commercials, allowing full pizza customization via a TiVo remote&mdash;with a TV-optimized Pizza Tracker to follow every step of the order.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/tivo/hero_c.jpg'
+  },
+  {
+    client: 'Burger King',
+    title: 'Whopper Sacrifice',
+    desc: 'Challenged Facebook users to publicly de-friend 10 friends to prove their love for the Whopper. The design had to be as simple and engaging as the idea itself&mdash;all within the realities of the Facebook platform. Results wildly surpassed expectations.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/whoppersacrifice/hero_c.jpg'
+  },
+  {
+    client: 'Burger King',
+    title: 'BK Flame',
+    desc: 'CP+B created a cologne with &ldquo;a hint of flame-broiled essence.&rdquo; The companion website enhanced the mood when &ldquo;getting your Flame on&rdquo;&mdash;complete with roaring fires, ocean champagne, and the King himself.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/flame/hero_c.jpg'
+  },
+  {
+    client: 'Coke Zero',
+    title: 'Facial Profiler',
+    desc: 'If Coke Zero is nearly identical to Coke in taste, is there someone identical to your face? Visitors synced their Facebook account and a facial detection engine scanned thousands of faces to find their closest visual match.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/facialprofiler/hero_c.jpg'
+  },
+  {
+    client: 'Microsoft Windows',
+    title: 'I&rsquo;m A PC',
+    desc: 'A campaign to re-establish pride in being a PC. The digital execution stretched from windows.com to a dynamic media buy to interactive signage in Times Square&mdash;a cooperative network of experiences that shifted brand perceptions.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/imapc/hero_c.jpg'
+  },
+  {
+    client: 'Volkswagen',
+    title: 'Routan Boom',
+    desc: 'VW&rsquo;s Routan sparked a fictitious baby boom&mdash;parents supposedly having kids just to drive the minivan with German engineering. Brooke Shields and the Babymaker 3000 let visitors have virtual babies instead.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/routanboom/hero_c.jpg'
+  },
+  {
+    client: 'Old Navy',
+    title: 'Old Navy Weekly',
+    desc: 'A reimagining of the weekly circular as a tabloid-inspired interactive site featuring the SuperModelquins. Hidden coupons turned browsing into a scavenger hunt, with new stories and hiding spots each week to drive in-store visits.',
+    year: '2009',
+    sortYear: 2009,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/onw/hero_c.jpg'
+  },
+  {
+    client: 'Burger King',
+    title: 'BK&rsquo;s Big Dig',
+    desc: 'A Burger King &times; Indiana Jones partnership for &ldquo;Kingdom of the Crystal Skull.&rdquo; In-store contest losers got a second chance online&mdash;timing a beam of light to dig for treasure in a scene inspired by Raiders of the Lost Ark.',
+    year: '2008',
+    sortYear: 2008,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/bigdig/hero_c.jpg'
+  },
+  {
+    client: 'Coke Zero',
+    title: 'Coke Zero Games',
+    desc: 'A series of micro-games designed to reinforce Coke Zero&rsquo;s brand with male demographics&mdash;retro vibrating football games for the fall, then office horse and t-shirt cannon games for basketball season.',
+    year: '2008',
+    sortYear: 2008,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/cz/hero_c.jpg'
+  },
+  {
+    client: 'Burger King',
+    title: 'Simpsonize Me',
+    desc: 'A tool letting users turn themselves into a Simpsons character for the launch of The Simpsons Movie. After inheriting the project, the team refocused the UX and visual design to deliver an experience worthy of both BK and The Simpsons.',
+    year: '2007',
+    sortYear: 2007,
+    cats: ['digital','advertising'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/simpsonizeme/hero_c.jpg'
+  },
+  {
+    client: 'Burger King',
+    title: 'My Pet Moustache',
+    desc: 'For the Western Whopper launch, users uploaded a photo and grew a virtual moustache that behaved like a pet&mdash;style it and it behaves, neglect it and it grows wild. Finish by recording a western song to send to fellow cowboys.',
+    year: '2007',
+    sortYear: 2007,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/petmoustache/hero_c.jpg'
+  },
+  {
+    client: 'Sprite',
+    title: 'Sublymonal',
+    desc: 'An online video editing tool that let users help Sprite discover the &ldquo;Ultimate Sublymonal Message.&rdquo; Using footage from loosely related commercials, users unlocked hidden meaning through nimble editing in a fully functioning browser-based editor.',
+    year: '2007',
+    sortYear: 2007,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/sublymonal/hero_c.jpg'
+  },
+  {
+    client: 'Haggar',
+    title: 'Haggar.com',
+    desc: 'A redesign of Haggar.com as part of the &ldquo;Gentleman&rsquo;s Disagreement&rdquo; campaign&mdash;striving to make the brand relevant and cool again by telling product stories in fresh, innovative, and engaging ways.',
+    year: '2006',
+    sortYear: 2006,
+    cats: ['digital'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/haggar/hero_c.jpg'
+  },
+  {
+    client: 'Volkswagen',
+    title: 'VW.com + VWFeatures.com',
+    desc: 'A complete redesign of vw.com, led by the launch of VWFeatures&mdash;a series of dynamically generated virtual joyrides and interactive films built around user-configured vehicles. Matt led interaction design across both efforts.',
+    year: '2005&ndash;2007',
+    sortYear: 2005,
+    cats: ['research','digital','advertising','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/vw/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'NikeGridiron.com v3',
+    desc: 'The third version included a full stylistic and structural evolution, with interactive video tours showcasing the origins of famous NFL players and an intelligent training log to help users train like them.',
+    year: '2005',
+    sortYear: 2005,
+    cats: ['digital','advertising','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/gridiron3/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'NikeID.com v2',
+    desc: 'An evolution of NikeID.com adding product description pages, the ability to start with a blank shoe or pre-configured &ldquo;inspiration,&rdquo; and richer story-driven collections.',
+    year: '2005',
+    sortYear: 2005,
+    cats: ['digital','advertising','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/nikeid/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'NikeGridiron.com v2',
+    desc: 'A more robust, immersive experience showcasing Michael Vick as marquee endorser&mdash;with features on his shoe, a game called &ldquo;The Michael Vick Experience,&rdquo; and new training features and videos for high school players.',
+    year: '2004',
+    sortYear: 2004,
+    cats: ['digital','advertising','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/gridiron2/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'NikeRunning.com',
+    desc: 'A large-scale redesign that evolved the training log application, introduced new shopping tools in a redesigned product wall, and delivered richer product detail pages&mdash;a success by all metrics.',
+    year: '2004',
+    sortYear: 2004,
+    cats: ['digital','advertising','ecommerce'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/nikerunning/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'Run Hit Wonder',
+    desc: 'A 5K/10K race featuring one-hit wonder bands along the course. The site reflected the fun and energy of the event, featuring the story behind the tour and gear inspired by the performers.',
+    year: '2004',
+    sortYear: 2004,
+    cats: ['digital','advertising','ecommerce'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/runhitwonder/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'The Michael Vick Experience',
+    desc: 'A fantastical simulation game built with Wild Tangent where athletes competed with the aid of super powers. Users earned points on NikeGridiron.com to unlock players and powers. Also showcased as an arcade unit inside NikeTown Atlanta.',
+    year: '2004',
+    sortYear: 2004,
+    cats: ['digital','advertising'],
+    link: null,
+    award: false,
+    img: 'images/Portfolio/mve/hero_c.jpg'
+  },
+  {
+    client: 'R/GA',
+    title: 'R/GA Holiday Card',
+    desc: 'A 3-dimensional sculpture building tool created for R/GA&rsquo;s 2004 holiday card. Users placed bricks across all three dimensions, with a public gallery showcasing the resulting creations.',
+    year: '2004',
+    sortYear: 2004,
+    cats: ['digital'],
+    link: null,
+    award: true,
+    img: 'images/Portfolio/rga/hero_c.jpg'
+  },
+  {
+    client: 'Nike',
+    title: 'NikeGridiron.com v1',
+    desc: 'The first version of NikeGridiron featured innovative 3-D micro-games, product features associated with each athlete, and the presentation of a television commercial directed by David Fincher.',
+    year: '2003',
+    sortYear: 2003,
+    cats: ['digital','ecommerce'],
+    link: null,
+    caseStudy: 'nikegridiron-v1',
+    award: true,
+    img: 'images/Portfolio/gridiron1/hero_c.jpg'
+  },
+];
+
+var STAR_SVG = '<svg viewBox="0 0 16 16" style="width:.55rem;height:.55rem;fill:var(--teal);"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>';
+
+function buildCard(p) {
+  var linkHTML = p.link
+    ? '<a href="' + p.link + '" target="_blank" rel="noopener" class="proj-link">Launch Case Study <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:-2px 0 0 3px;opacity:.7;"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>'
+    : p.caseStudy
+    ? '<a href="#" class="proj-link" onclick="openCaseStudy(\'' + p.caseStudy + '\');return false;">View Case Study &#8594;</a>'
+    : '<span class="proj-link" style="cursor:default;color:var(--muted);opacity:.7;">Details available upon request</span>';
+
+  var awardHTML = p.award
+    ? '<div class="proj-awards"><span class="proj-award-tag">' + STAR_SVG + ' Award Winning</span></div>'
+    : '';
+
+  return '<div class="project-card">'
+    + '<div class="proj-img" style="background-image:url(\'' + p.img + '\');background-size:cover;background-position:center;"><div class="proj-img-inner"></div></div>'
+    + '<div class="proj-body">'
+    + '<div class="proj-client">' + p.client + '</div>'
+    + '<div class="proj-title">' + p.title + '</div>'
+    + '<p class="proj-scope">' + p.desc + ' <span class="proj-year">(' + p.year + ')</span></p>'
+    + awardHTML
+    + linkHTML
+    + '</div></div>';
+}
+
+function renderRecent() {
+  var items = PROJECTS.slice(0, 8);
+  var html = '<div class="proj-grid-row cols-2">';
+  items.forEach(function(p) { html += buildCard(p); });
+  html += '</div>';
+  return html;
+}
+
+function renderCategory(cat) {
+  var items = PROJECTS.filter(function(p) { return p.cats.indexOf(cat) !== -1; });
+  if (!items.length) return '<p style="font-family:var(--b);font-size:.88rem;color:var(--muted);padding:2rem 0;">No projects in this category yet.</p>';
+
+  // Shuffle items randomly (Fisher-Yates)
+  for (var s = items.length - 1; s > 0; s--) {
+    var r = Math.floor(Math.random() * (s + 1));
+    var tmp = items[s]; items[s] = items[r]; items[r] = tmp;
+  }
+
+  var html = '';
+  var cols = 3; // start with 3
+  var i = 0;
+
+  while (i < items.length) {
+    var rowSize = Math.min(cols, items.length - i);
+    html += '<div class="proj-grid-row cols-' + cols + '">';
+    for (var j = 0; j < rowSize; j++) {
+      html += buildCard(items[i + j]);
+    }
+    // Fill empty cells if needed to keep grid consistent
+    if (rowSize < cols) {
+      for (var k = 0; k < cols - rowSize; k++) {
+        html += '<div class="project-card" style="visibility:hidden;"></div>';
+      }
+    }
+    html += '</div>';
+    i += rowSize;
+    cols = cols === 3 ? 2 : 3; // alternate
+  }
+
+  return html;
+}
+
+function setFilter(val) {
+  // Update tabs
+  document.querySelectorAll('.work-tab').forEach(function(t) {
+    t.classList.toggle('active', t.dataset.filter === val);
+  });
+  // Update select
+  var sel = document.querySelector('.work-tab-select');
+  if (sel) sel.value = val;
+
+  // Render
+  var container = document.getElementById('proj-grid-container');
+  if (val === 'recent') {
+    container.innerHTML = renderRecent();
+  } else {
+    container.innerHTML = renderCategory(val);
+  }
+
+  // Trigger reveal animation
+  container.querySelectorAll('.project-card').forEach(function(card, i) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(12px)';
+    card.style.transition = 'opacity .35s ease, transform .35s ease';
+    setTimeout(function() {
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+    }, i * 60);
+  });
+}
+
+// Initialize
+setFilter('recent');
+</script>
+<!-- Case Study Overlay -->
+<div class="cs-overlay" id="csOverlay">
+  <button class="cs-close" onclick="closeCaseStudy()" aria-label="Close case study">&times;</button>
+  <div id="csContent"></div>
+</div>
+
+<script>
+// Case study data store
+var CASE_STUDIES = {
+  'nikegridiron-v1': {
+    title: 'NikeGridiron.com v1',
+    client: 'Nike',
+    type: 'Site Launch',
+    agency: 'R/GA',
+    year: '2003',
+    overview: 'The first version of NikeGridiron featured a series of innovative 3-D micro-games, as well as a number of product features associated with each athlete. The experience was complimented by the presentation of the associated television commercial, directed by David Fincher.',
+    recognition: [
+      'Cannes Cyber Lions \u2013 Silver (web site, consumer products and services)',
+      '365: AIGA Annual Design Competition\u2019s 25 (experience design)',
+      'I.D. Magazine Annual Design Review \u2013 Design Distinction (interactive category)'
+    ],
+    images: [
+      'https://images.squarespace-cdn.com/content/v1/52af5f64e4b02f3bc002c302/1387237807483-5L1QBNCJ3W9G9P3EUNUH/NIKE_Gridiron2003.JPG',
+      'https://images.squarespace-cdn.com/content/v1/52af5f64e4b02f3bc002c302/1387237805800-5PKHASQP72SFJB18XO9G/NIKE_Gridion2003_2.JPG',
+      'https://images.squarespace-cdn.com/content/v1/52af5f64e4b02f3bc002c302/1387237805846-EFJVIZXA6NB1SM3YB9LG/NIKE_Gridiron2003_3.JPG',
+      'https://images.squarespace-cdn.com/content/v1/52af5f64e4b02f3bc002c302/1387237806223-JTVKOI6U6BKS2A77KQKD/NIKE_Gridiron2003_4.JPG'
+    ]
+  }
+};
+
+function openCaseStudy(id) {
+  var cs = CASE_STUDIES[id];
+  if (!cs) return;
+
+  var recHTML = '';
+  cs.recognition.forEach(function(r) {
+    recHTML += '<div class="cs-recognition-item">' + r + '</div>';
+  });
+
+  var imgHTML = '';
+  cs.images.forEach(function(src) {
+    imgHTML += '<img src="' + src + '" alt="' + cs.title + ' screenshot" loading="lazy">';
+  });
+
+  document.getElementById('csContent').innerHTML =
+    '<div class="cs-inner">'
+    + '<div class="cs-meta-col">'
+    +   '<div class="cs-title">' + cs.title + '</div>'
+    +   '<div class="cs-meta-label">Client</div>'
+    +   '<div class="cs-meta-value">' + cs.client + '</div>'
+    +   '<div class="cs-meta-label">Type</div>'
+    +   '<div class="cs-meta-value">' + cs.type + '</div>'
+    +   '<div class="cs-meta-label">Agency</div>'
+    +   '<div class="cs-meta-value">' + cs.agency + '</div>'
+    +   '<div class="cs-meta-label">Year</div>'
+    +   '<div class="cs-meta-value">' + cs.year + '</div>'
+    +   '<div class="cs-section-label">Overview</div>'
+    +   '<div class="cs-body-text">' + cs.overview + '</div>'
+    +   '<div class="cs-section-label">Recognition</div>'
+    +   recHTML
+    + '</div>'
+    + '<div class="cs-images-col">' + imgHTML + '</div>'
+    + '</div>';
+
+  document.getElementById('csOverlay').classList.add('cs-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCaseStudy() {
+  document.getElementById('csOverlay').classList.remove('cs-open');
+  document.body.style.overflow = '';
+}
+
+// Close on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCaseStudy();
+});
+
+// Close on backdrop click
+document.getElementById('csOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeCaseStudy();
+});
+</script>
+</body>
+</html>
