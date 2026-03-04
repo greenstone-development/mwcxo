@@ -88,17 +88,45 @@
   content: '•'; position: absolute; left: 0; color: var(--teal2);
 }
 
-.cs-launch-link {
-  display: inline-flex; align-items: center; gap: .4rem;
-  font-family: var(--f); font-size: .8rem; font-weight: 600;
-  color: var(--teal2); text-decoration: none; margin-top: 1.5rem;
-  transition: opacity .2s;
-}
-.cs-launch-link:hover { opacity: .75; }
 .cs-images-col { display: flex; flex-direction: column; gap: 1.25rem; }
 .cs-images-col img {
   width: 100%; border-radius: 4px; display: block;
   box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+
+/* Linked project — clickable image with persistent dim + pill */
+.cs-img-link {
+  display: block; position: relative; border-radius: 4px;
+  overflow: hidden; text-decoration: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+.cs-img-link img {
+  width: 100%; display: block;
+  transition: transform .5s ease;
+  box-shadow: none;
+}
+.cs-img-link:hover img { transform: scale(1.04); }
+.cs-img-dim {
+  position: absolute; inset: 0;
+  background: rgba(14,22,20,.50);
+  transition: background .3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.cs-img-link:hover .cs-img-dim { background: rgba(14,22,20,.68); }
+.cs-img-pill {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: white; color: var(--teal);
+  font-family: var(--f); font-size: .7rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: .6rem 1.2rem; border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  white-space: nowrap;
+  transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.cs-img-link:hover .cs-img-pill {
+  background: var(--teal); color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(0,0,0,.5);
 }
 
 .cs-nav {
@@ -2563,8 +2591,18 @@ function openCaseStudy(id) {
   });
 
   var imgHTML = '';
-  cs.images.forEach(function(src) {
-    imgHTML += '<img src="' + src + '" alt="' + cs.title + ' screenshot" loading="lazy">';
+  cs.images.forEach(function(src, i) {
+    if (i === 0 && cs.link) {
+      var extIcon = '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg>';
+      imgHTML += '<a href="' + cs.link + '" target="_blank" rel="noopener" class="cs-img-link">'
+        + '<img src="' + src + '" alt="' + cs.title + '" loading="lazy">'
+        + '<div class="cs-img-dim">'
+        +   '<div class="cs-img-pill">Launch Case Study ' + extIcon + '</div>'
+        + '</div>'
+        + '</a>';
+    } else {
+      imgHTML += '<img src="' + src + '" alt="' + cs.title + ' screenshot" loading="lazy">';
+    }
   });
 
   document.getElementById('csContent').innerHTML =
@@ -2582,7 +2620,6 @@ function openCaseStudy(id) {
     +   '<div class="cs-meta-value">' + cs.year + '</div>'
     +   '<div class="cs-section-label">Overview</div>'
     +   '<div class="cs-body-text">' + cs.overview + '</div>'
-    +   (cs.link ? '<a href="' + cs.link + '" target="_blank" rel="noopener" class="cs-launch-link">Launch Case Study <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6.5v3a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5"/><path d="M7 1h3v3"/><path d="M4.5 6.5L10 1"/></svg></a>' : '')
     +   (cs.recognition.length ? '<div class="cs-section-label">Recognition</div>' + recHTML : '')
     + '</div>'
     + '<div class="cs-images-col">' + imgHTML + '</div>'
