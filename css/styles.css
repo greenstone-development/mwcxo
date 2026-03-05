@@ -293,7 +293,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
 .hero-right{position:relative;overflow:hidden;background:var(--bg3);}
 .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
-.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 18%);}
+.hero-right-overlay{display:none;}
 
 /* HOMEPAGE — What Matt Does */
 .what-i-do{max-width:1160px;margin:0 auto;padding:7rem 0;display:grid;grid-template-columns:5fr 7fr;gap:6rem;align-items:start;}
