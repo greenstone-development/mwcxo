@@ -619,6 +619,8 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
   .cta-band{padding:4rem 1.5rem;}
   .cta-inner{flex-direction:column;gap:2rem;text-align:center;}
   footer{padding:2.5rem 1.5rem;}
+  .footer-inner{flex-direction:column-reverse;align-items:center;gap:1rem;}
+  .footer-meta{text-align:center !important;max-width:100% !important;}
 }
 
 @media(max-width:640px){
