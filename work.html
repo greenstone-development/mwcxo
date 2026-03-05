@@ -249,7 +249,7 @@ var PROJECTS = [
     client: 'WOW!',
     title: 'Telecom Acquisition &amp; Retention Platform',
     desc: 'Redesigned and evolved WOW!&rsquo;s digital acquisition and servicing journeys&mdash;optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.',
-    year: '2026',
+    year: '2025',
     sortYear: 2026,
     cats: ['research','branding','digital','ecommerce'],
     link: 'https://www.greenstone.co/collection/work/wow',
@@ -268,6 +268,19 @@ var PROJECTS = [
     caseStudy: 'gs-logitech',
     award: false,
     img: 'images/Portfolio/logitech/hero_c.jpg'
+  },
+
+  {
+    client: 'Neptune Retail Solutions',
+    title: 'B2B Brand &amp; Marketing Platform',
+    desc: 'Green Stone evolved Neptune&rsquo;s brand identity and brought it to life with new assets, a website, and a brand video&mdash;showcasing their unique ability to combine data from digital and retail media placements to target media and drive sales growth.',
+    year: '2025',
+    sortYear: 2025,
+    cats: ['digital','branding'],
+    link: 'http://from.gs/neptune',
+    caseStudy: 'gs-neptune',
+    award: true,
+    img: 'images/Portfolio/neptune/hero_c.jpg'
   },
   {
     client: 'LexisNexis',
@@ -316,6 +329,19 @@ var PROJECTS = [
     caseStudy: 'gs-techstars',
     award: false,
     img: 'images/Portfolio/techstars/hero_c.jpg'
+  },
+
+  {
+    client: 'The Hillman Group',
+    title: 'smartPART Digital Experience',
+    desc: 'Redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone&mdash;no app download needed. Simplified digital and physical interfaces to create an approachable experience for shoppers finding the right hardware parts.',
+    year: '2024',
+    sortYear: 2024,
+    cats: ['digital','ecommerce'],
+    link: 'http://from.gs/smartpart',
+    caseStudy: 'gs-hillman-smartpart',
+    award: true,
+    img: 'images/Portfolio/smartpart/hero_c.jpg'
   },
   {
     client: 'Hearthside Food Solutions',
@@ -1171,7 +1197,7 @@ var PROJECTS = [
   },
 ];
 
-var STAR_SVG = '<svg viewBox="0 0 16 16" style="width:.55rem;height:.55rem;fill:var(--teal);"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>';
+var TROPHY_SVG = '<svg viewBox="0 0 16 16" style="width:.6rem;height:.6rem;fill:var(--teal);flex-shrink:0;"><path d="M12 2H4V1H2v3c0 1.66 1.34 3 3 3 .35.96 1.09 1.73 2 2.12V11H5v1h6v-1H9V9.12A3.99 3.99 0 0011 7c1.66 0 3-1.34 3-3V1h-2v1zM4 6C3.45 6 3 5.55 3 5V3h1v3zm5 2c-1.1 0-2-.9-2-2V3h4v3c0 1.1-.9 2-2 2zm4-3c0 .55-.45 1-1 1V3h1v2z"/><rect x="5" y="12" width="6" height="1"/><rect x="4" y="13" width="8" height="1"/></svg>';
 
 function buildCard(p) {
   var linkHTML = p.link
@@ -1181,7 +1207,7 @@ function buildCard(p) {
     : '<span class="proj-link" style="cursor:default;color:var(--muted);opacity:.7;">Details available upon request</span>';
 
   var awardHTML = p.award
-    ? '<div class="proj-awards"><span class="proj-award-tag">' + STAR_SVG + ' Award Winning</span></div>'
+    ? '<div class="proj-awards"><span class="proj-award-tag">' + TROPHY_SVG + ' Award Winning</span></div>'
     : '';
 
   return '<div class="project-card"' + (p.caseStudy ? ' data-cs="' + p.caseStudy + '"' : '') + '>'
@@ -1196,7 +1222,7 @@ function buildCard(p) {
 }
 
 function renderRecent() {
-  var items = PROJECTS.slice(0, 8);
+  var items = PROJECTS.slice(0, 10);
   var html = '<div class="proj-grid-row cols-2">';
   items.forEach(function(p) { html += buildCard(p); });
   html += '</div>';
@@ -1431,6 +1457,26 @@ var CASE_STUDIES = {
       'images/Portfolio/hillman/hero_c.jpg'
     ]
   },
+  'gs-hillman-smartpart': {
+    title: 'smartPART Digital Experience',
+    client: 'The Hillman Group',
+    type: 'Digital + Mobile Experience',
+    agency: 'Green Stone',
+    role: 'Client Origination, Strategic/Creative Partner &amp; Advisor',
+    year: '2025',
+    overview: '<strong>Challenge:</strong> Hardware aisles often overwhelm shoppers with too many fastener options, making it difficult to find the right part. Skubot and Hillman developed breakthrough technology to solve this pain point, but needed to transform a complex prototype into an intuitive, retail-ready experience that earned its place on the shelf.<br><br><strong>Solution:</strong> We redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone&mdash;no app download needed. By simplifying both the digital and physical interfaces and prioritizing speed, we created an approachable and intuitive experience for shoppers. After a buzz-worthy soft launch embraced by hardware store owners, smartPart will be rolling out at scale.',
+    recognition: [
+      'w3 Awards &ndash; General Marketing, Innovative &amp; Experimental &ndash; Silver (smartPART, 2025)',
+      'w3 Awards &ndash; Marketing Features, Best User Experience &ndash; Silver (smartPART, 2025)',
+      'w3 Awards &ndash; General Marketing, Products &amp; Services &ndash; Silver (smartPART, 2025)',
+      'w3 Awards &ndash; Mobile Apps &amp; Sites, Shopping &amp; Retail &ndash; Silver (smartPART, 2025)',
+      'w3 Awards &ndash; Mobile Features, Best Experimental &amp; Innovation &ndash; Silver (smartPART, 2025)'
+    ],
+    link: 'http://from.gs/smartpart',
+    images: [
+      'images/Portfolio/smartpart/hero_c.jpg'
+    ]
+  },
   'gs-twitter': {
     title: 'Help Center Redesign',
     client: 'Twitter',
@@ -1653,6 +1699,23 @@ var CASE_STUDIES = {
     link: 'https://www.greenstone.co/collection/work/odellbrewingco',
     images: [
       'images/Portfolio/odell/hero_c.jpg'
+    ]
+  },
+  'gs-neptune': {
+    title: 'B2B Brand &amp; Marketing Platform',
+    client: 'Neptune Retail Solutions',
+    type: 'Branding + Digital',
+    agency: 'Green Stone',
+    role: 'Client Origination, Strategic Partner &amp; Advisor',
+    year: '2025',
+    overview: '<strong>Challenge:</strong> Neptune needed a site and brand identity that worked harder for them&mdash;helping customers understand their unique value proposition, explaining their updated technology offerings, and creating a unified story for their team to rally around.<br><br><strong>Solution:</strong> Green Stone evolved the brand identity and brought it to life with new assets, a website, and produced a brand video that tells the story of their updated value proposition. Together, these new assets showcase Neptune&rsquo;s unique ability to combine data from digital and retail media placements to target media and drive sales growth, powered by unique technology systems.',
+    recognition: [
+      'w3 Awards &ndash; General Marketing, B2B &ndash; Gold (NeptuneRetailSolutions.com, 2025)',
+      'w3 Awards &ndash; Branded Content, B2B &ndash; Silver (NeptuneRetailSolutions.com, 2025)'
+    ],
+    link: 'http://from.gs/neptune',
+    images: [
+      'images/Portfolio/neptune/hero_c.jpg'
     ]
   },
   'gs-workmarket': {
