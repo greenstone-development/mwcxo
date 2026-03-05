@@ -371,7 +371,7 @@ footer{background:var(--ink);padding:3rem 3.5rem;}
 .proj-title{font-family:var(--f);font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.25;margin-bottom:.5rem;}
 .proj-scope{font-family:var(--b);font-size:.78rem;color:var(--muted);line-height:1.65;margin-bottom:.8rem;flex:1;}
 .proj-awards{display:flex;flex-wrap:wrap;gap:.35rem;padding-bottom:.6rem;}
-.proj-award-tag{font-family:var(--f);font-size:.56rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.2rem .55rem;border:1px solid var(--line2);border-radius:100px;}
+.proj-award-tag{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--f);font-size:.56rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.2rem .55rem;border:1px solid var(--line2);border-radius:100px;}
 .proj-award-tag.highlight{color:var(--teal);border-color:var(--teal);}
 
 /* Green Stone Note */
