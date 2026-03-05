@@ -5,7 +5,6 @@
 
 // ── Utilities ──────────────────────────────────
 const isMobile = () => window.innerWidth <= 960;
-const prefersReducedMotion = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
@@ -21,7 +20,7 @@ function toggleNav() {
   const toggle = document.querySelector('.nav-toggle');
   if (links) {
     links.classList.toggle('open');
-    if (toggle) toggle.setAttribute('aria-expanded', links.classList.contains('open'));
+    toggle.setAttribute('aria-expanded', links.classList.contains('open'));
   }
 }
 
@@ -30,7 +29,7 @@ function closeNav() {
   const toggle = document.querySelector('.nav-toggle');
   if (links && links.classList.contains('open')) {
     links.classList.remove('open');
-    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-expanded', 'false');
   }
 }
 
@@ -52,7 +51,7 @@ class ParallaxEngine {
   }
 
   init() {
-    if (isMobile() || prefersReducedMotion()) return;
+    if (isMobile()) return;
     this.collectElements();
     this.injectOrbs();
     this.bindEvents();
@@ -208,7 +207,7 @@ class HeroParallax {
   }
 
   init() {
-    if (isMobile() || prefersReducedMotion()) return;
+    if (isMobile()) return;
 
     this.hero = document.querySelector('.hero-right');
     if (!this.hero) return;
