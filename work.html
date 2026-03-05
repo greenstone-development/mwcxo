@@ -5,6 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Past Projects — Matt Walsh CXO</title>
 <meta name="description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
+<meta name="author" content="Matt Walsh">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mattwalshcxo.com/work.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mattwalshcxo.com/work.html">
+<meta property="og:title" content="Past Projects — Matt Walsh CXO">
+<meta property="og:description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
+<meta property="og:site_name" content="Matt Walsh CXO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Past Projects — Matt Walsh CXO">
+<meta name="twitter:description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
+
+<!-- Structured Data: CollectionPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://mattwalshcxo.com/work.html",
+      "url": "https://mattwalshcxo.com/work.html",
+      "name": "Past Projects — Matt Walsh CXO",
+      "description": "A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.",
+      "isPartOf": { "@id": "https://mattwalshcxo.com/#website" },
+      "about": { "@id": "https://mattwalshcxo.com/#matt-walsh" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mattwalshcxo.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Past Projects", "item": "https://mattwalshcxo.com/work.html" }
+        ]
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -160,22 +200,24 @@
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
 
+<header>
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Matt Walsh <span>CXO</span></a>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
+    <a href="index.html" class="nav-logo" aria-label="Matt Walsh CXO — Home">Matt Walsh <span>CXO</span></a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links" role="list">
       <li><a href="index.html">Home</a></li>
-      <li><a href="work.html" class="active">Past Projects</a></li>
+      <li><a href="work.html" class="active" aria-current="page">Past Projects</a></li>
       <li><a href="recognition.html">Recognition</a></li>
       <li><a href="thought-leadership.html">Thought Leadership</a></li>
       <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
     </ul>
   </div>
 </nav>
+</header>
 
 <main id="main">
 
@@ -189,12 +231,12 @@
 
 <!-- FILTER TABS -->
 <div class="work-filter-tabs" role="tablist" aria-label="Filter projects by category">
-  <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
-  <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
-  <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
-  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
-  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
-  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+  <button class="work-tab active" id="tab-recent" role="tab" data-filter="recent" aria-selected="true" tabindex="0" aria-controls="proj-grid-container" onclick="setFilter('recent')">Most Recent</button>
+  <button class="work-tab" id="tab-research" role="tab" data-filter="research" aria-selected="false" tabindex="-1" aria-controls="proj-grid-container" onclick="setFilter('research')">Research &amp; Strategy</button>
+  <button class="work-tab" id="tab-digital" role="tab" data-filter="digital" aria-selected="false" tabindex="-1" aria-controls="proj-grid-container" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
+  <button class="work-tab" id="tab-branding" role="tab" data-filter="branding" aria-selected="false" tabindex="-1" aria-controls="proj-grid-container" onclick="setFilter('branding')">Branding</button>
+  <button class="work-tab" id="tab-ecommerce" role="tab" data-filter="ecommerce" aria-selected="false" tabindex="-1" aria-controls="proj-grid-container" onclick="setFilter('ecommerce')">E-Commerce</button>
+  <button class="work-tab" id="tab-advertising" role="tab" data-filter="advertising" aria-selected="false" tabindex="-1" aria-controls="proj-grid-container" onclick="setFilter('advertising')">Advertising</button>
 </div>
 <select class="work-tab-select" aria-label="Filter projects by category" onchange="setFilter(this.value)">
   <option value="recent">Most Recent</option>
@@ -206,7 +248,7 @@
 </select>
 
 <!-- PROJECT GRID (rendered by JS) -->
-<div class="proj-grid-container" id="proj-grid-container"></div>
+<div class="proj-grid-container" id="proj-grid-container" role="tabpanel" tabindex="0" aria-labelledby="tab-recent"></div>
 
 </main>
 
@@ -1267,17 +1309,25 @@ function setFilter(val) {
   // Invalidate nav list — must be rebuilt from the new rendered grid
   csNavList = [];
 
-  // Update tabs
+  // Update tabs (visual + a11y)
   document.querySelectorAll('.work-tab').forEach(function(t) {
-    t.classList.toggle('active', t.dataset.filter === val);
+    var active = t.dataset.filter === val;
+    t.classList.toggle('active', active);
+    t.setAttribute('aria-selected', active ? 'true' : 'false');
+    t.setAttribute('tabindex', active ? '0' : '-1');
   });
+
   // Update select
   var sel = document.querySelector('.work-tab-select');
   if (sel) sel.value = val;
 
   // Render
   var container = document.getElementById('proj-grid-container');
-  if (val === 'recent') {
+
+  // Update tabpanel label
+  var activeTab = document.querySelector('.work-tab.active');
+  if (activeTab && activeTab.id) container.setAttribute('aria-labelledby', activeTab.id);
+if (val === 'recent') {
     container.innerHTML = renderRecent();
   } else {
     container.innerHTML = renderCategory(val);

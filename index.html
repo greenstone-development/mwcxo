@@ -5,10 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matt Walsh — Fractional Chief Experience Officer</title>
 <meta name="description" content="Matt Walsh is a Fractional CXO specializing in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives.">
+<meta name="author" content="Matt Walsh">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mattwalshcxo.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mattwalshcxo.com/">
+<meta property="og:title" content="Matt Walsh — Fractional Chief Experience Officer">
+<meta property="og:description" content="Matt Walsh specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives.">
+<meta property="og:site_name" content="Matt Walsh CXO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matt Walsh — Fractional Chief Experience Officer">
+<meta name="twitter:description" content="Fractional CXO specializing in customer experience strategy, digital products, and loyalty-driven growth.">
+
+<!-- Structured Data: Person + WebSite + Services -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mattwalshcxo.com/#website",
+      "name": "Matt Walsh CXO",
+      "url": "https://mattwalshcxo.com/",
+      "description": "Professional portfolio of Matt Walsh, Fractional Chief Experience Officer and founder of Green Stone"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mattwalshcxo.com/#matt-walsh",
+      "name": "Matt Walsh",
+      "jobTitle": "Fractional Chief Experience Officer",
+      "description": "Matt Walsh specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives.",
+      "url": "https://mattwalshcxo.com/",
+      "sameAs": ["https://www.linkedin.com/in/mattwalsh"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Green Stone",
+        "url": "https://www.greenstone.co"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Fractional Chief Experience Officer",
+        "description": "Aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives",
+        "skills": "Customer Experience Strategy, Customer Journey Design, Digital Product Strategy, CRO, Organisational Design"
+      },
+      "knowsAbout": [
+        "Customer Experience",
+        "Digital Strategy",
+        "Brand Strategy",
+        "UX Design",
+        "Customer Journey Mapping",
+        "E-Commerce",
+        "Organisational Transformation",
+        "AI-Empowered Organisations"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://mattwalshcxo.com/",
+      "url": "https://mattwalshcxo.com/",
+      "name": "Matt Walsh — Fractional Chief Experience Officer",
+      "isPartOf": {"@id": "https://mattwalshcxo.com/#website"},
+      "mainEntity": {"@id": "https://mattwalshcxo.com/#matt-walsh"},
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mattwalshcxo.com/"}
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Core Services — Matt Walsh CXO",
+      "description": "Five core specialties Matt Walsh delivers across client engagements",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Identify The Opportunities", "description": "Identifying actionable intersections between corporate goals and customer aspirations."},
+        {"@type": "ListItem", "position": 2, "name": "Design The Journey", "description": "End-to-end customer journeys that unlock meaningful value through exceptional experiences within real-world constraints."},
+        {"@type": "ListItem", "position": 3, "name": "Connect Through Digital", "description": "Strategizing, designing, and building the digital products and platforms that connect those journeys in a differentiated, ownable, and profitable way."},
+        {"@type": "ListItem", "position": 4, "name": "Test, Learn, and Leap", "description": "Continuous optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move."},
+        {"@type": "ListItem", "position": 5, "name": "Evolve the Organization With It", "description": "Helping clients update their workflows, team structures, and operating models for a modern, distributed, AI-empowered era."}
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
 <script>
@@ -21,15 +110,16 @@
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
 
+<header>
 <!-- NAV -->
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Matt Walsh <span>CXO</span></a>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <a href="index.html" class="nav-logo" aria-label="Matt Walsh CXO — Home">Matt Walsh <span>CXO</span></a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
     </button>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
       <li><a href="work.html">Past Projects</a></li>
       <li><a href="recognition.html">Recognition</a></li>
       <li><a href="thought-leadership.html">Thought Leadership</a></li>
@@ -37,283 +127,280 @@
     </ul>
   </div>
 </nav>
+</header>
 
-
-<!-- HERO -->
 <main id="main">
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Fractional Chief Experience Officer</div>
-    <h1 class="hero-h1" data-parallax="0.04" data-parallax-type="y">Building businesses<br>from the <em>journey</em> up.</h1>
-    <p class="hero-sub">Matt specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives. His work helps leadership teams clarify priorities, accelerate decisions, and build experiences that compound value instead of leaking margin.</p>
-    <div class="hero-btns">
-      <a href="work.html" class="btn-fill">See the work &#8594;</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <img src="images/hero.jpg" alt="Matt Walsh">
-    <div class="hero-right-overlay"></div>
-  </div>
-</section>
 
-
-<!-- WHAT MATT DOES -->
-<section class="what-i-do reveal">
-  <div>
-    <div class="kicker">What Matt Does</div>
-    <h2 class="section-h2" data-parallax="0.025" data-parallax-type="y">Turn experience from a cost center into a <em>growth engine.</em></h2>
-    <p class="wid-desc">With decades of experience leading teams and complex initiatives for world-class clients, Matt delivers results across five core specialties.</p>
-  </div>
-  <div>
-    <div class="method-list">
-      <div class="method-item">
-        <div class="method-num">01</div>
-        <div>
-          <div class="method-title">Identify The Opportunities</div>
-          <p class="method-body">Identifying actionable intersections between corporate goals and customer aspirations.</p>
-        </div>
-      </div>
-      <div class="method-item">
-        <div class="method-num">02</div>
-        <div>
-          <div class="method-title">Design The Journey</div>
-          <p class="method-body">End-to-end customer journeys that unlock meaningful value through exceptional experiences within real-world constraints.</p>
-        </div>
-      </div>
-      <div class="method-item">
-        <div class="method-num">03</div>
-        <div>
-          <div class="method-title">Connect Through Digital</div>
-          <p class="method-body">Strategizing, designing, and building the digital products and platforms that connect those journeys in a differentiated, ownable, and profitable way.</p>
-        </div>
-      </div>
-      <div class="method-item">
-        <div class="method-num">04</div>
-        <div>
-          <div class="method-title">Test, Learn, and Leap</div>
-          <p class="method-body">Continuous optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move.</p>
-        </div>
-      </div>
-      <div class="method-item">
-        <div class="method-num">05</div>
-        <div>
-          <div class="method-title">Evolve the Organization With It</div>
-          <p class="method-body">Helping clients update their workflows, team structures, and operating models for a modern, distributed, AI-empowered era.</p>
-        </div>
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Fractional Chief Experience Officer</p>
+      <h1 class="hero-h1" data-parallax="0.04" data-parallax-type="y">Building businesses<br>from the <em>journey</em> up.</h1>
+      <p class="hero-sub">Matt specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives. His work helps leadership teams clarify priorities, accelerate decisions, and build experiences that compound value instead of leaking margin.</p>
+      <div class="hero-btns">
+        <a href="work.html" class="btn-fill">See the work &#8594;</a>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- CLIENTS -->
-<section class="clients">
-  <div class="clients-inner">
-    <div class="clients-header reveal">
-      <div class="kicker">Clients</div>
-      <h2 class="section-h2" data-parallax="0.02" data-parallax-type="y">Trusted by <em>leaders.</em></h2>
+    <div class="hero-right">
+      <img src="images/hero.jpg" alt="Matt Walsh">
+      <div class="hero-right-overlay" aria-hidden="true"></div>
     </div>
-    <div class="columns-wrap reveal">
+  </section>
 
-      <!-- B2C COLUMN -->
-      <div class="col">
-        <div class="col-header">
-          <div class="col-label">B2C</div>
-          <select class="col-filter" id="b2c-filter" aria-label="Filter B2C clients by category" onchange="filterClients('b2c', this.value)">
-            <option value="featured">Featured</option>
-            <option value="automotive">Automotive</option>
-            <option value="financial">Financial Services</option>
-            <option value="food">Food &amp; Beverage</option>
-            <option value="media">Media &amp; Entertainment</option>
-            <option value="retail">Retail</option>
-            <option value="tech-telecom">Technology &amp; Telecom</option>
-            <option value="travel">Travel &amp; Hospitality</option>
-          </select>
+  <!-- WHAT MATT DOES -->
+  <section class="what-i-do reveal" aria-labelledby="wid-heading">
+    <div>
+      <p class="kicker">What Matt Does</p>
+      <h2 id="wid-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">Turn experience from a cost center into a <em>growth engine.</em></h2>
+      <p class="wid-desc">With decades of experience leading teams and complex initiatives for world-class clients, Matt delivers results across five core specialties.</p>
+    </div>
+    <div>
+      <ol class="method-list" role="list">
+        <li class="method-item">
+          <span class="method-num" aria-hidden="true">01</span>
+          <div>
+            <h3 class="method-title">Identify The Opportunities</h3>
+            <p class="method-body">Identifying actionable intersections between corporate goals and customer aspirations.</p>
+          </div>
+        </li>
+        <li class="method-item">
+          <span class="method-num" aria-hidden="true">02</span>
+          <div>
+            <h3 class="method-title">Design The Journey</h3>
+            <p class="method-body">End-to-end customer journeys that unlock meaningful value through exceptional experiences within real-world constraints.</p>
+          </div>
+        </li>
+        <li class="method-item">
+          <span class="method-num" aria-hidden="true">03</span>
+          <div>
+            <h3 class="method-title">Connect Through Digital</h3>
+            <p class="method-body">Strategizing, designing, and building the digital products and platforms that connect those journeys in a differentiated, ownable, and profitable way.</p>
+          </div>
+        </li>
+        <li class="method-item">
+          <span class="method-num" aria-hidden="true">04</span>
+          <div>
+            <h3 class="method-title">Test, Learn, and Leap</h3>
+            <p class="method-body">Continuous optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move.</p>
+          </div>
+        </li>
+        <li class="method-item">
+          <span class="method-num" aria-hidden="true">05</span>
+          <div>
+            <h3 class="method-title">Evolve the Organization With It</h3>
+            <p class="method-body">Helping clients update their workflows, team structures, and operating models for a modern, distributed, AI-empowered era.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" aria-labelledby="clients-heading">
+    <div class="clients-inner">
+      <header class="clients-header reveal">
+        <p class="kicker">Clients</p>
+        <h2 id="clients-heading" class="section-h2" data-parallax="0.02" data-parallax-type="y">Trusted by <em>leaders.</em></h2>
+      </header>
+      <div class="columns-wrap reveal">
+
+        <!-- B2C COLUMN -->
+        <div class="col">
+          <div class="col-header">
+            <h3 class="col-label">B2C</h3>
+            <select class="col-filter" id="b2c-filter" aria-label="Filter B2C clients by category" onchange="filterClients('b2c', this.value)">
+              <option value="featured">Featured</option>
+              <option value="automotive">Automotive</option>
+              <option value="financial">Financial Services</option>
+              <option value="food">Food &amp; Beverage</option>
+              <option value="media">Media &amp; Entertainment</option>
+              <option value="retail">Retail</option>
+              <option value="tech-telecom">Technology &amp; Telecom</option>
+              <option value="travel">Travel &amp; Hospitality</option>
+            </select>
+          </div>
+          <ul class="vc-list" id="b2c-list" role="list">
+            <li class="vc" data-col="b2c" data-cat="financial" data-featured="true">American Express</li>
+            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Ariat</li>
+            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Best Buy</li>
+            <li class="vc" data-col="b2c" data-cat="food" data-featured="true">Domino&rsquo;s</li>
+            <li class="vc" data-col="b2c" data-cat="media" data-featured="true">HBO</li>
+            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Logitech</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom" data-featured="true">Microsoft</li>
+            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Nike</li>
+            <li class="vc" data-col="b2c" data-cat="travel" data-featured="true">Vail Resorts</li>
+            <li class="vc" data-col="b2c" data-cat="automotive" data-featured="true">Volkswagen</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Algenist</li>
+            <li class="vc" data-col="b2c" data-cat="travel">B-Cycle</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Bark Box Inc</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Beats</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">BILLSHARK</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Bolt Threads</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">Brammo</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Breville</li>
+            <li class="vc" data-col="b2c" data-cat="food">Burger King</li>
+            <li class="vc" data-col="b2c" data-cat="travel">City of Boulder</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">ClearSpend</li>
+            <li class="vc" data-col="b2c" data-cat="media">Clinton Global Initiative</li>
+            <li class="vc" data-col="b2c" data-cat="food">Coke Zero</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">Connected Financial Solutions LLC</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Dagne Dover</li>
+            <li class="vc" data-col="b2c" data-cat="retail">dosist</li>
+            <li class="vc" data-col="b2c" data-cat="automotive">Driven Brands (Take5)</li>
+            <li class="vc" data-col="b2c" data-cat="financial">Elevations Credit Union</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Finish Line</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Haggar</li>
+            <li class="vc" data-col="b2c" data-cat="food">Kraft (Jell-o &amp; Grey Poupon)</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Michaels</li>
+            <li class="vc" data-col="b2c" data-cat="food">Miller Lite</li>
+            <li class="vc" data-col="b2c" data-cat="media">NBC (The Tonight Show)</li>
+            <li class="vc" data-col="b2c" data-cat="food">Odell Brewing Company</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Old Navy</li>
+            <li class="vc" data-col="b2c" data-cat="financial">OneMain Financial</li>
+            <li class="vc" data-col="b2c" data-cat="media">Outside Inc.</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Samsung</li>
+            <li class="vc" data-col="b2c" data-cat="food">Sprite</li>
+            <li class="vc" data-col="b2c" data-cat="retail">The Hillman Group</li>
+            <li class="vc" data-col="b2c" data-cat="media">The Planetary Society</li>
+            <li class="vc" data-col="b2c" data-cat="media">Toca Boca</li>
+            <li class="vc" data-col="b2c" data-cat="travel">Travelaer</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">WOW!</li>
+            <li class="vc" data-col="b2c" data-cat="tech-telecom">X (Twitter)</li>
+            <li class="vc" data-col="b2c" data-cat="retail">Zappos</li>
+          </ul>
         </div>
-        <div class="vc-list" id="b2c-list">
-          <div class="vc" data-col="b2c" data-cat="financial" data-featured="true">American Express</div>
-          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Ariat</div>
-          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Best Buy</div>
-          <div class="vc" data-col="b2c" data-cat="food" data-featured="true">Domino&rsquo;s</div>
-          <div class="vc" data-col="b2c" data-cat="media" data-featured="true">HBO</div>
-          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Logitech</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom" data-featured="true">Microsoft</div>
-          <div class="vc" data-col="b2c" data-cat="retail" data-featured="true">Nike</div>
-          <div class="vc" data-col="b2c" data-cat="travel" data-featured="true">Vail Resorts</div>
-          <div class="vc" data-col="b2c" data-cat="automotive" data-featured="true">Volkswagen</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Algenist</div>
-          <div class="vc" data-col="b2c" data-cat="travel">B-Cycle</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Bark Box Inc</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Beats</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">BILLSHARK</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Bolt Threads</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">Brammo</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Breville</div>
-          <div class="vc" data-col="b2c" data-cat="food">Burger King</div>
-          <div class="vc" data-col="b2c" data-cat="travel">City of Boulder</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">ClearSpend</div>
-          <div class="vc" data-col="b2c" data-cat="media">Clinton Global Initiative</div>
-          <div class="vc" data-col="b2c" data-cat="food">Coke Zero</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">Connected Financial Solutions LLC</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Dagne Dover</div>
-          <div class="vc" data-col="b2c" data-cat="retail">dosist</div>
-          <div class="vc" data-col="b2c" data-cat="automotive">Driven Brands (Take5)</div>
-          <div class="vc" data-col="b2c" data-cat="financial">Elevations Credit Union</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Finish Line</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Fortune Brands Innovations (Moen &amp; Larson Doors)</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Haggar</div>
-          <div class="vc" data-col="b2c" data-cat="food">Kraft (Jell-o &amp; Grey Poupon)</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Michaels</div>
-          <div class="vc" data-col="b2c" data-cat="food">Miller Lite</div>
-          <div class="vc" data-col="b2c" data-cat="media">NBC (The Tonight Show)</div>
-          <div class="vc" data-col="b2c" data-cat="food">Odell Brewing Company</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Old Navy</div>
-          <div class="vc" data-col="b2c" data-cat="financial">OneMain Financial</div>
-          <div class="vc" data-col="b2c" data-cat="media">Outside Inc.</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Samsung</div>
-          <div class="vc" data-col="b2c" data-cat="food">Sprite</div>
-          <div class="vc" data-col="b2c" data-cat="retail">The Hillman Group</div>
-          <div class="vc" data-col="b2c" data-cat="media">The Planetary Society</div>
-          <div class="vc" data-col="b2c" data-cat="media">Toca Boca</div>
-          <div class="vc" data-col="b2c" data-cat="travel">Travelaer</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">WOW!</div>
-          <div class="vc" data-col="b2c" data-cat="tech-telecom">X (Twitter)</div>
-          <div class="vc" data-col="b2c" data-cat="retail">Zappos</div>
+
+        <!-- B2B COLUMN -->
+        <div class="col">
+          <div class="col-header">
+            <h3 class="col-label">B2B</h3>
+            <select class="col-filter" id="b2b-filter" aria-label="Filter B2B clients by category" onchange="filterClients('b2b', this.value)">
+              <option value="featured">Featured</option>
+              <option value="industrial">Industrial &amp; Services</option>
+              <option value="investment">Investment &amp; Finance</option>
+              <option value="technology">Technology &amp; SaaS</option>
+              <option value="trade">Trade Groups</option>
+              <option value="agencies">Agencies</option>
+            </select>
+          </div>
+          <ul class="vc-list" id="b2b-list" role="list">
+            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Charlesbank</li>
+            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Elevate Sports Ventures</li>
+            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
+            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Google</li>
+            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">LexisNexis</li>
+            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">QuantumBlack</li>
+            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Techstars</li>
+            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">The Hillman Group</li>
+            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">WOW!</li>
+            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">X (Twitter)</li>
+            <li class="vc" data-col="b2b" data-cat="trade">4As</li>
+            <li class="vc" data-col="b2b" data-cat="technology">AbCellera</li>
+            <li class="vc" data-col="b2b" data-cat="trade">Ad Council</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">AKQA</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Alphia</li>
+            <li class="vc" data-col="b2b" data-cat="investment">American Express</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Apollo Program</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">B-Cycle</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Barbarian Group</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Barkley</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">BBDO</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Blinker</li>
+            <li class="vc" data-col="b2b" data-cat="investment">Blue Sage Solutions</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Brammo</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Butler Shine Stern &amp; Partners</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Civic Entertainment Group</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Climate Reality Project</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">CoCollective</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Code3</li>
+            <li class="vc" data-col="b2b" data-cat="trade">Concerned Children&rsquo;s Advertisers</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Crispin</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Deutsch LA</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Doctorpedia</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Economic Space Agency</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Edelman</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Eleven</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Erich-Kallman</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">EVB</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">FCB</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Gale Partners</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Hearthside Food Solutions</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Hill Holliday</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">I&amp;CO</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Ivanti</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">LegalShield</li>
+            <li class="vc" data-col="b2b" data-cat="technology">letgo</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">M&amp;C Saatchi</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">McCANN</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">MDC Partners</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Media Arts Lab</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Microsoft</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Neptune Retail Solutions</li>
+            <li class="vc" data-col="b2b" data-cat="investment">PAI Partners</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Pocket Outdoor Media</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">R/GA</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Tecomet</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">The Martin Agency</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">The Hillman Group</li>
+            <li class="vc" data-col="b2b" data-cat="trade">The One Club</li>
+            <li class="vc" data-col="b2b" data-cat="trade">The Planetary Society</li>
+            <li class="vc" data-col="b2b" data-cat="industrial">Uplight (Simple Energy)</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Whispir</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Work Market</li>
+            <li class="vc" data-col="b2b" data-cat="technology">Zappi</li>
+            <li class="vc" data-col="b2b" data-cat="agencies">Zeus Jones</li>
+          </ul>
         </div>
+
       </div>
+    </div>
+  </section>
 
-      <!-- B2B COLUMN -->
-      <div class="col">
-        <div class="col-header">
-          <div class="col-label">B2B</div>
-          <select class="col-filter" id="b2b-filter" aria-label="Filter B2B clients by category" onchange="filterClients('b2b', this.value)">
-            <option value="featured">Featured</option>
-            <option value="industrial">Industrial &amp; Services</option>
-            <option value="investment">Investment &amp; Finance</option>
-            <option value="technology">Technology &amp; SaaS</option>
-            <option value="trade">Trade Groups</option>
-            <option value="agencies">Agencies</option>
-          </select>
-        </div>
-        <div class="vc-list" id="b2b-list">
-          <div class="vc" data-col="b2b" data-cat="investment" data-featured="true">Charlesbank</div>
-          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Elevate Sports Ventures</div>
-          <div class="vc" data-col="b2b" data-cat="industrial" data-featured="true">Fortune Brands Innovations (Moen &amp; Larson Doors)</div>
-          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">Google</div>
-          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">LexisNexis</div>
-          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">QuantumBlack</div>
-          <div class="vc" data-col="b2b" data-cat="investment" data-featured="true">Techstars</div>
-          <div class="vc" data-col="b2b" data-cat="industrial" data-featured="true">The Hillman Group</div>
-          <div class="vc" data-col="b2b" data-cat="industrial" data-featured="true">WOW!</div>
-          <div class="vc" data-col="b2b" data-cat="technology" data-featured="true">X (Twitter)</div>
-          <div class="vc" data-col="b2b" data-cat="trade">4As</div>
-          <div class="vc" data-col="b2b" data-cat="technology">AbCellera</div>
-          <div class="vc" data-col="b2b" data-cat="trade">Ad Council</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">AKQA</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Alphia</div>
-          <div class="vc" data-col="b2b" data-cat="investment">American Express</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Apollo Program</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Barbarian Group</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Barkley</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">BBDO</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Blinker</div>
-          <div class="vc" data-col="b2b" data-cat="investment">Blue Sage Solutions</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Brammo</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Butler Shine Stern &amp; Partners</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Civic Entertainment Group</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Climate Reality Project</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">CoCollective</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Code3</div>
-          <div class="vc" data-col="b2b" data-cat="trade">Concerned Children&rsquo;s Advertisers</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Crispin</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Deutsch LA</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Doctorpedia</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Economic Space Agency</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Edelman</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Eleven</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Erich-Kallman</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">EVB</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">FCB</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Fortune Brands Innovations (Moen &amp; Larson Doors)</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Gale Partners</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Hearthside Food Solutions</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Hill Holliday</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">I&amp;CO</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Ivanti</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">LegalShield</div>
-          <div class="vc" data-col="b2b" data-cat="technology">letgo</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">M&amp;C Saatchi</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">McCANN</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">MDC Partners</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Media Arts Lab</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Microsoft</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Neptune Retail Solutions</div>
-          <div class="vc" data-col="b2b" data-cat="investment">PAI Partners</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Pocket Outdoor Media</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">R/GA</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Tecomet</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">The Martin Agency</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">The Hillman Group</div>
-          <div class="vc" data-col="b2b" data-cat="trade">The One Club</div>
-          <div class="vc" data-col="b2b" data-cat="trade">The Planetary Society</div>
-          <div class="vc" data-col="b2b" data-cat="industrial">Uplight (Simple Energy)</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Whispir</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Work Market</div>
-          <div class="vc" data-col="b2b" data-cat="technology">Zappi</div>
-          <div class="vc" data-col="b2b" data-cat="agencies">Zeus Jones</div>
-        </div>
+  <!-- FULL-STACK MATT -->
+  <section class="network reveal" aria-labelledby="network-heading">
+    <div>
+      <p class="kicker">Full-Stack Matt</p>
+      <h2 id="network-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">One engagement.<br><em>Unlimited</em> expertise.</h2>
+      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);margin-bottom:1.2rem;">When you engage Matt, you're not just getting one person. Through his agency, <strong style="color:var(--ink);">Green Stone</strong>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
+      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);">That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
+    </div>
+    <dl class="network-numbers">
+      <div class="net-num-box">
+        <dd class="net-num">220<span>+</span></dd>
+        <dt class="net-label"><strong>Subject Matter Experts</strong>have already worked on projects with Green Stone</dt>
       </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- FULL-STACK MATT -->
-<section class="network reveal">
-  <div>
-    <div class="kicker">Full-Stack Matt</div>
-    <h2 class="section-h2" data-parallax="0.025" data-parallax-type="y">One engagement.<br><em>Unlimited</em> expertise.</h2>
-    <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);margin-bottom:1.2rem;">When you engage Matt, you're not just getting one person. Through his agency, <strong style="color:var(--ink);">Green Stone</strong>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
-    <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);">That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
-  </div>
-  <div class="network-numbers">
-    <div class="net-num-box">
-      <div class="net-num">220<span>+</span></div>
-      <div class="net-label"><strong>Subject Matter Experts</strong>have already worked on projects with Green Stone</div>
-    </div>
-    <div class="net-num-box">
-      <div class="net-num">23<span>+</span></div>
-      <div class="net-label"><strong>Years of Experience</strong>accelerates the speed and accuracy of insights and execution</div>
-    </div>
-    <div class="net-num-box">
-      <div class="net-num">120<span>+</span></div>
-      <div class="net-label"><strong>Clients Engaged</strong>Green Stone through the last 13 years</div>
-    </div>
-    <div class="net-num-box">
-      <div class="net-num infinity">&#8734;</div>
-      <div class="net-label"><strong>Matt's Gratitude</strong>that he gets to do this for a living</div>
-    </div>
-  </div>
-</section>
-
+      <div class="net-num-box">
+        <dd class="net-num">23<span>+</span></dd>
+        <dt class="net-label"><strong>Years of Experience</strong>accelerates the speed and accuracy of insights and execution</dt>
+      </div>
+      <div class="net-num-box">
+        <dd class="net-num">120<span>+</span></dd>
+        <dt class="net-label"><strong>Clients Engaged</strong>Green Stone through the last 13 years</dt>
+      </div>
+      <div class="net-num-box">
+        <dd class="net-num infinity">&#8734;</dd>
+        <dt class="net-label"><strong>Matt's Gratitude</strong>that he gets to do this for a living</dt>
+      </div>
+    </dl>
+  </section>
 
 </main>
 
 <!-- CTA -->
-<section class="cta-band">
+<section class="cta-band" aria-label="Call to action">
   <div class="cta-inner">
     <h2 class="cta-h2">Let's talk about what's next</h2>
     <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
   </div>
 </section>
 
-
 <!-- FOOTER -->
 <footer role="contentinfo">
   <div class="footer-inner">
-    <div class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</div>
-    <div class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</div>
+    <p class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</p>
+    <p class="footer-meta" style="text-align:right;max-width:40ch;">Client work shown with permission and remains the property of its respective owners.</p>
   </div>
 </footer>
 
