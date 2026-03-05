@@ -268,11 +268,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ── Homepage — Client Filtering ────────────────
 function filterClients(col, val) {
-  document.querySelectorAll('[data-col="' + col + '"]').forEach(el => {
+  const list = document.getElementById(col + '-list');
+  const items = Array.from(document.querySelectorAll('[data-col="' + col + '"]'));
+
+  items.forEach(el => {
     const cats = (el.dataset.cat || '').split(' ');
     const featured = el.dataset.featured === 'true';
     el.hidden = val === 'featured' ? !featured : !cats.includes(val);
   });
+
+  // Alphabetise visible items for non-featured filters
+  if (val !== 'featured' && list) {
+    const visible = items.filter(el => !el.hidden);
+    visible.sort((a, b) => a.textContent.trim().localeCompare(b.textContent.trim()));
+    visible.forEach(el => list.appendChild(el));
+  }
 }
 
 // ── Recognition Toggles ────────────────────────
