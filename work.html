@@ -155,6 +155,13 @@
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
 }
+.work-filter-tabs--bottom {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+.work-tab-select--bottom {
+  margin-top: 2rem;
+}
 </style>
 </head>
 <body>
@@ -207,6 +214,24 @@
 
 <!-- PROJECT GRID (rendered by JS) -->
 <div class="proj-grid-container" id="proj-grid-container"></div>
+
+<!-- FILTER TABS — BOTTOM -->
+<div class="work-filter-tabs work-filter-tabs--bottom" role="tablist" aria-label="Filter projects by category">
+  <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
+  <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
+  <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
+  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
+  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
+  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+</div>
+<select class="work-tab-select work-tab-select--bottom" aria-label="Filter projects by category" onchange="setFilter(this.value)">
+  <option value="recent">Most Recent</option>
+  <option value="research">Research &amp; Strategy</option>
+  <option value="digital">Digital Platforms &amp; Products</option>
+  <option value="branding">Branding</option>
+  <option value="ecommerce">E-Commerce</option>
+  <option value="advertising">Advertising</option>
+</select>
 
 </main>
 
@@ -1271,9 +1296,10 @@ function setFilter(val) {
   document.querySelectorAll('.work-tab').forEach(function(t) {
     t.classList.toggle('active', t.dataset.filter === val);
   });
-  // Update select
-  var sel = document.querySelector('.work-tab-select');
-  if (sel) sel.value = val;
+  // Update select(s)
+  document.querySelectorAll('.work-tab-select').forEach(function(sel) {
+    sel.value = val;
+  });
 
   // Render
   var container = document.getElementById('proj-grid-container');
