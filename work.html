@@ -155,15 +155,13 @@
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
 }
-/* Bottom filter bar: margin-top of -32px counteracts the grid's 64px padding-bottom,
-   landing the bar exactly 33px below the last card — matching the top filter gap. */
 .work-filter-tabs--bottom {
   margin-top: -32px;
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 .work-tab-select--bottom {
   margin-top: -32px;
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 </style>
 </head>
@@ -1292,10 +1290,8 @@ function renderCategory(cat) {
 }
 
 function setFilter(val, skipScroll) {
-  // Invalidate nav list — must be rebuilt from the new rendered grid
   csNavList = [];
 
-  // Scroll to filter tabs (unless called on init)
   if (!skipScroll) {
     var filterBar = document.querySelector('.work-filter-tabs');
     if (filterBar) {
@@ -1304,11 +1300,9 @@ function setFilter(val, skipScroll) {
     }
   }
 
-  // Update tabs
   document.querySelectorAll('.work-tab').forEach(function(t) {
     t.classList.toggle('active', t.dataset.filter === val);
   });
-  // Update all selects
   document.querySelectorAll('.work-tab-select').forEach(function(sel) {
     sel.value = val;
   });
