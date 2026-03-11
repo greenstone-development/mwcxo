@@ -156,11 +156,12 @@
   .cs-title { font-size: 1.3rem; }
 }
 .work-filter-tabs--bottom {
-  margin-top: 3rem;
-  margin-bottom: 0;
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
 }
 .work-tab-select--bottom {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 </style>
 </head>
@@ -1288,15 +1289,24 @@ function renderCategory(cat) {
   return html;
 }
 
-function setFilter(val) {
+function setFilter(val, skipScroll) {
   // Invalidate nav list — must be rebuilt from the new rendered grid
   csNavList = [];
+
+  // Scroll to filter tabs (unless called on init)
+  if (!skipScroll) {
+    var filterBar = document.querySelector('.work-filter-tabs');
+    if (filterBar) {
+      var offset = filterBar.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: Math.max(0, offset), behavior: 'smooth' });
+    }
+  }
 
   // Update tabs
   document.querySelectorAll('.work-tab').forEach(function(t) {
     t.classList.toggle('active', t.dataset.filter === val);
   });
-  // Update select(s)
+  // Update all selects
   document.querySelectorAll('.work-tab-select').forEach(function(sel) {
     sel.value = val;
   });
@@ -1322,7 +1332,7 @@ function setFilter(val) {
 }
 
 // Initialize
-setFilter('recent');
+setFilter('recent', true);
 </script>
 <!-- Case Study Overlay -->
 <div class="cs-overlay" id="csOverlay">
