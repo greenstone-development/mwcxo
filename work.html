@@ -155,12 +155,14 @@
   .cs-meta-col { position: static; }
   .cs-title { font-size: 1.3rem; }
 }
+/* Bottom filter bar: margin-top of -32px counteracts the grid's 64px padding-bottom,
+   landing the bar exactly 33px below the last card — matching the top filter gap. */
 .work-filter-tabs--bottom {
-  margin-top: 32px;
+  margin-top: -32px;
   margin-bottom: 32px;
 }
 .work-tab-select--bottom {
-  margin-top: 32px;
+  margin-top: -32px;
   margin-bottom: 32px;
 }
 </style>
