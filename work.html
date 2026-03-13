@@ -1236,8 +1236,15 @@ function buildCard(p) {
     ? '<div class="proj-awards"><span class="proj-award-tag">' + TROPHY_SVG + 'Award Winning</span></div>'
     : '';
 
+  var imgDiv = '<div class="proj-img" style="background-image:url(\'' + p.img + '\');background-size:cover;background-position:center;"><div class="proj-img-inner"></div></div>';
+  var imgHTML = p.link
+    ? '<a href="' + p.link + '" target="_blank" rel="noopener" class="proj-img-link" aria-label="' + p.client + ' — ' + p.title + ' (opens case study)">' + imgDiv + '</a>'
+    : p.caseStudy
+    ? '<a href="#" class="proj-img-link" onclick="openCaseStudy(\'' + p.caseStudy + '\');return false;" aria-label="' + p.client + ' — ' + p.title + '">' + imgDiv + '</a>'
+    : imgDiv;
+
   return '<div class="project-card"' + (p.caseStudy ? ' data-cs="' + p.caseStudy + '"' : '') + '>'
-    + '<div class="proj-img" style="background-image:url(\'' + p.img + '\');background-size:cover;background-position:center;"><div class="proj-img-inner"></div></div>'
+    + imgHTML
     + '<div class="proj-body">'
     + '<div class="proj-client">' + p.client + '</div>'
     + '<div class="proj-title">' + p.title + '</div>'
