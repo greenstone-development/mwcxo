@@ -40,6 +40,15 @@ document.addEventListener('keydown', e => {
 // ── Parallax Engine ────────────────────────────
 // Uses requestAnimationFrame with lerped values for buttery smoothness.
 // Injects subtle floating orbs and applies depth-based transforms.
+//
+// Safety rules that prevent copy overlap:
+//   1. Heading/text elements are auto-capped at ±MAX_TEXT_OFFSET px.
+//   2. The multiplier is capped at 700px (so large viewports don't amplify drift).
+//   3. Orb travel is capped so they don't escape their parent sections.
+//   4. Lerp factor is kept gentle (0.085) for smooth, controlled easing.
+
+const MAX_TEXT_OFFSET = 8;   // px — absolute max shift for any copy element
+const MAX_ORB_OFFSET  = 55;  // px — absolute max float travel for decorative orbs
 
 class ParallaxEngine {
   constructor() {
@@ -60,25 +69,28 @@ class ParallaxEngine {
 
   collectElements() {
     document.querySelectorAll('[data-parallax]').forEach(el => {
-      this.elements.push({
-        el,
-        speed: parseFloat(el.dataset.parallax) || 0.1,
-        type: el.dataset.parallaxType || 'y',
-      });
+      const speed = parseFloat(el.dataset.parallax) || 0.1;
+      const type  = el.dataset.parallaxType || 'y';
+      // Any heading or element with an explicit cap uses the tight text limit.
+      const isText    = /^h[1-6]$/i.test(el.tagName);
+      const maxOffset = parseFloat(el.dataset.parallaxMax) || (isText ? MAX_TEXT_OFFSET : 20);
+      this.elements.push({ el, speed, type, maxOffset });
     });
   }
 
   injectOrbs() {
+    // Speed signs: positive = drifts down as page scrolls; negative = drifts up.
+    // Values kept very small so orbs barely move — they add depth without distraction.
     const orbConfigs = [
-      { parent: '.hero-left', cls: 'orb-teal', size: 280, top: '10%', left: '-8%', speed: 0.03 },
-      { parent: '.hero-left', cls: 'orb-gold', size: 180, top: '60%', right: '5%', speed: -0.02 },
-      { parent: '.what-i-do', cls: 'orb-teal', size: 350, top: '-15%', right: '-10%', speed: 0.04 },
-      { parent: '.what-i-do', cls: 'orb-ink', size: 200, bottom: '5%', left: '20%', speed: -0.025 },
-      { parent: '.network', cls: 'orb-gold', size: 260, top: '20%', left: '-5%', speed: 0.035 },
-      { parent: '.network', cls: 'orb-teal', size: 160, bottom: '10%', right: '15%', speed: -0.02 },
-      { parent: '.clients', cls: 'orb-teal', size: 300, top: '-10%', right: '5%', speed: 0.03 },
-      { parent: '.rec-hero', cls: 'orb-teal', size: 220, top: '30%', right: '10%', speed: 0.04 },
-      { parent: '.cta-band', cls: 'orb-gold', size: 200, top: '20%', left: '60%', speed: -0.03 },
+      { parent: '.hero-left',  cls: 'orb-teal', size: 280, top: '10%',  left: '-8%',  speed:  0.022 },
+      { parent: '.hero-left',  cls: 'orb-gold', size: 180, top: '60%',  right: '5%',  speed: -0.015 },
+      { parent: '.what-i-do', cls: 'orb-teal', size: 350, top: '-15%', right: '-10%', speed:  0.028 },
+      { parent: '.what-i-do', cls: 'orb-ink',  size: 200, bottom: '5%', left: '20%', speed: -0.018 },
+      { parent: '.network',   cls: 'orb-gold', size: 260, top: '20%',  left: '-5%',  speed:  0.025 },
+      { parent: '.network',   cls: 'orb-teal', size: 160, bottom: '10%', right: '15%', speed: -0.015 },
+      { parent: '.clients',   cls: 'orb-teal', size: 300, top: '-10%', right: '5%',  speed:  0.022 },
+      { parent: '.rec-hero',  cls: 'orb-teal', size: 220, top: '30%',  right: '10%', speed:  0.028 },
+      { parent: '.cta-band',  cls: 'orb-gold', size: 200, top: '20%',  left: '60%',  speed: -0.022 },
     ];
 
     orbConfigs.forEach(cfg => {
@@ -91,12 +103,12 @@ class ParallaxEngine {
 
       const orb = document.createElement('div');
       orb.className = `parallax-orb ${cfg.cls}`;
-      orb.style.width = cfg.size + 'px';
+      orb.style.width  = cfg.size + 'px';
       orb.style.height = cfg.size + 'px';
-      if (cfg.top) orb.style.top = cfg.top;
+      if (cfg.top)    orb.style.top    = cfg.top;
       if (cfg.bottom) orb.style.bottom = cfg.bottom;
-      if (cfg.left) orb.style.left = cfg.left;
-      if (cfg.right) orb.style.right = cfg.right;
+      if (cfg.left)   orb.style.left   = cfg.left;
+      if (cfg.right)  orb.style.right  = cfg.right;
 
       parent.appendChild(orb);
       this.orbs.push({ el: orb, speed: cfg.speed, parent });
@@ -114,31 +126,47 @@ class ParallaxEngine {
   }
 
   tick() {
-    this.currentScrollY = lerp(this.currentScrollY, this.scrollY, 0.1);
+    // Gentle lerp — feels smooth without overshooting on fast scrolls
+    this.currentScrollY = lerp(this.currentScrollY, this.scrollY, 0.085);
 
-    // Transform [data-parallax] elements
-    this.elements.forEach(({ el, speed, type }) => {
+    // ── Transform [data-parallax] copy elements ──────────────────────────────
+    // Reference height is capped at 700 so large monitors don't amplify offsets.
+    // All offsets are additionally clamped to maxOffset for each element.
+    const refHeight = Math.min(this.vh, 700);
+
+    this.elements.forEach(({ el, speed, type, maxOffset }) => {
       const rect = el.getBoundingClientRect();
-      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+      if (rect.bottom < -200 || rect.top > this.vh + 200) return;
 
+      // progress 0→1 as element travels bottom-of-viewport → top-of-viewport
       const progress = (this.vh - rect.top) / (this.vh + rect.height);
-      const centered = (progress - 0.5) * 2;
+      // centered: -1 when entering from bottom, 0 at midpoint, +1 when leaving at top
+      const centered = clamp((progress - 0.5) * 2, -1, 1);
 
       if (type === 'y') {
-        el.style.transform = `translate3d(0,${(centered * speed * this.vh).toFixed(1)}px,0)`;
+        const raw    = centered * speed * refHeight;
+        const offset = clamp(raw, -maxOffset, maxOffset);
+        el.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
       } else if (type === 'scale') {
-        el.style.transform = `scale(${(1 + centered * speed).toFixed(4)})`;
+        // Very tight scale range — centred means no scale, extremes ±speed
+        const scale = 1 + clamp(centered * speed, -0.015, 0.015);
+        el.style.transform = `scale(${scale.toFixed(4)})`;
       }
     });
 
-    // Float the orbs
+    // ── Float decorative orbs ─────────────────────────────────────────────────
+    // Orbs use raw (lerped) scrollY rather than viewport-relative progress so
+    // they drift continuously — giving a sense of depth without snapping.
+    // Travel is capped so they stay within a believable range.
     this.orbs.forEach(({ el, speed }) => {
       const parent = el.parentElement;
       if (!parent) return;
       const rect = parent.getBoundingClientRect();
-      if (rect.bottom < -100 || rect.top > this.vh + 100) return;
+      if (rect.bottom < -200 || rect.top > this.vh + 200) return;
 
-      el.style.transform = `translate3d(0,${(this.currentScrollY * speed).toFixed(1)}px,0)`;
+      const raw    = this.currentScrollY * speed;
+      const offset = clamp(raw, -MAX_ORB_OFFSET, MAX_ORB_OFFSET);
+      el.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
     });
 
     requestAnimationFrame(() => this.tick());
@@ -222,10 +250,11 @@ class HeroParallax {
 
   update() {
     if (!this.heroContent) return;
+    // Gentle zoom only — no y-offset, which avoids a visible content shift
+    // on scroll reversal and keeps the image anchored in its container.
     const progress = clamp(window.scrollY / window.innerHeight, 0, 1);
-    const scale = 1 + progress * 0.06;
-    const yOffset = progress * -20;
-    this.heroContent.style.transform = `scale(${scale.toFixed(4)}) translate3d(0,${yOffset.toFixed(1)}px,0)`;
+    const scale    = 1 + progress * 0.04;
+    this.heroContent.style.transform = `scale(${scale.toFixed(4)})`;
   }
 }
 
