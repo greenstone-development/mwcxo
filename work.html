@@ -1266,11 +1266,8 @@ function renderCategory(cat) {
   var items = PROJECTS.filter(function(p) { return p.cats.indexOf(cat) !== -1; });
   if (!items.length) return '<p style="font-family:var(--b);font-size:.88rem;color:var(--muted);padding:2rem 0;">No projects in this category yet.</p>';
 
-  // Shuffle items randomly (Fisher-Yates)
-  for (var s = items.length - 1; s > 0; s--) {
-    var r = Math.floor(Math.random() * (s + 1));
-    var tmp = items[s]; items[s] = items[r]; items[r] = tmp;
-  }
+  // Sort chronologically — newest first
+  items.sort(function(a, b) { return b.sortYear - a.sortYear; });
 
   var html = '';
   var cols = 3; // start with 3
