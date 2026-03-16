@@ -1269,6 +1269,20 @@ function renderCategory(cat) {
   // Sort chronologically — newest first
   items.sort(function(a, b) { return b.sortYear - a.sortYear; });
 
+  // For featured categories: shuffle the top 5, keep the rest in chron order
+  var featuredCats = ['research', 'digital', 'branding'];
+  if (featuredCats.indexOf(cat) !== -1 && items.length > 1) {
+    var topCount = Math.min(5, items.length);
+    var top  = items.slice(0, topCount);
+    var rest = items.slice(topCount);
+    // Fisher-Yates shuffle on top slice only
+    for (var s = top.length - 1; s > 0; s--) {
+      var r = Math.floor(Math.random() * (s + 1));
+      var tmp = top[s]; top[s] = top[r]; top[r] = tmp;
+    }
+    items = top.concat(rest);
+  }
+
   var html = '';
   var cols = 3; // start with 3
   var i = 0;
