@@ -388,9 +388,10 @@ img{display:block;max-width:100%;}
 
 /* Work Filter Tabs */
 .filter-see-more-label{
-  max-width:1160px;margin:0 auto .5rem;padding:0;
+  width:100%;
   font-family:var(--f);font-size:.7rem;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:.1rem;
 }
 .work-filter-tabs{
   max-width:1160px;margin:0 auto 2rem;padding:0;
