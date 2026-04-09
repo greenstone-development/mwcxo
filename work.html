@@ -217,9 +217,9 @@
 <div class="proj-grid-container" id="proj-grid-container"></div>
 
 <!-- FILTER TABS — BOTTOM -->
-<div class="work-filter-bottom-wrap">
-  <p class="filter-see-more-label">See more:</p>
-  <div class="work-filter-tabs work-filter-tabs--bottom" role="tablist" aria-label="Filter projects by category">
+<div style="max-width:1160px;margin:0 auto;padding:0;">
+  <p style="font-family:var(--f);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#1A6B62;margin:0 0 .75rem;padding:0;">See more:</p>
+  <div class="work-filter-tabs work-filter-tabs--bottom" style="max-width:none;margin:0 0 2rem;" role="tablist" aria-label="Filter projects by category">
     <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
     <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
     <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
@@ -227,7 +227,7 @@
     <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
     <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
   </div>
-  <select class="work-tab-select work-tab-select--bottom" aria-label="Filter projects by category" onchange="setFilter(this.value)">
+  <select class="work-tab-select work-tab-select--bottom" style="max-width:none;margin:0 0 2rem;" aria-label="Filter projects by category" onchange="setFilter(this.value)">
     <option value="recent">Most Recent</option>
     <option value="research">Research &amp; Strategy</option>
     <option value="digital">Digital Platforms &amp; Products</option>
