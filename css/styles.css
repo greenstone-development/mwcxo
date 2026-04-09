@@ -391,6 +391,7 @@ img{display:block;max-width:100%;}
   max-width:1160px;margin:0 auto;padding:0;
 }
 .filter-see-more-label{
+  width:100%;flex-basis:100%;
   font-family:var(--f);font-size:.68rem;font-weight:600;
   letter-spacing:.22em;text-transform:uppercase;color:var(--teal);
   margin:0 0 .75rem;display:block;
