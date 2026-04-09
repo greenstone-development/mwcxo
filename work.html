@@ -217,16 +217,17 @@
 <div class="proj-grid-container" id="proj-grid-container"></div>
 
 <!-- FILTER TABS — BOTTOM -->
-<div class="work-filter-tabs work-filter-tabs--bottom" role="tablist" aria-label="Filter projects by category">
-  <span class="filter-see-more-label">See more:</span>
-  <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
-  <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
-  <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
-  <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
-  <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
-  <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
-</div>
-<select class="work-tab-select work-tab-select--bottom" aria-label="Filter projects by category" onchange="setFilter(this.value)">
+<div class="work-filter-bottom-wrap">
+  <p class="filter-see-more-label">See more:</p>
+  <div class="work-filter-tabs work-filter-tabs--bottom" role="tablist" aria-label="Filter projects by category">
+    <button class="work-tab active" role="tab" data-filter="recent" onclick="setFilter('recent')">Most Recent</button>
+    <button class="work-tab" role="tab" data-filter="research" onclick="setFilter('research')">Research &amp; Strategy</button>
+    <button class="work-tab" role="tab" data-filter="digital" onclick="setFilter('digital')">Digital Platforms &amp; Products</button>
+    <button class="work-tab" role="tab" data-filter="branding" onclick="setFilter('branding')">Branding</button>
+    <button class="work-tab" role="tab" data-filter="ecommerce" onclick="setFilter('ecommerce')">E-Commerce</button>
+    <button class="work-tab" role="tab" data-filter="advertising" onclick="setFilter('advertising')">Advertising</button>
+  </div>
+  <select class="work-tab-select work-tab-select--bottom" aria-label="Filter projects by category" onchange="setFilter(this.value)">
   <option value="recent">Most Recent</option>
   <option value="research">Research &amp; Strategy</option>
   <option value="digital">Digital Platforms &amp; Products</option>
@@ -234,6 +235,7 @@
   <option value="ecommerce">E-Commerce</option>
   <option value="advertising">Advertising</option>
 </select>
+</div><!-- /.work-filter-bottom-wrap -->
 
 </main>
 
