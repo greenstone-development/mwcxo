@@ -393,8 +393,10 @@ img{display:block;max-width:100%;}
 .filter-see-more-label{
   font-family:var(--f);font-size:.68rem;font-weight:600;
   letter-spacing:.22em;text-transform:uppercase;color:var(--teal);
-  margin:0 0 .75rem;
+  margin:0 0 .75rem;display:block;
 }
+.work-filter-tabs--bottom{max-width:none;margin:0 0 2rem;}
+.work-tab-select--bottom{max-width:none;margin:0 0 2rem;}
 .work-filter-tabs{
   max-width:1160px;margin:0 auto 2rem;padding:0;
   display:flex;gap:.5rem;flex-wrap:wrap;
@@ -419,9 +421,6 @@ img{display:block;max-width:100%;}
   background-repeat:no-repeat;background-position:right .75rem center;
   cursor:pointer;max-width:1160px;margin:0 auto 2rem;
 }
-
-.work-filter-tabs--bottom{max-width:none;margin:0 0 2rem;}
-.work-tab-select--bottom{max-width:none;margin:0 0 2rem;}
 
 /* Project Grids */
 .proj-grid-container{max-width:1160px;margin:0 auto;padding-bottom:4rem;}
