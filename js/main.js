@@ -361,15 +361,15 @@ const orgContent = {
   }
 };
 
-let currentOrgAudience = 'agency';
+let currentOrgAudience = 'brand';
 
 function initOrgSection() {
   document.querySelectorAll('.org-card').forEach(card => {
     const key = card.dataset.key;
     const content = orgContent[key];
     if (!content) return;
-    card.querySelector('.org-card-title').textContent = content.agency.title;
-    card.querySelector('.org-card-body').textContent = content.agency.body;
+    card.querySelector('.org-card-title').textContent = content.brand.title;
+    card.querySelector('.org-card-body').textContent = content.brand.body;
   });
 }
 
