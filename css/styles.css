@@ -342,8 +342,6 @@ img{display:block;max-width:100%;}
 .build-org{background:var(--ink);padding:7rem 3.5rem;}
 .build-org-header{
   max-width:1160px;margin:0 auto 4rem;
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:3rem;flex-wrap:wrap;
 }
 .build-org .kicker{color:var(--teal2);}
 .build-org .kicker::before{background:var(--teal2);}
@@ -351,25 +349,21 @@ img{display:block;max-width:100%;}
 .build-org .section-h2 em{color:var(--teal2);}
 .build-org-desc{
   font-family:var(--b);font-size:.95rem;line-height:1.8;
-  color:rgba(255,255,255,.5);max-width:44ch;margin-top:.5rem;
+  color:rgba(255,255,255,.5);max-width:52ch;margin-top:.5rem;margin-bottom:2rem;
 }
 .org-toggle-wrap{
-  display:flex;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:100px;padding:3px;gap:2px;
-  flex-shrink:0;align-self:flex-start;margin-top:.35rem;
+  display:flex;gap:.5rem;flex-wrap:wrap;
 }
 .org-toggle-btn{
-  font-family:var(--f);font-size:.65rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:.55rem 1.4rem;border-radius:100px;
-  border:none;cursor:pointer;
-  background:transparent;color:rgba(255,255,255,.4);
-  transition:background .25s,color .25s;white-space:nowrap;
+  font-family:var(--f);font-size:.72rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.55rem 1.2rem;border-radius:100px;
+  border:1px solid rgba(255,255,255,.18);background:transparent;
+  color:rgba(255,255,255,.45);cursor:pointer;transition:all .2s;
+  white-space:nowrap;
 }
-.org-toggle-btn.active{background:var(--teal);color:white;}
-.org-toggle-btn:hover:not(.active){color:rgba(255,255,255,.7);}
+.org-toggle-btn:hover:not(.active){color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.4);}
+.org-toggle-btn.active{background:var(--teal);color:white;border-color:var(--teal);}
 .org-grid{
   max-width:1160px;margin:0 auto;
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -1136,7 +1130,6 @@ img{display:block;max-width:100%;}
   .photo-grid-hide { display: none; }
 
   .build-org { padding: 5rem 1.5rem; }
-  .build-org-header { flex-direction: column; gap: 2rem; margin-bottom: 2.5rem; }
   .org-grid { grid-template-columns: 1fr 1fr; }
 }
 
