@@ -302,61 +302,61 @@ const orgContent = {
   culture: {
     agency: {
       title: 'Building Powerful Cultures',
-      body: "The strongest agency cultures aren't accidents. They're built on leadership that makes people want to give more than was asked. I found my own voice as a culture builder running Green Stone over 12 years, inspiring 200+ people through the work and the mission. I bring contagious energy and genuine belief to whatever I'm part of, and I know how to channel that into a team that performs at a high level because they want to, not because they have to."
+      body: "The strongest cultures are built on leadership that makes people want to give more than was asked. After 12 years inspiring 200+ people at Green Stone, I know how to bring that energy to any mission."
     },
     brand: {
       title: 'Building Powerful Cultures',
-      body: "Great customer experiences start with great internal cultures, because the people closest to your customers need to believe in what they're delivering. Drawing on 12 years of building Green Stone's culture from scratch, alongside formative time at some of the industry's most energized agencies, I help brand teams build the kind of culture that actually shows up in the experience itself."
+      body: "Great customer experiences start with great internal cultures, and I've spent 12 years building one from scratch. I help brand teams create the kind of culture that actually shows up in the experience itself."
     }
   },
   talent: {
     agency: {
       title: 'Identifying & Evolving Talent',
-      body: "I've been told I have a sharp eye for talent, and I'd put the teams I've built across my career up against just about anyone when it comes to CX, strategy, research, digital marketing, brand design, and product design. Many were hired straight out of school and are now leading departments and practices at some of the biggest firms in the world. I know what to look for, and I'm particularly good at spotting it before it's fully formed."
+      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm particularly good at spotting it before it's fully formed."
     },
     brand: {
       title: 'Identifying & Evolving Talent',
-      body: "Building great internal capabilities starts with finding the right people and giving them room to grow. I've spent 20+ years developing talent across disciplines, and I bring that same eye to helping brands identify what they have, what they need, and how to bridge the gap, whether that means hiring, restructuring, or better leveraging the teams already in place."
+      body: "I've spent 20+ years developing talent across disciplines and bring that same eye to helping brands identify what they have, what they need, and how to close the gap."
     }
   },
   remote: {
     agency: {
       title: 'Maximizing Decentralized Workforces',
-      body: "Green Stone has been fully distributed since 2014, long before remote became a necessity for most. That journey taught me both the cultural and operational tools to not just replicate the magic of being in the room, but in some ways create more of it by bridging different perspectives across geographies. I can bring those learnings directly to any agency navigating remote, hybrid, or multi-office realities."
+      body: "Green Stone has been fully distributed since 2014, and that journey gave me practical cultural and operational tools for any agency navigating remote, hybrid, or multi-office realities."
     },
     brand: {
       title: 'Maximizing Decentralized Workforces',
-      body: "Most large brands already operate in a decentralized reality: regional teams, cross-functional pods, remote marketing orgs. I've spent 12 years building a fully distributed company that performs at the level of any in-person team, and I understand the cultural and operational levers that make it work. That translates directly to helping brands get more out of the teams they already have, wherever those teams are."
+      body: "I've spent 12 years building a fully distributed company that performs at the level of any in-person team, and I understand the levers that make it work for large, decentralized brand organizations too."
     }
   },
   trust: {
     agency: {
       title: 'Earning Client Trust',
-      body: "Somewhere along the way, I became as much a client partner as a creative or strategic lead. At Green Stone, I owned every client relationship we had, and I got very good at building trust that led to repeat work, honest conversation, and clients who brought us with them when they changed roles. That relationship-first instinct is something I can bring into any client-facing role."
+      body: "At Green Stone I owned every client relationship, and I got very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring you with them when they move on."
     },
     brand: {
       title: 'Earning Stakeholder Trust',
-      body: "Navigating internal stakeholders across marketing, product, operations, and the C-suite is often the hardest part of getting good work done. I've spent my career building the kind of trust that opens doors and keeps them open. I know how to earn alignment rather than mandate it, and how to move ambitious work forward without leaving people behind."
+      body: "I know how to earn alignment rather than mandate it, moving ambitious work forward across marketing, product, operations, and the C-suite without leaving people behind."
     }
   },
   bizdev: {
     agency: {
       title: 'Business Development',
-      body: "Twelve years of running Green Stone means twelve years of pitching, and I've gotten pretty good at it. Beyond the craft of the pitch itself, I've built a network across marketing leadership that could open meaningful doors. I know the landscape, the players, and how to open a room."
+      body: "Twelve years of pitching has made me pretty good at it, and I've built a network across marketing leadership that could open meaningful doors."
     },
     brand: {
       title: 'Network & Relationships',
-      body: "Two decades of agency relationships have given me a network most brand-side leaders don't have, spanning agencies, consultancies, technology vendors, and independent practitioners. When it comes to identifying the right partners, I can accelerate the search considerably. And when it comes to structuring those relationships, I understand the economics from both sides of the table."
+      body: "Two decades of agency relationships have given me a network most brand-side leaders don't have, and I can accelerate the search for the right partners considerably."
     }
   },
   perspective: {
     agency: {
       title: 'Keeping Perspective',
-      body: "Having personally carried the line of credit at Green Stone for over a decade, I understand the business realities of running an agency in a way that only comes from having done it. I'm not a CFO, and I've had my share of hard-earned learnings along the way, but I bring a grounded perspective to decisions that doesn't lose sight of what's actually at stake for the business."
+      body: "Having carried the line of credit at Green Stone for over a decade, I bring a grounded, bottom-line sensibility to decisions that only comes from having done it yourself."
     },
     brand: {
       title: 'Keeping Perspective',
-      body: "Strategic ambition and creative vision are only worth something if they move the business. Having run a company for 12+ years, I never lose sight of that. I bring a grounded, bottom-line sensibility to every recommendation I make, every journey I design, and every initiative I help prioritize. The work needs to be inspiring and effective."
+      body: "Strategic ambition and creative vision are only worth something if they move the business. The work needs to be inspiring and effective."
     }
   }
 };

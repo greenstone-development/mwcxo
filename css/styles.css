@@ -395,7 +395,9 @@ img{display:block;max-width:100%;}
 .org-card-body.fading{opacity:0;}
 
 /* ============================================
-   WORK PAGE{padding:9rem 0 2rem;max-width:1160px;margin:0 auto;}
+   WORK PAGE
+   ============================================ */
+.page-hero{padding:calc(64px + 4.5rem) 3.5rem 3rem;max-width:1160px;margin:0 auto;}
 .page-h1{
   font-family:var(--f);font-size:clamp(2.4rem,5vw,4rem);font-weight:700;
   line-height:1.0;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.2rem;
@@ -673,7 +675,7 @@ img{display:block;max-width:100%;}
   .columns-wrap{grid-template-columns:1fr;}
   .network{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
 
-  .page-hero{padding:8rem 1.5rem 2rem;}
+  .page-hero{padding:calc(64px + 3rem) 1.5rem 2rem;}
   .era-section{padding:2rem 1.5rem 4rem;}
   .project-grid{grid-template-columns:1fr 1fr;}
   .gs-note{grid-template-columns:1fr;gap:1.5rem;}
