@@ -341,7 +341,7 @@ img{display:block;max-width:100%;}
 /* HOMEPAGE — Building Organizations */
 .build-org{background:var(--ink);padding:7rem 3.5rem;}
 .build-org-header{
-  max-width:1160px;margin:0 auto 4rem;
+  max-width:1160px;margin:0 auto 2rem;
 }
 .build-org .kicker{color:var(--teal2);}
 .build-org .kicker::before{background:var(--teal2);}
