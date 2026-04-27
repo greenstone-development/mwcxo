@@ -9,8 +9,15 @@
   const nav = document.querySelector('.nav');
   if (nav) {
     const scrollThreshold = 60;
+    const hasHero = document.querySelector('.hero');
+    const alwaysScrolled = !hasHero || nav.hasAttribute('data-nav-fixed');
+
     const handleScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+      if (alwaysScrolled) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();

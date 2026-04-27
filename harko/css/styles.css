@@ -278,11 +278,22 @@ button {
 }
 
 .hero-content {
-  position: relative;
+  position: absolute;
+  bottom: 80px;
+  left: 0;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   color: #fff;
   padding: 0 var(--pad);
+  max-width: 620px;
+}
+
+.hero-content.centered {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  text-align: center;
+  margin: 0 auto;
   max-width: 720px;
 }
 
