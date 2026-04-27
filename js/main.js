@@ -306,13 +306,13 @@ const orgContent = {
     },
     brand: {
       title: 'Building Powerful Cultures',
-      body: "Great customer experiences start with great internal cultures, and I've spent 12 years building one from scratch. I help brand teams create the kind of culture that actually shows up in the experience itself."
+      body: "Great customer experiences start with great internal cultures, and through decades of working with some of the most passionate teams, leaders and brands on the planet, I've learned how to build cultures that are both contagiously inspiring and powerfully effective."
     }
   },
   talent: {
     agency: {
       title: 'Identifying & Evolving Talent',
-      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm particularly good at spotting it before it's fully formed."
+      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm especially strong at identifying, empowering and elevating young talent early in their careers."
     },
     brand: {
       title: 'Identifying & Evolving Talent',
@@ -332,7 +332,7 @@ const orgContent = {
   trust: {
     agency: {
       title: 'Earning Client Trust',
-      body: "At Green Stone I owned every client relationship, and I got very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring you with them when they move on."
+      body: "At Green Stone I own every client relationship, and I am very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring you with them when they move on."
     },
     brand: {
       title: 'Earning Stakeholder Trust',
@@ -342,7 +342,7 @@ const orgContent = {
   bizdev: {
     agency: {
       title: 'Business Development',
-      body: "Twelve years of pitching has made me pretty good at it, and I've built a network across marketing leadership that could open meaningful doors."
+      body: "A dozen years of practice has helped me source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
     },
     brand: {
       title: 'Network & Relationships',
