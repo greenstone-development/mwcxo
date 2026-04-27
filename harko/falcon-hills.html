@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Falcon Hills Drive — A luxury custom home project by Harko Construction in Boulder, Colorado.">
+  <title>Falcon Hills Drive — Harko Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Harko Construction — Home">
+      <img src="images_harko/logo-white.png" alt="" class="logo-light" width="206" height="60">
+      <img src="images_harko/logo-dark.png" alt="" class="logo-dark" width="297" height="85">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="projects.html" class="nav-link" aria-current="page">projects</a></li>
+      <li><a href="about.html" class="nav-link">about</a></li>
+      <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- Project Sub-navigation -->
+  <div class="project-nav" role="navigation" aria-label="Project navigation">
+    <a href="projects.html">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Projects
+    </a>
+    <div style="display:flex;gap:24px;">
+      <span style="font-size:13px;color:var(--text-muted);">Previous</span>
+      <span style="font-size:13px;color:var(--text-muted);">Next</span>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="hero hero-small" style="margin-top:44px;" aria-label="Project hero">
+      <img src="images_harko/fh-hero.jpg" alt="" class="hero-img" data-parallax>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title" style="font-size:clamp(28px,4vw,42px);">Falcon Hills Drive</h1>
+      </div>
+    </section>
+
+    <!-- Intro + Meta -->
+    <section class="section bg-white">
+      <div class="container">
+        <div class="split fade-up">
+          <div>
+            <h2 class="serif-heading" style="font-size:clamp(22px,3vw,28px);margin-bottom:16px;">Refined Excellence</h2>
+            <p class="body-text">This custom residence in Downtown Boulder showcases Harko's commitment to luxury craftsmanship. From the initial concept through completion, every detail was carefully considered to deliver extraordinary craftsmanship at every level of detail.</p>
+          </div>
+          <div class="meta-grid">
+            <div>
+              <div class="meta-label">Location</div>
+              <div class="meta-value">Downtown Boulder</div>
+            </div>
+            <div>
+              <div class="meta-label">Building</div>
+              <div class="meta-value">Single-family Resident</div>
+            </div>
+            <div>
+              <div class="meta-label">Roles</div>
+              <div class="meta-value">Planning, Construction, Interior &amp; Exterior Design...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ken Burns Slideshow -->
+    <section class="section-sm bg-white" style="padding-top:0;" aria-label="Project slideshow">
+      <div class="container">
+        <div class="kb-slideshow fade-up" aria-roledescription="carousel" aria-label="Falcon Hills Drive photo gallery">
+          <div class="kb-slides" id="kb-slides">
+            <div class="kb-slide active" style="--kb-anim:kb-zil;"><img src="images_harko/fh-gallery1.jpg" alt="Falcon Hills interior view 1"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zir;"><img src="images_harko/fh-gallery2.jpg" alt="Falcon Hills interior view 2"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zoc;"><img src="images_harko/fh-gallery3.jpg" alt="Falcon Hills interior view 3"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zit;"><img src="images_harko/fh-detail.jpg" alt="Falcon Hills detail view"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zol;"><img src="images_harko/fh-feature.jpg" alt="Falcon Hills feature view"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zic;"><img src="images_harko/fh-strip1.jpg" alt="Falcon Hills detail 1"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zir;"><img src="images_harko/fh-strip2.jpg" alt="Falcon Hills detail 2"></div>
+            <div class="kb-slide" style="--kb-anim:kb-zoc;"><img src="images_harko/fh-strip3.jpg" alt="Falcon Hills detail 3"></div>
+          </div>
+          <div class="kb-overlay"></div>
+          <div class="kb-counter" id="kb-counter" aria-live="polite">01 / 08</div>
+          <div class="kb-progress" role="progressbar"><div class="kb-progress-fill" id="kb-progress-fill"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section-sm bg-light" aria-label="Project statistics">
+      <div class="container">
+        <div class="stats-row fade-up" style="max-width:700px;margin:0 auto;">
+          <div>
+            <div class="stat-num" data-value="4">0</div>
+            <div class="stat-label">Bedrooms</div>
+          </div>
+          <div>
+            <div class="stat-num" data-value="5">0</div>
+            <div class="stat-label">Bathrooms</div>
+          </div>
+          <div>
+            <div class="stat-num" data-value="5200" data-suffix="">0</div>
+            <div class="stat-label">Sq. Ft.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masonry Gallery -->
+    <section class="section-sm bg-white" aria-label="Project gallery">
+      <div class="container">
+        <div class="gallery-strip cols-3 fade-up">
+          <div><img src="images_harko/fh-gallery1.jpg" alt="Falcon Hills entry and staircase"></div>
+          <div><img src="images_harko/fh-gallery2.jpg" alt="Falcon Hills master bathroom"></div>
+          <div><img src="images_harko/fh-gallery3.jpg" alt="Falcon Hills living room"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Contribution -->
+    <section class="section bg-light" aria-label="Project details">
+      <div class="container">
+        <div class="split fade-up">
+          <div>
+            <h2 class="serif-heading" style="font-size:clamp(22px,3vw,28px);margin-bottom:20px;">Project Specific Contribution</h2>
+            <p class="body-text" style="margin-bottom:20px;">Harko managed all facets of this custom build — from foundation to finishing touches. Our team coordinated with architects, interior designers, and specialty tradespeople to bring this vision to life. Custom walnut cabinetry, marble-clad bathrooms, hand-forged iron railings, and curated lighting design were hallmarks of this project.</p>
+            <ul style="list-style:none;padding:0;">
+              <li style="font-size:13px;color:var(--text-muted);padding:10px 0;border-bottom:1px solid var(--mid-gray);">General Contracting &amp; Project Management</li>
+              <li style="font-size:13px;color:var(--text-muted);padding:10px 0;border-bottom:1px solid var(--mid-gray);">Custom Cabinetry &amp; Millwork</li>
+              <li style="font-size:13px;color:var(--text-muted);padding:10px 0;border-bottom:1px solid var(--mid-gray);">Interior &amp; Exterior Design Coordination</li>
+              <li style="font-size:13px;color:var(--text-muted);padding:10px 0;">Landscape Architecture</li>
+            </ul>
+          </div>
+          <div style="overflow:hidden;border-radius:4px;">
+            <img src="images_harko/fh-detail.jpg" alt="Falcon Hills project detail — custom bathroom" style="width:100%;display:block;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Image -->
+    <section class="bg-white" style="padding:0;" aria-label="Feature photo">
+      <div class="fade-up" style="width:100%;overflow:hidden;">
+        <img src="images_harko/fh-feature.jpg" alt="Falcon Hills living room with natural light and walnut accents" style="width:100%;display:block;">
+      </div>
+      <div class="container" style="padding-top:16px;padding-bottom:48px;text-align:center;">
+        <p style="font-size:12px;color:var(--text-muted);letter-spacing:0.05em;">The living room captures natural light through floor-to-ceiling windows, complementing the warm walnut and stone palette throughout.</p>
+      </div>
+    </section>
+
+    <!-- Photo Strip -->
+    <section class="section-sm bg-white" style="padding-top:0;" aria-label="Additional photos">
+      <div class="container">
+        <div class="gallery-strip cols-3 fade-up">
+          <div><img src="images_harko/fh-strip1.jpg" alt="Falcon Hills interior detail"></div>
+          <div><img src="images_harko/fh-strip2.jpg" alt="Falcon Hills kitchen island"></div>
+          <div><img src="images_harko/fh-strip3.jpg" alt="Falcon Hills hallway"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section bg-light" aria-label="Client testimonial">
+      <div class="container">
+        <div class="fade-up" style="max-width:640px;margin:0 auto;text-align:center;">
+          <p class="testimonial-quote">"It was a pleasure working together with Harko to build our dream luxury home. Brad and his team exceeded every expectation with their attention to detail and commitment to quality."</p>
+          <p class="testimonial-name">The Johnson Family</p>
+          <p class="testimonial-role">Homeowner, Falcon Hills</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="images_harko/logo-white.png" alt="Harko Construction" class="footer-logo" width="206" height="60">
+          <p class="footer-tagline">Refined Excellence backed by<br>nearly 20yrs of experience</p>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p>Denver Metro &amp; the<br>Surrounding Area</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:7203461040">720-346-1040</a><br><a href="mailto:info@myharko.com">info@myharko.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright &copy; 2025 Harko Construction. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
