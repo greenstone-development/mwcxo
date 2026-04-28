@@ -374,7 +374,7 @@ function reorderOrgGrid(audience) {
   order.forEach((key, i) => {
     const card = grid.querySelector(`.org-card[data-key="${key}"]`);
     if (card) {
-      grid.appendChild(card);
+      card.style.order = i;
       card.querySelector('.org-num').textContent = String(i + 1).padStart(2, '0');
     }
   });
