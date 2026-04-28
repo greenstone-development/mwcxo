@@ -302,57 +302,57 @@ const orgContent = {
   culture: {
     agency: {
       title: 'Building Powerful Cultures',
-      body: "The strongest cultures are built on leadership that makes people want to give more than was asked. After 12 years inspiring 200+ people at Green Stone, I know how to bring that energy to any mission."
+      body: "The strongest cultures are built on leadership that makes people want to give more than was asked. After 12 years inspiring 200+ people at Green Stone, Matt knows how to bring that energy to any mission."
     },
     brand: {
       title: 'Building Powerful Cultures',
-      body: "Through decades of working with some of the most passionate teams, leaders and brands on the planet, I've learned how to build cultures that are both contagiously inspiring and powerfully effective."
+      body: "Through decades of working with some of the most passionate teams, leaders and brands on the planet, Matt has learned how to build cultures that are both contagiously inspiring and powerfully effective."
     }
   },
   talent: {
     agency: {
       title: 'Identifying & Evolving Talent',
-      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm especially strong at identifying, empowering and elevating young talent early in their careers."
+      body: "Matt has a sharp eye for talent, and he'd put the teams he's built up against just about anyone in CX, strategy, research, digital marketing, and product design. He's especially strong at identifying, empowering and elevating young talent early in their careers."
     },
     brand: {
       title: 'Identifying & Evolving Talent',
-      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm especially strong at identifying, empowering and elevating young talent early in their careers."
+      body: "Matt has a sharp eye for talent, and he'd put the teams he's built up against just about anyone in CX, strategy, research, digital marketing, and product design. He's especially strong at identifying, empowering and elevating young talent early in their careers."
     }
   },
   remote: {
     agency: {
       title: 'Maximizing Decentralized Workforces',
-      body: "I built a fully distributed firm from the ground up, and that journey taught me powerful cultural and operational tools to leverage with any agency navigating remote, hybrid, or multi-office realities."
+      body: "Matt built a fully distributed firm from the ground up, and that journey taught him powerful cultural and operational tools to leverage with any organization navigating remote, hybrid, or multi-office realities."
     },
     brand: {
       title: 'Maximizing Decentralized Workforces',
-      body: "I built a fully distributed firm from the ground up, and that journey taught me powerful cultural and operational tools to leverage with any agency navigating remote, hybrid, or multi-office realities."
+      body: "Matt built a fully distributed firm from the ground up, and that journey taught him powerful cultural and operational tools to leverage with any organization navigating remote, hybrid, or multi-office realities."
     }
   },
   trust: {
     agency: {
       title: 'Earning Client Trust',
-      body: "At Green Stone I own every client relationship, and I am very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring you with them when they move on."
+      body: "At Green Stone, Matt owns every client relationship, and he is very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring him with them when they move on."
     },
     brand: {
       title: 'Earning Stakeholder Trust',
-      body: "I know how to earn alignment rather than mandate it, moving ambitious work forward across marketing, product, operations, and the C-suite without leaving people behind."
+      body: "Matt knows how to earn alignment rather than mandate it, moving ambitious work forward across marketing, product, operations, and the C-suite without leaving people behind."
     }
   },
   bizdev: {
     agency: {
       title: 'Business Development',
-      body: "A dozen years of practice has helped me source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
+      body: "A dozen years of practice has helped Matt source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
     },
     brand: {
       title: 'Empowering Through AI',
-      body: "I bring a practical understanding of how intelligent systems can amplify human insight rather than replace it, helping organizations identify the right internal applications of AI that make teams faster, smarter, and more effective without losing the instincts and judgment that no model can replicate."
+      body: "Matt brings a practical understanding of how intelligent systems can amplify human insight rather than replace it, helping organizations identify the right internal applications of AI that make teams faster, smarter, and more effective without losing the instincts and judgment that no model can replicate."
     }
   },
   perspective: {
     agency: {
       title: 'Keeping Perspective',
-      body: "Having carried the line of credit at Green Stone for over a decade, I bring a grounded, bottom-line sensibility to decisions that only comes from having done it yourself."
+      body: "Having carried the line of credit at Green Stone for over a decade, Matt brings a grounded, bottom-line sensibility to decisions that only comes from firsthand experience."
     },
     brand: {
       title: 'Keeping Perspective',
