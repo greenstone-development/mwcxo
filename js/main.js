@@ -306,7 +306,7 @@ const orgContent = {
     },
     brand: {
       title: 'Building Powerful Cultures',
-      body: "Great customer experiences start with great internal cultures, and through decades of working with some of the most passionate teams, leaders and brands on the planet, I've learned how to build cultures that are both contagiously inspiring and powerfully effective."
+      body: "Through decades of working with some of the most passionate teams, leaders and brands on the planet, I've learned how to build cultures that are both contagiously inspiring and powerfully effective."
     }
   },
   talent: {
@@ -316,17 +316,17 @@ const orgContent = {
     },
     brand: {
       title: 'Identifying & Evolving Talent',
-      body: "I've spent 20+ years developing talent across disciplines and bring that same eye to helping brands identify what they have, what they need, and how to close the gap."
+      body: "I have a sharp eye for talent, and I'd put the teams I've built up against just about anyone in CX, strategy, research, digital marketing, and product design. I'm especially strong at identifying, empowering and elevating young talent early in their careers."
     }
   },
   remote: {
     agency: {
       title: 'Maximizing Decentralized Workforces',
-      body: "Green Stone has been fully distributed since 2014, and that journey gave me practical cultural and operational tools for any agency navigating remote, hybrid, or multi-office realities."
+      body: "I built a fully distributed firm from the ground up, and that journey taught me powerful cultural and operational tools to leverage with any agency navigating remote, hybrid, or multi-office realities."
     },
     brand: {
       title: 'Maximizing Decentralized Workforces',
-      body: "I've spent 12 years building a fully distributed company that performs at the level of any in-person team, and I understand the levers that make it work for large, decentralized brand organizations too."
+      body: "I built a fully distributed firm from the ground up, and that journey taught me powerful cultural and operational tools to leverage with any agency navigating remote, hybrid, or multi-office realities."
     }
   },
   trust: {
@@ -345,8 +345,8 @@ const orgContent = {
       body: "A dozen years of practice has helped me source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
     },
     brand: {
-      title: 'Network & Relationships',
-      body: "Two decades of agency relationships have given me a network most brand-side leaders don't have, and I can accelerate the search for the right partners considerably."
+      title: 'Empowering Through AI',
+      body: "I bring a practical understanding of how intelligent systems can amplify human insight rather than replace it, helping organizations identify the right internal applications of AI that make teams faster, smarter, and more effective without losing the instincts and judgment that no model can replicate."
     }
   },
   perspective: {
@@ -356,7 +356,7 @@ const orgContent = {
     },
     brand: {
       title: 'Keeping Perspective',
-      body: "Strategic ambition and creative vision are only worth something if they move the business. The work needs to be inspiring and effective."
+      body: "Strategic ambition and creative vision are only worth something if they move the business. The work needs to be both inspiring and effective."
     }
   }
 };
