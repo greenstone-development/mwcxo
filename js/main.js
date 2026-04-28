@@ -302,11 +302,11 @@ const orgContent = {
   culture: {
     agency: {
       title: 'Building Powerful Cultures',
-      body: "The strongest cultures are built on leadership that makes people want to give more than was asked. After 12 years inspiring 200+ people at Green Stone, Matt knows how to bring that energy to any mission."
+      body: "After 12 years inspiring 200+ people at Green Stone and working in partnership with 25+ other agencies, Matt knows how to craft an agency pied piper tune that inspires all levels to deliver passion and excellence."
     },
     brand: {
       title: 'Building Powerful Cultures',
-      body: "Through decades of working with some of the most passionate teams, leaders and brands on the planet, Matt has learned how to build cultures that are both contagiously inspiring and powerfully effective."
+      body: "Through decades of working with some of the most passionate teams, leaders and brands on the planet, Matt has learned how to build cultures that are both contagiously inspiring and consistently effective."
     }
   },
   talent: {
@@ -341,7 +341,7 @@ const orgContent = {
   },
   bizdev: {
     agency: {
-      title: 'Business Development',
+      title: 'Growing Business Opportunities',
       body: "A dozen years of practice has helped Matt source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
     },
     brand: {
@@ -352,7 +352,7 @@ const orgContent = {
   perspective: {
     agency: {
       title: 'Keeping Perspective',
-      body: "Having carried the line of credit at Green Stone for over a decade, Matt brings a grounded, bottom-line sensibility to decisions that only comes from firsthand experience."
+      body: "Having personally carried the line of credit at Green Stone for over a decade, Matt brings a grounded, bottom-line sensibility to decisions that only comes from firsthand experience and accountability."
     },
     brand: {
       title: 'Keeping Perspective',
