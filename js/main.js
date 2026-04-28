@@ -361,9 +361,27 @@ const orgContent = {
   }
 };
 
+const orgOrder = {
+  brand:  ['culture','talent','remote','trust','bizdev','perspective'],
+  agency: ['trust','culture','bizdev','talent','remote','perspective']
+};
+
 let currentOrgAudience = 'brand';
 
+function reorderOrgGrid(audience) {
+  const grid = document.getElementById('org-grid');
+  const order = orgOrder[audience];
+  order.forEach((key, i) => {
+    const card = grid.querySelector(`.org-card[data-key="${key}"]`);
+    if (card) {
+      grid.appendChild(card);
+      card.querySelector('.org-num').textContent = String(i + 1).padStart(2, '0');
+    }
+  });
+}
+
 function initOrgSection() {
+  reorderOrgGrid('brand');
   document.querySelectorAll('.org-card').forEach(card => {
     const key = card.dataset.key;
     const content = orgContent[key];
@@ -382,6 +400,8 @@ function setOrgAudience(audience) {
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', String(isActive));
   });
+
+  reorderOrgGrid(audience);
 
   document.querySelectorAll('.org-card').forEach(card => {
     const key = card.dataset.key;
