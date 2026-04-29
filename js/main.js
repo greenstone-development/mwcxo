@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const orgContent = {
   culture: {
     agency: {
-      title: 'Building Powerful Cultures',
-      body: "After 12 years inspiring 200+ people at Green Stone and working in partnership with 25+ other agencies, Matt knows how to craft an agency pied piper tune that inspires all levels to deliver passion and excellence."
+      title: 'Crafting Cultures Of Innovation',
+      body: "After decades of inspiring hundreds of team members and working in partnership with 25+ other agencies, Matt knows how to craft a pied piper tune that inspires all levels to deliver passion, excellence, and groundbreaking ideas."
     },
     brand: {
       title: 'Building Powerful Cultures',
@@ -321,18 +321,18 @@ const orgContent = {
   },
   remote: {
     agency: {
-      title: 'Maximizing Decentralized Workforces',
-      body: "Matt built a fully distributed firm from the ground up, and that journey taught him powerful cultural and operational tools to leverage with any organization navigating remote, hybrid, or multi-office realities."
+      title: 'Bridging Decentralized Workforces',
+      body: "Matt built a fully distributed agency from the ground up. That journey gave him many actionable insights that he can leverage to ensure your multi-dimensional hybrid, fractional or remote workforce is as united and productive as possible."
     },
     brand: {
-      title: 'Maximizing Decentralized Workforces',
-      body: "Matt built a fully distributed firm from the ground up, and that journey taught him powerful cultural and operational tools to leverage with any organization navigating remote, hybrid, or multi-office realities."
+      title: 'Bridging Decentralized Workforces',
+      body: "Matt built a fully distributed agency from the ground up. That journey gave him many actionable insights that he can leverage to ensure your multi-dimensional hybrid, fractional or remote workforce is as united and productive as possible."
     }
   },
   trust: {
     agency: {
       title: 'Earning Client Trust',
-      body: "At Green Stone, Matt owns every client relationship, and he is very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring him with them when they move on."
+      body: "At Green Stone, Matt has owned every client relationship, and he is very good at building the kind of trust that leads to repeat work, open dialogue, and clients who bring him with them even when they switch companies."
     },
     brand: {
       title: 'Earning Stakeholder Trust',
@@ -356,7 +356,7 @@ const orgContent = {
     },
     brand: {
       title: 'Keeping Perspective',
-      body: "Strategic ambition and creative vision are only worth something if they move the business. The work needs to be both inspiring and effective."
+      body: "Strategic ambition and creative vision are only worth something if they move the business. The work needs to deliver not only inspiration but also measurable and meaningful ROI."
     }
   }
 };
