@@ -401,21 +401,26 @@ function setOrgAudience(audience) {
     btn.setAttribute('aria-pressed', String(isActive));
   });
 
-  reorderOrgGrid(audience);
-
-  document.querySelectorAll('.org-card').forEach(card => {
-    const key = card.dataset.key;
-    const content = orgContent[key];
-    if (!content) return;
-    const body = card.querySelector('.org-card-body');
-    const title = card.querySelector('.org-card-title');
-    body.classList.add('fading');
-    setTimeout(() => {
-      title.textContent = content[audience].title;
-      body.textContent = content[audience].body;
-      body.classList.remove('fading');
-    }, 200);
+  // Fade all cards out first
+  const cards = document.querySelectorAll('.org-card');
+  cards.forEach(card => {
+    card.querySelector('.org-card-body').classList.add('fading');
+    card.querySelector('.org-card-title').style.opacity = '0';
   });
+
+  // After fade completes, reorder + swap text + fade back in
+  setTimeout(() => {
+    reorderOrgGrid(audience);
+    cards.forEach(card => {
+      const key = card.dataset.key;
+      const content = orgContent[key];
+      if (!content) return;
+      card.querySelector('.org-card-title').textContent = content[audience].title;
+      card.querySelector('.org-card-body').textContent = content[audience].body;
+      card.querySelector('.org-card-body').classList.remove('fading');
+      card.querySelector('.org-card-title').style.opacity = '';
+    });
+  }, 200);
 }
 
 // ── Homepage — Client Filtering ────────────────
