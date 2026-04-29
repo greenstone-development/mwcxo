@@ -325,8 +325,8 @@ const orgContent = {
       body: "Matt built a fully distributed agency from the ground up. That journey gave him many actionable insights that he can leverage to ensure your multi-dimensional hybrid, fractional or remote workforce is as united and productive as possible."
     },
     brand: {
-      title: 'Bridging Decentralized Workforces',
-      body: "Matt built a fully distributed agency from the ground up. That journey gave him many actionable insights that he can leverage to ensure your multi-dimensional hybrid, fractional or remote workforce is as united and productive as possible."
+      title: 'Maximizing Decentralized Workforces',
+      body: "Matt built a fully distributed firm from the ground up, and that journey taught him powerful cultural and operational tools to leverage with any organization navigating remote, hybrid, or multi-office realities."
     }
   },
   trust: {
