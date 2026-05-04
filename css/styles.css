@@ -309,6 +309,7 @@ img{display:block;max-width:100%;}
 .clients{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:6rem 3.5rem;}
 .clients-inner{max-width:1160px;margin:0 auto;}
 .clients-header{margin-bottom:4rem;}
+.clients-sub{font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--muted);margin-top:.4rem;}
 .columns-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
 .col-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1.5px solid var(--teal);}
 .col-label{font-family:var(--f);font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);}
