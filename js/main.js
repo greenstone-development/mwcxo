@@ -345,7 +345,7 @@ const orgContent = {
       body: "A dozen years of practice has helped Matt source not only $30+ million in business for Green Stone but also a robust network of decision making leaders that could open meaningful doors in the future."
     },
     brand: {
-      title: 'Empowering Through AI',
+      title: 'Accelerating Teams Through AI',
       body: "Matt brings a practical understanding of how intelligent systems can amplify human insight rather than replace it, helping organizations identify the right internal applications of AI that make teams faster, smarter, and more effective without losing the instincts and judgment that no model can replicate."
     }
   },
