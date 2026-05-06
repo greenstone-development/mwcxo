@@ -319,6 +319,7 @@
 </div>
 
 <div class="stats-bar" id="stats">Loading…</div>
+<div id="loadError" style="display:none;padding:0 32px 16px;color:#b91c1c;font-size:14px"></div>
 <div class="gallery" id="gallery"></div>
 
 <div class="modal-backdrop" id="modal">
@@ -328,11 +329,100 @@
   </div>
 </div>
 
+<script src="config.js"></script>
 <script src="players.js"></script>
 <script>
+  let players = [];
   let positionFilter = "All";
   let ratingFilter = new Set();
   let searchTerm = "";
+
+  // ---------- CSV loader ----------
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i], next = text[i+1];
+      if (inQuotes) {
+        if (c === '"' && next === '"') { cell += '"'; i++; }
+        else if (c === '"') { inQuotes = false; }
+        else { cell += c; }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === ',') { row.push(cell); cell = ''; }
+        else if (c === '\n' || c === '\r') {
+          if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+          row = []; cell = '';
+          if (c === '\r' && next === '\n') i++;
+        }
+        else { cell += c; }
+      }
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function csvToObjects(rows) {
+    if (!rows.length) return [];
+    const headers = rows[0].map(h => h.trim());
+    return rows.slice(1)
+      .filter(r => r.some(c => c.trim() !== ''))
+      .map(r => {
+        const o = {};
+        headers.forEach((h, i) => o[h] = (r[i] || '').trim());
+        return o;
+      });
+  }
+  function parsePositions(s) {
+    if (!s) return [];
+    const tokens = s.split(/[\/,;|&]| or | and /i).map(t => t.trim()).filter(Boolean);
+    const out = [];
+    for (const t of tokens) {
+      const u = t.toUpperCase();
+      if (u === 'F' || u.startsWith('FORWARD') || u === 'FWD') out.push('Forward');
+      else if (u === 'D' || u.startsWith('DEFENSE') || u.startsWith('DEFENCE') || u === 'DEF') out.push('Defense');
+      else if (u === 'G' || u.startsWith('GOAL') || u === 'GK') out.push('Goalie');
+    }
+    return [...new Set(out)];
+  }
+  function slugify(s, idx) {
+    return (s ? s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') : '') || `player-${idx}`;
+  }
+  function rowToPlayer(row, idx) {
+    const c = APP_CONFIG.columns;
+    const get = key => c[key] ? (row[c[key]] || '') : '';
+    const fullName = c.name
+      ? get('name')
+      : [get('firstName'), get('lastName')].filter(Boolean).join(' ');
+    const headshotFile = get('headshot');
+    return {
+      id: slugify(fullName, idx),
+      name: fullName,
+      positions: parsePositions(get('positions')),
+      rating: parseInt(get('rating')) || 0,
+      teamLastSeason: get('teamLastSeason'),
+      previousExperience: get('previousExperience'),
+      headshot: headshotFile ? `headshots/${headshotFile}` : ''
+    };
+  }
+  async function loadPlayers() {
+    try {
+      const res = await fetch(APP_CONFIG.csvUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const objects = csvToObjects(parseCSV(text));
+      const out = objects.map(rowToPlayer).filter(p => p.name);
+      if (!out.length) throw new Error('CSV loaded but no rows with a name were found.');
+      return out;
+    } catch (e) {
+      console.warn('CSV load failed, using local players.js fallback:', e);
+      const err = document.getElementById('loadError');
+      err.style.display = 'block';
+      err.innerHTML = `Could not load live data from Google Sheets (${escapeHtml(e.message)}).
+        Showing local sample data. If you opened this file directly,
+        host the folder (e.g. drop it on <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>) and reopen.`;
+      return (typeof PLAYERS !== 'undefined' && Array.isArray(PLAYERS)) ? PLAYERS : [];
+    }
+  }
 
   const escapeHtml = s => String(s ?? '')
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -345,6 +435,21 @@
     return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
   }
 
+  const POSITION_ABBR = { Forward: 'F', Defense: 'D', Goalie: 'G' };
+  function getPositions(p) {
+    if (Array.isArray(p.positions)) return p.positions;
+    if (p.position) return [p.position];
+    return [];
+  }
+  function renderPositionsAbbr(positions) {
+    if (!positions.length) return '—';
+    return positions.map(p => POSITION_ABBR[p] || p[0]).join('/');
+  }
+  function renderPositionsFull(positions) {
+    if (!positions.length) return '—';
+    return positions.join(' / ');
+  }
+
   function renderImg(p, cls) {
     const initials = escapeHtml(getInitials(p.name));
     const img = p.headshot
@@ -354,13 +459,14 @@
   }
 
   function renderCard(p) {
+    const positions = getPositions(p);
     return `
       <div class="card" data-player-id="${escapeHtml(p.id)}">
         ${renderImg(p, 'card-img-wrap')}
         <div class="card-body">
           <div class="card-name">${escapeHtml(p.name)}</div>
           <div class="card-meta">
-            <span class="position-badge ${escapeHtml(p.position)}">${escapeHtml(p.position)}</span>
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderRating(p.rating)}
           </div>
         </div>
@@ -369,12 +475,13 @@
   }
 
   function filterPlayers() {
-    return PLAYERS.filter(p => {
-      if (positionFilter !== "All" && p.position !== positionFilter) return false;
+    return players.filter(p => {
+      const positions = getPositions(p);
+      if (positionFilter !== "All" && !positions.includes(positionFilter)) return false;
       if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
       if (searchTerm) {
         const t = searchTerm.toLowerCase();
-        const hay = (p.name + ' ' + (p.experience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        const hay = (p.name + ' ' + (p.previousExperience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
         if (!hay.includes(t)) return false;
       }
       return true;
@@ -385,7 +492,7 @@
     const filtered = filterPlayers();
     const gallery = document.getElementById('gallery');
     document.getElementById('stats').textContent =
-      `Showing ${filtered.length} of ${PLAYERS.length} player${PLAYERS.length===1?'':'s'}`;
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'}`;
     if (!filtered.length) {
       gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
       return;
@@ -397,32 +504,27 @@
   }
 
   function openModal(id) {
-    const p = PLAYERS.find(x => String(x.id) === String(id));
+    const p = players.find(x => String(x.id) === String(id));
     if (!p) return;
+    const positions = getPositions(p);
     document.getElementById('modalContent').innerHTML = `
       <div class="modal-header">
         ${renderImg(p, 'modal-img')}
         <div>
           <div class="modal-name">${escapeHtml(p.name)}</div>
           <div class="modal-tags">
-            <span class="position-badge ${escapeHtml(p.position)}">${escapeHtml(p.position)}</span>
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderRating(p.rating)}
           </div>
         </div>
       </div>
       <div class="modal-body">
-        <div class="info-grid">
-          <div class="info-item">
-            <div class="label">Age</div>
-            <div class="value">${escapeHtml(p.age)}</div>
-          </div>
-          <div class="info-item">
-            <div class="label">Team Last Season</div>
-            <div class="value">${escapeHtml(p.teamLastSeason || '—')}</div>
-          </div>
+        <div class="info-item" style="margin-bottom:20px">
+          <div class="label">Last Season Team</div>
+          <div class="value">${escapeHtml(p.teamLastSeason || '—')}</div>
         </div>
-        <div class="experience-label">Hockey Experience</div>
-        <div class="experience">${escapeHtml(p.experience || '—')}</div>
+        <div class="experience-label">Previous Playing Level &amp; Experience</div>
+        <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
       </div>
     `;
     document.getElementById('modal').classList.add('open');
@@ -468,7 +570,10 @@
   document.getElementById('modalClose').addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  render();
+  (async () => {
+    players = await loadPlayers();
+    render();
+  })();
 </script>
 </body>
 </html>

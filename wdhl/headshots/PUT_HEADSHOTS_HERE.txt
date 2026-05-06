@@ -1,14 +1,17 @@
 Drop player headshot image files into THIS folder.
 
+The app reads the filename from the "Picture" column in your published Google
+Sheet (or whatever column you mapped to "headshot" in config.js). It then
+loads "headshots/<that filename>" — so the value in the sheet should just be
+the filename, e.g. "john-smith.png", not a full path.
+
 Recommended format:
-  - JPEG (.jpg) — best for photos, smallest files
-  - PNG (.png) is also fine
+  - PNG (.png)
   - Square aspect ratio (1:1) — width = height
   - 400x400 to 800x800 pixels
-  - Keep each file under ~200 KB if you can (any web image compressor works)
-  - Filename should match what's in players.js, e.g. "john-smith.jpg"
+  - Keep each file under ~300 KB if you can (any web image compressor works)
 
-If a player has no headshot yet, leave the headshot field empty ("") in
-players.js — the gallery will show their initials in a colored circle instead.
+If a player has no headshot file yet, leave the cell blank in the sheet — the
+gallery will show their initials in a colored circle instead.
 
 You can delete this file once you've added real headshots.
