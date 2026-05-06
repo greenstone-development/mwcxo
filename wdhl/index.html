@@ -252,6 +252,32 @@
     gap: 16px;
     margin-bottom: 24px;
   }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .stat-cell {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .stat-cell .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .stat-cell .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-top: 6px;
+  }
   .info-item .label, .experience-label {
     font-size: 11px;
     text-transform: uppercase;
@@ -402,6 +428,10 @@
       rating: parseInt(get('rating')) || 0,
       teamLastSeason: get('teamLastSeason'),
       previousExperience: get('previousExperience'),
+      gamesPlayed: get('gamesPlayed'),
+      goals: get('goals'),
+      assists: get('assists'),
+      pointsPerGame: get('pointsPerGame'),
       headshot: headshotFile ? `headshots/${headshotFile}` : ''
     };
   }
@@ -523,6 +553,24 @@
         <div class="info-item" style="margin-bottom:20px">
           <div class="label">Last Season Team</div>
           <div class="value">${escapeHtml(p.teamLastSeason || '—')}</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
+            <div class="stat-label">GP</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.goals || '—')}</div>
+            <div class="stat-label">Goals</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.assists || '—')}</div>
+            <div class="stat-label">Assists</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.pointsPerGame || '—')}</div>
+            <div class="stat-label">Pt/G</div>
+          </div>
         </div>
         <div class="experience-label">Previous Playing Level &amp; Experience</div>
         <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
