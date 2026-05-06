@@ -3,456 +3,634 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matt Walsh — Fractional Chief Experience Officer</title>
-<meta name="description" content="Fractional CXO with 23+ years building experiences that earn loyalty through the delivery of meaningful value. Nike, AmEx, Best Buy, and more.">
-<meta name="author" content="Matt Walsh">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://mattwalshcxo.com/">
+<title>WDHL Members</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --forward: #2563eb;
+    --defense: #059669;
+    --goalie: #ea580c;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 28px 32px;
+  }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mattwalshcxo.com/">
-<meta property="og:title" content="Matt Walsh — Fractional Chief Experience Officer">
-<meta property="og:description" content="Fractional CXO with 23+ years building experiences that earn loyalty through the delivery of meaningful value. Nike, AmEx, Best Buy, and more.">
-<meta property="og:site_name" content="Matt Walsh CXO">
+  .controls {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+  }
+  .search-wrap {
+    flex: 1 1 260px;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg);
+    font-family: inherit;
+  }
+  .search-wrap input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+  .search-wrap::before {
+    content: "🔍";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    font-size: 13px;
+  }
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Matt Walsh — Fractional Chief Experience Officer">
-<meta name="twitter:description" content="Fractional CXO with 23+ years building experiences that earn loyalty through the delivery of meaningful value. Nike, AmEx, Best Buy, and more.">
+  .filter-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-right: 4px;
+  }
+  .pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .pill:hover { border-color: var(--primary); color: var(--primary); }
+  .pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
 
-<!-- Structured Data: Person + WebSite + Services -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://mattwalshcxo.com/#website",
-      "name": "Matt Walsh CXO",
-      "url": "https://mattwalshcxo.com/",
-      "description": "Professional portfolio of Matt Walsh, Fractional Chief Experience Officer and founder of Green Stone"
-    },
-    {
-      "@type": "Person",
-      "@id": "https://mattwalshcxo.com/#matt-walsh",
-      "name": "Matt Walsh",
-      "jobTitle": "Fractional Chief Experience Officer",
-      "description": "Matt Walsh specializes in aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives.",
-      "url": "https://mattwalshcxo.com/",
-      "sameAs": ["https://www.linkedin.com/in/mattwalsh"],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Green Stone",
-        "url": "https://www.greenstone.co"
-      },
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Fractional Chief Experience Officer",
-        "description": "Aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives",
-        "skills": "Customer Experience Strategy, Customer Journey Design, Digital Product Strategy, CRO, Organisational Design"
-      },
-      "knowsAbout": [
-        "Customer Experience",
-        "Digital Strategy",
-        "Brand Strategy",
-        "UX Design",
-        "Customer Journey Mapping",
-        "E-Commerce",
-        "Organisational Transformation",
-        "AI-Empowered Organisations"
-      ]
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": "https://mattwalshcxo.com/",
-      "url": "https://mattwalshcxo.com/",
-      "name": "Matt Walsh — Fractional Chief Experience Officer",
-      "isPartOf": {"@id": "https://mattwalshcxo.com/#website"},
-      "mainEntity": {"@id": "https://mattwalshcxo.com/#matt-walsh"},
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mattwalshcxo.com/"}
-        ]
-      }
-    },
-    {
-      "@type": "ItemList",
-      "name": "Core Services — Matt Walsh CXO",
-      "description": "Five core specialties Matt Walsh delivers across client engagements",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Identifying The Opportunities", "description": "Recognizing and defining actionable intersections between corporate goals and customer aspirations."},
-        {"@type": "ListItem", "position": 2, "name": "Designing Innovative Journeys", "description": "Intentionally designed customer journeys that unlock meaningful value through exceptional experiences crafted within real-world constraints."},
-        {"@type": "ListItem", "position": 3, "name": "Connecting Through Digital", "description": "Strategizing, designing, and building the digital products and platforms that enhance those journeys in a differentiated, ownable, and profitable way."},
-        {"@type": "ListItem", "position": 4, "name": "Empowering Through AI", "description": "Transforming experiences and expectations through the smart, strategic deployment of AI-powered innovations."},
-        {"@type": "ListItem", "position": 5, "name": "Testing, Learning, and Leaping", "description": "Continuous measurement and optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move."},
-        {"@type": "ListItem", "position": 5, "name": "Evolve the Organization With It", "description": "Helping clients update their workflows, team structures, and operating models for a modern, distributed, AI-empowered era."}
-      ]
-    }
-  ]
-}
-</script>
+  .stats-bar {
+    padding: 14px 32px 4px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .gallery {
+    padding: 16px 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card-img-wrap, .modal-img {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  }
+  .card-img-wrap { width: 100%; aspect-ratio: 1; }
+  .card-img-wrap .placeholder, .modal-img .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700;
+  }
+  .card-img-wrap .placeholder { font-size: 42px; }
+  .modal-img .placeholder { font-size: 48px; }
+  .card-img-wrap img, .modal-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body { padding: 14px 16px; }
+  .card-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .position-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
+    background: #f1f3f5;
+    color: #4b5563;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .modal-tags .position-badge { height: 32px; font-size: 13px; padding: 0 14px; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .rating.r1, .rating.r2 { background: #94a3b8; }   /* slate  */
+  .rating.r3, .rating.r4 { background: #3b82f6; }   /* blue   */
+  .rating.r5, .rating.r6 { background: #10b981; }   /* green  */
+  .rating.r7             { background: #f59e0b; }   /* gold   */
+  .modal-tags .rating { width: 32px; height: 32px; font-size: 14px; }
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XLYTNG2EBE');
-</script>
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .modal {
+    background: white;
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-header {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-img {
+    width: 140px; height: 140px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .modal-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .modal-tags {
+    display: flex; gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .modal-body { padding: 24px; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .stat-cell {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .stat-cell .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .stat-cell .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-top: 6px;
+  }
+  .info-item .label, .experience-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .experience-label { margin-bottom: 8px; }
+  .info-item .value { font-size: 15px; font-weight: 500; }
+  .experience {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px;
+    line-height: 1.6;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+    box-shadow: var(--shadow);
+  }
+  .modal-close:hover { background: white; }
+
+  @media (max-width: 600px) {
+    header, .controls, .stats-bar, .gallery { padding-left: 16px; padding-right: 16px; }
+    .modal-header { flex-direction: column; align-items: center; text-align: center; }
+    .modal-img { width: 120px; height: 120px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .card-body { text-align: center; }
+    .card-meta { justify-content: center; gap: 10px; }
+  }
+</style>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
+<header>
+  <h1>🏒 WDHL Members</h1>
+</header>
 
-<!-- NAV -->
-<nav id="nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Matt Walsh CXO — Home">Matt Walsh <span>CXO</span></a>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
-    <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-      <li><a href="work.html">Past Projects</a></li>
-      <li><a href="recognition.html">Recognition</a></li>
-      <li><a href="thought-leadership.html">Thought Leadership</a></li>
-      <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
-    </ul>
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search by name, team, or experience…">
   </div>
-</nav>
-
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Fractional Chief Experience Officer</p>
-      <h1 class="hero-h1" data-parallax="0.04" data-parallax-type="y">Building businesses<br>from the <em>journey</em> up.</h1>
-      <p class="hero-sub">Matt operates at the intersection of business strategy and customer experience, where the gap between what a brand promises and what it actually delivers either builds loyalty or burns margin. He works with leadership teams who need that gap closed: thoughtfully, innovatively, and in ways that deliver meaningful value for all involved.</p>
-      <div class="hero-btns">
-        <a href="work.html" class="btn-fill">See the work &#8594;</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img src="images/hero.jpg" alt="Matt Walsh">
-      <div class="hero-right-overlay" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- WHAT MATT DOES -->
-  <section class="what-i-do reveal" aria-labelledby="wid-heading">
-    <div>
-      <p class="kicker">Crafting Experiences</p>
-      <h2 id="wid-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">Turn experience from a cost center into a <em>growth engine.</em></h2>
-      <p class="wid-desc">With decades of experience leading teams and complex initiatives for world-class clients, Matt delivers CX value across a few core specialties.</p>
-    </div>
-    <div>
-      <ol class="method-list" role="list">
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="method-title">Identifying The Opportunities</h3>
-            <p class="method-body">Recognizing and defining actionable intersections between corporate goals and customer aspirations.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="method-title">Designing Innovative Journeys</h3>
-            <p class="method-body">Intentionally designed customer journeys that unlock meaningful value through exceptional experiences crafted within real-world constraints.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="method-title">Connecting Through Digital</h3>
-            <p class="method-body">Strategizing, designing, and building the digital products and platforms that enhance those journeys in a differentiated, ownable, and profitable way.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">04</span>
-          <div>
-            <h3 class="method-title">Empowering Through AI</h3>
-            <p class="method-body">Transforming experiences and expectations through the smart, strategic deployment of AI-powered innovations.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">05</span>
-          <div>
-            <h3 class="method-title">Testing, Learning, and Leaping</h3>
-            <p class="method-body">Continuous measurement and optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- BUILDING ORGANIZATIONS -->
-  <section class="build-org" aria-labelledby="build-org-heading">
-    <div class="build-org-header reveal">
-      <p class="kicker">Building Organizations</p>
-      <h2 id="build-org-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">Designing more than <em>deliverables.</em></h2>
-      <p class="build-org-desc">The best customer experiences are built on great employee experiences.</p>
-      <div class="org-toggle-wrap" role="group" aria-label="Select audience">
-        <button class="org-toggle-btn active" id="toggle-brand" onclick="setOrgAudience('brand')" aria-pressed="true">For Brands</button>
-        <button class="org-toggle-btn" id="toggle-agency" onclick="setOrgAudience('agency')" aria-pressed="false">For Agencies</button>
-      </div>
-    </div>
-    <div class="org-grid" id="org-grid">
-      <div class="org-card" data-key="culture">
-        <span class="org-num" aria-hidden="true">01</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="talent">
-        <span class="org-num" aria-hidden="true">02</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="remote">
-        <span class="org-num" aria-hidden="true">03</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="trust">
-        <span class="org-num" aria-hidden="true">04</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="bizdev">
-        <span class="org-num" aria-hidden="true">05</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="perspective">
-        <span class="org-num" aria-hidden="true">06</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENTS -->
-  <section class="clients" aria-labelledby="clients-heading">
-    <div class="clients-inner">
-      <header class="clients-header reveal">
-        <p class="kicker">Clients</p>
-        <h2 id="clients-heading" class="section-h2" data-parallax="0.02" data-parallax-type="y">Trusted by <em>leaders.</em></h2>
-        <p class="clients-sub">A showcase of companies Matt has had the privilege of working with across his career.</p>
-      </header>
-      <div class="columns-wrap reveal">
-
-        <!-- B2C COLUMN -->
-        <div class="col">
-          <div class="col-header">
-            <h3 class="col-label">B2C</h3>
-            <select class="col-filter" id="b2c-filter" aria-label="Filter B2C clients by category" onchange="filterClients('b2c', this.value)">
-              <option value="featured">Featured</option>
-              <option value="automotive">Automotive</option>
-              <option value="financial">Financial Services</option>
-              <option value="food">Food &amp; Beverage</option>
-              <option value="media">Media &amp; Entertainment</option>
-              <option value="retail">Retail</option>
-              <option value="tech-telecom">Technology &amp; Telecom</option>
-              <option value="travel">Travel &amp; Hospitality</option>
-            </select>
-          </div>
-          <ul class="vc-list" id="b2c-list" role="list">
-            <li class="vc" data-col="b2c" data-cat="financial" data-featured="true">American Express</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Ariat</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Best Buy</li>
-            <li class="vc" data-col="b2c" data-cat="food" data-featured="true">Domino&rsquo;s</li>
-            <li class="vc" data-col="b2c" data-cat="media" data-featured="true">HBO</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Logitech</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom" data-featured="true">Microsoft</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Nike</li>
-            <li class="vc" data-col="b2c" data-cat="travel" data-featured="true">Vail Resorts</li>
-            <li class="vc" data-col="b2c" data-cat="automotive" data-featured="true">Volkswagen</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Algenist</li>
-            <li class="vc" data-col="b2c" data-cat="travel">B-Cycle</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Bark Box Inc</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Beats</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">BILLSHARK</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Bolt Threads</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">Brammo</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Breville</li>
-            <li class="vc" data-col="b2c" data-cat="food">Burger King</li>
-            <li class="vc" data-col="b2c" data-cat="travel">City of Boulder</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">ClearSpend</li>
-            <li class="vc" data-col="b2c" data-cat="media">Clinton Global Initiative</li>
-            <li class="vc" data-col="b2c" data-cat="food">Coke Zero</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">Connected Financial Solutions LLC</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Dagne Dover</li>
-            <li class="vc" data-col="b2c" data-cat="retail">dosist</li>
-            <li class="vc" data-col="b2c" data-cat="automotive">Driven Brands (Take5)</li>
-            <li class="vc" data-col="b2c" data-cat="financial">Elevations Credit Union</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Finish Line</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Haggar</li>
-            <li class="vc" data-col="b2c" data-cat="food">Kraft (Jell-O &amp; Grey Poupon)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Michaels</li>
-            <li class="vc" data-col="b2c" data-cat="food">Miller Lite</li>
-            <li class="vc" data-col="b2c" data-cat="media">NBC (The Tonight Show)</li>
-            <li class="vc" data-col="b2c" data-cat="food">Odell Brewing Company</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Old Navy</li>
-            <li class="vc" data-col="b2c" data-cat="financial">OneMain Financial</li>
-            <li class="vc" data-col="b2c" data-cat="media">Outside Inc.</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Samsung</li>
-            <li class="vc" data-col="b2c" data-cat="food">Sprite</li>
-            <li class="vc" data-col="b2c" data-cat="retail">The Hillman Group</li>
-            <li class="vc" data-col="b2c" data-cat="media">The Planetary Society</li>
-            <li class="vc" data-col="b2c" data-cat="media">Toca Boca</li>
-            <li class="vc" data-col="b2c" data-cat="travel">Travelaer</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">WOW!</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">X (Twitter)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Zappos</li>
-          </ul>
-        </div>
-
-        <!-- B2B COLUMN -->
-        <div class="col">
-          <div class="col-header">
-            <h3 class="col-label">B2B</h3>
-            <select class="col-filter" id="b2b-filter" aria-label="Filter B2B clients by category" onchange="filterClients('b2b', this.value)">
-              <option value="featured">Featured</option>
-              <option value="industrial">Industrial &amp; Services</option>
-              <option value="investment">Investment &amp; Finance</option>
-              <option value="technology">Technology &amp; SaaS</option>
-              <option value="trade">Trade Groups</option>
-              <option value="agencies">Agencies</option>
-            </select>
-          </div>
-          <ul class="vc-list" id="b2b-list" role="list">
-            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Charlesbank</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Elevate Sports Ventures</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Google</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">LexisNexis</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">QuantumBlack</li>
-            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Techstars</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">The Hillman Group</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">WOW!</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">X (Twitter)</li>
-            <li class="vc" data-col="b2b" data-cat="trade">4As</li>
-            <li class="vc" data-col="b2b" data-cat="technology">AbCellera</li>
-            <li class="vc" data-col="b2b" data-cat="trade">Ad Council</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">AKQA</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Alphia</li>
-            <li class="vc" data-col="b2b" data-cat="investment">American Express</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Apollo Program</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">B-Cycle</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Barbarian Group</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Barkley</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">BBDO</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Blinker</li>
-            <li class="vc" data-col="b2b" data-cat="investment">Blue Sage Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Brammo</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Butler Shine Stern &amp; Partners</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Civic Entertainment Group</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Climate Reality Project</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">CoCollective</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Code3</li>
-            <li class="vc" data-col="b2b" data-cat="trade">Concerned Children&rsquo;s Advertisers</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Crispin</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Deutsch LA</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Doctorpedia</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Economic Space Agency</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Edelman</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Eleven</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Erich-Kallman</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">EVB</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">FCB</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Gale Partners</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Hearthside Food Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Hill Holliday</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">I&amp;CO</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Ivanti</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">LegalShield</li>
-            <li class="vc" data-col="b2b" data-cat="technology">letgo</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">M&amp;C Saatchi</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">McCANN</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">MDC Partners</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Media Arts Lab</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Microsoft</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Neptune Retail Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="investment">PAI Partners</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Pocket Outdoor Media</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">R/GA</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Tecomet</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">The Martin Agency</li>
-            <li class="vc" data-col="b2b" data-cat="trade">The One Club</li>
-            <li class="vc" data-col="b2b" data-cat="trade">The Planetary Society</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Uplight (Simple Energy)</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Whispir</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Work Market</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Zappi</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Zeus Jones</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FULL-STACK MATT -->
-  <section class="network reveal" aria-labelledby="network-heading">
-    <div>
-      <p class="kicker">Full-Stack Matt</p>
-      <h2 id="network-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">One engagement.<br><em>Unlimited</em> expertise.</h2>
-      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);margin-bottom:1.2rem;">When you engage Matt, you're not just getting one person. Through his agency, <strong style="color:var(--ink);"><a href="https://www.greenstone.co" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;transition:color .2s;">Green Stone</a></strong>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
-      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);">That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
-    </div>
-    <dl class="network-numbers">
-      <div class="net-num-box">
-        <dd class="net-num">220<span>+</span></dd>
-        <dt class="net-label"><strong>Subject Matter Experts</strong>have already worked on projects with Green Stone</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num">23<span>+</span></dd>
-        <dt class="net-label"><strong>Years of Experience</strong>accelerates the speed and accuracy of insights and execution</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num">120<span>+</span></dd>
-        <dt class="net-label"><strong>Clients Engaged</strong>Green Stone through the last 13 years</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num infinity">&#8734;</dd>
-        <dt class="net-label"><strong>Matt's Gratitude</strong>that he gets to do this for a living</dt>
-      </div>
-    </dl>
-  </section>
-
-</main>
-
-<!-- CTA -->
-<section class="cta-band" aria-label="Call to action">
-  <div class="cta-inner">
-    <h2 class="cta-h2">Let's talk about what's next</h2>
-    <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
+  <div class="filter-group">
+    <span class="pill active" data-position="All">All Positions</span>
+    <span class="pill" data-position="Forward">Forward</span>
+    <span class="pill" data-position="Defense">Defense</span>
+    <span class="pill" data-position="Goalie">Goalie</span>
   </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</p>
-    <p class="footer-meta" style="text-align:right;max-width:40ch;">All client work shown remains the property of its respective owners.</p>
+  <div class="filter-group">
+    <span class="pill rating-pill active" data-rating="all">All Ratings</span>
+    <span class="pill rating-pill" data-rating="1,2">1-2</span>
+    <span class="pill rating-pill" data-rating="3">3</span>
+    <span class="pill rating-pill" data-rating="4">4</span>
+    <span class="pill rating-pill" data-rating="5">5</span>
+    <span class="pill rating-pill" data-rating="6,7">6-7</span>
   </div>
-</footer>
+</div>
 
-<script src="js/main.js"></script>
+<div class="stats-bar" id="stats">Loading…</div>
+<div id="loadError" style="display:none;padding:0 32px 16px;color:#b91c1c;font-size:14px"></div>
+<div class="gallery" id="gallery"></div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal-wrap">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div class="modal" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="players.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    filterClients('b2c', 'featured');
-    filterClients('b2b', 'featured');
+  let players = [];
+  let positionFilter = "All";
+  let ratingFilter = new Set();
+  let searchTerm = "";
+
+  // ---------- CSV loader ----------
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i], next = text[i+1];
+      if (inQuotes) {
+        if (c === '"' && next === '"') { cell += '"'; i++; }
+        else if (c === '"') { inQuotes = false; }
+        else { cell += c; }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === ',') { row.push(cell); cell = ''; }
+        else if (c === '\n' || c === '\r') {
+          if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+          row = []; cell = '';
+          if (c === '\r' && next === '\n') i++;
+        }
+        else { cell += c; }
+      }
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function csvToObjects(rows) {
+    if (!rows.length) return [];
+    const headers = rows[0].map(h => h.trim());
+    return rows.slice(1)
+      .filter(r => r.some(c => c.trim() !== ''))
+      .map(r => {
+        const o = {};
+        headers.forEach((h, i) => o[h] = (r[i] || '').trim());
+        return o;
+      });
+  }
+  function parsePositions(s) {
+    if (!s) return [];
+    const tokens = s.split(/[\/,;|&]| or | and /i).map(t => t.trim()).filter(Boolean);
+    const out = [];
+    for (const t of tokens) {
+      const u = t.toUpperCase();
+      if (u === 'F' || u.startsWith('FORWARD') || u === 'FWD') out.push('Forward');
+      else if (u === 'D' || u.startsWith('DEFENSE') || u.startsWith('DEFENCE') || u === 'DEF') out.push('Defense');
+      else if (u === 'G' || u.startsWith('GOAL') || u === 'GK') out.push('Goalie');
+    }
+    return [...new Set(out)];
+  }
+  function slugify(s, idx) {
+    return (s ? s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') : '') || `player-${idx}`;
+  }
+  function rowToPlayer(row, idx) {
+    const c = APP_CONFIG.columns;
+    const get = key => c[key] ? (row[c[key]] || '') : '';
+    const fullName = c.name
+      ? get('name')
+      : [get('firstName'), get('lastName')].filter(Boolean).join(' ');
+    const headshotFile = get('headshot');
+    return {
+      id: slugify(fullName, idx),
+      name: fullName,
+      positions: parsePositions(get('positions')),
+      rating: parseInt(get('rating')) || 0,
+      teamLastSeason: get('teamLastSeason'),
+      bio: get('bio'),
+      previousExperience: get('previousExperience'),
+      gamesPlayed: get('gamesPlayed'),
+      goals: get('goals'),
+      assists: get('assists'),
+      pointsPerGame: get('pointsPerGame'),
+      headshot: headshotFile ? `headshots/${headshotFile}` : ''
+    };
+  }
+  async function loadPlayers() {
+    try {
+      const res = await fetch(APP_CONFIG.csvUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const objects = csvToObjects(parseCSV(text));
+      const out = objects.map(rowToPlayer).filter(p => p.name);
+      if (!out.length) throw new Error('CSV loaded but no rows with a name were found.');
+      return out;
+    } catch (e) {
+      console.warn('CSV load failed, using local players.js fallback:', e);
+      const err = document.getElementById('loadError');
+      err.style.display = 'block';
+      err.innerHTML = `Could not load live data from Google Sheets (${escapeHtml(e.message)}).
+        Showing local sample data. If you opened this file directly,
+        host the folder (e.g. drop it on <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>) and reopen.`;
+      return (typeof PLAYERS !== 'undefined' && Array.isArray(PLAYERS)) ? PLAYERS : [];
+    }
+  }
+
+  const escapeHtml = s => String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  const getInitials = name =>
+    String(name||'').trim().split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || '?';
+
+  function renderRating(r) {
+    return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
+  }
+
+  const POSITION_ABBR = { Forward: 'F', Defense: 'D', Goalie: 'G' };
+  function getPositions(p) {
+    if (Array.isArray(p.positions)) return p.positions;
+    if (p.position) return [p.position];
+    return [];
+  }
+  function renderPositionsAbbr(positions) {
+    if (!positions.length) return '—';
+    return positions.map(p => POSITION_ABBR[p] || p[0]).join('/');
+  }
+  function renderPositionsFull(positions) {
+    if (!positions.length) return '—';
+    return positions.join(' / ');
+  }
+
+  function renderImg(p, cls) {
+    const initials = escapeHtml(getInitials(p.name));
+    const img = p.headshot
+      ? `<img src="${escapeHtml(p.headshot)}" alt="${escapeHtml(p.name)}" onerror="this.remove()">`
+      : '';
+    return `<div class="${cls}"><div class="placeholder">${initials}</div>${img}</div>`;
+  }
+
+  function renderCard(p) {
+    const positions = getPositions(p);
+    return `
+      <div class="card" data-player-id="${escapeHtml(p.id)}">
+        ${renderImg(p, 'card-img-wrap')}
+        <div class="card-body">
+          <div class="card-name">${escapeHtml(p.name)}</div>
+          <div class="card-meta">
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
+            ${renderRating(p.rating)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function filterPlayers() {
+    return players.filter(p => {
+      const positions = getPositions(p);
+      if (positionFilter !== "All" && !positions.includes(positionFilter)) return false;
+      if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
+      if (searchTerm) {
+        const t = searchTerm.toLowerCase();
+        const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.previousExperience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        if (!hay.includes(t)) return false;
+      }
+      return true;
+    });
+  }
+
+  function render() {
+    const filtered = filterPlayers();
+    const gallery = document.getElementById('gallery');
+    document.getElementById('stats').textContent =
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'}`;
+    if (!filtered.length) {
+      gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
+      return;
+    }
+    gallery.innerHTML = filtered.map(renderCard).join('');
+    gallery.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.playerId));
+    });
+  }
+
+  function openModal(id) {
+    const p = players.find(x => String(x.id) === String(id));
+    if (!p) return;
+    const positions = getPositions(p);
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-header">
+        ${renderImg(p, 'modal-img')}
+        <div>
+          <div class="modal-name">${escapeHtml(p.name)}</div>
+          <div class="modal-tags">
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
+            ${renderRating(p.rating)}
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="experience-label">Bio</div>
+        <div class="experience" style="margin-bottom:24px">${escapeHtml(p.bio || '—')}</div>
+        <div class="experience-label">Winter 25/26 stats${p.teamLastSeason ? ' with ' + escapeHtml(p.teamLastSeason) : ''}</div>
+        <div class="stats-row">
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
+            <div class="stat-label">GP</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.goals || '—')}</div>
+            <div class="stat-label">Goals</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.assists || '—')}</div>
+            <div class="stat-label">Assists</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.pointsPerGame || '—')}</div>
+            <div class="stat-label">Pt/G</div>
+          </div>
+        </div>
+        <div class="experience-label">Previous Playing Level &amp; Experience</div>
+        <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
+      </div>
+    `;
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchTerm = e.target.value;
+    render();
   });
+  document.querySelectorAll('.pill[data-position]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.pill[data-position]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      positionFilter = pill.dataset.position;
+      render();
+    });
+  });
+  document.querySelectorAll('.rating-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const val = pill.dataset.rating;
+      const allPill = document.querySelector('.rating-pill[data-rating="all"]');
+      if (val === 'all') {
+        ratingFilter.clear();
+        document.querySelectorAll('.rating-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      } else {
+        const nums = val.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+        allPill.classList.remove('active');
+        const allOn = nums.every(n => ratingFilter.has(n));
+        if (allOn) {
+          nums.forEach(n => ratingFilter.delete(n));
+          pill.classList.remove('active');
+        } else {
+          nums.forEach(n => ratingFilter.add(n));
+          pill.classList.add('active');
+        }
+        if (ratingFilter.size === 0) allPill.classList.add('active');
+      }
+      render();
+    });
+  });
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  (async () => {
+    players = await loadPlayers();
+    render();
+  })();
 </script>
 </body>
 </html>
