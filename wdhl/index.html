@@ -317,6 +317,8 @@
     .modal-header { flex-direction: column; align-items: center; text-align: center; }
     .modal-img { width: 120px; height: 120px; }
     .info-grid { grid-template-columns: 1fr; }
+    .card-body { text-align: center; }
+    .card-meta { justify-content: center; gap: 10px; }
   }
 </style>
 </head>
@@ -551,11 +553,9 @@
         </div>
       </div>
       <div class="modal-body">
-        <div class="info-item" style="margin-bottom:20px">
-          <div class="label">Last Season Team</div>
-          <div class="value">${escapeHtml(p.teamLastSeason || '—')}</div>
-        </div>
-        <div class="experience-label">Winter 25/26 Stats</div>
+        <div class="experience-label">Bio</div>
+        <div class="experience" style="margin-bottom:24px">${escapeHtml(p.bio || '—')}</div>
+        <div class="experience-label">Winter 25/26 stats${p.teamLastSeason ? ' with ' + escapeHtml(p.teamLastSeason) : ''}</div>
         <div class="stats-row">
           <div class="stat-cell">
             <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
@@ -574,8 +574,6 @@
             <div class="stat-label">Pt/G</div>
           </div>
         </div>
-        <div class="experience-label">Bio</div>
-        <div class="experience" style="margin-bottom:20px">${escapeHtml(p.bio || '—')}</div>
         <div class="experience-label">Previous Playing Level &amp; Experience</div>
         <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
       </div>
