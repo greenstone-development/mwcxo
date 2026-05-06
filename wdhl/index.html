@@ -161,15 +161,20 @@
     gap: 8px;
   }
   .position-badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
     background: #f1f3f5;
     color: #4b5563;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
   }
+  .modal-tags .position-badge { height: 32px; font-size: 13px; padding: 0 14px; }
 
   .rating {
     display: inline-flex;
@@ -306,13 +311,11 @@
   </div>
   <div class="filter-group">
     <span class="pill rating-pill active" data-rating="all">All Ratings</span>
-    <span class="pill rating-pill" data-rating="1">1</span>
-    <span class="pill rating-pill" data-rating="2">2</span>
+    <span class="pill rating-pill" data-rating="1,2">1-2</span>
     <span class="pill rating-pill" data-rating="3">3</span>
     <span class="pill rating-pill" data-rating="4">4</span>
     <span class="pill rating-pill" data-rating="5">5</span>
-    <span class="pill rating-pill" data-rating="6">6</span>
-    <span class="pill rating-pill" data-rating="7">7</span>
+    <span class="pill rating-pill" data-rating="6,7">6-7</span>
   </div>
 </div>
 
@@ -553,10 +556,16 @@
         document.querySelectorAll('.rating-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
       } else {
-        const num = parseInt(val);
+        const nums = val.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
         allPill.classList.remove('active');
-        if (ratingFilter.has(num)) { ratingFilter.delete(num); pill.classList.remove('active'); }
-        else { ratingFilter.add(num); pill.classList.add('active'); }
+        const allOn = nums.every(n => ratingFilter.has(n));
+        if (allOn) {
+          nums.forEach(n => ratingFilter.delete(n));
+          pill.classList.remove('active');
+        } else {
+          nums.forEach(n => ratingFilter.add(n));
+          pill.classList.add('active');
+        }
         if (ratingFilter.size === 0) allPill.classList.add('active');
       }
       render();
