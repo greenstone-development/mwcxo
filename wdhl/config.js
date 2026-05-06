@@ -15,10 +15,10 @@ const APP_CONFIG = {
   //    name: "Name"
   // and remove or leave firstName/lastName empty.
   columns: {
-    firstName:           "First",
-    lastName:            "Last",
+    name:                "Name",
     rating:              "Rating",
     positions:           "Preferred Position",            // accepts "F", "D", "G", "F/D", "Forward", etc.
+    bio:                 "Bio",
     previousExperience:  "Previous playing level, experience",
     teamLastSeason:      "Last Season Team",              // <- adjust if the header reads differently
     headshot:            "Picture",                       // filename only, e.g. "cavallaro.png"

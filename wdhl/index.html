@@ -427,6 +427,7 @@
       positions: parsePositions(get('positions')),
       rating: parseInt(get('rating')) || 0,
       teamLastSeason: get('teamLastSeason'),
+      bio: get('bio'),
       previousExperience: get('previousExperience'),
       gamesPlayed: get('gamesPlayed'),
       goals: get('goals'),
@@ -512,7 +513,7 @@
       if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
       if (searchTerm) {
         const t = searchTerm.toLowerCase();
-        const hay = (p.name + ' ' + (p.previousExperience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.previousExperience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
         if (!hay.includes(t)) return false;
       }
       return true;
@@ -573,6 +574,8 @@
             <div class="stat-label">Pt/G</div>
           </div>
         </div>
+        <div class="experience-label">Bio</div>
+        <div class="experience" style="margin-bottom:20px">${escapeHtml(p.bio || '—')}</div>
         <div class="experience-label">Previous Playing Level &amp; Experience</div>
         <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
       </div>
