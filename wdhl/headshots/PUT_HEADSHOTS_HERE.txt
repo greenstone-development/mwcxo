@@ -1,0 +1,14 @@
+Drop player headshot image files into THIS folder.
+
+Recommended format:
+  - JPEG (.jpg) — best for photos, smallest files
+  - PNG (.png) is also fine
+  - Square aspect ratio (1:1) — width = height
+  - 400x400 to 800x800 pixels
+  - Keep each file under ~200 KB if you can (any web image compressor works)
+  - Filename should match what's in players.js, e.g. "john-smith.jpg"
+
+If a player has no headshot yet, leave the headshot field empty ("") in
+players.js — the gallery will show their initials in a colored circle instead.
+
+You can delete this file once you've added real headshots.

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WDHL Members</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --forward: #2563eb;
+    --defense: #059669;
+    --goalie: #ea580c;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 28px 32px;
+  }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
+
+  .controls {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+  }
+  .search-wrap {
+    flex: 1 1 260px;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg);
+    font-family: inherit;
+  }
+  .search-wrap input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+  .search-wrap::before {
+    content: "🔍";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    font-size: 13px;
+  }
+
+  .filter-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-right: 4px;
+  }
+  .pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .pill:hover { border-color: var(--primary); color: var(--primary); }
+  .pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .stats-bar {
+    padding: 14px 32px 4px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .gallery {
+    padding: 16px 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card-img-wrap, .modal-img {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  }
+  .card-img-wrap { width: 100%; aspect-ratio: 1; }
+  .card-img-wrap .placeholder, .modal-img .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700;
+  }
+  .card-img-wrap .placeholder { font-size: 42px; }
+  .modal-img .placeholder { font-size: 48px; }
+  .card-img-wrap img, .modal-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body { padding: 14px 16px; }
+  .card-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .position-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f1f3f5;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .rating.r1, .rating.r2 { background: #94a3b8; }   /* slate  */
+  .rating.r3, .rating.r4 { background: #3b82f6; }   /* blue   */
+  .rating.r5, .rating.r6 { background: #10b981; }   /* green  */
+  .rating.r7             { background: #f59e0b; }   /* gold   */
+  .modal-tags .rating { width: 32px; height: 32px; font-size: 14px; }
+
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .modal {
+    background: white;
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-header {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-img {
+    width: 140px; height: 140px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .modal-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .modal-tags {
+    display: flex; gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .modal-body { padding: 24px; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .info-item .label, .experience-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .experience-label { margin-bottom: 8px; }
+  .info-item .value { font-size: 15px; font-weight: 500; }
+  .experience {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px;
+    line-height: 1.6;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+    box-shadow: var(--shadow);
+  }
+  .modal-close:hover { background: white; }
+
+  @media (max-width: 600px) {
+    header, .controls, .stats-bar, .gallery { padding-left: 16px; padding-right: 16px; }
+    .modal-header { flex-direction: column; align-items: center; text-align: center; }
+    .modal-img { width: 120px; height: 120px; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏒 WDHL Members</h1>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search by name, team, or experience…">
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Position</span>
+    <span class="pill active" data-position="All">All</span>
+    <span class="pill" data-position="Forward">Forward</span>
+    <span class="pill" data-position="Defense">Defense</span>
+    <span class="pill" data-position="Goalie">Goalie</span>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Rating</span>
+    <span class="pill rating-pill active" data-rating="all">All</span>
+    <span class="pill rating-pill" data-rating="1">1</span>
+    <span class="pill rating-pill" data-rating="2">2</span>
+    <span class="pill rating-pill" data-rating="3">3</span>
+    <span class="pill rating-pill" data-rating="4">4</span>
+    <span class="pill rating-pill" data-rating="5">5</span>
+    <span class="pill rating-pill" data-rating="6">6</span>
+    <span class="pill rating-pill" data-rating="7">7</span>
+  </div>
+</div>
+
+<div class="stats-bar" id="stats">Loading…</div>
+<div class="gallery" id="gallery"></div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal-wrap">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div class="modal" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="players.js"></script>
+<script>
+  let positionFilter = "All";
+  let ratingFilter = new Set();
+  let searchTerm = "";
+
+  const escapeHtml = s => String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  const getInitials = name =>
+    String(name||'').trim().split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || '?';
+
+  function renderRating(r) {
+    return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
+  }
+
+  function renderImg(p, cls) {
+    const initials = escapeHtml(getInitials(p.name));
+    const img = p.headshot
+      ? `<img src="${escapeHtml(p.headshot)}" alt="${escapeHtml(p.name)}" onerror="this.remove()">`
+      : '';
+    return `<div class="${cls}"><div class="placeholder">${initials}</div>${img}</div>`;
+  }
+
+  function renderCard(p) {
+    return `
+      <div class="card" data-player-id="${escapeHtml(p.id)}">
+        ${renderImg(p, 'card-img-wrap')}
+        <div class="card-body">
+          <div class="card-name">${escapeHtml(p.name)}</div>
+          <div class="card-meta">
+            <span class="position-badge ${escapeHtml(p.position)}">${escapeHtml(p.position)}</span>
+            ${renderRating(p.rating)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function filterPlayers() {
+    return PLAYERS.filter(p => {
+      if (positionFilter !== "All" && p.position !== positionFilter) return false;
+      if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
+      if (searchTerm) {
+        const t = searchTerm.toLowerCase();
+        const hay = (p.name + ' ' + (p.experience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        if (!hay.includes(t)) return false;
+      }
+      return true;
+    });
+  }
+
+  function render() {
+    const filtered = filterPlayers();
+    const gallery = document.getElementById('gallery');
+    document.getElementById('stats').textContent =
+      `Showing ${filtered.length} of ${PLAYERS.length} player${PLAYERS.length===1?'':'s'}`;
+    if (!filtered.length) {
+      gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
+      return;
+    }
+    gallery.innerHTML = filtered.map(renderCard).join('');
+    gallery.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.playerId));
+    });
+  }
+
+  function openModal(id) {
+    const p = PLAYERS.find(x => String(x.id) === String(id));
+    if (!p) return;
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-header">
+        ${renderImg(p, 'modal-img')}
+        <div>
+          <div class="modal-name">${escapeHtml(p.name)}</div>
+          <div class="modal-tags">
+            <span class="position-badge ${escapeHtml(p.position)}">${escapeHtml(p.position)}</span>
+            ${renderRating(p.rating)}
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="label">Age</div>
+            <div class="value">${escapeHtml(p.age)}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Team Last Season</div>
+            <div class="value">${escapeHtml(p.teamLastSeason || '—')}</div>
+          </div>
+        </div>
+        <div class="experience-label">Hockey Experience</div>
+        <div class="experience">${escapeHtml(p.experience || '—')}</div>
+      </div>
+    `;
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchTerm = e.target.value;
+    render();
+  });
+  document.querySelectorAll('.pill[data-position]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.pill[data-position]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      positionFilter = pill.dataset.position;
+      render();
+    });
+  });
+  document.querySelectorAll('.rating-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const val = pill.dataset.rating;
+      const allPill = document.querySelector('.rating-pill[data-rating="all"]');
+      if (val === 'all') {
+        ratingFilter.clear();
+        document.querySelectorAll('.rating-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      } else {
+        const num = parseInt(val);
+        allPill.classList.remove('active');
+        if (ratingFilter.has(num)) { ratingFilter.delete(num); pill.classList.remove('active'); }
+        else { ratingFilter.add(num); pill.classList.add('active'); }
+        if (ratingFilter.size === 0) allPill.classList.add('active');
+      }
+      render();
+    });
+  });
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  render();
+</script>
+</body>
+</html>
