@@ -312,6 +312,51 @@
   }
   .modal-close:hover { background: white; }
 
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    box-shadow: var(--shadow-lg);
+    z-index: 2;
+    padding: 0 0 3px 0;
+  }
+  .modal-nav:hover { background: white; }
+  .modal-nav:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+  .modal-nav-prev { left: -60px; }
+  .modal-nav-next { right: -60px; }
+  .modal-counter {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.95);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .modal-counter:empty { display: none; }
+
+  @media (max-width: 720px) {
+    .modal-nav-prev { left: 8px; }
+    .modal-nav-next { right: 8px; }
+  }
   @media (max-width: 600px) {
     header, .controls, .stats-bar, .gallery { padding-left: 16px; padding-right: 16px; }
     .modal-header { flex-direction: column; align-items: center; text-align: center; }
@@ -351,8 +396,11 @@
 
 <div class="modal-backdrop" id="modal">
   <div class="modal-wrap">
+    <button class="modal-nav modal-nav-prev" id="modalPrev" aria-label="Previous player">‹</button>
     <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <button class="modal-nav modal-nav-next" id="modalNext" aria-label="Next player">›</button>
     <div class="modal" id="modalContent"></div>
+    <div class="modal-counter" id="modalCounter"></div>
   </div>
 </div>
 
@@ -535,9 +583,10 @@
     });
   }
 
-  function openModal(id) {
-    const p = players.find(x => String(x.id) === String(id));
-    if (!p) return;
+  let modalList = [];
+  let modalIdx = -1;
+
+  function renderModal(p) {
     const positions = getPositions(p);
     document.getElementById('modalContent').innerHTML = `
       <div class="modal-header">
@@ -576,7 +625,26 @@
         <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
       </div>
     `;
+    document.getElementById('modalContent').scrollTop = 0;
+    document.getElementById('modalPrev').disabled = modalIdx <= 0;
+    document.getElementById('modalNext').disabled = modalIdx >= modalList.length - 1;
+    document.getElementById('modalCounter').textContent =
+      modalList.length > 1 ? `${modalIdx + 1} of ${modalList.length}` : '';
+  }
+
+  function openModal(id) {
+    modalList = filterPlayers();
+    modalIdx = modalList.findIndex(p => String(p.id) === String(id));
+    if (modalIdx === -1) return;
+    renderModal(modalList[modalIdx]);
     document.getElementById('modal').classList.add('open');
+  }
+
+  function modalPrev() {
+    if (modalIdx > 0) { modalIdx--; renderModal(modalList[modalIdx]); }
+  }
+  function modalNext() {
+    if (modalIdx < modalList.length - 1) { modalIdx++; renderModal(modalList[modalIdx]); }
   }
 
   function closeModal() {
@@ -623,7 +691,14 @@
     if (e.target.id === 'modal') closeModal();
   });
   document.getElementById('modalClose').addEventListener('click', closeModal);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.getElementById('modalPrev').addEventListener('click', modalPrev);
+  document.getElementById('modalNext').addEventListener('click', modalNext);
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('modal').classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    else if (e.key === 'ArrowLeft') modalPrev();
+    else if (e.key === 'ArrowRight') modalNext();
+  });
 
   (async () => {
     players = await loadPlayers();
