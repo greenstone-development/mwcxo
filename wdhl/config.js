@@ -20,11 +20,11 @@ const APP_CONFIG = {
     positions:           "Preferred Position",            // accepts "F", "D", "G", "F/D", "Forward", etc.
     bio:                 "Bio",
     previousExperience:  "Previous playing level, experience",
-    teamLastSeason:      "Last Season Team",              // <- adjust if the header reads differently
+    teamLastSeason:      "Previous Team",
     headshot:            "Picture",                       // filename only, e.g. "cavallaro.png"
     gamesPlayed:         "GP",
     goals:               "Goals",
     assists:             "Assists",
-    pointsPerGame:       "Pt/G"
+    pointsPerGame:       "P/G"
   }
 };
