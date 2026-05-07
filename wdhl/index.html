@@ -416,10 +416,10 @@
     <option value="6,7">Rating 6-7</option>
   </select>
   <select id="sortSelect" class="filter-select">
-    <option value="rating-desc">Rating: High to Low</option>
-    <option value="rating-asc">Rating: Low to High</option>
     <option value="gp-desc">GP: High to Low</option>
     <option value="gp-asc">GP: Low to High</option>
+    <option value="rating-desc">Rating: High to Low</option>
+    <option value="rating-asc">Rating: Low to High</option>
     <option value="ppg-desc">Pt/G: High to Low</option>
     <option value="ppg-asc">Pt/G: Low to High</option>
   </select>
@@ -445,7 +445,7 @@
   let positionFilter = "All";
   let ratingFilter = new Set();
   let searchTerm = "";
-  let sortKey = "rating-desc";
+  let sortKey = "gp-desc";
 
   // ---------- CSV loader ----------
   function parseCSV(text) {
