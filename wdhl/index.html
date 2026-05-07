@@ -218,6 +218,21 @@
   .rating.r7             { background: #f59e0b; }   /* gold   */
   .modal-tags .rating { width: 32px; height: 32px; font-size: 14px; }
 
+  .sub-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #8b5cf6;
+    color: white;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .modal-tags .sub-badge { width: 32px; height: 32px; font-size: 18px; }
+
   .empty {
     text-align: center;
     padding: 80px 20px;
@@ -511,7 +526,6 @@
       rating: parseInt(get('rating')) || 0,
       teamLastSeason: get('teamLastSeason'),
       bio: get('bio'),
-      previousExperience: get('previousExperience'),
       gamesPlayed: get('gamesPlayed'),
       goals: get('goals'),
       assists: get('assists'),
@@ -550,6 +564,13 @@
     return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
   }
 
+  function renderSubBadge(p) {
+    if ((p.teamLastSeason || '').trim().toLowerCase() === 'substitute') {
+      return '<span class="sub-badge" title="Substitute — can play for any team">⟳</span>';
+    }
+    return '';
+  }
+
   const POSITION_ABBR = { Forward: 'F', Defense: 'D', Goalie: 'G' };
   function getPositions(p) {
     if (Array.isArray(p.positions)) return p.positions;
@@ -583,6 +604,7 @@
           <div class="card-meta">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderRating(p.rating)}
+            ${renderSubBadge(p)}
           </div>
         </div>
       </div>
@@ -596,7 +618,7 @@
       if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
       if (searchTerm) {
         const t = searchTerm.toLowerCase();
-        const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.previousExperience||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
         if (!hay.includes(t)) return false;
       }
       return true;
@@ -652,13 +674,19 @@
           <div class="modal-tags">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderRating(p.rating)}
+            ${renderSubBadge(p)}
           </div>
         </div>
       </div>
       <div class="modal-body">
         <div class="experience-label">Bio</div>
         <div class="experience" style="margin-bottom:24px">${escapeHtml(p.bio || '—')}</div>
-        <div class="experience-label">Winter 25/26 stats${p.teamLastSeason ? ' with ' + escapeHtml(p.teamLastSeason) : ''}</div>
+        <div class="experience-label">${(() => {
+          const team = (p.teamLastSeason || '').trim();
+          if (!team) return 'Winter 25/26 stats';
+          if (team.toLowerCase() === 'substitute') return 'Winter 25/26 stats as a Substitute';
+          return 'Winter 25/26 stats with ' + escapeHtml(team);
+        })()}</div>
         <div class="stats-row">
           <div class="stat-cell">
             <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
@@ -677,8 +705,6 @@
             <div class="stat-label">Pt/G</div>
           </div>
         </div>
-        <div class="experience-label">Previous Playing Level &amp; Experience</div>
-        <div class="experience">${escapeHtml(p.previousExperience || '—')}</div>
       </div>
     `;
     document.getElementById('modalContent').scrollTop = 0;

@@ -19,7 +19,6 @@ const APP_CONFIG = {
     rating:              "Rating",
     positions:           "Preferred Position",            // accepts "F", "D", "G", "F/D", "Forward", etc.
     bio:                 "Bio",
-    previousExperience:  "Previous playing level, experience",
     teamLastSeason:      "Previous Team",
     headshot:            "Picture",                       // filename only, e.g. "cavallaro.png"
     gamesPlayed:         "GP",
