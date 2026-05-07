@@ -184,6 +184,12 @@
     align-items: center;
     gap: 8px;
   }
+  .meta-end {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
   .position-badge {
     display: inline-flex;
     align-items: center;
@@ -499,6 +505,7 @@
   }
   function parsePositions(s) {
     if (!s) return [];
+    if (s.trim().toLowerCase() === 'either') return ['Forward', 'Defense'];
     const tokens = s.split(/[\/,;|&]| or | and /i).map(t => t.trim()).filter(Boolean);
     const out = [];
     for (const t of tokens) {
@@ -506,6 +513,7 @@
       if (u === 'F' || u.startsWith('FORWARD') || u === 'FWD') out.push('Forward');
       else if (u === 'D' || u.startsWith('DEFENSE') || u.startsWith('DEFENCE') || u === 'DEF') out.push('Defense');
       else if (u === 'G' || u.startsWith('GOAL') || u === 'GK') out.push('Goalie');
+      else if (u === 'EITHER') { out.push('Forward'); out.push('Defense'); }
     }
     return [...new Set(out)];
   }
@@ -583,6 +591,9 @@
   }
   function renderPositionsFull(positions) {
     if (!positions.length) return '—';
+    if (positions.length === 2 && positions.includes('Forward') && positions.includes('Defense')) {
+      return 'Either';
+    }
     return positions.join(' / ');
   }
 
@@ -603,8 +614,7 @@
           <div class="card-name">${escapeHtml(p.name)}</div>
           <div class="card-meta">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
-            ${renderRating(p.rating)}
-            ${renderSubBadge(p)}
+            <span class="meta-end">${renderSubBadge(p)}${renderRating(p.rating)}</span>
           </div>
         </div>
       </div>
@@ -673,8 +683,8 @@
           <div class="modal-name">${escapeHtml(p.name)}</div>
           <div class="modal-tags">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
-            ${renderRating(p.rating)}
             ${renderSubBadge(p)}
+            ${renderRating(p.rating)}
           </div>
         </div>
       </div>
