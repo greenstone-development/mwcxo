@@ -102,6 +102,30 @@
     border-color: var(--primary);
   }
 
+  .filter-select {
+    padding: 8px 32px 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%236b7280' d='M3 4.5L6 7.5L9 4.5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    min-width: 150px;
+  }
+  .filter-select:hover { border-color: var(--primary); }
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+
   .stats-bar {
     padding: 14px 32px 4px;
     color: var(--text-muted);
@@ -333,12 +357,12 @@
   }
   .modal-nav:hover { background: white; }
   .modal-nav:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
-  .modal-nav-prev { right: 92px; }
-  .modal-nav-next { right: 52px; }
+  .modal-nav-prev { right: 100px; }
+  .modal-nav-next { right: 60px; }
   .modal-close::before {
     content: '';
     position: absolute;
-    left: -4px;
+    left: -8px;
     top: 4px;
     bottom: 4px;
     width: 1px;
@@ -347,12 +371,12 @@
 
   @media (max-width: 600px) {
     header, .controls, .stats-bar, .gallery { padding-left: 16px; padding-right: 16px; }
-    .modal-header { flex-direction: column; align-items: center; text-align: center; padding-top: 56px; }
+    .modal-header { flex-direction: column; align-items: center; text-align: center; }
     .modal-img { width: 120px; height: 120px; }
     .info-grid { grid-template-columns: 1fr; }
     .modal-close::before { display: none; }
-    .modal-nav-prev { right: auto; left: 12px; top: 70px; }
-    .modal-nav-next { right: auto; left: 12px; top: 110px; }
+    .modal-nav-prev { right: auto; left: 12px; top: 12px; }
+    .modal-nav-next { right: auto; left: 52px; top: 12px; }
   }
 </style>
 </head>
@@ -365,20 +389,28 @@
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Search by name, team, or experience…">
   </div>
-  <div class="filter-group">
-    <span class="pill active" data-position="All">All Positions</span>
-    <span class="pill" data-position="Forward">Forward</span>
-    <span class="pill" data-position="Defense">Defense</span>
-    <span class="pill" data-position="Goalie">Goalie</span>
-  </div>
-  <div class="filter-group">
-    <span class="pill rating-pill active" data-rating="all">All Ratings</span>
-    <span class="pill rating-pill" data-rating="1,2">1-2</span>
-    <span class="pill rating-pill" data-rating="3">3</span>
-    <span class="pill rating-pill" data-rating="4">4</span>
-    <span class="pill rating-pill" data-rating="5">5</span>
-    <span class="pill rating-pill" data-rating="6,7">6-7</span>
-  </div>
+  <select id="positionSelect" class="filter-select">
+    <option value="All">All Positions</option>
+    <option value="Forward">Forward</option>
+    <option value="Defense">Defense</option>
+    <option value="Goalie">Goalie</option>
+  </select>
+  <select id="ratingSelect" class="filter-select">
+    <option value="all">All Ratings</option>
+    <option value="1,2">Rating 1-2</option>
+    <option value="3">Rating 3</option>
+    <option value="4">Rating 4</option>
+    <option value="5">Rating 5</option>
+    <option value="6,7">Rating 6-7</option>
+  </select>
+  <select id="sortSelect" class="filter-select">
+    <option value="rating-desc">Rating: High to Low</option>
+    <option value="rating-asc">Rating: Low to High</option>
+    <option value="gp-desc">GP: High to Low</option>
+    <option value="gp-asc">GP: Low to High</option>
+    <option value="ppg-desc">Pt/G: High to Low</option>
+    <option value="ppg-asc">Pt/G: Low to High</option>
+  </select>
 </div>
 
 <div class="stats-bar" id="stats">Loading…</div>
@@ -401,6 +433,7 @@
   let positionFilter = "All";
   let ratingFilter = new Set();
   let searchTerm = "";
+  let sortKey = "rating-desc";
 
   // ---------- CSV loader ----------
   function parseCSV(text) {
@@ -558,8 +591,29 @@
     });
   }
 
+  function compareNum(a, b, asc) {
+    const aN = Number(a), bN = Number(b);
+    const aBad = isNaN(aN), bBad = isNaN(bN);
+    if (aBad && bBad) return 0;
+    if (aBad) return 1;   // missing values sink to bottom
+    if (bBad) return -1;
+    return asc ? aN - bN : bN - aN;
+  }
+  function sortPlayers(list) {
+    const out = list.slice();
+    switch (sortKey) {
+      case 'rating-desc': out.sort((a,b) => compareNum(a.rating, b.rating, false)); break;
+      case 'rating-asc':  out.sort((a,b) => compareNum(a.rating, b.rating, true));  break;
+      case 'gp-desc':     out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, false)); break;
+      case 'gp-asc':      out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, true));  break;
+      case 'ppg-desc':    out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, false)); break;
+      case 'ppg-asc':     out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, true));  break;
+    }
+    return out;
+  }
+
   function render() {
-    const filtered = filterPlayers();
+    const filtered = sortPlayers(filterPlayers());
     const gallery = document.getElementById('gallery');
     document.getElementById('stats').textContent =
       `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'}`;
@@ -643,37 +697,23 @@
     searchTerm = e.target.value;
     render();
   });
-  document.querySelectorAll('.pill[data-position]').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('.pill[data-position]').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      positionFilter = pill.dataset.position;
-      render();
-    });
+  document.getElementById('positionSelect').addEventListener('change', e => {
+    positionFilter = e.target.value;
+    render();
   });
-  document.querySelectorAll('.rating-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const val = pill.dataset.rating;
-      const allPill = document.querySelector('.rating-pill[data-rating="all"]');
-      if (val === 'all') {
-        ratingFilter.clear();
-        document.querySelectorAll('.rating-pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-      } else {
-        const nums = val.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
-        allPill.classList.remove('active');
-        const allOn = nums.every(n => ratingFilter.has(n));
-        if (allOn) {
-          nums.forEach(n => ratingFilter.delete(n));
-          pill.classList.remove('active');
-        } else {
-          nums.forEach(n => ratingFilter.add(n));
-          pill.classList.add('active');
-        }
-        if (ratingFilter.size === 0) allPill.classList.add('active');
-      }
-      render();
-    });
+  document.getElementById('ratingSelect').addEventListener('change', e => {
+    const val = e.target.value;
+    ratingFilter.clear();
+    if (val !== 'all') {
+      val.split(',').map(s => parseInt(s.trim()))
+        .filter(n => !isNaN(n))
+        .forEach(n => ratingFilter.add(n));
+    }
+    render();
+  });
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    sortKey = e.target.value;
+    render();
   });
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target.id === 'modal') closeModal();
