@@ -25,5 +25,22 @@ const APP_CONFIG = {
     goals:               "Goals",
     assists:             "Assists",
     pointsPerGame:       "P/G"
+  },
+
+  // ----- Businesses tab (used by index2.html) -----
+  // Published CSV URL for the business_list tab. If your sheet was published
+  // with "Entire Document" selected, you can target any tab by appending
+  // &gid=<tab id>&single=true to the pub URL. Otherwise publish the tab
+  // separately and paste its CSV URL here.
+  businessCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5zgxuVbvHc7xJSyOkQyGlNES3M8uftGWAp1vv9ZbSYlmrSyrQlxGXNnjPlXTHII1pZ2xb73uSvPIT/pub?gid=681917990&single=true&output=csv",
+
+  // Map internal business field -> column header in the business_list tab.
+  // Adjust these to match your actual column headers.
+  businessColumns: {
+    name:        "Name",
+    url:         "URL",
+    displayUrl:  "Display URL",   // optional — derived from URL if blank
+    logo:        "Logo",          // filename, e.g. "logo_cdi.png" (relative to headshots/)
+    overview:    "Overview"
   }
 };
