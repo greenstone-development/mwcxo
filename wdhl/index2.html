@@ -39,19 +39,22 @@
   header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
 
   #viewToggleBtn {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.1);
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 8px 18px;
-    border-radius: 999px;
-    font-size: 13px;
+    border: none;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding: 0 22px;
+    border-radius: 0;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     font-family: inherit;
     transition: background 0.15s;
     white-space: nowrap;
+    align-self: stretch;
+    margin: -28px -32px -28px 0;
   }
-  #viewToggleBtn:hover { background: rgba(255,255,255,0.28); }
+  #viewToggleBtn:hover { background: rgba(255,255,255,0.2); }
 
   .businesses-grid {
     padding: 24px 32px 48px;
@@ -171,7 +174,7 @@
   @media (max-width: 600px) {
     header { padding: 20px 16px; }
     header h1 { font-size: 18px; }
-    #viewToggleBtn { padding: 6px 14px; font-size: 12px; }
+    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
     .business-left { width: 64px; }
