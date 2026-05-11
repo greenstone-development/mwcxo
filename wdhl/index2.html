@@ -136,8 +136,16 @@
     background: var(--bg);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .business-contact-wrap.is-linked { cursor: pointer; }
-  .business-contact-wrap.is-linked:hover {
+  .business-contact-wrap.is-linked,
+  .business-logo-wrap.is-linked {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .business-contact-wrap.is-linked:hover,
+  .business-logo-wrap.is-linked:hover {
     transform: translateY(-1px);
     box-shadow: var(--shadow);
   }
@@ -1109,10 +1117,10 @@
     const html = list.map(b => `
       <div class="business-card">
         <div class="business-left">
-          <div class="business-logo-wrap">
-            <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
-            ${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}
-          </div>
+          ${b.url
+            ? `<a class="business-logo-wrap is-linked" href="${escapeHtml(b.url)}" target="_blank" rel="noopener" title="Visit ${escapeHtml(b.name)}"><div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}</a>`
+            : `<div class="business-logo-wrap"><div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}</div>`
+          }
           ${renderContactBlock(b)}
         </div>
         <div class="business-info">
