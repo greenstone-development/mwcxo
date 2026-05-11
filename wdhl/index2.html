@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WDHL</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --forward: #2563eb;
+    --defense: #059669;
+    --goalie: #ea580c;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 28px 32px;
+  }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
+
+  .view-toggle {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+  }
+  .view-toggle button {
+    background: none;
+    border: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-family: inherit;
+    transition: color 0.15s;
+  }
+  .view-toggle button:hover { color: var(--text); }
+  .view-toggle button.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+
+  .businesses-grid {
+    padding: 24px 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .business-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: var(--shadow);
+  }
+  .business-logo-wrap {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .business-logo-wrap .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700; font-size: 24px;
+  }
+  .business-logo-wrap img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    background: white;
+  }
+  .business-info { flex: 1; min-width: 0; }
+  .business-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .business-url {
+    font-size: 13px;
+    color: var(--primary);
+    text-decoration: none;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-weight: 500;
+  }
+  .business-url:hover { text-decoration: underline; }
+  .business-overview {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  @media (max-width: 600px) {
+    .view-toggle { padding: 0 16px; }
+    .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
+    .business-card { padding: 16px; gap: 14px; }
+    .business-logo-wrap { width: 64px; height: 64px; }
+  }
+
+  .controls {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+  }
+  .search-wrap {
+    flex: 1 1 260px;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg);
+    font-family: inherit;
+  }
+  .search-wrap input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+  .search-wrap::before {
+    content: "🔍";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    font-size: 13px;
+  }
+
+  .filter-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-right: 4px;
+  }
+  .pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .pill:hover { border-color: var(--primary); color: var(--primary); }
+  .pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .filter-select {
+    padding: 8px 32px 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%236b7280' d='M3 4.5L6 7.5L9 4.5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    min-width: 150px;
+  }
+  .filter-select:hover { border-color: var(--primary); }
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+
+  .stats-bar {
+    padding: 14px 32px 4px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .gallery {
+    padding: 16px 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .card-img-wrap, .modal-img {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  }
+  .card-img-wrap { width: 100%; aspect-ratio: 1; }
+  .card-img-wrap .placeholder, .modal-img .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700;
+  }
+  .card-img-wrap .placeholder { font-size: 42px; }
+  .modal-img .placeholder { font-size: 48px; }
+  .card-img-wrap img, .modal-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body { padding: 14px 16px; }
+  .card-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-end {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .position-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
+    background: #f1f3f5;
+    color: #4b5563;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .modal-tags .position-badge { height: 32px; font-size: 13px; padding: 0 14px; }
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .rating.r1, .rating.r2 { background: #94a3b8; }   /* slate  */
+  .rating.r3, .rating.r4 { background: #3b82f6; }   /* blue   */
+  .rating.r5, .rating.r6 { background: #10b981; }   /* green  */
+  .rating.r7             { background: #f59e0b; }   /* gold   */
+  .modal-tags .rating { width: 32px; height: 32px; font-size: 14px; }
+
+  .sub-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: #8b5cf6;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .modal-tags .sub-badge { height: 32px; font-size: 12px; padding: 0 12px; }
+
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+  }
+  .modal {
+    background: white;
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-header {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-img {
+    width: 140px; height: 140px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .modal-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .modal-tags {
+    display: flex; gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .modal-body { padding: 24px; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .stat-cell {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .stat-cell .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .stat-cell .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-top: 6px;
+  }
+  .info-item .label, .experience-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .experience-label { margin-bottom: 8px; }
+  .info-item .value { font-size: 15px; font-weight: 500; }
+  .experience {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px;
+    line-height: 1.6;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+    box-shadow: var(--shadow);
+  }
+  .modal-close:hover { background: white; }
+
+  .modal-nav {
+    position: absolute;
+    top: 12px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    z-index: 1;
+    padding: 0 0 2px 0;
+  }
+  .modal-nav:hover { background: white; }
+  .modal-nav:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+  .modal-nav-prev { right: 100px; }
+  .modal-nav-next { right: 60px; }
+  .modal-close::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  @media (max-width: 600px) {
+    header, .controls, .stats-bar, .gallery { padding-left: 16px; padding-right: 16px; }
+    .controls { gap: 12px 8px; }
+    .search-wrap { flex: 1 1 100%; }
+    .filter-select {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 8px 22px 8px 10px;
+      background-position: right 6px center;
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .modal-header { flex-direction: column; align-items: center; text-align: center; }
+    .modal-img { width: 120px; height: 120px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .modal-close::before { display: none; }
+    .modal-nav-prev { right: auto; left: 12px; top: 12px; }
+    .modal-nav-next { right: auto; left: 52px; top: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏒 WDHL</h1>
+</header>
+
+<nav class="view-toggle">
+  <button data-view="members" class="active">Members</button>
+  <button data-view="businesses">Businesses</button>
+</nav>
+
+<div id="membersView">
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search by name, team, or experience…">
+  </div>
+  <select id="positionSelect" class="filter-select">
+    <option value="All">All Positions</option>
+    <option value="Forward">Forward</option>
+    <option value="Defense">Defense</option>
+    <option value="Goalie">Goalie</option>
+  </select>
+  <select id="ratingSelect" class="filter-select">
+    <option value="all">All Ratings</option>
+    <option value="1,2">Rating 1-2</option>
+    <option value="3">Rating 3</option>
+    <option value="4">Rating 4</option>
+    <option value="5">Rating 5</option>
+    <option value="6,7">Rating 6-7</option>
+  </select>
+  <select id="sortSelect" class="filter-select">
+    <option value="gp-desc">GP: High to Low</option>
+    <option value="gp-asc">GP: Low to High</option>
+    <option value="rating-desc">Rating: High to Low</option>
+    <option value="rating-asc">Rating: Low to High</option>
+    <option value="ppg-desc">Pt/G: High to Low</option>
+    <option value="ppg-asc">Pt/G: Low to High</option>
+  </select>
+</div>
+
+<div class="stats-bar" id="stats">Loading…</div>
+<div id="loadError" style="display:none;padding:0 32px 16px;color:#b91c1c;font-size:14px"></div>
+<div class="gallery" id="gallery"></div>
+</div><!-- /#membersView -->
+
+<div id="businessesView" style="display:none">
+  <div class="businesses-grid" id="businessesGrid"></div>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal-wrap">
+    <button class="modal-nav modal-nav-prev" id="modalPrev" aria-label="Previous player">‹</button>
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <button class="modal-nav modal-nav-next" id="modalNext" aria-label="Next player">›</button>
+    <div class="modal" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="players.js"></script>
+<script>
+  let players = [];
+  let positionFilter = "All";
+  let ratingFilter = new Set();
+  let searchTerm = "";
+  let sortKey = "gp-desc";
+
+  // ---------- CSV loader ----------
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i], next = text[i+1];
+      if (inQuotes) {
+        if (c === '"' && next === '"') { cell += '"'; i++; }
+        else if (c === '"') { inQuotes = false; }
+        else { cell += c; }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === ',') { row.push(cell); cell = ''; }
+        else if (c === '\n' || c === '\r') {
+          if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+          row = []; cell = '';
+          if (c === '\r' && next === '\n') i++;
+        }
+        else { cell += c; }
+      }
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  function csvToObjects(rows) {
+    if (!rows.length) return [];
+    const headers = rows[0].map(h => h.trim());
+    return rows.slice(1)
+      .filter(r => r.some(c => c.trim() !== ''))
+      .map(r => {
+        const o = {};
+        headers.forEach((h, i) => o[h] = (r[i] || '').trim());
+        return o;
+      });
+  }
+  function parsePositions(s) {
+    if (!s) return [];
+    if (s.trim().toLowerCase() === 'either') return ['Forward', 'Defense'];
+    const tokens = s.split(/[\/,;|&]| or | and /i).map(t => t.trim()).filter(Boolean);
+    const out = [];
+    for (const t of tokens) {
+      const u = t.toUpperCase();
+      if (u === 'F' || u.startsWith('FORWARD') || u === 'FWD') out.push('Forward');
+      else if (u === 'D' || u.startsWith('DEFENSE') || u.startsWith('DEFENCE') || u === 'DEF') out.push('Defense');
+      else if (u === 'G' || u.startsWith('GOAL') || u === 'GK') out.push('Goalie');
+      else if (u === 'EITHER') { out.push('Forward'); out.push('Defense'); }
+    }
+    return [...new Set(out)];
+  }
+  function slugify(s, idx) {
+    return (s ? s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') : '') || `player-${idx}`;
+  }
+  function rowToPlayer(row, idx) {
+    const c = APP_CONFIG.columns;
+    const get = key => c[key] ? (row[c[key]] || '') : '';
+    const fullName = c.name
+      ? get('name')
+      : [get('firstName'), get('lastName')].filter(Boolean).join(' ');
+    const headshotFile = get('headshot');
+    return {
+      id: slugify(fullName, idx),
+      name: fullName,
+      positions: parsePositions(get('positions')),
+      rating: parseInt(get('rating')) || 0,
+      teamLastSeason: get('teamLastSeason'),
+      bio: get('bio'),
+      gamesPlayed: get('gamesPlayed'),
+      goals: get('goals'),
+      assists: get('assists'),
+      pointsPerGame: get('pointsPerGame'),
+      headshot: headshotFile ? `headshots/${headshotFile}` : ''
+    };
+  }
+  async function loadPlayers() {
+    try {
+      const res = await fetch(APP_CONFIG.csvUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const objects = csvToObjects(parseCSV(text));
+      const out = objects.map(rowToPlayer).filter(p => p.name);
+      if (!out.length) throw new Error('CSV loaded but no rows with a name were found.');
+      return out;
+    } catch (e) {
+      console.warn('CSV load failed, using local players.js fallback:', e);
+      const err = document.getElementById('loadError');
+      err.style.display = 'block';
+      err.innerHTML = `Could not load live data from Google Sheets (${escapeHtml(e.message)}).
+        Showing local sample data. If you opened this file directly,
+        host the folder (e.g. drop it on <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>) and reopen.`;
+      return (typeof PLAYERS !== 'undefined' && Array.isArray(PLAYERS)) ? PLAYERS : [];
+    }
+  }
+
+  const escapeHtml = s => String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  const getInitials = name =>
+    String(name||'').trim().split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || '?';
+
+  function renderRating(r) {
+    return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
+  }
+
+  function renderSubBadge(p) {
+    if ((p.teamLastSeason || '').trim().toLowerCase() === 'substitute') {
+      return '<span class="sub-badge" title="Substitute — can play for any team">SUB</span>';
+    }
+    return '';
+  }
+
+  const POSITION_ABBR = { Forward: 'F', Defense: 'D', Goalie: 'G' };
+  function getPositions(p) {
+    if (Array.isArray(p.positions)) return p.positions;
+    if (p.position) return [p.position];
+    return [];
+  }
+  function renderPositionsAbbr(positions) {
+    if (!positions.length) return '—';
+    return positions.map(p => POSITION_ABBR[p] || p[0]).join('/');
+  }
+  function renderPositionsFull(positions) {
+    if (!positions.length) return '—';
+    if (positions.length === 2 && positions.includes('Forward') && positions.includes('Defense')) {
+      return 'Either';
+    }
+    return positions.join(' / ');
+  }
+
+  function renderImg(p, cls) {
+    const initials = escapeHtml(getInitials(p.name));
+    const img = p.headshot
+      ? `<img src="${escapeHtml(p.headshot)}" alt="${escapeHtml(p.name)}" onerror="this.remove()">`
+      : '';
+    return `<div class="${cls}"><div class="placeholder">${initials}</div>${img}</div>`;
+  }
+
+  function renderCard(p) {
+    const positions = getPositions(p);
+    return `
+      <div class="card" data-player-id="${escapeHtml(p.id)}">
+        ${renderImg(p, 'card-img-wrap')}
+        <div class="card-body">
+          <div class="card-name">${escapeHtml(p.name)}</div>
+          <div class="card-meta">
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
+            <span class="meta-end">${renderSubBadge(p)}${renderRating(p.rating)}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function filterPlayers() {
+    return players.filter(p => {
+      const positions = getPositions(p);
+      if (positionFilter !== "All" && !positions.includes(positionFilter)) return false;
+      if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
+      if (searchTerm) {
+        const t = searchTerm.toLowerCase();
+        const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
+        if (!hay.includes(t)) return false;
+      }
+      return true;
+    });
+  }
+
+  function compareNum(a, b, asc) {
+    const aN = Number(a), bN = Number(b);
+    const aBad = isNaN(aN), bBad = isNaN(bN);
+    if (aBad && bBad) return 0;
+    if (aBad) return 1;   // missing values sink to bottom
+    if (bBad) return -1;
+    return asc ? aN - bN : bN - aN;
+  }
+  function sortPlayers(list) {
+    const out = list.slice();
+    switch (sortKey) {
+      case 'rating-desc': out.sort((a,b) => compareNum(a.rating, b.rating, false)); break;
+      case 'rating-asc':  out.sort((a,b) => compareNum(a.rating, b.rating, true));  break;
+      case 'gp-desc':     out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, false)); break;
+      case 'gp-asc':      out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, true));  break;
+      case 'ppg-desc':    out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, false)); break;
+      case 'ppg-asc':     out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, true));  break;
+    }
+    return out;
+  }
+
+  function render() {
+    const filtered = sortPlayers(filterPlayers());
+    const gallery = document.getElementById('gallery');
+    document.getElementById('stats').textContent =
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'}`;
+    if (!filtered.length) {
+      gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
+      return;
+    }
+    gallery.innerHTML = filtered.map(renderCard).join('');
+    gallery.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.playerId));
+    });
+  }
+
+  let modalList = [];
+  let modalIdx = -1;
+
+  function renderModal(p) {
+    const positions = getPositions(p);
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-header">
+        ${renderImg(p, 'modal-img')}
+        <div>
+          <div class="modal-name">${escapeHtml(p.name)}</div>
+          <div class="modal-tags">
+            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
+            ${renderSubBadge(p)}
+            ${renderRating(p.rating)}
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="experience-label">Bio</div>
+        <div class="experience" style="margin-bottom:24px">${escapeHtml(p.bio || '—')}</div>
+        <div class="experience-label">${(() => {
+          const team = (p.teamLastSeason || '').trim();
+          if (!team) return 'Winter 25/26 stats';
+          if (team.toLowerCase() === 'substitute') return 'Winter 25/26 stats as a Substitute';
+          return 'Winter 25/26 stats with ' + escapeHtml(team);
+        })()}</div>
+        <div class="stats-row">
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
+            <div class="stat-label">GP</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.goals || '—')}</div>
+            <div class="stat-label">Goals</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.assists || '—')}</div>
+            <div class="stat-label">Assists</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-value">${escapeHtml(p.pointsPerGame || '—')}</div>
+            <div class="stat-label">Pt/G</div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('modalContent').scrollTop = 0;
+    document.getElementById('modalPrev').disabled = modalIdx <= 0;
+    document.getElementById('modalNext').disabled = modalIdx >= modalList.length - 1;
+  }
+
+  function openModal(id) {
+    modalList = filterPlayers();
+    modalIdx = modalList.findIndex(p => String(p.id) === String(id));
+    if (modalIdx === -1) return;
+    renderModal(modalList[modalIdx]);
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function modalPrev() {
+    if (modalIdx > 0) { modalIdx--; renderModal(modalList[modalIdx]); }
+  }
+  function modalNext() {
+    if (modalIdx < modalList.length - 1) { modalIdx++; renderModal(modalList[modalIdx]); }
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchTerm = e.target.value;
+    render();
+  });
+  document.getElementById('positionSelect').addEventListener('change', e => {
+    positionFilter = e.target.value;
+    render();
+  });
+  document.getElementById('ratingSelect').addEventListener('change', e => {
+    const val = e.target.value;
+    ratingFilter.clear();
+    if (val !== 'all') {
+      val.split(',').map(s => parseInt(s.trim()))
+        .filter(n => !isNaN(n))
+        .forEach(n => ratingFilter.add(n));
+    }
+    render();
+  });
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    sortKey = e.target.value;
+    render();
+  });
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalPrev').addEventListener('click', modalPrev);
+  document.getElementById('modalNext').addEventListener('click', modalNext);
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('modal').classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    else if (e.key === 'ArrowLeft') modalPrev();
+    else if (e.key === 'ArrowRight') modalNext();
+  });
+
+  (async () => {
+    players = await loadPlayers();
+    render();
+  })();
+
+  // ===== Businesses view =====
+  const BUSINESSES = [
+    {
+      id: "cdi-services",
+      name: "CDI Services",
+      url: "https://www.cdidenver.com/",
+      logo: "headshots/cdi_logo.png",
+      overview: "CDI Services is a Colorado based electronics integrator, we elegantly weave technology into your life, home and business. The enhancements of technology are broad and may include entertainment, communication, safety, security, and comfort."
+    },
+    {
+      id: "green-stone",
+      name: "Green Stone",
+      url: "https://www.greenstone.co",
+      logo: "headshots/gs_logo.png",
+      overview: "Loyalty should not be bought through ads, points and giveaways. It should be earned through extraordinary experiences that deliver meaningful value. Green Stone specializes in crafting those product experiences as well as the broader journeys they fit into."
+    }
+  ];
+
+  function businessInitials(name) {
+    return name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function renderBusinesses() {
+    const grid = document.getElementById('businessesGrid');
+    grid.innerHTML = BUSINESSES.map(b => `
+      <div class="business-card">
+        <div class="business-logo-wrap">
+          <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
+          ${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}
+        </div>
+        <div class="business-info">
+          <div class="business-name">${escapeHtml(b.name)}</div>
+          <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.url.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>
+          <div class="business-overview">${escapeHtml(b.overview)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function showView(view) {
+    document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
+    document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
+    document.querySelectorAll('.view-toggle button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === view);
+    });
+    if (view === 'businesses') renderBusinesses();
+  }
+  document.querySelectorAll('.view-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => showView(btn.dataset.view));
+  });
+</script>
+</body>
+</html>
