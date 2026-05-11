@@ -958,6 +958,8 @@
       displayUrl: get('displayUrl'),
       overview: get('overview'),
       category: get('category'),
+      contactName: get('contactName'),
+      contactEmail: get('contactEmail'),
       logo: logoPath
     };
   }
@@ -1023,6 +1025,7 @@
           <div class="business-name">${escapeHtml(b.name)}</div>
           <div class="business-overview">${escapeHtml(b.overview)}</div>
           <div class="business-visit">Visit: <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.displayUrl || b.url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a></div>
+          ${b.contactName ? `<div class="business-visit">Contact: ${b.contactEmail ? `<a class="business-url" href="mailto:${escapeHtml(b.contactEmail)}">${escapeHtml(b.contactName)}</a>` : escapeHtml(b.contactName)}</div>` : ''}
         </div>
       </div>
     `).join('');
