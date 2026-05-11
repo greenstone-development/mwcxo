@@ -37,13 +37,14 @@ const APP_CONFIG = {
   // Map internal business field -> column header in the business_list tab.
   // Adjust these to match your actual column headers.
   businessColumns: {
-    name:         "Name",
-    url:          "URL",
-    logo:         "Image Name",    // filename, e.g. "logo_cdi.png" (relative to headshots/)
-    overview:     "Description",
-    category:     "Category",
-    contactName:  "Contact Name",
-    contactEmail: "Contact Email"
+    name:             "Name",
+    url:              "URL",
+    logo:             "Logo Image",       // filename, e.g. "logo_cdi.png" (relative to headshots/)
+    overview:         "Description",
+    category:         "Category",
+    contactName:      "Contact Name",
+    contactEmail:     "Contact Email",
+    contactHeadshot:  "Headshot Image"    // filename, e.g. "maciolek.png" (relative to headshots/)
     // displayUrl: not in the sheet — derived from URL (strips https:// and www.)
   }
 };

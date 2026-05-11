@@ -993,9 +993,7 @@
       return '';
     };
     const name = get('name');
-    const logoVal = get('logo');
-    const logoPath = logoVal && !/^(https?:|headshots\/|\/)/i.test(logoVal)
-      ? `headshots/${logoVal}` : logoVal;
+    const toPath = v => v && !/^(https?:|headshots\/|\/)/i.test(v) ? `headshots/${v}` : v;
     const rawUrl = get('url');
     const url = rawUrl && !/^https?:\/\//i.test(rawUrl) ? `https://${rawUrl}` : rawUrl;
     return {
@@ -1007,7 +1005,8 @@
       category: get('category'),
       contactName: get('contactName'),
       contactEmail: get('contactEmail'),
-      logo: logoPath
+      contactHeadshot: toPath(get('contactHeadshot')),
+      logo: toPath(get('logo'))
     };
   }
 
@@ -1054,14 +1053,16 @@
   }
 
   function renderContactBlock(b) {
-    if (!b.contactName) return '';
+    if (!b.contactName && !b.contactHeadshot) return '';
     const player = findPlayerByName(b.contactName);
-    const initials = businessInitials(b.contactName);
+    const displayName = b.contactName || (player && player.name) || '';
+    const initials = businessInitials(displayName || '?');
+    const headshot = b.contactHeadshot || (player && player.headshot) || '';
     const linkedClass = player ? ' is-linked contact-player-link' : '';
     const dataAttr = player ? ` data-player-id="${escapeHtml(player.id)}"` : '';
     const titleAttr = player ? ` title="View ${escapeHtml(player.name)}'s profile"` : '';
-    const img = player && player.headshot
-      ? `<img src="${escapeHtml(player.headshot)}" alt="${escapeHtml(player.name)}" onerror="this.remove()">`
+    const img = headshot
+      ? `<img src="${escapeHtml(headshot)}" alt="${escapeHtml(displayName)}" onerror="this.remove()">`
       : '';
     return `
       <div class="business-divider"></div>
@@ -1069,8 +1070,15 @@
         <div class="placeholder">${escapeHtml(initials)}</div>
         ${img}
       </div>
-      <div class="business-contact-name">${escapeHtml(b.contactName)}</div>
     `;
+  }
+
+  function renderContactLine(b) {
+    if (!b.contactName) return '';
+    const inner = b.contactEmail
+      ? `<a class="business-url" href="mailto:${escapeHtml(b.contactEmail)}">${escapeHtml(b.contactName)}</a>`
+      : escapeHtml(b.contactName);
+    return `<div class="business-visit">Contact: ${inner}</div>`;
   }
 
   function populateCategoryOptions() {
@@ -1111,6 +1119,7 @@
           <div class="business-name">${escapeHtml(b.name)}</div>
           <div class="business-overview">${escapeHtml(b.overview)}</div>
           <div class="business-visit">Visit: <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.displayUrl || b.url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a></div>
+          ${renderContactLine(b)}
         </div>
       </div>
     `).join('');
