@@ -114,13 +114,60 @@
     font-weight: 600;
   }
   .business-url:hover { text-decoration: underline; }
+
+  .business-left {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: 0;
+    width: 84px;
+  }
+  .business-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 12px 0;
+  }
+  .business-contact-wrap {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .business-contact-wrap.is-linked { cursor: pointer; }
+  .business-contact-wrap.is-linked:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+  .business-contact-wrap .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700; font-size: 20px;
+  }
+  .business-contact-wrap img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .business-contact-name {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
   @media (max-width: 600px) {
     header { padding: 20px 16px; }
     header h1 { font-size: 18px; }
     #viewToggleBtn { padding: 6px 14px; font-size: 12px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
-    .business-logo-wrap { width: 64px; height: 64px; }
+    .business-left { width: 64px; }
+    .business-logo-wrap, .business-contact-wrap { width: 64px; height: 64px; }
   }
 
   .controls {
@@ -990,6 +1037,42 @@
     businessesLoaded = true;
   }
 
+  function findPlayerByName(name) {
+    if (!name) return null;
+    const t = name.trim().toLowerCase();
+    return players.find(p => (p.name || '').trim().toLowerCase() === t) || null;
+  }
+
+  // Open a member's modal regardless of current members-tab filters.
+  function openMemberFromBusiness(id) {
+    if (!id) return;
+    modalList = players.slice();
+    modalIdx = modalList.findIndex(p => String(p.id) === String(id));
+    if (modalIdx === -1) return;
+    renderModal(modalList[modalIdx]);
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function renderContactBlock(b) {
+    if (!b.contactName) return '';
+    const player = findPlayerByName(b.contactName);
+    const initials = businessInitials(b.contactName);
+    const linkedClass = player ? ' is-linked contact-player-link' : '';
+    const dataAttr = player ? ` data-player-id="${escapeHtml(player.id)}"` : '';
+    const titleAttr = player ? ` title="View ${escapeHtml(player.name)}'s profile"` : '';
+    const img = player && player.headshot
+      ? `<img src="${escapeHtml(player.headshot)}" alt="${escapeHtml(player.name)}" onerror="this.remove()">`
+      : '';
+    return `
+      <div class="business-divider"></div>
+      <div class="business-contact-wrap${linkedClass}"${dataAttr}${titleAttr}>
+        <div class="placeholder">${escapeHtml(initials)}</div>
+        ${img}
+      </div>
+      <div class="business-contact-name">${escapeHtml(b.contactName)}</div>
+    `;
+  }
+
   function populateCategoryOptions() {
     const select = document.getElementById('businessCategorySelect');
     const current = select.value;
@@ -1015,20 +1098,29 @@
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>';
       return;
     }
-    grid.innerHTML = list.map(b => `
+    const html = list.map(b => `
       <div class="business-card">
-        <div class="business-logo-wrap">
-          <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
-          ${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}
+        <div class="business-left">
+          <div class="business-logo-wrap">
+            <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
+            ${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}
+          </div>
+          ${renderContactBlock(b)}
         </div>
         <div class="business-info">
           <div class="business-name">${escapeHtml(b.name)}</div>
           <div class="business-overview">${escapeHtml(b.overview)}</div>
           <div class="business-visit">Visit: <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.displayUrl || b.url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a></div>
-          ${b.contactName ? `<div class="business-visit">Contact: ${b.contactEmail ? `<a class="business-url" href="mailto:${escapeHtml(b.contactEmail)}">${escapeHtml(b.contactName)}</a>` : escapeHtml(b.contactName)}</div>` : ''}
         </div>
       </div>
     `).join('');
+    grid.innerHTML = html;
+    grid.querySelectorAll('.contact-player-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        openMemberFromBusiness(link.dataset.playerId);
+      });
+    });
   }
 
   async function showView(view) {
