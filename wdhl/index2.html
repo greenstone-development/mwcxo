@@ -104,20 +104,23 @@
     margin-bottom: 4px;
     letter-spacing: -0.01em;
   }
-  .business-url {
-    font-size: 13px;
-    color: var(--primary);
-    text-decoration: none;
-    margin-bottom: 12px;
-    display: inline-block;
-    font-weight: 500;
-  }
-  .business-url:hover { text-decoration: underline; }
   .business-overview {
     font-size: 14px;
     line-height: 1.6;
     color: var(--text);
+    margin-bottom: 12px;
   }
+  .business-visit {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .business-url {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .business-url:hover { text-decoration: underline; }
   @media (max-width: 600px) {
     .view-toggle { padding: 0 16px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
@@ -888,20 +891,42 @@
   })();
 
   // ===== Businesses view =====
-  const BUSINESSES = [
+  let businesses = [];
+  let businessesLoaded = false;
+
+  // Fallback data — used if the live CSV can't be loaded.
+  const BUSINESSES_FALLBACK = [
     {
       id: "cdi-services",
       name: "CDI Services",
       url: "https://www.cdidenver.com/",
-      logo: "headshots/cdi_logo.png",
+      displayUrl: "CDIdenver.com",
+      logo: "headshots/logo_cdi.png",
       overview: "CDI Services is a Colorado based electronics integrator, we elegantly weave technology into your life, home and business. The enhancements of technology are broad and may include entertainment, communication, safety, security, and comfort."
     },
     {
       id: "green-stone",
       name: "Green Stone",
       url: "https://www.greenstone.co",
-      logo: "headshots/gs_logo.png",
+      displayUrl: "GreenStone.co",
+      logo: "headshots/logo_gs.png",
       overview: "Loyalty should not be bought through ads, points and giveaways. It should be earned through extraordinary experiences that deliver meaningful value. Green Stone specializes in crafting those product experiences as well as the broader journeys they fit into."
+    },
+    {
+      id: "bout-time",
+      name: "Bout Time Pub & Grill",
+      url: "https://bouttimepubco.com/",
+      displayUrl: "BoutTimePubCo.com",
+      logo: "headshots/logo_bouttime.png",
+      overview: "If you're looking for a relaxed place to catch the game and grab something to eat, you're in the right spot. Here, big screens, solid pub food, and cold drinks are always on the menu, including all-day breakfast, lunch, and dinner, paired with cold beers and great drinks. It's a go-to hangout for anyone who wants to meet up with friends, watch sports, or just unwind."
+    },
+    {
+      id: "blackbird",
+      name: "Blackbird Public House",
+      url: "https://www.blackbirdpublichouse.com/",
+      displayUrl: "BlackbirdPublicHouse.com",
+      logo: "headshots/logo_blackbird.png",
+      overview: "Blackbird Public House is where West Washington Park comes together to enjoy time with friends and family. We offer thin crust pizzas, fresh shucked oysters and a complementing menu of comfort foods that includes both traditional favorites such as mussels, wings, burgers and fried chicken as well as seasonally created, chef driven items that focus on the freshest local ingredients we can find. Blackbird is perfect for people looking for a fun date night, after work happy hour, dinner with the family, or to watch the game."
     }
   ];
 
@@ -909,9 +934,52 @@
     return name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
   }
 
+  function rowToBusiness(row, idx) {
+    const c = APP_CONFIG.businessColumns || {};
+    const get = key => c[key] ? (row[c[key]] || '').trim() : '';
+    const name = get('name');
+    const logoVal = get('logo');
+    const logoPath = logoVal && !/^(https?:|headshots\/|\/)/i.test(logoVal)
+      ? `headshots/${logoVal}` : logoVal;
+    return {
+      id: slugify(name, idx),
+      name,
+      url: get('url'),
+      displayUrl: get('displayUrl'),
+      overview: get('overview'),
+      logo: logoPath
+    };
+  }
+
+  async function loadBusinesses() {
+    if (!APP_CONFIG.businessCsvUrl) return BUSINESSES_FALLBACK;
+    try {
+      const res = await fetch(APP_CONFIG.businessCsvUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const objects = csvToObjects(parseCSV(text));
+      const out = objects.map(rowToBusiness).filter(b => b.name);
+      if (!out.length) throw new Error('No business rows with a name were found.');
+      return out;
+    } catch (e) {
+      console.warn('Businesses CSV load failed, using local fallback:', e);
+      return BUSINESSES_FALLBACK;
+    }
+  }
+
+  async function ensureBusinessesLoaded() {
+    if (businessesLoaded) return;
+    businesses = await loadBusinesses();
+    businessesLoaded = true;
+  }
+
   function renderBusinesses() {
     const grid = document.getElementById('businessesGrid');
-    grid.innerHTML = BUSINESSES.map(b => `
+    if (!businesses.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">Loading businesses…</div>';
+      return;
+    }
+    grid.innerHTML = businesses.map(b => `
       <div class="business-card">
         <div class="business-logo-wrap">
           <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
@@ -919,20 +987,24 @@
         </div>
         <div class="business-info">
           <div class="business-name">${escapeHtml(b.name)}</div>
-          <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.url.replace(/^https?:\/\//,'').replace(/\/$/,''))}</a>
           <div class="business-overview">${escapeHtml(b.overview)}</div>
+          <div class="business-visit">Visit: <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.displayUrl || b.url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a></div>
         </div>
       </div>
     `).join('');
   }
 
-  function showView(view) {
+  async function showView(view) {
     document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
     document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
     document.querySelectorAll('.view-toggle button').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.view === view);
     });
-    if (view === 'businesses') renderBusinesses();
+    if (view === 'businesses') {
+      renderBusinesses();          // shows "Loading…" if empty
+      await ensureBusinessesLoaded();
+      renderBusinesses();
+    }
   }
   document.querySelectorAll('.view-toggle button').forEach(btn => {
     btn.addEventListener('click', () => showView(btn.dataset.view));
