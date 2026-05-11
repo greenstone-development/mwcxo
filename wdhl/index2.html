@@ -547,6 +547,11 @@
 </div><!-- /#membersView -->
 
 <div id="businessesView" style="display:none">
+  <div class="controls">
+    <select id="businessCategorySelect" class="filter-select">
+      <option value="All">All Categories</option>
+    </select>
+  </div>
   <div class="businesses-grid" id="businessesGrid"></div>
 </div>
 
@@ -884,6 +889,7 @@
   // ===== Businesses view =====
   let businesses = [];
   let businessesLoaded = false;
+  let businessCategoryFilter = "All";
 
   // Fallback data — used if the live CSV can't be loaded.
   const BUSINESSES_FALLBACK = [
@@ -938,6 +944,7 @@
       url: get('url'),
       displayUrl: get('displayUrl'),
       overview: get('overview'),
+      category: get('category'),
       logo: logoPath
     };
   }
@@ -964,13 +971,32 @@
     businessesLoaded = true;
   }
 
+  function populateCategoryOptions() {
+    const select = document.getElementById('businessCategorySelect');
+    const current = select.value;
+    const cats = [...new Set(businesses.map(b => (b.category || '').trim()).filter(Boolean))].sort();
+    select.innerHTML = '<option value="All">All Categories</option>' +
+      cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    if (cats.includes(current)) select.value = current;
+  }
+
+  function filteredBusinesses() {
+    if (businessCategoryFilter === "All") return businesses;
+    return businesses.filter(b => (b.category || '').trim() === businessCategoryFilter);
+  }
+
   function renderBusinesses() {
     const grid = document.getElementById('businessesGrid');
     if (!businesses.length) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">Loading businesses…</div>';
       return;
     }
-    grid.innerHTML = businesses.map(b => `
+    const list = filteredBusinesses();
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>';
+      return;
+    }
+    grid.innerHTML = list.map(b => `
       <div class="business-card">
         <div class="business-logo-wrap">
           <div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>
@@ -996,6 +1022,7 @@
       btn.dataset.target = 'members';
       renderBusinesses();          // shows "Loading…" if empty
       await ensureBusinessesLoaded();
+      populateCategoryOptions();
       renderBusinesses();
     } else {
       btn.textContent = 'Businesses';
@@ -1004,6 +1031,10 @@
   }
   document.getElementById('viewToggleBtn').addEventListener('click', e => {
     showView(e.currentTarget.dataset.target);
+  });
+  document.getElementById('businessCategorySelect').addEventListener('change', e => {
+    businessCategoryFilter = e.target.value;
+    renderBusinesses();
   });
 </script>
 </body>

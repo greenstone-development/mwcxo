@@ -41,6 +41,7 @@ const APP_CONFIG = {
     url:         "URL",
     displayUrl:  "Display URL",   // optional — derived from URL if blank
     logo:        "Logo",          // filename, e.g. "logo_cdi.png" (relative to headshots/)
-    overview:    "Overview"
+    overview:    "Overview",
+    category:    "Category"
   }
 };
