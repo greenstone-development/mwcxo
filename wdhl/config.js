@@ -39,9 +39,9 @@ const APP_CONFIG = {
   businessColumns: {
     name:        "Name",
     url:         "URL",
-    displayUrl:  "Display URL",   // optional — derived from URL if blank
-    logo:        "Logo",          // filename, e.g. "logo_cdi.png" (relative to headshots/)
-    overview:    "Overview",
+    logo:        "Image Name",    // filename, e.g. "logo_cdi.png" (relative to headshots/)
+    overview:    "Description",
     category:    "Category"
+    // displayUrl: not in the sheet — derived from URL (strips https:// and www.)
   }
 };

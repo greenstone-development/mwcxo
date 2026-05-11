@@ -933,15 +933,28 @@
 
   function rowToBusiness(row, idx) {
     const c = APP_CONFIG.businessColumns || {};
-    const get = key => c[key] ? (row[c[key]] || '').trim() : '';
+    const rowKeys = Object.keys(row);
+    const get = key => {
+      const target = c[key];
+      if (!target) return '';
+      if (row[target] != null && row[target] !== '') return String(row[target]).trim();
+      // Fall back to case-insensitive / trimmed match so small header tweaks don't break the app
+      const lt = target.toLowerCase().trim();
+      for (const k of rowKeys) {
+        if (k.toLowerCase().trim() === lt) return String(row[k] ?? '').trim();
+      }
+      return '';
+    };
     const name = get('name');
     const logoVal = get('logo');
     const logoPath = logoVal && !/^(https?:|headshots\/|\/)/i.test(logoVal)
       ? `headshots/${logoVal}` : logoVal;
+    const rawUrl = get('url');
+    const url = rawUrl && !/^https?:\/\//i.test(rawUrl) ? `https://${rawUrl}` : rawUrl;
     return {
       id: slugify(name, idx),
       name,
-      url: get('url'),
+      url,
       displayUrl: get('displayUrl'),
       overview: get('overview'),
       category: get('category'),
@@ -956,6 +969,10 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const text = await res.text();
       const objects = csvToObjects(parseCSV(text));
+      if (objects.length) {
+        console.info('Business CSV columns found:', Object.keys(objects[0]));
+        console.info('Business CSV first row:', objects[0]);
+      }
       const out = objects.map(rowToBusiness).filter(b => b.name);
       if (!out.length) throw new Error('No business rows with a name were found.');
       return out;
