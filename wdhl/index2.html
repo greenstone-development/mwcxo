@@ -39,10 +39,10 @@
   header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
 
   #viewToggleBtn {
-    background: rgba(255,255,255,0.1);
-    color: white;
+    background: rgba(0,0,0,0.22);
+    color: rgba(255,255,255,0.92);
     border: none;
-    border-left: 1px solid rgba(255,255,255,0.2);
+    border-left: 1px solid rgba(255,255,255,0.18);
     padding: 0 22px;
     border-radius: 0;
     font-size: 14px;
@@ -53,10 +53,10 @@
     white-space: nowrap;
     align-self: stretch;
     margin: -28px -32px -28px 0;
-    min-width: 185px;
+    min-width: 145px;
     text-align: center;
   }
-  #viewToggleBtn:hover { background: rgba(255,255,255,0.2); }
+  #viewToggleBtn:hover { background: rgba(0,0,0,0.32); }
 
   .businesses-grid {
     padding: 24px 32px 48px;
@@ -176,7 +176,7 @@
   @media (max-width: 600px) {
     header { padding: 20px 16px; }
     header h1 { font-size: 18px; }
-    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; min-width: 160px; }
+    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; min-width: 120px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
     .business-left { width: 64px; }
@@ -569,7 +569,7 @@
 <body>
 <header>
   <h1>🏒 <span id="headerTitle">WDHL Players</span></h1>
-  <button id="viewToggleBtn" data-target="businesses">Business Showcase</button>
+  <button id="viewToggleBtn" data-target="businesses">Businesses</button>
 </header>
 
 <div id="membersView">
@@ -1149,7 +1149,7 @@
     document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
     document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
     document.getElementById('headerTitle').textContent =
-      view === 'businesses' ? 'WDHL Business Showcase' : 'WDHL Players';
+      view === 'businesses' ? 'WDHL Businesses' : 'WDHL Players';
     const btn = document.getElementById('viewToggleBtn');
     if (view === 'businesses') {
       btn.textContent = 'Players';
@@ -1159,7 +1159,7 @@
       populateCategoryOptions();
       renderBusinesses();
     } else {
-      btn.textContent = 'Business Showcase';
+      btn.textContent = 'Businesses';
       btn.dataset.target = 'businesses';
     }
   }
