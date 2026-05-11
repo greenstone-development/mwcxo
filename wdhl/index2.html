@@ -53,6 +53,8 @@
     white-space: nowrap;
     align-self: stretch;
     margin: -28px -32px -28px 0;
+    min-width: 185px;
+    text-align: center;
   }
   #viewToggleBtn:hover { background: rgba(255,255,255,0.2); }
 
@@ -174,7 +176,7 @@
   @media (max-width: 600px) {
     header { padding: 20px 16px; }
     header h1 { font-size: 18px; }
-    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; }
+    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; min-width: 160px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
     .business-left { width: 64px; }
@@ -566,8 +568,8 @@
 </head>
 <body>
 <header>
-  <h1>🏒 <span id="headerTitle">WDHL Members</span></h1>
-  <button id="viewToggleBtn" data-target="businesses">Businesses</button>
+  <h1>🏒 <span id="headerTitle">WDHL Players</span></h1>
+  <button id="viewToggleBtn" data-target="businesses">Business Showcase</button>
 </header>
 
 <div id="membersView">
@@ -1147,17 +1149,17 @@
     document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
     document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
     document.getElementById('headerTitle').textContent =
-      view === 'businesses' ? 'Member Businesses' : 'WDHL Members';
+      view === 'businesses' ? 'WDHL Business Showcase' : 'WDHL Players';
     const btn = document.getElementById('viewToggleBtn');
     if (view === 'businesses') {
-      btn.textContent = 'Members';
+      btn.textContent = 'Players';
       btn.dataset.target = 'members';
       renderBusinesses();          // shows "Loading…" if empty
       await ensureBusinessesLoaded();
       populateCategoryOptions();
       renderBusinesses();
     } else {
-      btn.textContent = 'Businesses';
+      btn.textContent = 'Business Showcase';
       btn.dataset.target = 'businesses';
     }
   }
