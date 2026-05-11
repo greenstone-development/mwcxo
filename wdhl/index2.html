@@ -30,35 +30,28 @@
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
   header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
   header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
 
-  .view-toggle {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 0 32px;
-    display: flex;
-    gap: 0;
-  }
-  .view-toggle button {
-    background: none;
-    border: none;
-    padding: 14px 20px;
-    font-size: 14px;
+  #viewToggleBtn {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--text-muted);
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
     font-family: inherit;
-    transition: color 0.15s;
+    transition: background 0.15s;
+    white-space: nowrap;
   }
-  .view-toggle button:hover { color: var(--text); }
-  .view-toggle button.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
+  #viewToggleBtn:hover { background: rgba(255,255,255,0.28); }
 
   .businesses-grid {
     padding: 24px 32px 48px;
@@ -122,7 +115,9 @@
   }
   .business-url:hover { text-decoration: underline; }
   @media (max-width: 600px) {
-    .view-toggle { padding: 0 16px; }
+    header { padding: 20px 16px; }
+    header h1 { font-size: 18px; }
+    #viewToggleBtn { padding: 6px 14px; font-size: 12px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
     .business-logo-wrap { width: 64px; height: 64px; }
@@ -513,13 +508,9 @@
 </head>
 <body>
 <header>
-  <h1>🏒 WDHL</h1>
+  <h1>🏒 <span id="headerTitle">WDHL Members</span></h1>
+  <button id="viewToggleBtn" data-target="businesses">Businesses</button>
 </header>
-
-<nav class="view-toggle">
-  <button data-view="members" class="active">Members</button>
-  <button data-view="businesses">Businesses</button>
-</nav>
 
 <div id="membersView">
 <div class="controls">
@@ -997,17 +988,22 @@
   async function showView(view) {
     document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
     document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
-    document.querySelectorAll('.view-toggle button').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
-    });
+    document.getElementById('headerTitle').textContent =
+      view === 'businesses' ? 'Member Businesses' : 'WDHL Members';
+    const btn = document.getElementById('viewToggleBtn');
     if (view === 'businesses') {
+      btn.textContent = 'Members';
+      btn.dataset.target = 'members';
       renderBusinesses();          // shows "Loading…" if empty
       await ensureBusinessesLoaded();
       renderBusinesses();
+    } else {
+      btn.textContent = 'Businesses';
+      btn.dataset.target = 'businesses';
     }
   }
-  document.querySelectorAll('.view-toggle button').forEach(btn => {
-    btn.addEventListener('click', () => showView(btn.dataset.view));
+  document.getElementById('viewToggleBtn').addEventListener('click', e => {
+    showView(e.currentTarget.dataset.target);
   });
 </script>
 </body>
