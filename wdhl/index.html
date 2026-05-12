@@ -1009,7 +1009,7 @@
     const gallery = document.getElementById('gallery');
     const correctionMailto = 'mailto:matt.walsh@greenstone.co?subject=' + encodeURIComponent('WDHL player info correction');
     document.getElementById('stats').innerHTML =
-      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'} (If anything below is inaccurate, <a href="${correctionMailto}">please let us know</a>).`;
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'} (If anything below is inaccurate or if you'd like to be removed, <a href="${correctionMailto}">please let us know</a>).`;
     if (!filtered.length) {
       gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
       return;
