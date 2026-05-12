@@ -62,11 +62,18 @@
   #viewToggleBtn:hover { background: #5c5c5c; }
 
   .businesses-intro {
-    padding: 22px 32px 0;
-    font-size: 15px;
-    line-height: 1.6;
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
     color: var(--text-muted);
     max-width: 760px;
+  }
+  #businessesView .filter-select { margin-left: auto; }
+  .intro-br { display: none; }
+  @media (min-width: 950px) {
+    .intro-br { display: inline; }
   }
   .businesses-grid {
     padding: 22px 32px 48px;
@@ -202,7 +209,7 @@
     header { padding: 20px 16px; }
     header h1 { font-size: 18px; }
     #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; min-width: 120px; }
-    .businesses-intro { padding: 16px 16px 0; font-size: 14px; }
+    .businesses-intro { flex: 1 1 100%; font-size: 13px; }
     .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
     .business-card { padding: 16px; gap: 14px; }
     .business-left { width: 90px; }
@@ -625,11 +632,11 @@
 
 <div id="businessesView" style="display:none">
   <div class="controls">
+    <p class="businesses-intro">Below is a collection of businesses owned or operated by your fellow WDHL members.<br class="intro-br"> They'd welcome your support and business.</p>
     <select id="businessCategorySelect" class="filter-select">
       <option value="All">All Categories</option>
     </select>
   </div>
-  <p class="businesses-intro">Below is a collection of businesses owned or operated by your fellow WDHL members. They'd welcome your support and business.</p>
   <div class="businesses-grid" id="businessesGrid"></div>
 </div>
 
