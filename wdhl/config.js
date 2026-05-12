@@ -11,9 +11,7 @@ const APP_CONFIG = {
   csvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5zgxuVbvHc7xJSyOkQyGlNES3M8uftGWAp1vv9ZbSYlmrSyrQlxGXNnjPlXTHII1pZ2xb73uSvPIT/pub?output=csv",
 
   // Map internal field -> column header in your sheet.
-  // If your sheet has a single "Name" column instead of First/Last, set
-  //    name: "Name"
-  // and remove or leave firstName/lastName empty.
+  // The right-hand string must match the exact header text in the sheet.
   columns: {
     name:                "Name",
     rating:              "Rating",

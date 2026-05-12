@@ -1,14 +1,18 @@
 // FALLBACK DATA — used only if the live CSV from your Google Sheet can't be
-// loaded (e.g., when you open index.html directly without hosting it). The
-// real source of truth is the published sheet referenced in config.js.
+// loaded (e.g., when you open index.html directly without hosting it).
+// The real source of truth is the published sheet referenced in config.js.
 //
 // FIELD NOTES:
-//   id                  -> unique slug, lowercase, no spaces (keep stable)
-//   positions           -> array, one or more of "Forward", "Defense", "Goalie"
-//   rating              -> integer 1-7 (7 = strongest)
-//   teamLastSeason      -> string
-//   previousExperience  -> playing history (teams, leagues, levels)
-//   headshot            -> path to image file, e.g. "headshots/cavallaro.png"
+//   id              -> unique slug, lowercase, no spaces (keep stable)
+//   positions       -> array, one or more of "Forward", "Defense", "Goalie"
+//   rating          -> integer 1-7 (7 = strongest)
+//   teamLastSeason  -> string
+//   bio             -> free-text bio shown in the detail overlay
+//   gamesPlayed,
+//   goals,
+//   assists,
+//   pointsPerGame   -> Winter 25/26 stats (strings or numbers)
+//   headshot        -> path to image file, e.g. "headshots/cavallaro.png"
 
 const PLAYERS = [
   {
@@ -17,7 +21,7 @@ const PLAYERS = [
     positions: ["Forward"],
     rating: 7,
     teamLastSeason: "Bison",
-    previousExperience: "College hockey or above (e.g. Juniors, Pro)",
+    bio: "",
     headshot: "headshots/cavallaro.png"
   },
   {
@@ -26,7 +30,7 @@ const PLAYERS = [
     positions: ["Forward", "Defense"],
     rating: 7,
     teamLastSeason: "Bison",
-    previousExperience: "College hockey or above (e.g. Juniors, Pro)",
+    bio: "",
     headshot: "headshots/vlasin.png"
   },
   {
@@ -35,7 +39,7 @@ const PLAYERS = [
     positions: ["Defense"],
     rating: 7,
     teamLastSeason: "Bison",
-    previousExperience: "High school or Tier / Travel",
+    bio: "",
     headshot: "headshots/shimomura.png"
   },
   {
@@ -44,7 +48,7 @@ const PLAYERS = [
     positions: ["Forward"],
     rating: 7,
     teamLastSeason: "Bison",
-    previousExperience: "College hockey or above (e.g. Juniors, Pro)",
+    bio: "",
     headshot: "headshots/vanderStelt.png"
   },
   {
@@ -53,7 +57,7 @@ const PLAYERS = [
     positions: ["Forward", "Defense"],
     rating: 6,
     teamLastSeason: "Bison",
-    previousExperience: "High school or Tier / Travel",
+    bio: "",
     headshot: "headshots/moreau.png"
   }
 ];
