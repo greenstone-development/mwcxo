@@ -46,6 +46,7 @@
     border-radius: 0;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1.2;
     cursor: pointer;
     font-family: inherit;
     transition: background 0.15s;
@@ -53,7 +54,13 @@
     align-self: stretch;
     margin: -28px -32px -28px 0;
     min-width: 145px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #viewToggleBtn .btn-stack {
+    display: inline-block;
+    text-align: left;
   }
   #viewToggleBtn:hover { background: #5c5c5c; }
 
@@ -600,7 +607,7 @@
 <body>
 <header>
   <h1>🏒 <span id="headerTitle">WDHL Players</span></h1>
-  <button id="viewToggleBtn" data-target="businesses">Businesses</button>
+  <button id="viewToggleBtn" data-target="businesses"><span class="btn-stack">Browse<br>Businesses</span></button>
 </header>
 
 <div id="membersView">
@@ -1205,14 +1212,14 @@
     document.title = view === 'businesses' ? 'WDHL Businesses' : 'WDHL Players';
     const btn = document.getElementById('viewToggleBtn');
     if (view === 'businesses') {
-      btn.textContent = 'Players';
+      btn.innerHTML = '<span class="btn-stack">Meet<br>Players</span>';
       btn.dataset.target = 'members';
       renderBusinesses();          // shows "Loading…" if empty
       await ensureBusinessesLoaded();
       populateCategoryOptions();
       renderBusinesses();
     } else {
-      btn.textContent = 'Businesses';
+      btn.innerHTML = '<span class="btn-stack">Browse<br>Businesses</span>';
       btn.dataset.target = 'businesses';
     }
     if (opts.updateUrl !== false) syncUrlForView(view);
