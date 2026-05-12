@@ -149,6 +149,124 @@
     font-weight: 600;
   }
   .business-cta a:hover { text-decoration: underline; }
+  .business-cta-link {
+    background: none;
+    border: none;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+  .business-cta-link:hover { text-decoration: underline; }
+
+  .submit-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .submit-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5; }
+  .form-group { margin-bottom: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .char-count {
+    float: right;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="url"],
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: white;
+    color: var(--text);
+  }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
+  }
+  .form-group input[type="file"] {
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .file-preview {
+    margin-top: 8px;
+    min-height: 0;
+  }
+  .file-preview img {
+    max-height: 80px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .submit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: var(--primary-dark); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .submit-error {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #fee2e2;
+    color: #b91c1c;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .submit-thanks {
+    text-align: center;
+    padding: 56px 24px;
+  }
+  .thanks-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #10b981;
+    color: white;
+    font-size: 32px;
+    margin-bottom: 18px;
+  }
+  .submit-thanks h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .submit-thanks p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+  }
   .business-visit {
     font-size: 13px;
     color: var(--text-muted);
@@ -649,6 +767,59 @@
   </div>
 </div>
 
+<div class="modal-backdrop" id="submitModal">
+  <div class="modal-wrap">
+    <button class="modal-close" id="submitClose" aria-label="Close">×</button>
+    <div class="modal">
+      <div id="submitFormSection" class="modal-body">
+        <h2 class="submit-title">Add your business</h2>
+        <p class="submit-subtitle">Fill in the details and we'll be in touch.</p>
+        <form id="businessSubmitForm" novalidate>
+          <div class="form-group">
+            <label for="sfCompanyName">Company Name</label>
+            <input id="sfCompanyName" type="text" name="company_name" required>
+          </div>
+          <div class="form-group">
+            <label for="sfCompanyOverview">Company Overview <span class="char-count" id="overviewCount">0 / 400</span></label>
+            <textarea id="sfCompanyOverview" name="company_overview" maxlength="400" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="sfCompanyWebsite">Company Website</label>
+            <input id="sfCompanyWebsite" type="url" name="company_website" placeholder="https://…">
+          </div>
+          <div class="form-group">
+            <label for="sfCompanyLogo">Company Logo</label>
+            <input id="sfCompanyLogo" type="file" name="company_logo" accept="image/*">
+            <div class="file-preview" id="logoPreview"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sfContactName">Contact Name</label>
+              <input id="sfContactName" type="text" name="contact_name" required>
+            </div>
+            <div class="form-group">
+              <label for="sfContactEmail">Contact Email</label>
+              <input id="sfContactEmail" type="email" name="contact_email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sfContactHeadshot">Contact Headshot</label>
+            <input id="sfContactHeadshot" type="file" name="contact_headshot" accept="image/*">
+            <div class="file-preview" id="headshotPreview"></div>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+          <div class="submit-error" id="submitError" style="display:none"></div>
+        </form>
+      </div>
+      <div id="submitThanksSection" class="submit-thanks" style="display:none">
+        <div class="thanks-icon">✓</div>
+        <h2>Thank you for submitting!</h2>
+        <p>We'll be in touch soon with any questions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="players.js"></script>
 <script>
@@ -1125,11 +1296,8 @@
   }
 
   function ctaCardHtml() {
-    const subject = encodeURIComponent('Adding my company to the WDHL Business Showcase');
-    const body = encodeURIComponent('Please let us know the name of your company, URL, brief description, and the WDHL member who will be the primary contact');
-    const href = `mailto:matt.walsh@greenstone.co?subject=${subject}&body=${body}`;
     return `<div class="business-card business-cta">
-      <p>Would you like to add your company to this showcase? <a href="${href}">Get in touch</a>.</p>
+      <p>Would you like to add your company to this showcase? <button type="button" class="business-cta-link" id="openSubmitBtn">Tell us more</button>.</p>
     </div>`;
   }
 
@@ -1142,6 +1310,8 @@
     const list = filteredBusinesses();
     if (!list.length) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>' + ctaCardHtml();
+      const openBtnE = grid.querySelector('#openSubmitBtn');
+      if (openBtnE) openBtnE.addEventListener('click', openSubmitModal);
       return;
     }
     const html = list.map(b => `
@@ -1168,6 +1338,8 @@
         openMemberFromBusiness(link.dataset.playerId);
       });
     });
+    const openBtn = grid.querySelector('#openSubmitBtn');
+    if (openBtn) openBtn.addEventListener('click', openSubmitModal);
   }
 
   function viewFromHash() {
@@ -1214,6 +1386,175 @@
   document.getElementById('businessCategorySelect').addEventListener('change', e => {
     businessCategoryFilter = e.target.value;
     renderBusinesses();
+  });
+
+  // ===== Business submission form =====
+  // Preferred path: Google Apps Script web app URL (lands in the "new additions"
+  // tab of the spreadsheet, with uploaded images saved to Drive). See
+  // wdhl-form-handler.gs for setup.
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweR9gB0oGmmGV0yI8yEfJo7Vrst-oigTUSvjZ4lvzBEJvfoC6UlvElwVNBPWbWEJ4z/exec';
+  // Fallback path (optional): Web3Forms key — emails the submission to SUBMIT_TO_EMAIL.
+  // Free at https://web3forms.com. Files are attached to the email.
+  const WEB3FORMS_ACCESS_KEY = '';
+  // Final fallback if neither is set: mailto: opens the user's email client with
+  // text fields pre-filled. Files have to be attached manually.
+  const SUBMIT_TO_EMAIL = 'matt.walsh@greenstone.co';
+
+  function fileToDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve('');
+      const r = new FileReader();
+      r.onload  = () => resolve(r.result);
+      r.onerror = () => reject(r.error);
+      r.readAsDataURL(file);
+    });
+  }
+
+  function openSubmitModal() {
+    const form = document.getElementById('businessSubmitForm');
+    form.reset();
+    document.getElementById('logoPreview').innerHTML = '';
+    document.getElementById('headshotPreview').innerHTML = '';
+    document.getElementById('overviewCount').textContent = '0 / 400';
+    document.getElementById('submitError').style.display = 'none';
+    document.getElementById('submitFormSection').style.display = '';
+    document.getElementById('submitThanksSection').style.display = 'none';
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+    document.getElementById('submitModal').classList.add('open');
+  }
+  function closeSubmitModal() {
+    document.getElementById('submitModal').classList.remove('open');
+  }
+
+  // Character counter
+  document.getElementById('sfCompanyOverview').addEventListener('input', e => {
+    document.getElementById('overviewCount').textContent = `${e.target.value.length} / 400`;
+  });
+
+  // File preview helper
+  function wireFilePreview(inputId, previewId) {
+    document.getElementById(inputId).addEventListener('change', e => {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+      const file = e.target.files && e.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      }
+    });
+  }
+  wireFilePreview('sfCompanyLogo', 'logoPreview');
+  wireFilePreview('sfContactHeadshot', 'headshotPreview');
+
+  function showSubmitThanks() {
+    document.getElementById('submitFormSection').style.display = 'none';
+    document.getElementById('submitThanksSection').style.display = '';
+  }
+
+  document.getElementById('businessSubmitForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const submitBtn = document.getElementById('submitBtn');
+    const errorDiv = document.getElementById('submitError');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+    errorDiv.style.display = 'none';
+
+    const fd = new FormData(form);
+
+    if (GOOGLE_APPS_SCRIPT_URL) {
+      try {
+        const logoFile = form.querySelector('#sfCompanyLogo').files[0];
+        const headshotFile = form.querySelector('#sfContactHeadshot').files[0];
+        const [logoDataUrl, headshotDataUrl] = await Promise.all([
+          fileToDataUrl(logoFile),
+          fileToDataUrl(headshotFile)
+        ]);
+        const payload = {
+          company_name:     fd.get('company_name')     || '',
+          company_overview: fd.get('company_overview') || '',
+          company_website:  fd.get('company_website')  || '',
+          contact_name:     fd.get('contact_name')     || '',
+          contact_email:    fd.get('contact_email')    || '',
+          company_logo:     logoDataUrl,
+          contact_headshot: headshotDataUrl
+        };
+        // Use a text/plain body (default for fetch with a string) to avoid the
+        // CORS preflight; Apps Script doesn't respond to OPTIONS requests.
+        const res = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.success === false) {
+          throw new Error(data.error || ('HTTP ' + res.status));
+        }
+        showSubmitThanks();
+        return;
+      } catch (err) {
+        errorDiv.textContent = `Sorry — submission failed (${err.message}). Please email ${SUBMIT_TO_EMAIL} directly.`;
+        errorDiv.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+        return;
+      }
+    }
+
+    if (WEB3FORMS_ACCESS_KEY) {
+      fd.append('access_key', WEB3FORMS_ACCESS_KEY);
+      fd.append('subject', 'New WDHL Business Submission: ' + (fd.get('company_name') || ''));
+      fd.append('from_name', fd.get('contact_name') || 'WDHL Business Submission');
+      fd.append('to', SUBMIT_TO_EMAIL);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.success === false) throw new Error(data.message || 'Submission failed');
+        showSubmitThanks();
+      } catch (err) {
+        errorDiv.textContent = `Sorry — submission failed (${err.message}). Please email ${SUBMIT_TO_EMAIL} directly.`;
+        errorDiv.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+      }
+    } else {
+      // Fallback: mailto with text fields. Files can't be attached this way.
+      const subject = `New WDHL Business Submission: ${fd.get('company_name') || ''}`;
+      const logoFile = fd.get('company_logo');
+      const headshotFile = fd.get('contact_headshot');
+      const fileNote = [];
+      if (logoFile && logoFile.name) fileNote.push(`Company logo: ${logoFile.name}`);
+      if (headshotFile && headshotFile.name) fileNote.push(`Contact headshot: ${headshotFile.name}`);
+      const body = [
+        `Company Name: ${fd.get('company_name') || ''}`,
+        `Company Website: ${fd.get('company_website') || ''}`,
+        '',
+        `Company Overview:`,
+        `${fd.get('company_overview') || ''}`,
+        '',
+        `Contact Name: ${fd.get('contact_name') || ''}`,
+        `Contact Email: ${fd.get('contact_email') || ''}`,
+        '',
+        fileNote.length
+          ? `Please attach the following files to this email before sending:\n  - ${fileNote.join('\n  - ')}`
+          : ''
+      ].join('\n');
+      window.location.href = `mailto:${SUBMIT_TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showSubmitThanks();
+    }
+  });
+
+  document.getElementById('submitClose').addEventListener('click', closeSubmitModal);
+  document.getElementById('submitModal').addEventListener('click', e => {
+    if (e.target.id === 'submitModal') closeSubmitModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('submitModal').classList.contains('open')) {
+      closeSubmitModal();
+    }
   });
 </script>
 </body>
