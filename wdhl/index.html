@@ -431,6 +431,12 @@
     color: var(--text-muted);
     font-size: 13px;
   }
+  .stats-bar a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .stats-bar a:hover { text-decoration: underline; }
   .gallery {
     padding: 16px 32px 48px;
     display: grid;
@@ -787,11 +793,6 @@
             <label for="sfCompanyWebsite">Company Website</label>
             <input id="sfCompanyWebsite" type="url" name="company_website" placeholder="https://…">
           </div>
-          <div class="form-group">
-            <label for="sfCompanyLogo">Company Logo</label>
-            <input id="sfCompanyLogo" type="file" name="company_logo" accept="image/*">
-            <div class="file-preview" id="logoPreview"></div>
-          </div>
           <div class="form-row">
             <div class="form-group">
               <label for="sfContactName">Contact Name</label>
@@ -801,11 +802,6 @@
               <label for="sfContactEmail">Contact Email</label>
               <input id="sfContactEmail" type="email" name="contact_email" required>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="sfContactHeadshot">Contact Headshot</label>
-            <input id="sfContactHeadshot" type="file" name="contact_headshot" accept="image/*">
-            <div class="file-preview" id="headshotPreview"></div>
           </div>
           <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
           <div class="submit-error" id="submitError" style="display:none"></div>
@@ -1011,8 +1007,9 @@
   function render() {
     const filtered = sortPlayers(filterPlayers());
     const gallery = document.getElementById('gallery');
-    document.getElementById('stats').textContent =
-      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'}`;
+    const correctionMailto = 'mailto:matt.walsh@greenstone.co?subject=' + encodeURIComponent('WDHL player info correction');
+    document.getElementById('stats').innerHTML =
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'} (If anything below is inaccurate, <a href="${correctionMailto}">please let us know</a>).`;
     if (!filtered.length) {
       gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
       return;
@@ -1400,21 +1397,9 @@
   // text fields pre-filled. Files have to be attached manually.
   const SUBMIT_TO_EMAIL = 'matt.walsh@greenstone.co';
 
-  function fileToDataUrl(file) {
-    return new Promise((resolve, reject) => {
-      if (!file) return resolve('');
-      const r = new FileReader();
-      r.onload  = () => resolve(r.result);
-      r.onerror = () => reject(r.error);
-      r.readAsDataURL(file);
-    });
-  }
-
   function openSubmitModal() {
     const form = document.getElementById('businessSubmitForm');
     form.reset();
-    document.getElementById('logoPreview').innerHTML = '';
-    document.getElementById('headshotPreview').innerHTML = '';
     document.getElementById('overviewCount').textContent = '0 / 400';
     document.getElementById('submitError').style.display = 'none';
     document.getElementById('submitFormSection').style.display = '';
@@ -1433,21 +1418,6 @@
     document.getElementById('overviewCount').textContent = `${e.target.value.length} / 400`;
   });
 
-  // File preview helper
-  function wireFilePreview(inputId, previewId) {
-    document.getElementById(inputId).addEventListener('change', e => {
-      const preview = document.getElementById(previewId);
-      preview.innerHTML = '';
-      const file = e.target.files && e.target.files[0];
-      if (file && file.type.startsWith('image/')) {
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        preview.appendChild(img);
-      }
-    });
-  }
-  wireFilePreview('sfCompanyLogo', 'logoPreview');
-  wireFilePreview('sfContactHeadshot', 'headshotPreview');
 
   function showSubmitThanks() {
     document.getElementById('submitFormSection').style.display = 'none';
@@ -1468,20 +1438,12 @@
 
     if (GOOGLE_APPS_SCRIPT_URL) {
       try {
-        const logoFile = form.querySelector('#sfCompanyLogo').files[0];
-        const headshotFile = form.querySelector('#sfContactHeadshot').files[0];
-        const [logoDataUrl, headshotDataUrl] = await Promise.all([
-          fileToDataUrl(logoFile),
-          fileToDataUrl(headshotFile)
-        ]);
         const payload = {
           company_name:     fd.get('company_name')     || '',
           company_overview: fd.get('company_overview') || '',
           company_website:  fd.get('company_website')  || '',
           contact_name:     fd.get('contact_name')     || '',
-          contact_email:    fd.get('contact_email')    || '',
-          company_logo:     logoDataUrl,
-          contact_headshot: headshotDataUrl
+          contact_email:    fd.get('contact_email')    || ''
         };
         // Use a text/plain body (default for fetch with a string) to avoid the
         // CORS preflight; Apps Script doesn't respond to OPTIONS requests.
@@ -1521,13 +1483,8 @@
         submitBtn.textContent = 'Submit';
       }
     } else {
-      // Fallback: mailto with text fields. Files can't be attached this way.
+      // Fallback: mailto with text fields.
       const subject = `New WDHL Business Submission: ${fd.get('company_name') || ''}`;
-      const logoFile = fd.get('company_logo');
-      const headshotFile = fd.get('contact_headshot');
-      const fileNote = [];
-      if (logoFile && logoFile.name) fileNote.push(`Company logo: ${logoFile.name}`);
-      if (headshotFile && headshotFile.name) fileNote.push(`Contact headshot: ${headshotFile.name}`);
       const body = [
         `Company Name: ${fd.get('company_name') || ''}`,
         `Company Website: ${fd.get('company_website') || ''}`,
@@ -1536,11 +1493,7 @@
         `${fd.get('company_overview') || ''}`,
         '',
         `Contact Name: ${fd.get('contact_name') || ''}`,
-        `Contact Email: ${fd.get('contact_email') || ''}`,
-        '',
-        fileNote.length
-          ? `Please attach the following files to this email before sending:\n  - ${fileNote.join('\n  - ')}`
-          : ''
+        `Contact Email: ${fd.get('contact_email') || ''}`
       ].join('\n');
       window.location.href = `mailto:${SUBMIT_TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       showSubmitThanks();
