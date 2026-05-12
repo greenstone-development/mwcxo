@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WDHL Members</title>
+<title>WDHL</title>
 <style>
   :root {
     --bg: #f5f6f8;
@@ -30,9 +30,196 @@
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
   header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
   header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
+
+  #viewToggleBtn {
+    background: #4d4d4d;
+    color: white;
+    border: none;
+    padding: 0 22px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    white-space: nowrap;
+    align-self: stretch;
+    margin: -28px -32px -28px 0;
+    min-width: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #viewToggleBtn .btn-stack {
+    display: inline-block;
+    text-align: left;
+  }
+  #viewToggleBtn:hover { background: #5c5c5c; }
+
+  .businesses-intro {
+    padding: 22px 32px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 760px;
+  }
+  .businesses-grid {
+    padding: 22px 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .business-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: var(--shadow);
+  }
+  .business-logo-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .business-logo-wrap .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700; font-size: 24px;
+  }
+  .business-logo-wrap img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    background: white;
+  }
+  .business-info { flex: 1; min-width: 0; }
+  .business-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .business-overview {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .business-cta {
+    background: transparent;
+    border: 2px dashed #b3b8c1;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    min-height: 180px;
+  }
+  .business-cta p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 380px;
+  }
+  .business-cta a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .business-cta a:hover { text-decoration: underline; }
+  .business-visit {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .business-url {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .business-url:hover { text-decoration: underline; }
+
+  .business-left {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: 0;
+    width: 120px;
+  }
+  .business-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+  .business-contact-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .business-contact-wrap.is-linked,
+  .business-logo-wrap.is-linked {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .business-contact-wrap.is-linked:hover,
+  .business-logo-wrap.is-linked:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+  .business-contact-wrap .placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-weight: 700; font-size: 20px;
+  }
+  .business-contact-wrap img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .business-contact-name {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 20px 16px; }
+    header h1 { font-size: 18px; }
+    #viewToggleBtn { padding: 0 16px; font-size: 13px; margin: -20px -16px -20px 0; min-width: 120px; }
+    .businesses-intro { padding: 16px 16px 0; font-size: 14px; }
+    .businesses-grid { padding: 16px 16px 32px; grid-template-columns: 1fr; }
+    .business-card { padding: 16px; gap: 14px; }
+    .business-left { width: 90px; }
+    .business-logo-wrap, .business-contact-wrap { width: 90px; height: 90px; }
+  }
 
   .controls {
     background: white;
@@ -419,9 +606,11 @@
 </head>
 <body>
 <header>
-  <h1>🏒 WDHL Members</h1>
+  <h1>🏒 <span id="headerTitle">WDHL Players</span></h1>
+  <button id="viewToggleBtn" data-target="businesses"><span class="btn-stack">Browse<br>Businesses</span></button>
 </header>
 
+<div id="membersView">
 <div class="controls">
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Search by name, team, or experience…">
@@ -453,6 +642,17 @@
 <div class="stats-bar" id="stats">Loading…</div>
 <div id="loadError" style="display:none;padding:0 32px 16px;color:#b91c1c;font-size:14px"></div>
 <div class="gallery" id="gallery"></div>
+</div><!-- /#membersView -->
+
+<div id="businessesView" style="display:none">
+  <div class="controls">
+    <select id="businessCategorySelect" class="filter-select">
+      <option value="All">All Categories</option>
+    </select>
+  </div>
+  <p class="businesses-intro">Below is a collection of businesses owned or operated by your fellow WDHL members. They'd welcome your support and business.</p>
+  <div class="businesses-grid" id="businessesGrid"></div>
+</div>
 
 <div class="modal-backdrop" id="modal">
   <div class="modal-wrap">
@@ -784,6 +984,260 @@
     players = await loadPlayers();
     render();
   })();
+
+  // ===== Businesses view =====
+  let businesses = [];
+  let businessesLoaded = false;
+  let businessCategoryFilter = "All";
+
+  // Fallback data — used if the live CSV can't be loaded.
+  const BUSINESSES_FALLBACK = [
+    {
+      id: "cdi-services",
+      name: "CDI Services",
+      url: "https://www.cdidenver.com/",
+      displayUrl: "CDIdenver.com",
+      logo: "headshots/logo_cdi.png",
+      overview: "CDI Services is a Colorado based electronics integrator, we elegantly weave technology into your life, home and business. The enhancements of technology are broad and may include entertainment, communication, safety, security, and comfort."
+    },
+    {
+      id: "green-stone",
+      name: "Green Stone",
+      url: "https://www.greenstone.co",
+      displayUrl: "GreenStone.co",
+      logo: "headshots/logo_gs.png",
+      overview: "Loyalty should not be bought through ads, points and giveaways. It should be earned through extraordinary experiences that deliver meaningful value. Green Stone specializes in crafting those product experiences as well as the broader journeys they fit into."
+    },
+    {
+      id: "bout-time",
+      name: "Bout Time Pub & Grill",
+      url: "https://bouttimepubco.com/",
+      displayUrl: "BoutTimePubCo.com",
+      logo: "headshots/logo_bouttime.png",
+      overview: "If you're looking for a relaxed place to catch the game and grab something to eat, you're in the right spot. Here, big screens, solid pub food, and cold drinks are always on the menu, including all-day breakfast, lunch, and dinner, paired with cold beers and great drinks. It's a go-to hangout for anyone who wants to meet up with friends, watch sports, or just unwind."
+    },
+    {
+      id: "blackbird",
+      name: "Blackbird Public House",
+      url: "https://www.blackbirdpublichouse.com/",
+      displayUrl: "BlackbirdPublicHouse.com",
+      logo: "headshots/logo_blackbird.png",
+      overview: "Blackbird Public House is where West Washington Park comes together to enjoy time with friends and family. We offer thin crust pizzas, fresh shucked oysters and a complementing menu of comfort foods that includes both traditional favorites such as mussels, wings, burgers and fried chicken as well as seasonally created, chef driven items that focus on the freshest local ingredients we can find. Blackbird is perfect for people looking for a fun date night, after work happy hour, dinner with the family, or to watch the game."
+    }
+  ];
+
+  function businessInitials(name) {
+    return name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function rowToBusiness(row, idx) {
+    const c = APP_CONFIG.businessColumns || {};
+    const rowKeys = Object.keys(row);
+    const get = key => {
+      const target = c[key];
+      if (!target) return '';
+      if (row[target] != null && row[target] !== '') return String(row[target]).trim();
+      // Fall back to case-insensitive / trimmed match so small header tweaks don't break the app
+      const lt = target.toLowerCase().trim();
+      for (const k of rowKeys) {
+        if (k.toLowerCase().trim() === lt) return String(row[k] ?? '').trim();
+      }
+      return '';
+    };
+    const name = get('name');
+    const toPath = v => v && !/^(https?:|headshots\/|\/)/i.test(v) ? `headshots/${v}` : v;
+    const rawUrl = get('url');
+    const url = rawUrl && !/^https?:\/\//i.test(rawUrl) ? `https://${rawUrl}` : rawUrl;
+    return {
+      id: slugify(name, idx),
+      name,
+      url,
+      displayUrl: get('displayUrl'),
+      overview: get('overview'),
+      category: get('category'),
+      contactName: get('contactName'),
+      contactEmail: get('contactEmail'),
+      contactHeadshot: toPath(get('contactHeadshot')),
+      logo: toPath(get('logo'))
+    };
+  }
+
+  async function loadBusinesses() {
+    if (!APP_CONFIG.businessCsvUrl) return BUSINESSES_FALLBACK;
+    try {
+      const res = await fetch(APP_CONFIG.businessCsvUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const objects = csvToObjects(parseCSV(text));
+      if (objects.length) {
+        console.info('Business CSV columns found:', Object.keys(objects[0]));
+        console.info('Business CSV first row:', objects[0]);
+      }
+      const out = objects.map(rowToBusiness).filter(b => b.name);
+      if (!out.length) throw new Error('No business rows with a name were found.');
+      return out;
+    } catch (e) {
+      console.warn('Businesses CSV load failed, using local fallback:', e);
+      return BUSINESSES_FALLBACK;
+    }
+  }
+
+  async function ensureBusinessesLoaded() {
+    if (businessesLoaded) return;
+    businesses = await loadBusinesses();
+    businessesLoaded = true;
+  }
+
+  function findPlayerByName(name) {
+    if (!name) return null;
+    const t = name.trim().toLowerCase();
+    return players.find(p => (p.name || '').trim().toLowerCase() === t) || null;
+  }
+
+  // Open a member's modal regardless of current members-tab filters.
+  function openMemberFromBusiness(id) {
+    if (!id) return;
+    modalList = players.slice();
+    modalIdx = modalList.findIndex(p => String(p.id) === String(id));
+    if (modalIdx === -1) return;
+    renderModal(modalList[modalIdx]);
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function renderContactBlock(b) {
+    if (!b.contactName && !b.contactHeadshot) return '';
+    const player = findPlayerByName(b.contactName);
+    const displayName = b.contactName || (player && player.name) || '';
+    const initials = businessInitials(displayName || '?');
+    const headshot = b.contactHeadshot || (player && player.headshot) || '';
+    const linkedClass = player ? ' is-linked contact-player-link' : '';
+    const dataAttr = player ? ` data-player-id="${escapeHtml(player.id)}"` : '';
+    const titleAttr = player ? ` title="View ${escapeHtml(player.name)}'s profile"` : '';
+    const img = headshot
+      ? `<img src="${escapeHtml(headshot)}" alt="${escapeHtml(displayName)}" onerror="this.remove()">`
+      : '';
+    return `
+      <div class="business-divider"></div>
+      <div class="business-contact-wrap${linkedClass}"${dataAttr}${titleAttr}>
+        <div class="placeholder">${escapeHtml(initials)}</div>
+        ${img}
+      </div>
+    `;
+  }
+
+  function renderContactLine(b) {
+    if (!b.contactName) return '';
+    const inner = b.contactEmail
+      ? `<a class="business-url" href="mailto:${escapeHtml(b.contactEmail)}">${escapeHtml(b.contactName)}</a>`
+      : escapeHtml(b.contactName);
+    return `<div class="business-visit">Contact: ${inner}</div>`;
+  }
+
+  function populateCategoryOptions() {
+    const select = document.getElementById('businessCategorySelect');
+    const current = select.value;
+    const cats = [...new Set(businesses.map(b => (b.category || '').trim()).filter(Boolean))].sort();
+    select.innerHTML = '<option value="All">All Categories</option>' +
+      cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    if (cats.includes(current)) select.value = current;
+  }
+
+  function filteredBusinesses() {
+    if (businessCategoryFilter === "All") return businesses;
+    return businesses.filter(b => (b.category || '').trim() === businessCategoryFilter);
+  }
+
+  function ctaCardHtml() {
+    const subject = encodeURIComponent('Adding my company to the WDHL Business Showcase');
+    const body = encodeURIComponent('Please let us know the name of your company, URL, brief description, and the WDHL member who will be the primary contact');
+    const href = `mailto:matt.walsh@greenstone.co?subject=${subject}&body=${body}`;
+    return `<div class="business-card business-cta">
+      <p>Would you like to add your company to this showcase? <a href="${href}">Get in touch</a>.</p>
+    </div>`;
+  }
+
+  function renderBusinesses() {
+    const grid = document.getElementById('businessesGrid');
+    if (!businesses.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">Loading businesses…</div>';
+      return;
+    }
+    const list = filteredBusinesses();
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>' + ctaCardHtml();
+      return;
+    }
+    const html = list.map(b => `
+      <div class="business-card">
+        <div class="business-left">
+          ${b.url
+            ? `<a class="business-logo-wrap is-linked" href="${escapeHtml(b.url)}" target="_blank" rel="noopener" title="Visit ${escapeHtml(b.name)}"><div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}</a>`
+            : `<div class="business-logo-wrap"><div class="placeholder">${escapeHtml(businessInitials(b.name))}</div>${b.logo ? `<img src="${escapeHtml(b.logo)}" alt="${escapeHtml(b.name)} logo" onerror="this.remove()">` : ''}</div>`
+          }
+          ${renderContactBlock(b)}
+        </div>
+        <div class="business-info">
+          <div class="business-name">${escapeHtml(b.name)}</div>
+          <div class="business-overview">${escapeHtml(b.overview)}</div>
+          <div class="business-visit">Visit: <a class="business-url" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.displayUrl || b.url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a></div>
+          ${renderContactLine(b)}
+        </div>
+      </div>
+    `).join('');
+    grid.innerHTML = html + ctaCardHtml();
+    grid.querySelectorAll('.contact-player-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        openMemberFromBusiness(link.dataset.playerId);
+      });
+    });
+  }
+
+  function viewFromHash() {
+    const h = (window.location.hash || '').replace(/^#/, '').toLowerCase();
+    return h === 'businesses' ? 'businesses' : 'members';
+  }
+  function syncUrlForView(view) {
+    const newHash = view === 'businesses' ? '#businesses' : '';
+    const newUrl = window.location.pathname + window.location.search + newHash;
+    if (newUrl !== window.location.pathname + window.location.search + window.location.hash) {
+      history.pushState({ view }, '', newUrl || window.location.pathname);
+    }
+  }
+  async function showView(view, opts = {}) {
+    document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
+    document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
+    document.getElementById('headerTitle').textContent =
+      view === 'businesses' ? 'WDHL Businesses' : 'WDHL Players';
+    document.title = view === 'businesses' ? 'WDHL Businesses' : 'WDHL Players';
+    const btn = document.getElementById('viewToggleBtn');
+    if (view === 'businesses') {
+      btn.innerHTML = '<span class="btn-stack">Meet<br>Players</span>';
+      btn.dataset.target = 'members';
+      renderBusinesses();          // shows "Loading…" if empty
+      await ensureBusinessesLoaded();
+      populateCategoryOptions();
+      renderBusinesses();
+    } else {
+      btn.innerHTML = '<span class="btn-stack">Browse<br>Businesses</span>';
+      btn.dataset.target = 'businesses';
+    }
+    if (opts.updateUrl !== false) syncUrlForView(view);
+  }
+  document.getElementById('viewToggleBtn').addEventListener('click', e => {
+    showView(e.currentTarget.dataset.target);
+  });
+  window.addEventListener('popstate', () => {
+    showView(viewFromHash(), { updateUrl: false });
+  });
+  // If the page was loaded with #businesses, open that view on startup
+  if (viewFromHash() === 'businesses') {
+    showView('businesses', { updateUrl: false });
+  }
+  document.getElementById('businessCategorySelect').addEventListener('change', e => {
+    businessCategoryFilter = e.target.value;
+    renderBusinesses();
+  });
 </script>
 </body>
 </html>
