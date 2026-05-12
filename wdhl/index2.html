@@ -107,6 +107,30 @@
     color: var(--text);
     margin-bottom: 12px;
   }
+  .business-cta {
+    background: transparent;
+    border: 2px dashed var(--border);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    min-height: 180px;
+  }
+  .business-cta p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 380px;
+  }
+  .business-cta a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .business-cta a:hover { text-decoration: underline; }
   .business-visit {
     font-size: 13px;
     color: var(--text-muted);
@@ -1107,6 +1131,15 @@
     return businesses.filter(b => (b.category || '').trim() === businessCategoryFilter);
   }
 
+  function ctaCardHtml() {
+    const subject = encodeURIComponent('Adding my company to the WDHL Business Showcase');
+    const body = encodeURIComponent('Please let us know the name of your company, URL, brief description, and the WDHL member who will be the primary contact');
+    const href = `mailto:matt.walsh@greenstone.co?subject=${subject}&body=${body}`;
+    return `<div class="business-card business-cta">
+      <p>Would you like to add your company to this showcase? <a href="${href}">Get in touch</a>.</p>
+    </div>`;
+  }
+
   function renderBusinesses() {
     const grid = document.getElementById('businessesGrid');
     if (!businesses.length) {
@@ -1115,7 +1148,7 @@
     }
     const list = filteredBusinesses();
     if (!list.length) {
-      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>';
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--text-muted)">No businesses match this category.</div>' + ctaCardHtml();
       return;
     }
     const html = list.map(b => `
@@ -1135,7 +1168,7 @@
         </div>
       </div>
     `).join('');
-    grid.innerHTML = html;
+    grid.innerHTML = html + ctaCardHtml();
     grid.querySelectorAll('.contact-player-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
