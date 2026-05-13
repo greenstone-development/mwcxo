@@ -11,7 +11,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-DXTNGPFQNB');
+  gtag('config', 'G-DXTNGPFQNB', { send_page_view: false });
 </script>
 
 <style>
@@ -1361,6 +1361,13 @@
     }
   }
   async function showView(view, opts = {}) {
+    const pagePath  = view === 'businesses' ? '/businesses' : '/players';
+    const pageTitle = view === 'businesses' ? 'WDHL Businesses' : 'WDHL Players';
+    gtag('event', 'page_view', {
+      page_path:     pagePath,
+      page_title:    pageTitle,
+      page_location: window.location.origin + '/wdhl/' + pagePath
+    });
     document.getElementById('membersView').style.display = view === 'members' ? '' : 'none';
     document.getElementById('businessesView').style.display = view === 'businesses' ? '' : 'none';
     document.getElementById('headerTitle').textContent =
