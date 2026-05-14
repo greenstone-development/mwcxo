@@ -805,6 +805,11 @@
             <label for="sfCompanyWebsite">Company Website</label>
             <input id="sfCompanyWebsite" type="url" name="company_website" placeholder="https://…">
           </div>
+          <div class="form-group">
+            <label for="sfCompanyLogo">Company Logo (optional)</label>
+            <input id="sfCompanyLogo" type="file" name="company_logo" accept="image/*">
+            <div class="file-preview" id="logoPreview"></div>
+          </div>
           <div class="form-row">
             <div class="form-group">
               <label for="sfContactName">Contact Name</label>
@@ -814,6 +819,11 @@
               <label for="sfContactEmail">Contact Email</label>
               <input id="sfContactEmail" type="email" name="contact_email" required>
             </div>
+          </div>
+          <div class="form-group">
+            <label for="sfContactHeadshot">Contact Headshot (optional)</label>
+            <input id="sfContactHeadshot" type="file" name="contact_headshot" accept="image/*">
+            <div class="file-preview" id="headshotPreview"></div>
           </div>
           <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
           <div class="submit-error" id="submitError" style="display:none"></div>
@@ -1486,6 +1496,8 @@
   function openSubmitModal() {
     const form = document.getElementById('businessSubmitForm');
     form.reset();
+    document.getElementById('logoPreview').innerHTML = '';
+    document.getElementById('headshotPreview').innerHTML = '';
     document.getElementById('overviewCount').textContent = '0 / 400';
     document.getElementById('submitError').style.display = 'none';
     document.getElementById('submitFormSection').style.display = '';
@@ -1504,6 +1516,21 @@
     document.getElementById('overviewCount').textContent = `${e.target.value.length} / 400`;
   });
 
+  // Live image previews
+  function wireImagePreview(inputId, previewId) {
+    document.getElementById(inputId).addEventListener('change', e => {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+      const file = e.target.files && e.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      }
+    });
+  }
+  wireImagePreview('sfCompanyLogo', 'logoPreview');
+  wireImagePreview('sfContactHeadshot', 'headshotPreview');
 
   function showSubmitThanks() {
     document.getElementById('submitFormSection').style.display = 'none';
@@ -1524,12 +1551,20 @@
 
     if (GOOGLE_APPS_SCRIPT_URL) {
       try {
+        const logoFile     = form.querySelector('#sfCompanyLogo').files[0];
+        const headshotFile = form.querySelector('#sfContactHeadshot').files[0];
+        const [logoDataUrl, headshotDataUrl] = await Promise.all([
+          fileToDataUrl(logoFile),
+          fileToDataUrl(headshotFile)
+        ]);
         const payload = {
           company_name:     fd.get('company_name')     || '',
           company_overview: fd.get('company_overview') || '',
           company_website:  fd.get('company_website')  || '',
           contact_name:     fd.get('contact_name')     || '',
-          contact_email:    fd.get('contact_email')    || ''
+          contact_email:    fd.get('contact_email')    || '',
+          company_logo:     logoDataUrl,
+          contact_headshot: headshotDataUrl
         };
         // Use a text/plain body (default for fetch with a string) to avoid the
         // CORS preflight; Apps Script doesn't respond to OPTIONS requests.
