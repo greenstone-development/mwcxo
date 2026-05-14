@@ -960,6 +960,9 @@
       goals: get('goals'),
       assists: get('assists'),
       pointsPerGame: get('pointsPerGame'),
+      goalsAgainst: get('goalsAgainst'),
+      goalsAgainstAvg: get('goalsAgainstAvg'),
+      savePercentage: get('savePercentage'),
       headshot: headshotFile ? `headshots/${headshotFile}` : ''
     };
   }
@@ -1000,6 +1003,27 @@
       return '<span class="sub-badge" title="Substitute — can play for any team">SUB</span>';
     }
     return '';
+  }
+
+  function renderStatsCells(p) {
+    const isGoalie = getPositions(p).includes('Goalie');
+    const cells = isGoalie ? [
+      { value: p.gamesPlayed,      label: 'GP'  },
+      { value: p.goalsAgainst,     label: 'GA'  },
+      { value: p.goalsAgainstAvg,  label: 'GAA' },
+      { value: p.savePercentage,   label: 'SV%' }
+    ] : [
+      { value: p.gamesPlayed,      label: 'GP'      },
+      { value: p.goals,            label: 'Goals'   },
+      { value: p.assists,          label: 'Assists' },
+      { value: p.pointsPerGame,    label: 'Pt/G'    }
+    ];
+    return cells.map(c => `
+      <div class="stat-cell">
+        <div class="stat-value">${escapeHtml(c.value || '—')}</div>
+        <div class="stat-label">${c.label}</div>
+      </div>
+    `).join('');
   }
 
   function getPositions(p) {
@@ -1119,24 +1143,7 @@
           if (team.toLowerCase() === 'substitute') return 'Winter 25/26 stats as a Substitute';
           return 'Winter 25/26 stats with ' + escapeHtml(team);
         })()}</div>
-        <div class="stats-row">
-          <div class="stat-cell">
-            <div class="stat-value">${escapeHtml(p.gamesPlayed || '—')}</div>
-            <div class="stat-label">GP</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-value">${escapeHtml(p.goals || '—')}</div>
-            <div class="stat-label">Goals</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-value">${escapeHtml(p.assists || '—')}</div>
-            <div class="stat-label">Assists</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-value">${escapeHtml(p.pointsPerGame || '—')}</div>
-            <div class="stat-label">Pt/G</div>
-          </div>
-        </div>
+        <div class="stats-row">${renderStatsCells(p)}</div>
       </div>
     `;
     document.getElementById('modalContent').scrollTop = 0;
