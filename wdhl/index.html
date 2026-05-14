@@ -56,6 +56,7 @@
   }
   .home-btn:hover { transform: scale(1.12); }
   .home-btn:focus { outline: none; }
+  #headerTitle { cursor: pointer; }
 
   #viewToggleBtn {
     background: #4d4d4d;
@@ -1522,8 +1523,8 @@
     showView(e.currentTarget.dataset.target);
   });
 
-  // Top-left hockey-stick icon: resets the current view to its default state.
-  document.getElementById('homeBtn').addEventListener('click', () => {
+  // Resets whichever view is currently active to its default state.
+  function resetCurrentView() {
     const onBusinesses = document.getElementById('businessesView').style.display !== 'none';
     if (onBusinesses) {
       businessCategoryFilter = 'All';
@@ -1547,7 +1548,9 @@
       if (sortSel) sortSel.value = 'gp-desc';
       render();
     }
-  });
+  }
+  document.getElementById('homeBtn').addEventListener('click', resetCurrentView);
+  document.getElementById('headerTitle').addEventListener('click', resetCurrentView);
   window.addEventListener('popstate', () => {
     showView(viewFromHash(), { updateUrl: false });
   });
