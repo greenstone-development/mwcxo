@@ -954,6 +954,7 @@
         return parseInt(raw) || 0;
       })(),
       teamLastSeason: get('teamLastSeason'),
+      isSubstitute: (get('isSubstitute') || '').trim().toLowerCase() === 'yes',
       bio: get('bio'),
       gamesPlayed: get('gamesPlayed'),
       goals: get('goals'),
@@ -995,7 +996,7 @@
   }
 
   function renderSubBadge(p) {
-    if ((p.teamLastSeason || '').trim().toLowerCase() === 'substitute') {
+    if (p.isSubstitute) {
       return '<span class="sub-badge" title="Substitute — can play for any team">SUB</span>';
     }
     return '';

@@ -18,6 +18,7 @@ const APP_CONFIG = {
     positions:           "Preferred Position",            // accepts "F", "D", "G", "F/D", "Forward", etc.
     bio:                 "Bio",
     teamLastSeason:      "Previous Team",
+    isSubstitute:        "Sub",                           // "yes"/"no" → controls the SUB badge on cards
     headshot:            "Picture",                       // filename only, e.g. "cavallaro.png"
     gamesPlayed:         "GP",
     goals:               "Goals",
