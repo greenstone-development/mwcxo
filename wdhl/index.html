@@ -850,6 +850,11 @@
             <label for="cfFeedback">Your Feedback or Correction</label>
             <textarea id="cfFeedback" name="feedback" rows="5" required></textarea>
           </div>
+          <div class="form-group">
+            <label for="cfImage">Upload an Image (optional)</label>
+            <input id="cfImage" type="file" name="image" accept="image/*">
+            <div class="file-preview" id="correctionImagePreview"></div>
+          </div>
           <button type="submit" class="submit-btn" id="correctionSubmitBtn">Submit</button>
           <div class="submit-error" id="correctionError" style="display:none"></div>
         </form>
@@ -1605,6 +1610,7 @@
   function openCorrectionModal() {
     const form = document.getElementById('correctionForm');
     form.reset();
+    document.getElementById('correctionImagePreview').innerHTML = '';
     document.getElementById('correctionError').style.display = 'none';
     document.getElementById('correctionFormSection').style.display = '';
     document.getElementById('correctionThanksSection').style.display = 'none';
@@ -1616,6 +1622,18 @@
   function closeCorrectionModal() {
     document.getElementById('correctionModal').classList.remove('open');
   }
+
+  // Live preview for the optional image upload
+  document.getElementById('cfImage').addEventListener('change', e => {
+    const preview = document.getElementById('correctionImagePreview');
+    preview.innerHTML = '';
+    const file = e.target.files && e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      preview.appendChild(img);
+    }
+  });
 
   function showCorrectionThanks() {
     document.getElementById('correctionFormSection').style.display = 'none';
@@ -1634,11 +1652,14 @@
 
     const fd = new FormData(form);
     try {
+      const imageFile = form.querySelector('#cfImage').files[0];
+      const imageDataUrl = await fileToDataUrl(imageFile);
       const payload = {
         type:     'correction',
         name:     fd.get('name')     || '',
         email:    fd.get('email')    || '',
-        feedback: fd.get('feedback') || ''
+        feedback: fd.get('feedback') || '',
+        image:    imageDataUrl
       };
       if (!GOOGLE_APPS_SCRIPT_URL) throw new Error('Submission endpoint not configured.');
       const res = await fetch(GOOGLE_APPS_SCRIPT_URL, {
