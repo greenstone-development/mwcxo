@@ -828,6 +828,46 @@
   </div>
 </div>
 
+<div class="modal-backdrop" id="correctionModal">
+  <div class="modal-wrap">
+    <button class="modal-close" id="correctionClose" aria-label="Close">×</button>
+    <div class="modal">
+      <div id="correctionFormSection" class="modal-body">
+        <h2 class="submit-title">Send us a correction</h2>
+        <p class="submit-subtitle">Let us know what needs updating and we'll take care of it.</p>
+        <form id="correctionForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cfName">Your Name</label>
+              <input id="cfName" type="text" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="cfEmail">Your Email</label>
+              <input id="cfEmail" type="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cfFeedback">Your Feedback or Correction</label>
+            <textarea id="cfFeedback" name="feedback" rows="5" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="cfImage">Upload an Image (optional)</label>
+            <input id="cfImage" type="file" name="image" accept="image/*">
+            <div class="file-preview" id="correctionImagePreview"></div>
+          </div>
+          <button type="submit" class="submit-btn" id="correctionSubmitBtn">Submit</button>
+          <div class="submit-error" id="correctionError" style="display:none"></div>
+        </form>
+      </div>
+      <div id="correctionThanksSection" class="submit-thanks" style="display:none">
+        <div class="thanks-icon">✓</div>
+        <h2>Thank you for submitting!</h2>
+        <p>We'll be in touch soon with any questions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="players.js"></script>
 <script>
@@ -1030,9 +1070,8 @@
   function render() {
     const filtered = sortPlayers(filterPlayers());
     const gallery = document.getElementById('gallery');
-    const correctionMailto = 'mailto:matt.walsh@greenstone.co?subject=' + encodeURIComponent('WDHL player info correction');
     document.getElementById('stats').innerHTML =
-      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'} (If anything below is inaccurate or if you'd like to be removed, <a href="${correctionMailto}">please let us know</a>).`;
+      `Showing ${filtered.length} of ${players.length} player${players.length===1?'':'s'} (If anything below is inaccurate or if you'd like to be removed, <a href="#" id="statsCorrectionLink">please let us know</a>).`;
     if (!filtered.length) {
       gallery.innerHTML = '<div class="empty" style="grid-column:1/-1">No players match your filters.</div>';
       return;
@@ -1554,6 +1593,107 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.getElementById('submitModal').classList.contains('open')) {
       closeSubmitModal();
+    }
+  });
+
+  // ===== Correction form (Players page) =====
+  function fileToDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve('');
+      const r = new FileReader();
+      r.onload  = () => resolve(r.result);
+      r.onerror = () => reject(r.error);
+      r.readAsDataURL(file);
+    });
+  }
+
+  function openCorrectionModal() {
+    const form = document.getElementById('correctionForm');
+    form.reset();
+    document.getElementById('correctionImagePreview').innerHTML = '';
+    document.getElementById('correctionError').style.display = 'none';
+    document.getElementById('correctionFormSection').style.display = '';
+    document.getElementById('correctionThanksSection').style.display = 'none';
+    const btn = document.getElementById('correctionSubmitBtn');
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+    document.getElementById('correctionModal').classList.add('open');
+  }
+  function closeCorrectionModal() {
+    document.getElementById('correctionModal').classList.remove('open');
+  }
+
+  // Live preview for the optional image upload
+  document.getElementById('cfImage').addEventListener('change', e => {
+    const preview = document.getElementById('correctionImagePreview');
+    preview.innerHTML = '';
+    const file = e.target.files && e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      preview.appendChild(img);
+    }
+  });
+
+  function showCorrectionThanks() {
+    document.getElementById('correctionFormSection').style.display = 'none';
+    document.getElementById('correctionThanksSection').style.display = '';
+  }
+
+  document.getElementById('correctionForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const submitBtn = document.getElementById('correctionSubmitBtn');
+    const errorDiv  = document.getElementById('correctionError');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+    errorDiv.style.display = 'none';
+
+    const fd = new FormData(form);
+    try {
+      const imageFile = form.querySelector('#cfImage').files[0];
+      const imageDataUrl = await fileToDataUrl(imageFile);
+      const payload = {
+        type:     'correction',
+        name:     fd.get('name')     || '',
+        email:    fd.get('email')    || '',
+        feedback: fd.get('feedback') || '',
+        image:    imageDataUrl
+      };
+      if (!GOOGLE_APPS_SCRIPT_URL) throw new Error('Submission endpoint not configured.');
+      const res = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error(data.error || ('HTTP ' + res.status));
+      showCorrectionThanks();
+    } catch (err) {
+      errorDiv.textContent = `Sorry — submission failed (${err.message}). Please email ${SUBMIT_TO_EMAIL} directly.`;
+      errorDiv.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+    }
+  });
+
+  document.getElementById('correctionClose').addEventListener('click', closeCorrectionModal);
+  document.getElementById('correctionModal').addEventListener('click', e => {
+    if (e.target.id === 'correctionModal') closeCorrectionModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('correctionModal').classList.contains('open')) {
+      closeCorrectionModal();
+    }
+  });
+
+  // Open the modal when "please let us know" is clicked in the stats bar.
+  // Uses event delegation since the stats element is re-rendered on filter/sort.
+  document.getElementById('stats').addEventListener('click', e => {
+    const link = e.target.closest('#statsCorrectionLink');
+    if (link) {
+      e.preventDefault();
+      openCorrectionModal();
     }
   });
 </script>
