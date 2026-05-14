@@ -1152,7 +1152,7 @@
   }
 
   function openModal(id) {
-    modalList = filterPlayers();
+    modalList = sortPlayers(filterPlayers());
     modalIdx = modalList.findIndex(p => String(p.id) === String(id));
     if (modalIdx === -1) return;
     renderModal(modalList[modalIdx]);
