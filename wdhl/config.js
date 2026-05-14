@@ -23,7 +23,11 @@ const APP_CONFIG = {
     gamesPlayed:         "GP",
     goals:               "Goals",
     assists:             "Assists",
-    pointsPerGame:       "P/G"
+    pointsPerGame:       "P/G",
+    // Goalie-specific stats
+    goalsAgainst:        "GA",
+    goalsAgainstAvg:     "GAA",
+    savePercentage:      "SV%"
   },
 
   // ----- Businesses tab (used by index2.html) -----
