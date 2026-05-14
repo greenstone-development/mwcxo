@@ -741,6 +741,7 @@
     <option value="Forward">Forward</option>
     <option value="Defense">Defense</option>
     <option value="Goalie">Goalie</option>
+    <option value="Either">Either</option>
   </select>
   <select id="ratingSelect" class="filter-select">
     <option value="all">All Ratings</option>
@@ -988,7 +989,13 @@
   function filterPlayers() {
     return players.filter(p => {
       const positions = getPositions(p);
-      if (positionFilter !== "All" && !positions.includes(positionFilter)) return false;
+      if (positionFilter !== "All") {
+        if (positionFilter === "Either") {
+          if (!(positions.includes("Forward") && positions.includes("Defense"))) return false;
+        } else if (!positions.includes(positionFilter)) {
+          return false;
+        }
+      }
       if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
       if (searchTerm) {
         const t = searchTerm.toLowerCase();
@@ -1117,13 +1124,29 @@
   document.getElementById('ratingSelect').addEventListener('change', e => {
     const val = e.target.value;
     ratingFilter.clear();
-    if (val !== 'all') {
+    if (val === '?') {
+      ratingFilter.add('?');
+    } else if (val !== 'all') {
       val.split(',').map(s => parseInt(s.trim()))
         .filter(n => !isNaN(n))
         .forEach(n => ratingFilter.add(n));
     }
     render();
   });
+
+  function updateRatingOptions() {
+    const select = document.getElementById('ratingSelect');
+    const hasUnknown = players.some(p => p.rating === '?');
+    let opt = select.querySelector('option[value="?"]');
+    if (hasUnknown && !opt) {
+      opt = document.createElement('option');
+      opt.value = '?';
+      opt.textContent = 'Rating Unknown';
+      select.appendChild(opt);
+    } else if (!hasUnknown && opt) {
+      opt.remove();
+    }
+  }
   document.getElementById('sortSelect').addEventListener('change', e => {
     sortKey = e.target.value;
     render();
@@ -1143,6 +1166,7 @@
 
   (async () => {
     players = await loadPlayers();
+    updateRatingOptions();
     render();
   })();
 
