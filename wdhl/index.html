@@ -44,6 +44,18 @@
   }
   header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
   header p { opacity: 0.85; font-size: 14px; margin-top: 4px; }
+  .home-btn {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: transform 0.15s ease;
+  }
+  .home-btn:hover { transform: scale(1.12); }
+  .home-btn:focus { outline: none; }
 
   #viewToggleBtn {
     background: #4d4d4d;
@@ -362,7 +374,7 @@
   }
   .search-wrap input {
     width: 100%;
-    padding: 10px 14px 10px 38px;
+    padding: 10px 36px 10px 38px;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 14px;
@@ -375,6 +387,28 @@
     background: white;
     box-shadow: 0 0 0 3px rgba(30,64,175,0.1);
   }
+  .search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.1);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 2px 0;
+    font-family: inherit;
+  }
+  .search-clear:hover { background: rgba(0,0,0,0.2); }
+  .search-clear.visible { display: flex; }
   .search-wrap::before {
     content: "🔍";
     position: absolute;
@@ -571,9 +605,10 @@
     position: fixed; inset: 0;
     background: rgba(0,0,0,0.55);
     display: none;
-    align-items: center; justify-content: center;
+    align-items: flex-start; justify-content: center;
     z-index: 100;
-    padding: 20px;
+    padding: 40px 20px;
+    overflow-y: auto;
     backdrop-filter: blur(2px);
   }
   .modal-backdrop.open { display: flex; }
@@ -585,8 +620,6 @@
   .modal {
     background: white;
     border-radius: 16px;
-    max-height: 90vh;
-    overflow-y: auto;
     box-shadow: var(--shadow-lg);
   }
   .modal-header {
@@ -727,7 +760,7 @@
 </head>
 <body>
 <header>
-  <h1>🏒 <span id="headerTitle">WDHL Players</span></h1>
+  <h1><button id="homeBtn" class="home-btn" aria-label="Reset view">🏒</button> <span id="headerTitle">WDHL Players</span></h1>
   <button id="viewToggleBtn" data-target="businesses"><span class="btn-stack">Browse<br>Businesses</span></button>
 </header>
 
@@ -735,6 +768,7 @@
 <div class="controls">
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Search by name, team, or experience…">
+    <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">×</button>
   </div>
   <select id="positionSelect" class="filter-select">
     <option value="All">All Positions</option>
@@ -1170,8 +1204,18 @@
     document.getElementById('modal').classList.remove('open');
   }
 
-  document.getElementById('search').addEventListener('input', e => {
+  const searchInput = document.getElementById('search');
+  const searchClearBtn = document.getElementById('searchClear');
+  searchInput.addEventListener('input', e => {
     searchTerm = e.target.value;
+    searchClearBtn.classList.toggle('visible', !!searchTerm);
+    render();
+  });
+  searchClearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    searchTerm = '';
+    searchClearBtn.classList.remove('visible');
+    searchInput.focus();
     render();
   });
   document.getElementById('positionSelect').addEventListener('change', e => {
@@ -1476,6 +1520,33 @@
   }
   document.getElementById('viewToggleBtn').addEventListener('click', e => {
     showView(e.currentTarget.dataset.target);
+  });
+
+  // Top-left hockey-stick icon: resets the current view to its default state.
+  document.getElementById('homeBtn').addEventListener('click', () => {
+    const onBusinesses = document.getElementById('businessesView').style.display !== 'none';
+    if (onBusinesses) {
+      businessCategoryFilter = 'All';
+      const sel = document.getElementById('businessCategorySelect');
+      if (sel) sel.value = 'All';
+      renderBusinesses();
+    } else {
+      positionFilter = 'All';
+      ratingFilter.clear();
+      searchTerm = '';
+      sortKey = 'gp-desc';
+      const search = document.getElementById('search');
+      if (search) search.value = '';
+      const searchClear = document.getElementById('searchClear');
+      if (searchClear) searchClear.classList.remove('visible');
+      const posSel = document.getElementById('positionSelect');
+      if (posSel) posSel.value = 'All';
+      const rateSel = document.getElementById('ratingSelect');
+      if (rateSel) rateSel.value = 'all';
+      const sortSel = document.getElementById('sortSelect');
+      if (sortSel) sortSel.value = 'gp-desc';
+      render();
+    }
   });
   window.addEventListener('popstate', () => {
     showView(viewFromHash(), { updateUrl: false });
