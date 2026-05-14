@@ -538,6 +538,7 @@
   .rating.r3, .rating.r4 { background: #3b82f6; }   /* blue   */
   .rating.r5, .rating.r6 { background: #10b981; }   /* green  */
   .rating.r7             { background: #f59e0b; }   /* gold   */
+  .rating.runk           { background: #595959; }   /* unknown — 75% grey */
   .modal-tags .rating { width: 32px; height: 32px; font-size: 14px; }
 
   .sub-badge {
@@ -896,7 +897,11 @@
       id: slugify(fullName, idx),
       name: fullName,
       positions: parsePositions(get('positions')),
-      rating: parseInt(get('rating')) || 0,
+      rating: (() => {
+        const raw = (get('rating') || '').trim();
+        if (raw === '?') return '?';
+        return parseInt(raw) || 0;
+      })(),
       teamLastSeason: get('teamLastSeason'),
       bio: get('bio'),
       gamesPlayed: get('gamesPlayed'),
@@ -934,6 +939,7 @@
     String(name||'').trim().split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || '?';
 
   function renderRating(r) {
+    if (r === '?') return `<span class="rating runk" title="Rating not provided">?</span>`;
     return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
   }
 
