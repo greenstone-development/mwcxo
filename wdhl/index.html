@@ -794,6 +794,10 @@
     <option value="ppg-desc">Pt/G: High to Low</option>
     <option value="ppg-asc">Pt/G: Low to High</option>
   </select>
+  <select id="seasonSelect" class="filter-select">
+    <option value="summer2026" selected>Summer 2026</option>
+    <option value="all">Show all</option>
+  </select>
 </div>
 
 <div class="stats-bar" id="stats">Loading…</div>
@@ -921,6 +925,7 @@
   let ratingFilter = new Set();
   let searchTerm = "";
   let sortKey = "gp-desc";
+  let seasonFilter = "summer2026";
 
   // ---------- CSV loader ----------
   function parseCSV(text) {
@@ -998,6 +1003,7 @@
       goalsAgainst: get('goalsAgainst'),
       goalsAgainstAvg: get('goalsAgainstAvg'),
       savePercentage: get('savePercentage'),
+      inSummer2026: (get('inSummer2026') || '').trim().toLowerCase() === 'yes',
       headshot: headshotFile ? `headshots/${headshotFile}` : ''
     };
   }
@@ -1098,6 +1104,7 @@
 
   function filterPlayers() {
     return players.filter(p => {
+      if (seasonFilter === "summer2026" && !p.inSummer2026) return false;
       const positions = getPositions(p);
       if (positionFilter !== "All") {
         if (positionFilter === "Either") {
@@ -1251,6 +1258,10 @@
   }
   document.getElementById('sortSelect').addEventListener('change', e => {
     sortKey = e.target.value;
+    render();
+  });
+  document.getElementById('seasonSelect').addEventListener('change', e => {
+    seasonFilter = e.target.value;
     render();
   });
   document.getElementById('modal').addEventListener('click', e => {
@@ -1536,6 +1547,7 @@
       ratingFilter.clear();
       searchTerm = '';
       sortKey = 'gp-desc';
+      seasonFilter = 'summer2026';
       const search = document.getElementById('search');
       if (search) search.value = '';
       const searchClear = document.getElementById('searchClear');
@@ -1546,6 +1558,8 @@
       if (rateSel) rateSel.value = 'all';
       const sortSel = document.getElementById('sortSelect');
       if (sortSel) sortSel.value = 'gp-desc';
+      const seasonSel = document.getElementById('seasonSelect');
+      if (seasonSel) seasonSel.value = 'summer2026';
       render();
     }
   }

@@ -27,7 +27,9 @@ const APP_CONFIG = {
     // Goalie-specific stats
     goalsAgainst:        "GA",
     goalsAgainstAvg:     "GAA",
-    savePercentage:      "SV%"
+    savePercentage:      "SV%",
+    // "yes"/"no" → is this player signed up for Summer 2026?
+    inSummer2026:        "Summer"
   },
 
   // ----- Businesses tab (used by index2.html) -----
