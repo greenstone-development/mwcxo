@@ -793,6 +793,8 @@
     <option value="rating-asc">Rating: Low to High</option>
     <option value="ppg-desc">Pt/G: High to Low</option>
     <option value="ppg-asc">Pt/G: Low to High</option>
+    <option value="name-asc">A to Z</option>
+    <option value="name-desc">Z to A</option>
   </select>
   <select id="seasonSelect" class="filter-select">
     <option value="summer2026" selected>Summer 2026</option>
@@ -1140,6 +1142,8 @@
       case 'gp-asc':      out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, true));  break;
       case 'ppg-desc':    out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, false)); break;
       case 'ppg-asc':     out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, true));  break;
+      case 'name-asc':    out.sort((a,b) => (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })); break;
+      case 'name-desc':   out.sort((a,b) => (b.name || '').localeCompare(a.name || '', undefined, { sensitivity: 'base' })); break;
     }
     return out;
   }
