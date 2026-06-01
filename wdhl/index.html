@@ -771,6 +771,11 @@
     <input type="text" id="search" placeholder="Search by name, team, or experience…">
     <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">×</button>
   </div>
+  <select id="seasonSelect" class="filter-select">
+    <option value="summer2026" selected>Summer 2026</option>
+    <option value="subs">Show Subs</option>
+    <option value="all">Show all</option>
+  </select>
   <select id="positionSelect" class="filter-select">
     <option value="All">All Positions</option>
     <option value="Forward">Forward</option>
@@ -785,10 +790,6 @@
     <option value="ppg-asc">Pt/G: Low to High</option>
     <option value="name-asc">A to Z</option>
     <option value="name-desc">Z to A</option>
-  </select>
-  <select id="seasonSelect" class="filter-select">
-    <option value="summer2026" selected>Summer 2026</option>
-    <option value="all">Show all</option>
   </select>
 </div>
 
@@ -1096,6 +1097,7 @@
   function filterPlayers() {
     return players.filter(p => {
       if (seasonFilter === "summer2026" && !p.inSummer2026) return false;
+      if (seasonFilter === "subs" && !p.isSubstitute) return false;
       const positions = getPositions(p);
       if (positionFilter !== "All") {
         if (positionFilter === "Either") {
