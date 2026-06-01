@@ -778,19 +778,9 @@
     <option value="Goalie">Goalie</option>
     <option value="Either">Either</option>
   </select>
-  <select id="ratingSelect" class="filter-select">
-    <option value="all">All Ratings</option>
-    <option value="1,2">Rating 1-2</option>
-    <option value="3">Rating 3</option>
-    <option value="4">Rating 4</option>
-    <option value="5">Rating 5</option>
-    <option value="6,7">Rating 6-7</option>
-  </select>
   <select id="sortSelect" class="filter-select">
     <option value="gp-desc">GP: High to Low</option>
     <option value="gp-asc">GP: Low to High</option>
-    <option value="rating-desc">Rating: High to Low</option>
-    <option value="rating-asc">Rating: Low to High</option>
     <option value="ppg-desc">Pt/G: High to Low</option>
     <option value="ppg-asc">Pt/G: Low to High</option>
     <option value="name-asc">A to Z</option>
@@ -924,7 +914,6 @@
 <script>
   let players = [];
   let positionFilter = "All";
-  let ratingFilter = new Set();
   let searchTerm = "";
   let sortKey = "gp-desc";
   let seasonFilter = "summer2026";
@@ -1097,7 +1086,7 @@
           <div class="card-name">${escapeHtml(p.name)}</div>
           <div class="card-meta">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
-            <span class="meta-end">${renderSubBadge(p)}${renderRating(p.rating)}</span>
+            <span class="meta-end">${renderSubBadge(p)}${p.isSubstitute ? renderRating(p.rating) : ''}</span>
           </div>
         </div>
       </div>
@@ -1115,7 +1104,6 @@
           return false;
         }
       }
-      if (ratingFilter.size > 0 && !ratingFilter.has(p.rating)) return false;
       if (searchTerm) {
         const t = searchTerm.toLowerCase();
         const hay = (p.name + ' ' + (p.bio||'') + ' ' + (p.teamLastSeason||'')).toLowerCase();
@@ -1136,8 +1124,6 @@
   function sortPlayers(list) {
     const out = list.slice();
     switch (sortKey) {
-      case 'rating-desc': out.sort((a,b) => compareNum(a.rating, b.rating, false)); break;
-      case 'rating-asc':  out.sort((a,b) => compareNum(a.rating, b.rating, true));  break;
       case 'gp-desc':     out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, false)); break;
       case 'gp-asc':      out.sort((a,b) => compareNum(a.gamesPlayed, b.gamesPlayed, true));  break;
       case 'ppg-desc':    out.sort((a,b) => compareNum(a.pointsPerGame, b.pointsPerGame, false)); break;
@@ -1176,7 +1162,7 @@
           <div class="modal-tags">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderSubBadge(p)}
-            ${renderRating(p.rating)}
+            ${p.isSubstitute ? renderRating(p.rating) : ''}
           </div>
         </div>
       </div>
@@ -1234,32 +1220,6 @@
     positionFilter = e.target.value;
     render();
   });
-  document.getElementById('ratingSelect').addEventListener('change', e => {
-    const val = e.target.value;
-    ratingFilter.clear();
-    if (val === '?') {
-      ratingFilter.add('?');
-    } else if (val !== 'all') {
-      val.split(',').map(s => parseInt(s.trim()))
-        .filter(n => !isNaN(n))
-        .forEach(n => ratingFilter.add(n));
-    }
-    render();
-  });
-
-  function updateRatingOptions() {
-    const select = document.getElementById('ratingSelect');
-    const hasUnknown = players.some(p => p.rating === '?');
-    let opt = select.querySelector('option[value="?"]');
-    if (hasUnknown && !opt) {
-      opt = document.createElement('option');
-      opt.value = '?';
-      opt.textContent = 'Rating Unknown';
-      select.appendChild(opt);
-    } else if (!hasUnknown && opt) {
-      opt.remove();
-    }
-  }
   document.getElementById('sortSelect').addEventListener('change', e => {
     sortKey = e.target.value;
     render();
@@ -1283,7 +1243,6 @@
 
   (async () => {
     players = await loadPlayers();
-    updateRatingOptions();
     render();
   })();
 
@@ -1548,7 +1507,6 @@
       renderBusinesses();
     } else {
       positionFilter = 'All';
-      ratingFilter.clear();
       searchTerm = '';
       sortKey = 'gp-desc';
       seasonFilter = 'summer2026';
@@ -1558,8 +1516,6 @@
       if (searchClear) searchClear.classList.remove('visible');
       const posSel = document.getElementById('positionSelect');
       if (posSel) posSel.value = 'All';
-      const rateSel = document.getElementById('ratingSelect');
-      if (rateSel) rateSel.value = 'all';
       const sortSel = document.getElementById('sortSelect');
       if (sortSel) sortSel.value = 'gp-desc';
       const seasonSel = document.getElementById('seasonSelect');
