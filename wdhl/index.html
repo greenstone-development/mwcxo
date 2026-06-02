@@ -521,17 +521,41 @@
     display: block;
   }
   .card-body { padding: 14px 16px; }
+  .card-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
   .card-name {
     font-weight: 600;
     font-size: 15px;
-    margin-bottom: 8px;
+    flex: 1;
+    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .position-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .position-circle.pos-f  { background: #2563eb; }
+  .position-circle.pos-d  { background: #059669; }
+  .position-circle.pos-g  { background: #ea580c; }
+  .position-circle.pos-fd { background: #8b5cf6; font-size: 11px; letter-spacing: -0.5px; }
   .card-meta {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
   }
@@ -1069,6 +1093,16 @@
     }
     return positions.join(' / ');
   }
+  function renderPositionCircle(p) {
+    const positions = getPositions(p);
+    if (!positions.length) return '';
+    const isEither = positions.length === 2 && positions.includes('Forward') && positions.includes('Defense');
+    if (isEither)                       return '<span class="position-circle pos-fd" title="Forward or Defense">F/D</span>';
+    if (positions.includes('Goalie'))   return '<span class="position-circle pos-g"  title="Goalie">G</span>';
+    if (positions.includes('Defense'))  return '<span class="position-circle pos-d"  title="Defense">D</span>';
+    if (positions.includes('Forward'))  return '<span class="position-circle pos-f"  title="Forward">F</span>';
+    return '';
+  }
 
   function renderImg(p, cls) {
     const initials = escapeHtml(getInitials(p.name));
@@ -1079,16 +1113,15 @@
   }
 
   function renderCard(p) {
-    const positions = getPositions(p);
     return `
       <div class="card" data-player-id="${escapeHtml(p.id)}">
         ${renderImg(p, 'card-img-wrap')}
         <div class="card-body">
-          <div class="card-name">${escapeHtml(p.name)}</div>
-          <div class="card-meta">
-            <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
-            <span class="meta-end">${renderSubBadge(p)}${p.isSubstitute ? renderRating(p.rating) : ''}</span>
+          <div class="card-top-row">
+            <div class="card-name">${escapeHtml(p.name)}</div>
+            ${renderPositionCircle(p)}
           </div>
+          ${p.isSubstitute ? `<div class="card-meta">${renderSubBadge(p)}${renderRating(p.rating)}</div>` : ''}
         </div>
       </div>
     `;
