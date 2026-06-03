@@ -559,6 +559,13 @@
     align-items: center;
     gap: 8px;
   }
+  .card-sub-info {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+    padding-top: 8px;
+    font-size: 13px;
+    color: var(--text);
+  }
   .meta-end {
     display: inline-flex;
     align-items: center;
@@ -1121,7 +1128,7 @@
             <div class="card-name">${escapeHtml(p.name)}</div>
             ${renderPositionCircle(p)}
           </div>
-          ${p.isSubstitute ? `<div class="card-meta">${renderSubBadge(p)}${renderRating(p.rating)}</div>` : ''}
+          ${p.isSubstitute ? `<div class="card-sub-info">Sub - ${escapeHtml(p.rating)}</div>` : ''}
         </div>
       </div>
     `;
