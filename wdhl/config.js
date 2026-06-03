@@ -32,7 +32,7 @@ const APP_CONFIG = {
     inSummer2026:        "Summer"
   },
 
-  // ----- Businesses tab (used by index2.html) -----
+  // ----- Businesses tab -----
   // Published CSV URL for the business_list tab. If your sheet was published
   // with "Entire Document" selected, you can target any tab by appending
   // &gid=<tab id>&single=true to the pub URL. Otherwise publish the tab

@@ -34,38 +34,121 @@
  * you deploy a new version.)
  */
 
-const SHEET_ID        = '1CdKOf3ADGkc3cy4QR52BL7N0i67mgOR5OM9V8iqKaG8';
-const SHEET_NAME      = 'new additions';
-const DRIVE_FOLDER_ID = '1uujvV7iH8ymWTfXQnkUMg1s4Xf1574CD';
+const SHEET_ID                = '1CdKOf3ADGkc3cy4QR52BL7N0i67mgOR5OM9V8iqKaG8';
+const SHEET_NAME              = 'new additions';
+const CORRECTIONS_SHEET_NAME  = 'corrections';
+const DRIVE_FOLDER_ID         = '1R1AM0ttaIziMx_vTovpyLSZkKIqmxD7a';
+const NOTIFY_EMAIL            = 'matt.walsh@greenstone.co';
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
-    if (!sheet) throw new Error('Tab "' + SHEET_NAME + '" not found in the spreadsheet.');
-
-    const logoUrl     = data.company_logo     ? saveImage(data.company_logo,     (data.company_name || 'company') + '_logo')         : '';
-    const headshotUrl = data.contact_headshot ? saveImage(data.contact_headshot, (data.contact_name || 'contact') + '_headshot')     : '';
-
-    sheet.appendRow([
-      new Date(),
-      data.company_name     || '',
-      data.company_overview || '',
-      data.company_website  || '',
-      logoUrl,
-      data.contact_name     || '',
-      data.contact_email    || '',
-      headshotUrl
-    ]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON);
+    if (data.type === 'correction') return handleCorrection(data);
+    return handleBusiness(data);
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false, error: String(err) }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return jsonOut({ success: false, error: String(err) });
   }
+}
+
+function handleBusiness(data) {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+  if (!sheet) throw new Error('Tab "' + SHEET_NAME + '" not found in the spreadsheet.');
+
+  const logoUrl     = data.company_logo     ? saveImage(data.company_logo,     (data.company_name || 'company') + '_logo')         : '';
+  const headshotUrl = data.contact_headshot ? saveImage(data.contact_headshot, (data.contact_name || 'contact') + '_headshot')     : '';
+
+  sheet.appendRow([
+    new Date(),
+    data.company_name     || '',
+    data.company_overview || '',
+    data.company_website  || '',
+    logoUrl,
+    data.contact_name     || '',
+    data.contact_email    || '',
+    headshotUrl
+  ]);
+
+  sendBusinessNotification(data);
+  return jsonOut({ success: true });
+}
+
+function handleCorrection(data) {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(CORRECTIONS_SHEET_NAME);
+  if (!sheet) throw new Error('Tab "' + CORRECTIONS_SHEET_NAME + '" not found in the spreadsheet.');
+
+  const imageUrl = data.image ? saveImage(data.image, 'correction_' + (data.name || 'submission')) : '';
+
+  // Columns: A Timestamp | B Name | C Email | D Image URL | E Feedback
+  sheet.appendRow([
+    new Date(),
+    data.name     || '',
+    data.email    || '',
+    imageUrl,
+    data.feedback || ''
+  ]);
+
+  sendCorrectionNotification(data, imageUrl);
+  return jsonOut({ success: true });
+}
+
+function sendBusinessNotification(data) {
+  if (!NOTIFY_EMAIL) return;
+  const subject = 'New WDHL business submission: ' + (data.company_name || '(no name)');
+  const lines = [
+    'A new business has been submitted via the WDHL Business Showcase form.',
+    '',
+    'Company Name:    ' + (data.company_name    || ''),
+    'Company Website: ' + (data.company_website || ''),
+    '',
+    'Company Overview:',
+    (data.company_overview || ''),
+    '',
+    'Contact Name:  ' + (data.contact_name  || ''),
+    'Contact Email: ' + (data.contact_email || ''),
+    '',
+    'View all submissions: https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit'
+  ];
+  try {
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: subject,
+      body: lines.join('\n'),
+      replyTo: data.contact_email || undefined
+    });
+  } catch (err) {
+    Logger.log('Notification email failed: ' + err);
+  }
+}
+
+function sendCorrectionNotification(data, imageUrl) {
+  if (!NOTIFY_EMAIL) return;
+  const subject = 'WDHL correction/feedback from ' + (data.name || '(no name)');
+  const lines = [
+    'A new correction/feedback has been submitted via the WDHL Players page.',
+    '',
+    'Name:  ' + (data.name  || ''),
+    'Email: ' + (data.email || ''),
+    '',
+    'Feedback:',
+    (data.feedback || ''),
+    ''
+  ];
+  if (imageUrl) lines.push('Image: ' + imageUrl, '');
+  lines.push('View all corrections: https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit#gid=2097809801');
+  try {
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: subject,
+      body: lines.join('\n'),
+      replyTo: data.email || undefined
+    });
+  } catch (err) {
+    Logger.log('Notification email failed: ' + err);
+  }
+}
+
+function jsonOut(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
 
 /** Accepts a data: URL (e.g. "data:image/png;base64,iVBORw…"), saves to
@@ -92,4 +175,20 @@ function doGet() {
   return ContentService
     .createTextOutput(JSON.stringify({ ok: true, message: 'WDHL submission handler is live.' }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/** RUN THIS ONCE from the Apps Script editor to grant the script the
+ *  Drive + Sheets permissions it needs.
+ *
+ *  In the Apps Script editor: select "authorize" from the function
+ *  dropdown next to the Run button, click Run, and accept the prompts.
+ *  After this completes, the deployed web app will be able to write to
+ *  Drive and the spreadsheet. */
+function authorize() {
+  SpreadsheetApp.openById(SHEET_ID).getName();
+  MailApp.getRemainingDailyQuota();
+  if (DRIVE_FOLDER_ID) {
+    try { DriveApp.getFolderById(DRIVE_FOLDER_ID).getName(); } catch (e) {}
+  }
+  Logger.log('Permissions granted. You can now use the deployed web app.');
 }
