@@ -1096,7 +1096,7 @@
   function renderPositionsFull(positions) {
     if (!positions.length) return '—';
     if (positions.length === 2 && positions.includes('Forward') && positions.includes('Defense')) {
-      return 'Either';
+      return 'Forward/Defense';
     }
     return positions.join(' / ');
   }
