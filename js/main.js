@@ -371,6 +371,8 @@ let currentOrgAudience = 'brand';
 function reorderOrgGrid(audience) {
   const grid = document.getElementById('org-grid');
   const order = orgOrder[audience];
+  if (!grid || !order) return;
+
   order.forEach((key, i) => {
     const card = grid.querySelector(`.org-card[data-key="${key}"]`);
     if (card) {
@@ -381,8 +383,11 @@ function reorderOrgGrid(audience) {
 }
 
 function initOrgSection() {
+  const grid = document.getElementById('org-grid');
+  if (!grid) return;
+
   reorderOrgGrid('brand');
-  document.querySelectorAll('.org-card').forEach(card => {
+  grid.querySelectorAll('.org-card').forEach(card => {
     const key = card.dataset.key;
     const content = orgContent[key];
     if (!content) return;
@@ -393,6 +398,9 @@ function initOrgSection() {
 
 function setOrgAudience(audience) {
   if (audience === currentOrgAudience) return;
+  const grid = document.getElementById('org-grid');
+  if (!grid || !orgOrder[audience]) return;
+
   currentOrgAudience = audience;
 
   document.querySelectorAll('.org-toggle-btn').forEach(btn => {
@@ -402,7 +410,7 @@ function setOrgAudience(audience) {
   });
 
   // Fade all cards out first
-  const cards = document.querySelectorAll('.org-card');
+  const cards = grid.querySelectorAll('.org-card');
   cards.forEach(card => {
     card.querySelector('.org-card-body').classList.add('fading');
     card.querySelector('.org-card-title').style.opacity = '0';
