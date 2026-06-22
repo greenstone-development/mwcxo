@@ -371,28 +371,39 @@ let currentOrgAudience = 'brand';
 function reorderOrgGrid(audience) {
   const grid = document.getElementById('org-grid');
   const order = orgOrder[audience];
+  if (!grid || !order) return;
+
   order.forEach((key, i) => {
     const card = grid.querySelector(`.org-card[data-key="${key}"]`);
     if (card) {
       card.style.order = i;
-      card.querySelector('.org-num').textContent = String(i + 1).padStart(2, '0');
+      const num = card.querySelector('.org-num');
+      if (num) num.textContent = String(i + 1).padStart(2, '0');
     }
   });
 }
 
 function initOrgSection() {
+  const grid = document.getElementById('org-grid');
+  if (!grid) return;
+
   reorderOrgGrid('brand');
-  document.querySelectorAll('.org-card').forEach(card => {
+  grid.querySelectorAll('.org-card').forEach(card => {
     const key = card.dataset.key;
     const content = orgContent[key];
-    if (!content) return;
-    card.querySelector('.org-card-title').textContent = content.brand.title;
-    card.querySelector('.org-card-body').textContent = content.brand.body;
+    const title = card.querySelector('.org-card-title');
+    const body = card.querySelector('.org-card-body');
+    if (!content || !title || !body) return;
+    title.textContent = content.brand.title;
+    body.textContent = content.brand.body;
   });
 }
 
 function setOrgAudience(audience) {
   if (audience === currentOrgAudience) return;
+  const grid = document.getElementById('org-grid');
+  if (!grid || !orgOrder[audience]) return;
+
   currentOrgAudience = audience;
 
   document.querySelectorAll('.org-toggle-btn').forEach(btn => {
@@ -402,10 +413,12 @@ function setOrgAudience(audience) {
   });
 
   // Fade all cards out first
-  const cards = document.querySelectorAll('.org-card');
+  const cards = grid.querySelectorAll('.org-card');
   cards.forEach(card => {
-    card.querySelector('.org-card-body').classList.add('fading');
-    card.querySelector('.org-card-title').style.opacity = '0';
+    const body = card.querySelector('.org-card-body');
+    const title = card.querySelector('.org-card-title');
+    if (body) body.classList.add('fading');
+    if (title) title.style.opacity = '0';
   });
 
   // After fade completes, reorder + swap text + fade back in
@@ -414,11 +427,13 @@ function setOrgAudience(audience) {
     cards.forEach(card => {
       const key = card.dataset.key;
       const content = orgContent[key];
-      if (!content) return;
-      card.querySelector('.org-card-title').textContent = content[audience].title;
-      card.querySelector('.org-card-body').textContent = content[audience].body;
-      card.querySelector('.org-card-body').classList.remove('fading');
-      card.querySelector('.org-card-title').style.opacity = '';
+      const title = card.querySelector('.org-card-title');
+      const body = card.querySelector('.org-card-body');
+      if (!content || !title || !body) return;
+      title.textContent = content[audience].title;
+      body.textContent = content[audience].body;
+      body.classList.remove('fading');
+      title.style.opacity = '';
     });
   }, 200);
 }
