@@ -12,13 +12,16 @@
   /* Some project screenshots have all the interesting content (the dark
      hero) packed at the top with a lot of empty space below — object-cover's
      default center crop hides that under the info panel. Override the crop
-     origin per image URL here instead of guessing one crop for every photo. */
+     origin per image URL here instead of guessing one crop for every photo.
+     Values are arbitrary Tailwind object-position values ("x% y%", or a
+     keyword like "top") — tune the y% down from 0 if a plain "top" crop
+     clips into a blank margin at the very edge of the source image. */
   var IMAGE_POSITION_OVERRIDES = {
-    'https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg': 'top'
+    'https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg': '50%_12%'
   };
   function imagePositionClass(src) {
     var pos = IMAGE_POSITION_OVERRIDES[src];
-    return pos ? 'object-' + pos : '';
+    return pos ? 'object-[' + pos + ']' : '';
   }
 
   var esc = function (s) {
@@ -315,7 +318,7 @@
   function filteredProjects() {
     if (activeProjectTab === 'SHOW ALL') return SITE.projects;
     if (activeProjectTab === 'MOST RECENT') return SITE.projects.slice(0, 10);
-    return SITE.projects.filter(function (p) { return p.category === activeProjectTab; });
+    return SITE.projects.filter(function (p) { return p.categories && p.categories.indexOf(activeProjectTab) !== -1; });
   }
 
   function renderProjectsGrid() {
