@@ -1362,7 +1362,7 @@ const caseStudies = {
     overview: "Throughout our relationship with Domino's, we encouraged them to embrace \"radical transparency\" as a company. That aspiration continued with the development of a social, co-creation platform called Think Oven.<br><br>Think Oven has two parts: Projects and the Idea Box. With Projects we ask for ideas on something specific (like new uniforms or improvements to the pizza tracker and delivery cars), then choose our favorites and reward those who submitted them.<br><br>Idea Box allows submissions for any other ideas related to Domino's. We consider all of them, and the best and most popular ones might even inspire the next project.",
     recognition: [],
     link: null,
-    images: ["https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_thinkoven.png", "https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_thinkoven2.png", "https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_ThinkOven_Flow.jpg"]
+    images: ["https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_thinkoven.jpg", "https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_thinkoven2.png", "https://mattwalshcxo.com/images/Portfolio/thinkoven/DOMINOS_ThinkOven_Flow.jpg"]
   },
   "pizzahero": {
     title: "Pizza Hero",
