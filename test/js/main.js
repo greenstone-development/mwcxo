@@ -8,6 +8,19 @@
   'use strict';
 
   var SITE = window.SITE || {};
+
+  /* Some project screenshots have all the interesting content (the dark
+     hero) packed at the top with a lot of empty space below — object-cover's
+     default center crop hides that under the info panel. Override the crop
+     origin per image URL here instead of guessing one crop for every photo. */
+  var IMAGE_POSITION_OVERRIDES = {
+    'https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg': 'top'
+  };
+  function imagePositionClass(src) {
+    var pos = IMAGE_POSITION_OVERRIDES[src];
+    return pos ? 'object-' + pos : '';
+  }
+
   var esc = function (s) {
     if (s == null) return '';
     return String(s)
@@ -276,7 +289,7 @@
 
     var inner = (
       '<div class="relative aspect-[16/10] overflow-hidden bg-secondary border-b border-border/50">' +
-        '<img src="' + esc(project.image) + '" alt="' + esc(project.title) + '" loading="lazy" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">' +
+        '<img src="' + esc(project.image) + '" alt="' + esc(project.title) + '" loading="lazy" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 ' + imagePositionClass(project.image) + '">' +
         '<div class="absolute inset-0 bg-[#004b46]/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>' +
       '</div>' +
       '<div class="p-6 md:p-8 flex flex-col flex-1">' +
@@ -342,9 +355,28 @@
 
     document.getElementById('cs-client').textContent = cs.client;
     document.getElementById('cs-title').textContent = cs.title;
-    var img = document.getElementById('cs-image');
-    img.src = (cs.images && cs.images[0]) || '';
-    img.alt = cs.title;
+
+    var csImageSrc = (cs.images && cs.images[0]) || '';
+    var imgTag = '<img src="' + esc(csImageSrc) + '" alt="' + esc(cs.title) + '" class="w-full h-full object-cover ' + imagePositionClass(csImageSrc) + '">';
+    var imageWrap = document.getElementById('cs-image-wrap');
+    if (cs.link) {
+      // Matches the old site's behavior: when a case study has a fuller
+      // write-up on greenstone.co, surface a "Launch Case Study" bar over
+      // the image instead of silently dropping the link on the floor.
+      imageWrap.innerHTML =
+        '<a href="' + esc(cs.link) + '" target="_blank" rel="noopener noreferrer" class="group block relative w-full h-full">' +
+          imgTag +
+          '<div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-primary group-hover:bg-primary/90 transition-colors px-6 py-4">' +
+            '<span class="text-xs font-bold tracking-widest text-white uppercase">Launch Case Study on GreenStone.co</span>' +
+            '<span class="shrink-0 w-8 h-8 rounded-full border border-white/40 group-hover:border-white group-hover:bg-white/15 transition-colors flex items-center justify-center">' +
+              '<svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>' +
+            '</span>' +
+          '</div>' +
+        '</a>';
+    } else {
+      imageWrap.innerHTML = imgTag;
+    }
+
     document.getElementById('cs-overview').innerHTML = cs.overview || '';
     document.getElementById('cs-role').innerHTML = cs.role || '';
     document.getElementById('cs-agency').textContent = cs.agency || '';
