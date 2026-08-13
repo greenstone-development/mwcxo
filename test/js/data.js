@@ -17,7 +17,7 @@ const projects = [
   {
     client: "LARSON DOORS",
     title: "Streamlined DTC E-Commerce",
-    desc: "Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties\u2014all in one intuitive self-service experience.",
+    desc: "Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties, all in one intuitive self-service experience.",
     year: "2025",
     image: "https://mattwalshcxo.com/images/Portfolio/larson/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -27,7 +27,7 @@ const projects = [
   {
     client: "WOW!",
     title: "Telecom Acquisition & Retention Platform",
-    desc: "Redesigned and evolved WOW!'s digital acquisition and servicing journeys\u2014optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.",
+    desc: "Redesigned and evolved WOW!'s digital acquisition and servicing journeys, optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.",
     year: "2025",
     image: "https://mattwalshcxo.com/images/Portfolio/wow/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -37,7 +37,7 @@ const projects = [
   {
     client: "LOGITECH",
     title: "Audience Studies & Segmentation",
-    desc: "Through multiple engagements spanning more than a decade, Green Stone partnered with Logitech's research and digital teams to deepen understanding of customer aspirations and frustrations\u2014most recently delivering a comprehensive audience segmentation strategy informed by multi-dimensional research.",
+    desc: "Through multiple engagements spanning more than a decade, Green Stone partnered with Logitech's research and digital teams to deepen understanding of customer aspirations and frustrations, most recently delivering a comprehensive audience segmentation strategy informed by multi-dimensional research.",
     year: "2025",
     image: "https://mattwalshcxo.com/images/Portfolio/logitech/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -47,7 +47,7 @@ const projects = [
   {
     client: "NEPTUNE RETAIL SOLUTIONS",
     title: "B2B Brand & Marketing Platform",
-    desc: "Green Stone evolved Neptune's brand identity and brought it to life with new assets, a website, and a brand video\u2014showcasing their unique ability to combine data from digital and retail media placements to target media and drive sales growth.",
+    desc: "Green Stone evolved Neptune's brand identity and brought it to life with new assets, a website, and a brand video, showcasing their unique ability to combine data from digital and retail media placements to target media and drive sales growth.",
     year: "2025",
     image: "https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -67,7 +67,7 @@ const projects = [
   {
     client: "MOEN",
     title: "Modern DTC E-Commerce",
-    desc: "Designed and built a DTC e-commerce experience in 12 weeks\u2014paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.",
+    desc: "Designed and built a DTC e-commerce experience in 12 weeks, paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.",
     year: "2024",
     image: "https://mattwalshcxo.com/images/Portfolio/moen/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -77,7 +77,7 @@ const projects = [
   {
     client: "ELEVATE SPORTS VENTURES",
     title: "Enterprise Sports Platform",
-    desc: "Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions\u2014merging several products into one connected MVP experience.",
+    desc: "Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions, merging several products into one connected MVP experience.",
     year: "2024",
     image: "https://mattwalshcxo.com/images/Portfolio/epic/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -97,7 +97,7 @@ const projects = [
   {
     client: "THE HILLMAN GROUP",
     title: "smartPART Digital Experience",
-    desc: "Redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone\u2014no app download needed. Simplified digital and physical interfaces to create an approachable experience for shoppers finding the right hardware parts.",
+    desc: "Redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone, no app download needed. Simplified digital and physical interfaces to create an approachable experience for shoppers finding the right hardware parts.",
     year: "2024",
     image: "https://mattwalshcxo.com/images/Portfolio/smartpart/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -107,7 +107,7 @@ const projects = [
   {
     client: "HEARTHSIDE FOOD SOLUTIONS",
     title: "Modern Manufacturing Brand",
-    desc: "The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach\u2014brought to life across global website properties and a new client servicing portal.",
+    desc: "The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach, brought to life across global website properties and a new client servicing portal.",
     year: "2023",
     image: "https://mattwalshcxo.com/images/Portfolio/hearthside/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -117,7 +117,7 @@ const projects = [
   {
     client: "WHISPIR",
     title: "SaaS Brand & Acquisition Journey",
-    desc: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform\u2014from ethnographic research through website development.",
+    desc: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform, from ethnographic research through website development.",
     year: "2022",
     image: "https://mattwalshcxo.com/images/Portfolio/whispir/hero_c.jpg",
     category: "BRANDING",
@@ -127,7 +127,7 @@ const projects = [
   {
     client: "THE HILLMAN GROUP',\n    SORTYEAR: 2023,\n    CATS: ['RESEARCH','BRANDING','DIGITAL'],\n    LINK: 'HTTPS://WWW.GREENSTONE.CO/COLLECTION/WORK/HEARTHSIDE',\n    CASESTUDY: 'GS-HEARTHSIDE',\n    AWARD: FALSE,\n    IMG: 'IMAGES/PORTFOLIO/HEARTHSIDE/HERO_C.JPG'\n  },\n  {\n    CLIENT: 'WHISPIR",
     title: "SaaS Brand & Acquisition Journey",
-    desc: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform\u2014from ethnographic research through website development.",
+    desc: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform, from ethnographic research through website development.",
     year: "2022",
     image: "https://mattwalshcxo.com/images/Portfolio/whispir/hero_c.jpg",
     category: "BRANDING",
@@ -137,7 +137,7 @@ const projects = [
   {
     client: "THE HILLMAN GROUP",
     title: "MinuteKey Kiosk Experience",
-    desc: "Since 2017, Green Stone has designed and improved MinuteKey's key copying kiosks and digital platforms\u2014evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.",
+    desc: "Since 2017, Green Stone has designed and improved MinuteKey's key copying kiosks and digital platforms, evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.",
     year: "2020",
     image: "https://mattwalshcxo.com/images/Portfolio/hillman/hero_c.jpg",
     category: "BRANDING",
@@ -147,7 +147,7 @@ const projects = [
   {
     client: "TWITTER",
     title: "Help Center Redesign",
-    desc: "Twitter's Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience\u2014reducing pageviews while maintaining sessions, proving the new taxonomy works.",
+    desc: "Twitter's Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience, reducing pageviews while maintaining sessions, proving the new taxonomy works.",
     year: "2018",
     image: "https://mattwalshcxo.com/images/Portfolio/twitter/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -157,7 +157,7 @@ const projects = [
   {
     client: "AMERICAN EXPRESS",
     title: "Card Shop Experience Optimization",
-    desc: "Optimized the Card Shop experience and wove Membership into the shopping journey\u2014with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.",
+    desc: "Optimized the Card Shop experience and wove Membership into the shopping journey, with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/amex_cardshop/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -167,7 +167,7 @@ const projects = [
   {
     client: "ZAPPI",
     title: "Bold Brand Repositioning",
-    desc: "Repositioned Zappi with bold branding to clarify their value proposition\u2014helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.",
+    desc: "Repositioned Zappi with bold branding to clarify their value proposition, helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.",
     year: "2022",
     image: "https://mattwalshcxo.com/images/Portfolio/zappi/hero_c.jpg",
     category: "BRANDING",
@@ -177,7 +177,7 @@ const projects = [
   {
     client: "ABCELLERA",
     title: "Biotech Brand & Digital Strategy",
-    desc: "Developed brand and digital strategy for the antibody discovery platform\u2014translating complex biotech into a clear and compelling brand story and web presence.",
+    desc: "Developed brand and digital strategy for the antibody discovery platform, translating complex biotech into a clear and compelling brand story and web presence.",
     year: "2018",
     image: "https://mattwalshcxo.com/images/Portfolio/abcellera/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -197,7 +197,7 @@ const projects = [
   {
     client: "THE DOE",
     title: "Anonymous Media Platform",
-    desc: "Built the brand and digital platform for The Doe\u2014an anonymous storytelling publication designed to bridge divides through shared human experiences.",
+    desc: "Built the brand and digital platform for The Doe, an anonymous storytelling publication designed to bridge divides through shared human experiences.",
     year: "2020",
     image: "https://mattwalshcxo.com/images/Portfolio/doe/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -207,7 +207,7 @@ const projects = [
   {
     client: "ONEMAIN FINANCIAL",
     title: "Customer Ethnographic Research",
-    desc: "Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers\u2014delivering personas, service blueprints, and video assets to align the organization around real human stories.",
+    desc: "Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers, delivering personas, service blueprints, and video assets to align the organization around real human stories.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/omf/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -217,7 +217,7 @@ const projects = [
   {
     client: "ALLKIND KOMBUCHA",
     title: "Wellness Brand Launch",
-    desc: "Created brand identity and packaging for Allkind Kombucha\u2014building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.",
+    desc: "Created brand identity and packaging for Allkind Kombucha, building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.",
     year: "2021",
     image: "https://mattwalshcxo.com/images/Portfolio/allkind/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -227,7 +227,7 @@ const projects = [
   {
     client: "GEICO",
     title: "Digital Experience Design",
-    desc: "Delivered user-centered digital experience design for the insurance giant\u2014optimizing key digital properties to improve customer engagement and conversion.",
+    desc: "Delivered user-centered digital experience design for the insurance giant, optimizing key digital properties to improve customer engagement and conversion.",
     year: "2017",
     image: "https://mattwalshcxo.com/images/Portfolio/geico/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -237,7 +237,7 @@ const projects = [
   {
     client: "DOSIST",
     title: "Cannabis Wellness Brand",
-    desc: "Developed brand strategy and digital presence for the cannabis wellness brand\u2014building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.",
+    desc: "Developed brand strategy and digital presence for the cannabis wellness brand, building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/dosist/hero_c.jpg",
     category: "BRANDING",
@@ -247,7 +247,7 @@ const projects = [
   {
     client: "DAGNE DOVER",
     title: "DTC Brand & Digital",
-    desc: "Brand strategy and digital work for the functional bag brand\u2014refining positioning and the online experience for the direct-to-consumer market.",
+    desc: "Brand strategy and digital work for the functional bag brand, refining positioning and the online experience for the direct-to-consumer market.",
     year: "2018",
     image: "https://mattwalshcxo.com/images/Portfolio/dagnedover/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -257,7 +257,7 @@ const projects = [
   {
     client: "MICHAELS",
     title: "Email Program Transformation",
-    desc: "Transformed Michaels' email program from discount-driven to brand-love-driven\u2014through brand strategy, user research, and a refined visual design system that inspired makers.",
+    desc: "Transformed Michaels' email program from discount-driven to brand-love-driven, through brand strategy, user research, and a refined visual design system that inspired makers.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/michaels/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -267,7 +267,7 @@ const projects = [
   {
     client: "FINISH LINE",
     title: "Sneaker Shopping Reimagined",
-    desc: "Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer\u2014with research, experience design, visual design, and motion.",
+    desc: "Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer, with research, experience design, visual design, and motion.",
     year: "2018",
     image: "https://mattwalshcxo.com/images/Portfolio/finishline/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -277,7 +277,7 @@ const projects = [
   {
     client: "BREVILLE",
     title: "Premium Appliance Experience",
-    desc: "Digital experience design for the premium kitchen appliance maker\u2014elevating the online brand presence and shopping journey.",
+    desc: "Digital experience design for the premium kitchen appliance maker, elevating the online brand presence and shopping journey.",
     year: "2017",
     image: "https://mattwalshcxo.com/images/Portfolio/breville/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -285,9 +285,9 @@ const projects = [
     caseStudyId: "gs-breville"
   },
   {
-    client: "EIGHTEEN&BULL;B",
+    client: "EIGHTEEN•B",
     title: "Brand Identity",
-    desc: "Created a distinctive brand identity for eighteen\u2022b\u2014developing visual system, brand story, and creative direction.",
+    desc: "Created a distinctive brand identity for eighteen\u2022b, developing visual system, brand story, and creative direction.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/eighteenb/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -297,7 +297,7 @@ const projects = [
   {
     client: "ODELL BREWING CO",
     title: "Craft Brewery Brand Evolution",
-    desc: "Brand and packaging work for the Colorado craft brewing pioneer\u2014evolving visual identity while honoring decades of brewing heritage.",
+    desc: "Brand and packaging work for the Colorado craft brewing pioneer, evolving visual identity while honoring decades of brewing heritage.",
     year: "2021",
     image: "https://mattwalshcxo.com/images/Portfolio/odell/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -317,7 +317,7 @@ const projects = [
   {
     client: "HBO",
     title: "Game of Thrones Digital",
-    desc: "Digital experience work for HBO's Game of Thrones franchise\u2014extending the cultural phenomenon across digital touchpoints and fan engagement.",
+    desc: "Digital experience work for HBO's Game of Thrones franchise, extending the cultural phenomenon across digital touchpoints and fan engagement.",
     year: "2014",
     image: "https://mattwalshcxo.com/images/Portfolio/hbo/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -327,7 +327,7 @@ const projects = [
   {
     client: "TOCA BOCA",
     title: "Play & Family Research",
-    desc: "Explored the intersection of technology, play, and the modern American family for the Swedish kids' app maker\u2014championing gender-neutral, free-form digital play experiences.",
+    desc: "Explored the intersection of technology, play, and the modern American family for the Swedish kids' app maker, championing gender-neutral, free-form digital play experiences.",
     year: "2014",
     image: "https://mattwalshcxo.com/images/Portfolio/tocaboca/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -337,7 +337,7 @@ const projects = [
   {
     client: "EMPTY SET DESIGNS",
     title: "Design Studio Brand",
-    desc: "Developed brand identity and visual system for Empty Set Designs\u2014creating a distinctive creative foundation for the studio.",
+    desc: "Developed brand identity and visual system for Empty Set Designs, creating a distinctive creative foundation for the studio.",
     year: "2017",
     image: "https://mattwalshcxo.com/images/Portfolio/emptyset/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -347,7 +347,7 @@ const projects = [
   {
     client: "LOCAL MOTORS",
     title: "Community Vehicle Platform",
-    desc: "Redesigned localmotors.com in two months\u2014evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.",
+    desc: "Redesigned localmotors.com in two months, evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.",
     year: "2017",
     image: "https://mattwalshcxo.com/images/Portfolio/localmotors/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -355,9 +355,9 @@ const projects = [
     caseStudyId: "gs-localmotors"
   },
   {
-    client: "4A&RSQUO;S",
+    client: "4A'S",
     title: "Trade Group Modernization",
-    desc: "Brand and digital work for the American Association of Advertising Agencies\u2014modernizing the industry trade group's presence and platform.",
+    desc: "Brand and digital work for the American Association of Advertising Agencies, modernizing the industry trade group's presence and platform.",
     year: "2021",
     image: "https://mattwalshcxo.com/images/Portfolio/4as/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -367,7 +367,7 @@ const projects = [
   {
     client: "TRAVELAER & LOT",
     title: "Travel Experience Design",
-    desc: "Digital experience design for the travel technology company and LOT Polish Airlines partnership\u2014reimagining the booking and travel journey.",
+    desc: "Digital experience design for the travel technology company and LOT Polish Airlines partnership, reimagining the booking and travel journey.",
     year: "2018",
     image: "https://mattwalshcxo.com/images/Portfolio/travelaer/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -377,7 +377,7 @@ const projects = [
   {
     client: "SIMPLE ENERGY",
     title: "Energy Tech Brand & Platform",
-    desc: "Brand and digital strategy for Simple Energy (now Uplight)\u2014helping the energy tech company communicate their utility customer engagement platform.",
+    desc: "Brand and digital strategy for Simple Energy (now Uplight), helping the energy tech company communicate their utility customer engagement platform.",
     year: "2019",
     image: "https://mattwalshcxo.com/images/Portfolio/simpleenergy/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -387,7 +387,7 @@ const projects = [
   {
     client: "NBC",
     title: "The Tonight Show",
-    desc: "When Jimmy Fallon took over The Tonight Show, CP+B modernized a 60-year-old franchise for the digital age\u2014deconstructing the hour-long show into atomic content units and designing a responsive website for consumption alongside a fan-engagement app.",
+    desc: "When Jimmy Fallon took over The Tonight Show, CP+B modernized a 60-year-old franchise for the digital age, deconstructing the hour-long show into atomic content units and designing a responsive website for consumption alongside a fan-engagement app.",
     year: "2014",
     image: "https://mattwalshcxo.com/images/Portfolio/tonightshow/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -405,9 +405,9 @@ const projects = [
     caseStudyId: "flashflood"
   },
   {
-    client: "DOMINO&RSQUO;S",
+    client: "DOMINO'S",
     title: "Think Oven",
-    desc: "A social co-creation platform born from Domino's commitment to radical transparency. Customers submit ideas on specific projects\u2014or pitch anything via the open Idea Box. The best ideas inspire what comes next.",
+    desc: "A social co-creation platform born from Domino's commitment to radical transparency. Customers submit ideas on specific projects, or pitch anything via the open Idea Box. The best ideas inspire what comes next.",
     year: "2012",
     image: "https://mattwalshcxo.com/images/Portfolio/thinkoven/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -415,9 +415,9 @@ const projects = [
     caseStudyId: "thinkoven"
   },
   {
-    client: "DOMINO&RSQUO;S",
+    client: "DOMINO'S",
     title: "Pizza Hero",
-    desc: "A pizza-making game for iPad that trains and challenges players to craft nearly perfect pies by hand. Top scorers\u2014those who exhibit real pizza-making skill\u2014receive an invitation to apply for an actual job at Domino's.",
+    desc: "A pizza-making game for iPad that trains and challenges players to craft nearly perfect pies by hand. Top scorers, those who exhibit real pizza-making skill, receive an invitation to apply for an actual job at Domino's.",
     year: "2012",
     image: "https://mattwalshcxo.com/images/Portfolio/pizzahero/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -427,7 +427,7 @@ const projects = [
   {
     client: "GREY POUPON",
     title: "Society of Good Taste",
-    desc: "The world's most exclusive Facebook page. A dynamic scan of applicants' social profiles and posting habits determined worthiness\u2014those denied had their Like rescinded, while the accepted entered a world of unique gifts and perks.",
+    desc: "The world's most exclusive Facebook page. A dynamic scan of applicants' social profiles and posting habits determined worthiness, those denied had their Like rescinded, while the accepted entered a world of unique gifts and perks.",
     year: "2012",
     image: "https://mattwalshcxo.com/images/Portfolio/societyofgoodtaste/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -437,7 +437,7 @@ const projects = [
   {
     client: "OLD NAVY",
     title: "Snap Appy",
-    desc: "Turned every Old Navy logo in the world into an interactive gateway. Point the app at any logo on any surface and a reward wheel spins\u2014landing on style tips, exclusive content, or coupons.",
+    desc: "Turned every Old Navy logo in the world into an interactive gateway. Point the app at any logo on any surface and a reward wheel spins, landing on style tips, exclusive content, or coupons.",
     year: "2012",
     image: "https://mattwalshcxo.com/images/Portfolio/snapappy/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -445,7 +445,7 @@ const projects = [
     caseStudyId: "snapappy"
   },
   {
-    client: "CONCERNED CHILDREN&RSQUO;S ADVERTISERS",
+    client: "CONCERNED CHILDREN'S ADVERTISERS",
     title: "GoGoYu",
     desc: "One of the first games to translate real-world physical activity into virtual character power. Kids wear a FitBit pedometer, and the more active they are, the stronger their character becomes across 30+ levels of exploration and mini-games.",
     year: "2012",
@@ -457,7 +457,7 @@ const projects = [
   {
     client: "WINDOWS PHONE",
     title: "Who's That Friend",
-    desc: "The new Windows Phone kept people more connected to their social networks than any other device. A quiz challenged visitors to see how well they really knew their friends\u2014most were surprised at the gaps.",
+    desc: "The new Windows Phone kept people more connected to their social networks than any other device. A quiz challenged visitors to see how well they really knew their friends, most were surprised at the gaps.",
     year: "2012",
     image: "https://mattwalshcxo.com/images/Portfolio/whosthatfriend/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -477,7 +477,7 @@ const projects = [
   {
     client: "JELL-O",
     title: "Jiggle It",
-    desc: "A celebration of Jell-O's most iconic attribute: the jiggle. This app gave fans a virtual Jell-O cube that danced to whatever music they played\u2014with dynamically generated choreography from a partnership between top choreographers and programmers.",
+    desc: "A celebration of Jell-O's most iconic attribute: the jiggle. This app gave fans a virtual Jell-O cube that danced to whatever music they played, with dynamically generated choreography from a partnership between top choreographers and programmers.",
     year: "2011",
     image: "https://mattwalshcxo.com/images/Portfolio/jiggleit/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -487,7 +487,7 @@ const projects = [
   {
     client: "JELL-O",
     title: "Temptations Sampling Machine",
-    desc: "A grown-ups-only sampling station for Jell-O Temptations pudding. The machine's camera scans each visitor's face, measures features to estimate age, and dispenses a pudding only if they're old enough\u2014sounding an alarm if not.",
+    desc: "A grown-ups-only sampling station for Jell-O Temptations pudding. The machine's camera scans each visitor's face, measures features to estimate age, and dispenses a pudding only if they're old enough, sounding an alarm if not.",
     year: "2011",
     image: "https://mattwalshcxo.com/images/Portfolio/tempations/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -507,7 +507,7 @@ const projects = [
   {
     client: "AMERICAN EXPRESS TRAVEL",
     title: "Nextpedition",
-    desc: "A custom-made mystery trip built around a traveler's passions. Adventurers discover their travel sign via an online profiler, then let Amex book the entire journey\u2014no destinations revealed until day-of via a bespoke mobile travel console.",
+    desc: "A custom-made mystery trip built around a traveler's passions. Adventurers discover their travel sign via an online profiler, then let Amex book the entire journey, no destinations revealed until day-of via a bespoke mobile travel console.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/nextpedition/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -527,7 +527,7 @@ const projects = [
   {
     client: "AMERICAN EXPRESS OPEN",
     title: "OPEN Forum",
-    desc: "Part content platform, part online university, part networking tool\u2014OPEN Forum brought together leading business minds to help small business owners find the information, tools, and connections they need to grow.",
+    desc: "Part content platform, part online university, part networking tool, OPEN Forum brought together leading business minds to help small business owners find the information, tools, and connections they need to grow.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/openforum/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -537,7 +537,7 @@ const projects = [
   {
     client: "BEST BUY",
     title: "Twelp Force",
-    desc: "A social platform that tapped into Best Buy's entire Blue Shirt staff worldwide, delivering immediate answers to customers' toughest tech questions\u2014whenever and wherever they needed them.",
+    desc: "A social platform that tapped into Best Buy's entire Blue Shirt staff worldwide, delivering immediate answers to customers' toughest tech questions, whenever and wherever they needed them.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/twelpforce/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -547,7 +547,7 @@ const projects = [
   {
     client: "DOMINO&RSQUO;S",
     title: "Show Us Your Pizza",
-    desc: "Domino's new pizza didn't need fancy food photography. Customers snapped pics of their pies as-delivered\u2014the content powered quality control, customer engagement, and subsequent marketing campaigns built on transparency.",
+    desc: "Domino's new pizza didn't need fancy food photography. Customers snapped pics of their pies as-delivered, the content powered quality control, customer engagement, and subsequent marketing campaigns built on transparency.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/suyp/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -557,7 +557,7 @@ const projects = [
   {
     client: "BRAMMO",
     title: "Shocking Barack",
-    desc: "Two riders retraced the path the Big 3 auto CEOs flew to Washington in private jets\u2014this time on Brammo electric motorcycles for $4 each. Social followers volunteered couches, food, and connections to Obama along the way.",
+    desc: "Two riders retraced the path the Big 3 auto CEOs flew to Washington in private jets, this time on Brammo electric motorcycles for $4 each. Social followers volunteered couches, food, and connections to Obama along the way.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/shockingbarack/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -567,7 +567,7 @@ const projects = [
   {
     client: "B-CYCLE",
     title: "BCycle Bike Sharing",
-    desc: "CP+B created a U.S. bike sharing system from scratch\u2014partnering with Humana for funding and Trek for bike design. The experience design team shaped the consumer journey and digital properties. Now live in a dozen+ cities.",
+    desc: "CP+B created a U.S. bike sharing system from scratch, partnering with Humana for funding and Trek for bike design. The experience design team shaped the consumer journey and digital properties. Now live in a dozen+ cities.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/bcycle/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -577,7 +577,7 @@ const projects = [
   {
     client: "VAIL RESORTS",
     title: "EpicMix",
-    desc: "A revolutionary ski industry product. RF-enabled lift passes automatically track activity\u2014vertical feet, days skied, routes ridden\u2014and upload it to a personal dashboard with virtual rewards, tiered levels, and social features for connecting on the mountain.",
+    desc: "A revolutionary ski industry product. RF-enabled lift passes automatically track activity, vertical feet, days skied, routes ridden, and upload it to a personal dashboard with virtual rewards, tiered levels, and social features for connecting on the mountain.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/epicmix/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -587,7 +587,7 @@ const projects = [
   {
     client: "MDC",
     title: "MDC-Partners.com",
-    desc: "An immersive site bringing MDC's \"Where Great Talent Lives\" mantra to life\u2014pulling in social feeds, travel updates, bios, and office overviews from all partner agencies into a single real-time experience.",
+    desc: "An immersive site bringing MDC's \"Where Great Talent Lives\" mantra to life, pulling in social feeds, travel updates, bios, and office overviews from all partner agencies into a single real-time experience.",
     year: "2010",
     image: "https://mattwalshcxo.com/images/Portfolio/mdc/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -597,7 +597,7 @@ const projects = [
   {
     client: "DOMINO&RSQUO;S",
     title: "Dominos.com, Pizza Tracker & BFD Builder",
-    desc: "As Digital AOR, CP+B reimagined the Domino's product journey\u2014the BFD Builder redefined food customization, Pizza Tracker brought transparency to ordering, and a full site redesign strengthened conversion and brand perception.",
+    desc: "As Digital AOR, CP+B reimagined the Domino's product journey, the BFD Builder redefined food customization, Pizza Tracker brought transparency to ordering, and a full site redesign strengthened conversion and brand perception.",
     year: "2009\u20132013",
     image: "https://mattwalshcxo.com/images/Portfolio/dominos/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -607,7 +607,7 @@ const projects = [
   {
     client: "DOMINO&RSQUO;S",
     title: "TiVo Ordering System",
-    desc: "A one-of-a-kind ordering system launched directly from Domino's commercials, allowing full pizza customization via a TiVo remote\u2014with a TV-optimized Pizza Tracker to follow every step of the order.",
+    desc: "A one-of-a-kind ordering system launched directly from Domino's commercials, allowing full pizza customization via a TiVo remote, with a TV-optimized Pizza Tracker to follow every step of the order.",
     year: "2009",
     image: "https://mattwalshcxo.com/images/Portfolio/tivo/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -617,7 +617,7 @@ const projects = [
   {
     client: "BURGER KING",
     title: "Whopper Sacrifice",
-    desc: "Challenged Facebook users to publicly de-friend 10 friends to prove their love for the Whopper. The design had to be as simple and engaging as the idea itself\u2014all within the realities of the Facebook platform. Results wildly surpassed expectations.",
+    desc: "Challenged Facebook users to publicly de-friend 10 friends to prove their love for the Whopper. The design had to be as simple and engaging as the idea itself, all within the realities of the Facebook platform. Results wildly surpassed expectations.",
     year: "2009",
     image: "https://mattwalshcxo.com/images/Portfolio/whoppersacrifice/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -627,7 +627,7 @@ const projects = [
   {
     client: "BURGER KING",
     title: "BK Flame",
-    desc: "CP+B created a cologne with \"a hint of flame-broiled essence.\" The companion website enhanced the mood when \"getting your Flame on\"\u2014complete with roaring fires, ocean champagne, and the King himself.",
+    desc: "CP+B created a cologne with \"a hint of flame-broiled essence.\" The companion website enhanced the mood when \"getting your Flame on\", complete with roaring fires, ocean champagne, and the King himself.",
     year: "2009",
     image: "https://mattwalshcxo.com/images/Portfolio/flame/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -647,7 +647,7 @@ const projects = [
   {
     client: "MICROSOFT WINDOWS",
     title: "I'm A PC",
-    desc: "A campaign to re-establish pride in being a PC. The digital execution stretched from windows.com to a dynamic media buy to interactive signage in Times Square\u2014a cooperative network of experiences that shifted brand perceptions.",
+    desc: "A campaign to re-establish pride in being a PC. The digital execution stretched from windows.com to a dynamic media buy to interactive signage in Times Square, a cooperative network of experiences that shifted brand perceptions.",
     year: "2009",
     image: "https://mattwalshcxo.com/images/Portfolio/imapc/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -657,7 +657,7 @@ const projects = [
   {
     client: "VOLKSWAGEN",
     title: "Routan Boom",
-    desc: "VW's Routan sparked a fictitious baby boom\u2014parents supposedly having kids just to drive the minivan with German engineering. Brooke Shields and the Babymaker 3000 let visitors have virtual babies instead.",
+    desc: "VW's Routan sparked a fictitious baby boom, parents supposedly having kids just to drive the minivan with German engineering. Brooke Shields and the Babymaker 3000 let visitors have virtual babies instead.",
     year: "2009",
     image: "https://mattwalshcxo.com/images/Portfolio/routanboom/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -677,7 +677,7 @@ const projects = [
   {
     client: "BURGER KING",
     title: "BK's Big Dig",
-    desc: "A Burger King \u00d7 Indiana Jones partnership for \"Kingdom of the Crystal Skull.\" In-store contest losers got a second chance online\u2014timing a beam of light to dig for treasure in a scene inspired by Raiders of the Lost Ark.",
+    desc: "A Burger King \u00d7 Indiana Jones partnership for \"Kingdom of the Crystal Skull.\" In-store contest losers got a second chance online, timing a beam of light to dig for treasure in a scene inspired by Raiders of the Lost Ark.",
     year: "2008",
     image: "https://mattwalshcxo.com/images/Portfolio/bigdig/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -687,7 +687,7 @@ const projects = [
   {
     client: "COKE ZERO",
     title: "Coke Zero Games",
-    desc: "A series of micro-games designed to reinforce Coke Zero's brand with male demographics\u2014retro vibrating football games for the fall, then office horse and t-shirt cannon games for basketball season.",
+    desc: "A series of micro-games designed to reinforce Coke Zero's brand with male demographics, retro vibrating football games for the fall, then office horse and t-shirt cannon games for basketball season.",
     year: "2008",
     image: "https://mattwalshcxo.com/images/Portfolio/cz/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -707,7 +707,7 @@ const projects = [
   {
     client: "BURGER KING",
     title: "My Pet Moustache",
-    desc: "For the Western Whopper launch, users uploaded a photo and grew a virtual moustache that behaved like a pet\u2014style it and it behaves, neglect it and it grows wild. Finish by recording a western song to send to fellow cowboys.",
+    desc: "For the Western Whopper launch, users uploaded a photo and grew a virtual moustache that behaved like a pet, style it and it behaves, neglect it and it grows wild. Finish by recording a western song to send to fellow cowboys.",
     year: "2007",
     image: "https://mattwalshcxo.com/images/Portfolio/petmoustache/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -727,7 +727,7 @@ const projects = [
   {
     client: "HAGGAR",
     title: "Haggar.com",
-    desc: "A redesign of Haggar.com as part of the \"Gentleman's Disagreement\" campaign\u2014striving to make the brand relevant and cool again by telling product stories in fresh, innovative, and engaging ways.",
+    desc: "A redesign of Haggar.com as part of the \"Gentleman's Disagreement\" campaign, striving to make the brand relevant and cool again by telling product stories in fresh, innovative, and engaging ways.",
     year: "2006",
     image: "https://mattwalshcxo.com/images/Portfolio/haggar/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -737,7 +737,7 @@ const projects = [
   {
     client: "VOLKSWAGEN",
     title: "VW.com + VWFeatures.com",
-    desc: "A complete redesign of vw.com, led by the launch of VWFeatures\u2014a series of dynamically generated virtual joyrides and interactive films built around user-configured vehicles. Matt led interaction design across both efforts.",
+    desc: "A complete redesign of vw.com, led by the launch of VWFeatures, a series of dynamically generated virtual joyrides and interactive films built around user-configured vehicles. Matt led interaction design across both efforts.",
     year: "2005\u20132007",
     image: "https://mattwalshcxo.com/images/Portfolio/vw/hero_c.jpg",
     category: "RESEARCH & STRATEGY",
@@ -767,7 +767,7 @@ const projects = [
   {
     client: "NIKE",
     title: "NikeGridiron.com v2",
-    desc: "A more robust, immersive experience showcasing Michael Vick as marquee endorser\u2014with features on his shoe, a game called \"The Michael Vick Experience,\" and new training features and videos for high school players.",
+    desc: "A more robust, immersive experience showcasing Michael Vick as marquee endorser, with features on his shoe, a game called \"The Michael Vick Experience,\" and new training features and videos for high school players.",
     year: "2004",
     image: "https://mattwalshcxo.com/images/Portfolio/gridiron2/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -777,7 +777,7 @@ const projects = [
   {
     client: "NIKE",
     title: "NikeRunning.com",
-    desc: "A large-scale redesign that evolved the training log application, introduced new shopping tools in a redesigned product wall, and delivered richer product detail pages\u2014a success by all metrics.",
+    desc: "A large-scale redesign that evolved the training log application, introduced new shopping tools in a redesigned product wall, and delivered richer product detail pages, a success by all metrics.",
     year: "2004",
     image: "https://mattwalshcxo.com/images/Portfolio/nikerunning/hero_c.jpg",
     category: "DIGITAL PLATFORMS",
@@ -846,7 +846,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2025",
-    overview: "Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties\u2014all in one intuitive self-service experience.",
+    overview: "Reimagined larsondoors.com, merging legacy systems into a headless Shopify/Bloomreach build. Customers can now customize doors, find parts, register products, and access warranties, all in one intuitive self-service experience.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/larson",
     images: ["https://mattwalshcxo.com/images/Portfolio/larson/hero_c.jpg"]
@@ -858,7 +858,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2026",
-    overview: "Redesigned and evolved WOW!'s digital acquisition and servicing journeys\u2014optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.",
+    overview: "Redesigned and evolved WOW!'s digital acquisition and servicing journeys, optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/wow",
     images: ["https://mattwalshcxo.com/images/Portfolio/wow/hero_c.jpg"]
@@ -882,7 +882,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2024",
-    overview: "Designed and built a DTC e-commerce experience in 12 weeks\u2014paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.",
+    overview: "Designed and built a DTC e-commerce experience in 12 weeks, paired with a brand refresh, design system, and scalable platform. Delivered a 4x increase in sales conversion and 70% lift in traffic.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/moen",
     images: ["https://mattwalshcxo.com/images/Portfolio/moen/hero_c.jpg"]
@@ -894,7 +894,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2024",
-    overview: "Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions\u2014merging several products into one connected MVP experience.",
+    overview: "Designed a scalable, modular platform to empower teams, leagues, venues, and brands through predictive insights and management solutions, merging several products into one connected MVP experience.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/elevate",
     images: ["https://mattwalshcxo.com/images/Portfolio/epic/hero_c.jpg"]
@@ -906,7 +906,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2024",
-    overview: "Techstars's Foundercon needed a logo and design system reflecting the energy and humanity of the brand for their first in-person event in three years. Green Stone rapidly developed the direction, system, and event assets.",
+    overview: "Techstars' Foundercon needed a logo and design system reflecting the energy and humanity of the brand for their first in-person event in three years. Green Stone rapidly developed the direction, system, and event assets.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/techstars",
     images: ["https://mattwalshcxo.com/images/Portfolio/techstars/hero_c.jpg"]
@@ -918,7 +918,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2023",
-    overview: "The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach\u2014brought to life across global website properties and a new client servicing portal.",
+    overview: "The largest food co-manufacturer in North America tapped Green Stone to modernize the brand with a digital-powered, customer-first approach, brought to life across global website properties and a new client servicing portal.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/hearthside",
     images: ["https://mattwalshcxo.com/images/Portfolio/hearthside/hero_c.jpg"]
@@ -930,7 +930,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2022",
-    overview: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform\u2014from ethnographic research through website development.",
+    overview: "To support international growth, Whispir tapped Green Stone to develop brand strategy, messaging, and a design system for their communications platform, from ethnographic research through website development.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/whispir",
     images: ["https://mattwalshcxo.com/images/Portfolio/whispir/hero_c.jpg"]
@@ -942,7 +942,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2017\u20132020",
-    overview: "Since 2017, Green Stone has designed and improved MinuteKey's key copying kiosks and digital platforms\u2014evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.",
+    overview: "Since 2017, Green Stone has designed and improved MinuteKey's key copying kiosks and digital platforms, evolving the original designs with features including car keys, fobs, and an endless aisle shopping experience.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/hillmanminutekey",
     images: ["https://mattwalshcxo.com/images/Portfolio/hillman/hero_c.jpg"]
@@ -954,7 +954,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2025",
-    overview: "<strong>Challenge:</strong> Hardware aisles often overwhelm shoppers with too many fastener options, making it difficult to find the right part. Skubot and Hillman developed breakthrough technology to solve this pain point, but needed to transform a complex prototype into an intuitive, retail-ready experience that earned its place on the shelf.<br><br><strong>Solution:</strong> We redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone\u2014no app download needed. By simplifying both the digital and physical interfaces and prioritizing speed, we created an approachable and intuitive experience for shoppers. After a buzz-worthy soft launch embraced by hardware store owners, smartPart will be rolling out at scale.",
+    overview: "<strong>Challenge:</strong> Hardware aisles often overwhelm shoppers with too many fastener options, making it difficult to find the right part. Skubot and Hillman developed breakthrough technology to solve this pain point, but needed to transform a complex prototype into an intuitive, retail-ready experience that earned its place on the shelf.<br><br><strong>Solution:</strong> We redesigned the user experience for a revolutionary in-aisle scanning technology that works with your phone, no app download needed. By simplifying both the digital and physical interfaces and prioritizing speed, we created an approachable and intuitive experience for shoppers. After a buzz-worthy soft launch embraced by hardware store owners, smartPart will be rolling out at scale.",
     recognition: ["w3 Awards \u2013 General Marketing, Innovative & Experimental \u2013 Silver (smartPART, 2025)", "w3 Awards \u2013 Marketing Features, Best User Experience \u2013 Silver (smartPART, 2025)", "w3 Awards \u2013 General Marketing, Products & Services \u2013 Silver (smartPART, 2025)", "w3 Awards \u2013 Mobile Apps & Sites, Shopping & Retail \u2013 Silver (smartPART, 2025)", "w3 Awards \u2013 Mobile Features, Best Experimental & Innovation \u2013 Silver (smartPART, 2025)"],
     link: "http://from.gs/smartpart",
     images: ["https://mattwalshcxo.com/images/Portfolio/smartpart/hero_c.jpg"]
@@ -966,7 +966,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2018",
-    overview: "Twitter's Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience\u2014reducing pageviews while maintaining sessions, proving the new taxonomy works.",
+    overview: "Twitter's Help Center serves tens of millions weekly. Green Stone redesigned the experience to improve accessibility and content findability for a global audience, reducing pageviews while maintaining sessions, proving the new taxonomy works.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/twitter-help",
     images: ["https://mattwalshcxo.com/images/Portfolio/twitter/hero_c.jpg"]
@@ -978,7 +978,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2019",
-    overview: "Optimized the Card Shop experience and wove Membership into the shopping journey\u2014with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.",
+    overview: "Optimized the Card Shop experience and wove Membership into the shopping journey, with strategy, experience design, CRO, and user testing to transform how prospects connect with the brand.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/american-express",
     images: ["https://mattwalshcxo.com/images/Portfolio/amex_cardshop/hero_c.jpg"]
@@ -990,7 +990,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2022",
-    overview: "Repositioned Zappi with bold branding to clarify their value proposition\u2014helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.",
+    overview: "Repositioned Zappi with bold branding to clarify their value proposition, helping prospective leads quickly grasp the what, how, and why of their consumer insights platform, brought to life on a flexible website.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/zappi",
     images: ["https://mattwalshcxo.com/images/Portfolio/zappi/hero_c.jpg"]
@@ -1002,7 +1002,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Account Management",
     year: "2018",
-    overview: "Developed brand and digital strategy for the antibody discovery platform\u2014translating complex biotech into a clear and compelling brand story and web presence.",
+    overview: "Developed brand and digital strategy for the antibody discovery platform, translating complex biotech into a clear and compelling brand story and web presence.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/abcellera",
     images: ["https://mattwalshcxo.com/images/Portfolio/abcellera/hero_c.jpg"]
@@ -1026,7 +1026,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2020",
-    overview: "Built the brand and digital platform for The Doe\u2014an anonymous storytelling publication designed to bridge divides through shared human experiences.",
+    overview: "Built the brand and digital platform for The Doe, an anonymous storytelling publication designed to bridge divides through shared human experiences.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/thedoe",
     images: ["https://mattwalshcxo.com/images/Portfolio/doe/hero_c.jpg"]
@@ -1038,7 +1038,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2019",
-    overview: "Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers\u2014delivering personas, service blueprints, and video assets to align the organization around real human stories.",
+    overview: "Conducted large-scale ethnographic research into the financial lives and emotional needs of personal loan customers, delivering personas, service blueprints, and video assets to align the organization around real human stories.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/one-main-financial",
     images: ["https://mattwalshcxo.com/images/Portfolio/omf/hero_c.jpg"]
@@ -1050,7 +1050,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Account Management",
     year: "2021",
-    overview: "Created brand identity and packaging for Allkind Kombucha\u2014building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.",
+    overview: "Created brand identity and packaging for Allkind Kombucha, building a visual system around wellness, community, and clean ingredients for a new-to-market beverage brand.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/allkind",
     images: ["https://mattwalshcxo.com/images/Portfolio/allkind/hero_c.jpg"]
@@ -1062,7 +1062,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2017",
-    overview: "Delivered user-centered digital experience design for the insurance giant\u2014optimizing key digital properties to improve customer engagement and conversion.",
+    overview: "Delivered user-centered digital experience design for the insurance giant, optimizing key digital properties to improve customer engagement and conversion.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/geico",
     images: ["https://mattwalshcxo.com/images/Portfolio/geico/hero_c.jpg"]
@@ -1074,7 +1074,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Strategic Partner & Advisor",
     year: "2019",
-    overview: "Developed brand strategy and digital presence for the cannabis wellness brand\u2014building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.",
+    overview: "Developed brand strategy and digital presence for the cannabis wellness brand, building a visual identity befitting their science-forward, dose-controlled approach to plant-based therapy.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/dosist",
     images: ["https://mattwalshcxo.com/images/Portfolio/dosist/hero_c.jpg"]
@@ -1086,7 +1086,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2018",
-    overview: "Brand strategy and digital work for the functional bag brand\u2014refining positioning and the online experience for the direct-to-consumer market.",
+    overview: "Brand strategy and digital work for the functional bag brand, refining positioning and the online experience for the direct-to-consumer market.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/dagne-dover",
     images: ["https://mattwalshcxo.com/images/Portfolio/dagnedover/hero_c.jpg"]
@@ -1098,7 +1098,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2019",
-    overview: "Transformed Michaels' email program from discount-driven to brand-love-driven\u2014through brand strategy, user research, and a refined visual design system that inspired makers.",
+    overview: "Transformed Michaels' email program from discount-driven to brand-love-driven, through brand strategy, user research, and a refined visual design system that inspired makers.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/michaels",
     images: ["https://mattwalshcxo.com/images/Portfolio/michaels/hero_c.jpg"]
@@ -1110,7 +1110,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2018",
-    overview: "Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer\u2014with research, experience design, visual design, and motion.",
+    overview: "Reimagined the digital sneaker shopping experience as the industry shifted toward direct-to-consumer, with research, experience design, visual design, and motion.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/finish-line",
     images: ["https://mattwalshcxo.com/images/Portfolio/finishline/hero_c.jpg"]
@@ -1122,19 +1122,19 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2017",
-    overview: "Digital experience design for the premium kitchen appliance maker\u2014elevating the online brand presence and shopping journey.",
+    overview: "Digital experience design for the premium kitchen appliance maker, elevating the online brand presence and shopping journey.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/breville",
     images: ["https://mattwalshcxo.com/images/Portfolio/breville/hero_c.jpg"]
   },
   'gs-eighteenb': {
     title: "Brand Identity",
-    client: "eighteen\u2022b",
+    client: "eighteen•b",
     type: "E-Commerce Evolutions",
     agency: "Green Stone",
     role: "Strategic/Creative Partner & Advisor",
     year: "2019",
-    overview: "Created a distinctive brand identity for eighteen\u2022b\u2014developing visual system, brand story, and creative direction.",
+    overview: "Created a distinctive brand identity for eighteen•b, developing visual system, brand story, and creative direction.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/eighteen-b",
     images: ["https://mattwalshcxo.com/images/Portfolio/eighteenb/hero_c.jpg"]
@@ -1146,7 +1146,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2021",
-    overview: "Brand and packaging work for the Colorado craft brewing pioneer\u2014evolving visual identity while honoring decades of brewing heritage.",
+    overview: "Brand and packaging work for the Colorado craft brewing pioneer, evolving visual identity while honoring decades of brewing heritage.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/odellbrewingco",
     images: ["https://mattwalshcxo.com/images/Portfolio/odell/hero_c.jpg"]
@@ -1158,7 +1158,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2025",
-    overview: "<strong>Challenge:</strong> Neptune needed a site and brand identity that worked harder for them\u2014helping customers understand their unique value proposition, explaining their updated technology offerings, and creating a unified story for their team to rally around.<br><br><strong>Solution:</strong> Green Stone evolved the brand identity and brought it to life with new assets, a website, and produced a brand video that tells the story of their updated value proposition. Together, these new assets showcase Neptune's unique ability to combine data from digital and retail media placements to target media and drive sales growth, powered by unique technology systems.",
+    overview: "<strong>Challenge:</strong> Neptune needed a site and brand identity that worked harder for them, helping customers understand their unique value proposition, explaining their updated technology offerings, and creating a unified story for their team to rally around.<br><br><strong>Solution:</strong> Green Stone evolved the brand identity and brought it to life with new assets, a website, and produced a brand video that tells the story of their updated value proposition. Together, these new assets showcase Neptune's unique ability to combine data from digital and retail media placements to target media and drive sales growth, powered by unique technology systems.",
     recognition: ["w3 Awards \u2013 General Marketing, B2B \u2013 Gold (NeptuneRetailSolutions.com, 2025)", "w3 Awards \u2013 Branded Content, B2B \u2013 Silver (NeptuneRetailSolutions.com, 2025)"],
     link: "http://from.gs/neptune",
     images: ["https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg"]
@@ -1182,7 +1182,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Design Director",
     year: "2014",
-    overview: "Digital experience work for HBO's Game of Thrones franchise\u2014extending the cultural phenomenon across digital touchpoints and fan engagement.",
+    overview: "Digital experience work for HBO's Game of Thrones franchise, extending the cultural phenomenon across digital touchpoints and fan engagement.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/got",
     images: ["https://mattwalshcxo.com/images/Portfolio/hbo/hero_c.jpg"]
@@ -1194,7 +1194,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic Partner & Advisor",
     year: "2014",
-    overview: "Explored the intersection of technology, play, and the modern American family for the Swedish kids' app maker\u2014championing gender-neutral, free-form digital play experiences.",
+    overview: "Explored the intersection of technology, play, and the modern American family for the Swedish kids' app maker, championing gender-neutral, free-form digital play experiences.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/toca-boca",
     images: ["https://mattwalshcxo.com/images/Portfolio/tocaboca/hero_c.jpg"]
@@ -1206,7 +1206,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2017",
-    overview: "Developed brand identity and visual system for Empty Set Designs\u2014creating a distinctive creative foundation for the studio.",
+    overview: "Developed brand identity and visual system for Empty Set Designs, creating a distinctive creative foundation for the studio.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/empty-set-designs",
     images: ["https://mattwalshcxo.com/images/Portfolio/emptyset/hero_c.jpg"]
@@ -1218,7 +1218,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2017",
-    overview: "Redesigned localmotors.com in two months\u2014evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.",
+    overview: "Redesigned localmotors.com in two months, evolving brand communications to match their ambitious vision for community-designed, locally-manufactured vehicles.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/local-motors",
     images: ["https://mattwalshcxo.com/images/Portfolio/localmotors/hero_c.jpg"]
@@ -1230,7 +1230,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2021",
-    overview: "Brand and digital work for the American Association of Advertising Agencies\u2014modernizing the industry trade group's presence and platform.",
+    overview: "Brand and digital work for the American Association of Advertising Agencies, modernizing the industry trade group's presence and platform.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/4as",
     images: ["https://mattwalshcxo.com/images/Portfolio/4as/hero_c.jpg"]
@@ -1242,7 +1242,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2018",
-    overview: "Digital experience design for the travel technology company and LOT Polish Airlines partnership\u2014reimagining the booking and travel journey.",
+    overview: "Digital experience design for the travel technology company and LOT Polish Airlines partnership, reimagining the booking and travel journey.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/travelaer-lot",
     images: ["https://mattwalshcxo.com/images/Portfolio/travelaer/hero_c.jpg"]
@@ -1254,7 +1254,7 @@ const caseStudies = {
     agency: "Green Stone",
     role: "Client Origination, Strategic/Creative Partner & Advisor",
     year: "2019",
-    overview: "Brand and digital strategy for Simple Energy (now Uplight)\u2014helping the energy tech company communicate their utility customer engagement platform.",
+    overview: "Brand and digital strategy for Simple Energy (now Uplight), helping the energy tech company communicate their utility customer engagement platform.",
     recognition: [],
     link: "https://www.greenstone.co/collection/work/simple-energy",
     images: ["https://mattwalshcxo.com/images/Portfolio/simpleenergy/hero_c.jpg"]
