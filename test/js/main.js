@@ -223,13 +223,26 @@
 
   /* ---------------- Recognition: awards ---------------- */
   var showAllAwards = false;
+  var AWARDS_GRID_COLS = 'grid-cols-[1fr_0.85fr_1.3fr_1fr] md:grid-cols-12';
+
   function awardRow(a) {
     return (
-      '<div class="py-5 md:py-6 border-b border-white/10 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-xl">' +
-        '<div class="font-bold text-white text-lg md:col-span-3">' + esc(a.show) + '</div>' +
-        '<div class="text-white/80 font-medium md:col-span-3"><span class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-bold tracking-widest uppercase">' + esc(a.prize) + '</span></div>' +
-        '<div class="text-white/90 md:col-span-4 font-medium">' + esc(a.project) + '</div>' +
-        '<div class="text-[#2dd4bf] text-sm md:text-right md:col-span-2 font-medium tracking-wide uppercase">' + esc(a.category) + '</div>' +
+      '<div class="py-3 md:py-6 border-b border-white/10 grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 items-start hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-xl">' +
+        '<div class="font-bold text-white text-[0.7rem] leading-snug md:text-lg md:col-span-3">' + esc(a.show) + '</div>' +
+        '<div class="text-white/80 font-medium md:col-span-3"><span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-white/10 rounded-full text-[0.5rem] leading-snug md:text-xs font-bold tracking-wider md:tracking-widest uppercase">' + esc(a.prize) + '</span></div>' +
+        '<div class="text-white/90 text-[0.7rem] leading-snug md:text-base md:col-span-4 font-medium">' + esc(a.project) + '</div>' +
+        '<div class="text-[#2dd4bf] text-[0.65rem] leading-snug md:text-sm md:text-right md:col-span-2 font-medium tracking-wide uppercase">' + esc(a.category) + '</div>' +
+      '</div>'
+    );
+  }
+
+  function awardsHeaderRow() {
+    return (
+      '<div class="grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 px-4 -mx-4 pt-4 md:pt-0 pb-2 md:pb-4 text-[0.55rem] md:text-xs font-bold uppercase tracking-widest text-white/40">' +
+        '<div class="md:col-span-3">Show</div>' +
+        '<div class="md:col-span-3">Level</div>' +
+        '<div class="md:col-span-4">Project</div>' +
+        '<div class="md:col-span-2">Category</div>' +
       '</div>'
     );
   }
@@ -238,7 +251,7 @@
     var host = document.getElementById('awards-list');
     if (!host) return;
     var list = showAllAwards ? SITE.awards : SITE.awards.slice(0, 8);
-    host.innerHTML = list.map(awardRow).join('');
+    host.innerHTML = awardsHeaderRow() + list.map(awardRow).join('');
     var btn = document.getElementById('awards-toggle');
     if (btn) {
       btn.innerHTML = (showAllAwards ? 'Show fewer awards' : 'View full list') +
@@ -275,11 +288,23 @@
     );
   }
 
+  function tabOption(tab) {
+    return '<option value="' + esc(tab) + '"' + (tab === activeProjectTab ? ' selected' : '') + '>' + esc(tab) + '</option>';
+  }
+
   function renderProjectTabs() {
     ['project-tabs-top', 'project-tabs-bottom'].forEach(function (id) {
       var host = document.getElementById(id);
       if (!host) return;
       host.innerHTML = projectCategories.map(function (tab) { return tabButton(tab, tab === activeProjectTab); }).join('');
+    });
+    // Mobile equivalent: the same tab list collapsed into a pulldown, top
+    // and bottom, so switching categories doesn't require scrolling back up
+    // past a full row of wrapped pill buttons on small screens.
+    ['project-tabs-top-select', 'project-tabs-bottom-select'].forEach(function (id) {
+      var select = document.getElementById(id);
+      if (!select) return;
+      select.innerHTML = projectCategories.map(tabOption).join('');
     });
   }
 
@@ -387,6 +412,14 @@
       if (!btn || !btn.closest('#project-tabs-top, #project-tabs-bottom')) return;
       var fromBottom = !!btn.closest('#project-tabs-bottom');
       activeProjectTab = btn.getAttribute('data-tab');
+      renderProjectsGrid();
+      if (fromBottom) window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.addEventListener('change', function (e) {
+      var select = e.target.closest('#project-tabs-top-select, #project-tabs-bottom-select');
+      if (!select) return;
+      var fromBottom = select.id === 'project-tabs-bottom-select';
+      activeProjectTab = select.value;
       renderProjectsGrid();
       if (fromBottom) window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -532,12 +565,10 @@
     host.innerHTML = SITE.thoughtsList.map(function (item) {
       var badgeClass = item.type === 'ARTICLE' ? 'bg-[#004b46]' : item.type === 'PODCAST' ? 'bg-[#966b33]' : 'bg-foreground text-background';
       return (
-        '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="flex flex-col sm:flex-row sm:items-center justify-between p-5 md:p-6 border-b border-border/50 hover:bg-card transition-colors group">' +
-          '<h3 class="text-lg font-bold text-foreground group-hover:text-[#004b46] transition-colors mb-4 sm:mb-0 max-w-3xl pr-4">' + esc(item.title) + '</h3>' +
-          '<div class="flex items-center gap-4 text-xs font-medium shrink-0">' +
-            '<span class="px-3 py-1 rounded-full font-bold tracking-wider text-white ' + badgeClass + '">' + esc(item.type) + '</span>' +
-            '<span class="text-muted-foreground min-w-[140px] text-right">' + esc(item.source) + '</span>' +
-          '</div>' +
+        '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] gap-3 md:gap-5 items-center px-5 py-4 md:p-6 border-b border-border/50 hover:bg-card transition-colors group">' +
+          '<h3 class="text-sm md:text-lg font-bold text-foreground group-hover:text-[#004b46] transition-colors leading-snug pr-2 max-w-3xl">' + esc(item.title) + '</h3>' +
+          '<span class="hidden md:inline-flex px-3 py-1 rounded-full font-bold tracking-wider text-white text-xs shrink-0 justify-self-end ' + badgeClass + '">' + esc(item.type) + '</span>' +
+          '<span class="text-muted-foreground text-[0.7rem] md:text-xs font-medium shrink-0 justify-self-end whitespace-nowrap md:min-w-[140px] md:text-right">' + esc(item.source) + '</span>' +
         '</a>'
       );
     }).join('');
