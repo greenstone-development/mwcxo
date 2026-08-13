@@ -1830,7 +1830,7 @@ const caseStudies = {
     overview: "As part of the first redesign of NikeGridiron, we created a game called \"The Michael Vick Experience\" with Wild Tangent. This game was a fantastical simulation engine where our featured athletes could compete in games with the aid of certain super powers. As users engaged with NikeGridiron.com or played the game, they would earn points to unlock these players and powers.<br><br>The game was launched both on NikeGridiron.com, as well as in an arcade version showcased inside a NikeTown store in Atlanta.<br><br>I led the game design for the campaign as well as the in-store unit, and oversaw the game's integration into the site.",
     recognition: [],
     link: null,
-    images: ["https://mattwalshcxo.com/images/Portfolio/mve/NIKE_MVEArcade2.JPG", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_Gridiron2004_3.jpg", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_Grdiron2004_2.JPG", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_MVEArcade.JPG"]
+    images: ["https://mattwalshcxo.com/images/Portfolio/mve/NIKE_MVEArcade2.jpg", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_Gridiron2004_3.jpg", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_Gridiron2004_2.jpg", "https://mattwalshcxo.com/images/Portfolio/mve/NIKE_MVEArcade.JPG"]
   },
   "rgaholidaycard": {
     title: "R/GA Holiday Card",
