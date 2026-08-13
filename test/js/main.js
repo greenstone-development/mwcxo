@@ -238,7 +238,7 @@
 
   function awardsHeaderRow() {
     return (
-      '<div class="grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 px-4 -mx-4 pt-4 md:pt-0 pb-2 md:pb-4 text-[0.55rem] md:text-xs font-bold uppercase tracking-widest text-white/40">' +
+      '<div class="grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 px-4 -mx-4 pb-3 md:pb-4 border-b border-white/10 text-[0.55rem] md:text-xs font-bold uppercase tracking-widest text-white/40">' +
         '<div class="md:col-span-3">Show</div>' +
         '<div class="md:col-span-3">Level</div>' +
         '<div class="md:col-span-4">Project</div>' +
@@ -535,6 +535,12 @@
   }
 
   /* ---------------- Thought leadership ---------------- */
+  // Shared across the featured cards and the archive list below so a given
+  // content type (article / podcast / video) always gets the same pill color.
+  function thoughtTypeBadgeClass(type) {
+    return type === 'ARTICLE' ? 'bg-[#004b46]' : type === 'PODCAST' ? 'bg-[#966b33]' : 'bg-foreground text-background';
+  }
+
   function renderFeaturedThoughts() {
     var host = document.getElementById('featured-thoughts');
     if (!host) return;
@@ -547,7 +553,7 @@
           '</div>' +
           '<div class="p-6 md:p-8 lg:p-10 flex flex-col justify-center flex-1">' +
             '<div class="flex items-center gap-3 text-xs font-bold tracking-widest uppercase mb-4 text-[#004b46]">' +
-              '<span class="bg-[#004b46] text-white px-3 py-1 rounded-full">' + esc(item.type) + '</span>' +
+              '<span class="' + thoughtTypeBadgeClass(item.type) + ' text-white px-3 py-1 rounded-full">' + esc(item.type) + '</span>' +
               '<span class="text-muted-foreground">' + esc(item.source) + '</span>' +
             '</div>' +
             '<h3 class="text-2xl md:text-3xl font-bold mb-3 text-foreground group-hover:text-[#004b46] transition-colors leading-tight max-w-3xl">' + esc(item.title) + '</h3>' +
@@ -563,7 +569,7 @@
     var host = document.getElementById('thoughts-list');
     if (!host) return;
     host.innerHTML = SITE.thoughtsList.map(function (item) {
-      var badgeClass = item.type === 'ARTICLE' ? 'bg-[#004b46]' : item.type === 'PODCAST' ? 'bg-[#966b33]' : 'bg-foreground text-background';
+      var badgeClass = thoughtTypeBadgeClass(item.type);
       return (
         '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] gap-3 md:gap-5 items-center px-5 py-4 md:p-6 border-b border-border/50 hover:bg-card transition-colors group">' +
           '<h3 class="text-sm md:text-lg font-bold text-foreground group-hover:text-[#004b46] transition-colors leading-snug pr-2 max-w-3xl">' + esc(item.title) + '</h3>' +
