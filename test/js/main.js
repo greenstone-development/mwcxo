@@ -256,6 +256,16 @@
   /* ---------------- Projects (work.html) ---------------- */
   var projectCategories = ['MOST RECENT', 'RESEARCH & STRATEGY', 'DIGITAL PLATFORMS', 'BRANDING', 'E-COMMERCE', 'ADVERTISING', 'SHOW ALL'];
   var activeProjectTab = 'MOST RECENT';
+  // Matches the old production site's behavior: these three category tabs
+  // shuffle their five most-recent projects on every render (Fisher-Yates,
+  // top slice only); the rest of the list stays in chronological order.
+  // E-Commerce and Advertising were never part of that shuffle on the old
+  // site, so they stay purely chronological here too.
+  var FEATURED_SHUFFLE_TABS = ['RESEARCH & STRATEGY', 'DIGITAL PLATFORMS', 'BRANDING'];
+  // The current computed list for activeProjectTab, cached so the grid and
+  // the case-study modal's prev/next nav agree on order (recomputing would
+  // re-shuffle and desync the two).
+  var currentProjectsList = [];
 
   function tabButton(tab, active, extraClass) {
     return (
@@ -310,16 +320,59 @@
     return '<div class="' + cls + '">' + inner + '</div>';
   }
 
-  function filteredProjects() {
+  function computeFilteredProjects() {
     if (activeProjectTab === 'SHOW ALL') return SITE.projects;
     if (activeProjectTab === 'MOST RECENT') return SITE.projects.slice(0, 10);
-    return SITE.projects.filter(function (p) { return p.categories && p.categories.indexOf(activeProjectTab) !== -1; });
+
+    var items = SITE.projects.filter(function (p) { return p.categories && p.categories.indexOf(activeProjectTab) !== -1; });
+    items = items.slice().sort(function (a, b) { return (b.sortYear || 0) - (a.sortYear || 0); });
+
+    if (FEATURED_SHUFFLE_TABS.indexOf(activeProjectTab) !== -1 && items.length > 1) {
+      var topCount = Math.min(5, items.length);
+      var top = items.slice(0, topCount);
+      var rest = items.slice(topCount);
+      // Fisher-Yates shuffle on the top slice only — matches the old site.
+      for (var s = top.length - 1; s > 0; s--) {
+        var r = Math.floor(Math.random() * (s + 1));
+        var tmp = top[s]; top[s] = top[r]; top[r] = tmp;
+      }
+      items = top.concat(rest);
+    }
+    return items;
+  }
+
+  // Builds the old site's alternating 3/2/3/2… row layout (each row its own
+  // grid so a short final row doesn't stretch to fill a column it doesn't
+  // have items for), keeping the current project-card markup/styling as-is.
+  function buildAlternatingGrid(items) {
+    var html = '';
+    var cols = 3;
+    var i = 0;
+    while (i < items.length) {
+      var rowSize = Math.min(cols, items.length - i);
+      var gridCls = 'grid gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-12 ' + (cols === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2');
+      html += '<div class="' + gridCls + '">';
+      for (var j = 0; j < rowSize; j++) html += projectCard(items[i + j]);
+      html += '</div>';
+      i += rowSize;
+      cols = cols === 3 ? 2 : 3;
+    }
+    return html;
   }
 
   function renderProjectsGrid() {
     var host = document.getElementById('projects-grid');
     if (!host) return;
-    host.innerHTML = filteredProjects().map(projectCard).join('');
+    currentProjectsList = computeFilteredProjects();
+
+    if (activeProjectTab === 'MOST RECENT' || activeProjectTab === 'SHOW ALL') {
+      host.className = 'grid md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-12';
+      host.innerHTML = currentProjectsList.map(projectCard).join('');
+    } else {
+      host.className = 'flex flex-col gap-10 md:gap-12';
+      host.innerHTML = buildAlternatingGrid(currentProjectsList);
+    }
+
     host.querySelectorAll('[data-open-case-study]').forEach(function (el) {
       el.addEventListener('click', function () { openCaseStudy(el.getAttribute('data-open-case-study')); });
     });
@@ -341,7 +394,10 @@
 
   /* ---------------- Case study modal ---------------- */
   function modalProjectsList() {
-    return filteredProjects().filter(function (p) { return p.caseStudyId && p.caseStudyId !== 'null'; });
+    // Reuse the already-rendered (and, for shuffled tabs, already-ordered)
+    // list rather than recomputing — recomputing would re-shuffle and put
+    // prev/next out of sync with what's on screen behind the modal.
+    return currentProjectsList.filter(function (p) { return p.caseStudyId && p.caseStudyId !== 'null'; });
   }
 
   function openCaseStudy(id) {
