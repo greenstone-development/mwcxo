@@ -410,31 +410,37 @@
     document.getElementById('cs-client').textContent = cs.client;
     document.getElementById('cs-title').textContent = cs.title;
 
-    var csImageSrc = (cs.images && cs.images[0]) || '';
-    var imgTag = '<img src="' + esc(csImageSrc) + '" alt="' + esc(cs.title) + '" class="w-full h-full object-cover ' + imagePositionClass(csImageSrc) + '">';
-    var imageWrap = document.getElementById('cs-image-wrap');
-    if (cs.link) {
-      // Matches the old site's behavior: when a case study has a fuller
-      // write-up on greenstone.co, surface a "Launch Case Study" bar over
-      // the image instead of silently dropping the link on the floor.
-      imageWrap.innerHTML =
-        '<a href="' + esc(cs.link) + '" target="_blank" rel="noopener noreferrer" class="group block relative w-full h-full">' +
-          imgTag +
-          '<div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-primary group-hover:bg-primary/90 transition-colors px-6 py-4">' +
-            '<span class="text-xs font-bold tracking-widest text-white uppercase">Launch Case Study on GreenStone.co</span>' +
-            '<span class="shrink-0 w-8 h-8 rounded-full border border-white/40 group-hover:border-white group-hover:bg-white/15 transition-colors flex items-center justify-center">' +
-              '<svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>' +
-            '</span>' +
-          '</div>' +
-        '</a>';
-    } else {
-      imageWrap.innerHTML = imgTag;
-    }
+    // Image column: matches the old site's behavior — every image the
+    // project has gets shown, stacked; if there's a fuller write-up on
+    // greenstone.co, the FIRST image (only) carries a "Launch Case Study"
+    // bar link instead of silently dropping that link on the floor.
+    var images = (cs.images && cs.images.length) ? cs.images : [''];
+    var imagesHTML = images.map(function (src, i) {
+      var imgTag = '<img src="' + esc(src) + '" alt="' + esc(cs.title) + (i === 0 ? '' : ' screenshot') + '" loading="lazy" class="w-full h-auto block ' + imagePositionClass(src) + '">';
+      if (i === 0 && cs.link) {
+        return (
+          '<a href="' + esc(cs.link) + '" target="_blank" rel="noopener noreferrer" class="group block relative rounded-2xl overflow-hidden shadow-sm">' +
+            imgTag +
+            '<div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-primary group-hover:bg-primary/90 transition-colors px-6 py-4">' +
+              '<span class="text-xs font-bold tracking-widest text-white uppercase">Launch Case Study on GreenStone.co</span>' +
+              '<span class="shrink-0 w-8 h-8 rounded-full border border-white/40 group-hover:border-white group-hover:bg-white/15 transition-colors flex items-center justify-center">' +
+                '<svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>' +
+              '</span>' +
+            '</div>' +
+          '</a>'
+        );
+      }
+      return '<div class="rounded-2xl overflow-hidden shadow-sm">' + imgTag + '</div>';
+    }).join('');
+    document.getElementById('cs-images-col').innerHTML = imagesHTML;
 
     document.getElementById('cs-overview').innerHTML = cs.overview || '';
-    document.getElementById('cs-role').innerHTML = cs.role || '';
+    document.getElementById('cs-type').textContent = cs.type || '';
     document.getElementById('cs-agency').textContent = cs.agency || '';
     document.getElementById('cs-year').textContent = cs.year || '';
+    var roleWrap = document.getElementById('cs-role-wrap');
+    document.getElementById('cs-role').innerHTML = cs.role || '';
+    roleWrap.classList.toggle('hidden', !cs.role);
 
     var recWrap = document.getElementById('cs-recognition-wrap');
     var recList = document.getElementById('cs-recognition-list');

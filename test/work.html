@@ -78,7 +78,7 @@
 <!-- Case Study Modal -->
 <div id="case-study-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
   <div class="cs-backdrop absolute inset-0 bg-background/80 backdrop-blur-md"></div>
-  <div class="cs-panel relative w-full max-w-5xl bg-card border border-border/50 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-full anim-zoom-in">
+  <div class="cs-panel relative w-full max-w-6xl xl:max-w-7xl bg-card border border-border/50 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-full anim-zoom-in">
     <div class="absolute top-4 right-4 md:top-6 md:right-6 z-10 flex items-center bg-background/60 hover:bg-background/90 backdrop-blur-md border border-border/50 rounded-full overflow-hidden transition-colors shadow-sm">
       <button id="cs-prev" aria-label="Previous project" class="w-10 h-10 flex items-center justify-center text-foreground hover:bg-foreground/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
@@ -93,36 +93,42 @@
       </button>
     </div>
     <div class="overflow-y-auto flex-1 p-8 md:p-16">
-      <div class="max-w-3xl mx-auto flex flex-col gap-10">
-        <div class="flex flex-col gap-4">
-          <div id="cs-client" class="text-sm font-bold tracking-widest text-[#004b46] uppercase"></div>
-          <h2 id="cs-title" class="text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1]"></h2>
-        </div>
-        <div id="cs-image-wrap" class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-secondary"></div>
-        <div class="grid md:grid-cols-3 gap-12 border-t border-border/50 pt-10">
-          <div class="md:col-span-2 flex flex-col gap-6">
-            <h3 class="text-xl font-bold text-foreground">Overview</h3>
-            <p id="cs-overview" class="text-lg text-muted-foreground leading-normal"></p>
+      <div class="grid md:grid-cols-[320px_1fr] lg:grid-cols-[360px_1fr] gap-10 lg:gap-16">
+        <!-- Left: text / meta column -->
+        <div class="flex flex-col gap-8 md:sticky md:top-0 md:self-start">
+          <div class="flex flex-col gap-4">
+            <div id="cs-client" class="text-sm font-bold tracking-widest text-[#004b46] uppercase"></div>
+            <h2 id="cs-title" class="text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-[1.1]"></h2>
           </div>
-          <div class="flex flex-col gap-8">
-            <div class="flex flex-col gap-2">
-              <h4 class="text-xs font-bold tracking-widest text-muted-foreground uppercase">Role</h4>
-              <p id="cs-role" class="font-medium text-foreground"></p>
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-1">
+              <h4 class="text-xs font-bold tracking-widest text-muted-foreground uppercase">Type</h4>
+              <p id="cs-type" class="font-medium text-foreground"></p>
             </div>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
               <h4 class="text-xs font-bold tracking-widest text-muted-foreground uppercase">Agency</h4>
               <p id="cs-agency" class="font-medium text-foreground"></p>
             </div>
-            <div class="flex flex-col gap-2">
+            <div id="cs-role-wrap" class="flex flex-col gap-1">
+              <h4 class="text-xs font-bold tracking-widest text-muted-foreground uppercase">My Role</h4>
+              <p id="cs-role" class="font-medium text-foreground"></p>
+            </div>
+            <div class="flex flex-col gap-1">
               <h4 class="text-xs font-bold tracking-widest text-muted-foreground uppercase">Year</h4>
               <p id="cs-year" class="font-medium text-foreground"></p>
             </div>
           </div>
+          <div class="flex flex-col gap-3 border-t border-border/50 pt-6">
+            <h3 class="text-xs font-bold tracking-widest text-[#004b46] uppercase">Overview</h3>
+            <p id="cs-overview" class="text-base text-muted-foreground leading-relaxed"></p>
+          </div>
+          <div id="cs-recognition-wrap" class="hidden flex flex-col gap-3 border-t border-border/50 pt-6">
+            <h3 class="text-xs font-bold tracking-widest text-[#004b46] uppercase">Recognition</h3>
+            <ul id="cs-recognition-list" class="flex flex-col gap-2"></ul>
+          </div>
         </div>
-        <div id="cs-recognition-wrap" class="hidden flex flex-col gap-6 border-t border-border/50 pt-10">
-          <h3 class="text-xl font-bold text-foreground">Recognition</h3>
-          <ul id="cs-recognition-list" class="flex flex-col gap-3"></ul>
-        </div>
+        <!-- Right: image(s) column -->
+        <div id="cs-images-col" class="flex flex-col gap-6"></div>
       </div>
     </div>
   </div>
