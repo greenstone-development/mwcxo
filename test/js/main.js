@@ -9,16 +9,11 @@
 
   var SITE = window.SITE || {};
 
-  /* Some project screenshots have all the interesting content (the dark
-     hero) packed at the top with a lot of empty space below — object-cover's
-     default center crop hides that under the info panel. Override the crop
-     origin per image URL here instead of guessing one crop for every photo.
-     Values are arbitrary Tailwind object-position values ("x% y%", or a
-     keyword like "top") — tune the y% down from 0 if a plain "top" crop
-     clips into a blank margin at the very edge of the source image. */
-  var IMAGE_POSITION_OVERRIDES = {
-    'https://mattwalshcxo.com/images/Portfolio/neptune/hero_c.jpg': '50%_12%'
-  };
+  /* The live production site crops every project screenshot with a plain
+     center object-position (background-position: center in its own CSS) —
+     no per-image exceptions. Keep this map empty to match that; only add an
+     override here if a specific image is confirmed to need one. */
+  var IMAGE_POSITION_OVERRIDES = {};
   function imagePositionClass(src) {
     var pos = IMAGE_POSITION_OVERRIDES[src];
     return pos ? 'object-[' + pos + ']' : '';
