@@ -229,7 +229,7 @@
     return (
       '<div class="py-3 md:py-6 border-b border-white/10 grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 items-start hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-xl">' +
         '<div class="font-bold text-white text-[0.7rem] leading-snug md:text-lg md:col-span-3">' + esc(a.show) + '</div>' +
-        '<div class="text-white/80 font-medium md:col-span-3"><span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-white/10 rounded-full text-[0.5rem] leading-snug md:text-xs font-bold tracking-wider md:tracking-widest uppercase">' + esc(a.prize) + '</span></div>' +
+        '<div class="text-white/80 font-medium md:col-span-3 -mt-0.5 md:-mt-1"><span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-white/10 rounded-full text-[0.5rem] leading-snug md:text-xs font-bold tracking-wider md:tracking-widest uppercase">' + esc(a.prize) + '</span></div>' +
         '<div class="text-white/90 text-[0.7rem] leading-snug md:text-base md:col-span-4 font-medium">' + esc(a.project) + '</div>' +
         '<div class="text-[#2dd4bf] text-[0.65rem] leading-snug md:text-sm md:text-right md:col-span-2 font-medium tracking-wide uppercase">' + esc(a.category) + '</div>' +
       '</div>'
