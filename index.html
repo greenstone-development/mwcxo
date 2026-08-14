@@ -94,10 +94,29 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: '#ffffff', foreground: '#0f172a',
+          card: '#f8fafc', 'card-foreground': '#0f172a',
+          popover: '#ffffff', 'popover-foreground': '#0f172a',
+          primary: '#004b46', 'primary-foreground': '#ffffff',
+          secondary: '#f1f5f9', 'secondary-foreground': '#0f172a',
+          muted: '#f1f5f9', 'muted-foreground': '#64748b',
+          accent: '#e2e8f0', 'accent-foreground': '#0f172a',
+          destructive: '#ef4444', 'destructive-foreground': '#ffffff',
+          border: '#e2e8f0', input: 'transparent', 'input-background': '#f1f5f9', ring: '#94a3b8'
+        },
+        fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Plus Jakarta Sans"', 'sans-serif'] },
+        borderRadius: { sm: 'calc(0.75rem - 4px)', md: 'calc(0.75rem - 2px)', lg: '0.75rem', xl: 'calc(0.75rem + 4px)' }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="css/site.css">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
@@ -108,351 +127,214 @@
   gtag('config', 'G-XLYTNG2EBE');
 </script>
 </head>
-<body>
-<a href="#main" class="skip-link">Skip to content</a>
+<body class="bg-background text-foreground min-h-screen flex flex-col">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-2 focus:left-2 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-full">Skip to content</a>
 
 <!-- NAV -->
-<nav id="nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Matt Walsh CXO — Home">Matt Walsh <span>CXO</span></a>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+<nav class="w-full border-b border-foreground/10 backdrop-blur-md bg-background/80 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="index.html" class="font-display font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">MattWalsh<span class="text-[#004b46]">CXO</span></a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+      <a href="index.html" class="text-foreground transition-colors">Home</a>
+      <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
+      <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
+      <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
+      <a href="contact.html" class="text-foreground bg-[#004b46]/5 hover:bg-[#004b46]/10 px-4 py-2 rounded-full transition-colors">Get in touch</a>
+    </div>
+    <button id="nav-toggle" class="md:hidden w-10 h-10 flex items-center justify-center text-foreground" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-      <li><a href="work.html">Past Projects</a></li>
-      <li><a href="recognition.html">Recognition</a></li>
-      <li><a href="thought-leadership.html">Thought Leadership</a></li>
-      <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
-    </ul>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-foreground/10 bg-background px-6 py-4 flex flex-col gap-4 text-sm font-medium text-muted-foreground">
+    <a href="index.html" class="text-foreground">Home</a>
+    <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
+    <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
+    <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
+    <a href="contact.html" class="text-foreground font-bold">Get in touch</a>
   </div>
 </nav>
 
-<main id="main">
+<main id="main" class="flex-1 flex flex-col">
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Fractional Chief Experience Officer</p>
-      <h1 class="hero-h1" data-parallax="0.04" data-parallax-type="y">Building businesses<br>from the <em>journey</em> up.</h1>
-      <p class="hero-sub">Matt operates at the intersection of business strategy and customer experience, where the gap between what a brand promises and what it actually delivers either builds loyalty or burns margin. He works with leadership teams who need that gap closed: thoughtfully, innovatively, and in ways that deliver meaningful value for all involved.</p>
-      <div class="hero-btns">
-        <a href="work.html" class="btn-fill">See the work &#8594;</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img src="images/hero.jpg" alt="Matt Walsh">
-      <div class="hero-right-overlay" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- WHAT MATT DOES -->
-  <section class="what-i-do reveal" aria-labelledby="wid-heading">
-    <div>
-      <p class="kicker">Crafting Experiences</p>
-      <h2 id="wid-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">Turn experience from a cost center into a <em>growth engine.</em></h2>
-      <p class="wid-desc">With decades of experience leading teams and complex initiatives for world-class clients, Matt delivers CX value across a few core specialties.</p>
-    </div>
-    <div>
-      <ol class="method-list" role="list">
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="method-title">Identifying The Opportunities</h3>
-            <p class="method-body">Recognizing and defining actionable intersections between corporate goals and customer aspirations.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="method-title">Designing Innovative Journeys</h3>
-            <p class="method-body">Intentionally designed customer journeys that unlock meaningful value through exceptional experiences crafted within real-world constraints.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="method-title">Connecting Through Digital</h3>
-            <p class="method-body">Strategizing, designing, and building the digital products and platforms that enhance those journeys in a differentiated, ownable, and profitable way.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">04</span>
-          <div>
-            <h3 class="method-title">Empowering Through AI</h3>
-            <p class="method-body">Transforming experiences and expectations through the smart, strategic deployment of AI-powered innovations.</p>
-          </div>
-        </li>
-        <li class="method-item">
-          <span class="method-num" aria-hidden="true">05</span>
-          <div>
-            <h3 class="method-title">Testing, Learning, and Leaping</h3>
-            <p class="method-body">Continuous measurement and optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- BUILDING ORGANIZATIONS -->
-  <section class="build-org" aria-labelledby="build-org-heading">
-    <div class="build-org-header reveal">
-      <p class="kicker">Building Organizations</p>
-      <h2 id="build-org-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">Designing more than <em>deliverables.</em></h2>
-      <p class="build-org-desc">The best customer experiences are built on great employee experiences.</p>
-      <div class="org-toggle-wrap" role="group" aria-label="Select audience">
-        <button class="org-toggle-btn active" id="toggle-brand" onclick="setOrgAudience('brand')" aria-pressed="true">For Brands</button>
-        <button class="org-toggle-btn" id="toggle-agency" onclick="setOrgAudience('agency')" aria-pressed="false">For Agencies</button>
-      </div>
-    </div>
-    <div class="org-grid" id="org-grid">
-      <div class="org-card" data-key="culture">
-        <span class="org-num" aria-hidden="true">01</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="talent">
-        <span class="org-num" aria-hidden="true">02</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="remote">
-        <span class="org-num" aria-hidden="true">03</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="trust">
-        <span class="org-num" aria-hidden="true">04</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="bizdev">
-        <span class="org-num" aria-hidden="true">05</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-      <div class="org-card" data-key="perspective">
-        <span class="org-num" aria-hidden="true">06</span>
-        <h3 class="org-card-title"></h3>
-        <p class="org-card-body"></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENTS -->
-  <section class="clients" aria-labelledby="clients-heading">
-    <div class="clients-inner">
-      <header class="clients-header reveal">
-        <p class="kicker">Clients</p>
-        <h2 id="clients-heading" class="section-h2" data-parallax="0.02" data-parallax-type="y">Trusted by <em>leaders.</em></h2>
-        <p class="clients-sub">A showcase of companies Matt has had the privilege of working with across his career.</p>
-      </header>
-      <div class="columns-wrap reveal">
-
-        <!-- B2C COLUMN -->
-        <div class="col">
-          <div class="col-header">
-            <h3 class="col-label">B2C</h3>
-            <select class="col-filter" id="b2c-filter" aria-label="Filter B2C clients by category" onchange="filterClients('b2c', this.value)">
-              <option value="featured">Featured</option>
-              <option value="automotive">Automotive</option>
-              <option value="financial">Financial Services</option>
-              <option value="food">Food &amp; Beverage</option>
-              <option value="media">Media &amp; Entertainment</option>
-              <option value="retail">Retail</option>
-              <option value="tech-telecom">Technology &amp; Telecom</option>
-              <option value="travel">Travel &amp; Hospitality</option>
-            </select>
-          </div>
-          <ul class="vc-list" id="b2c-list" role="list">
-            <li class="vc" data-col="b2c" data-cat="financial" data-featured="true">American Express</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Ariat</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Best Buy</li>
-            <li class="vc" data-col="b2c" data-cat="food" data-featured="true">Domino&rsquo;s</li>
-            <li class="vc" data-col="b2c" data-cat="media" data-featured="true">HBO</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Logitech</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom" data-featured="true">Microsoft</li>
-            <li class="vc" data-col="b2c" data-cat="retail" data-featured="true">Nike</li>
-            <li class="vc" data-col="b2c" data-cat="travel" data-featured="true">Vail Resorts</li>
-            <li class="vc" data-col="b2c" data-cat="automotive" data-featured="true">Volkswagen</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Algenist</li>
-            <li class="vc" data-col="b2c" data-cat="travel">B-Cycle</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Bark Box Inc</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Beats</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">BILLSHARK</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Bolt Threads</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">Brammo</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Breville</li>
-            <li class="vc" data-col="b2c" data-cat="food">Burger King</li>
-            <li class="vc" data-col="b2c" data-cat="travel">City of Boulder</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">ClearSpend</li>
-            <li class="vc" data-col="b2c" data-cat="media">Clinton Global Initiative</li>
-            <li class="vc" data-col="b2c" data-cat="food">Coke Zero</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">Connected Financial Solutions LLC</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Dagne Dover</li>
-            <li class="vc" data-col="b2c" data-cat="retail">dosist</li>
-            <li class="vc" data-col="b2c" data-cat="automotive">Driven Brands (Take5)</li>
-            <li class="vc" data-col="b2c" data-cat="financial">Elevations Credit Union</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Finish Line</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Haggar</li>
-            <li class="vc" data-col="b2c" data-cat="food">Kraft (Jell-O &amp; Grey Poupon)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Michaels</li>
-            <li class="vc" data-col="b2c" data-cat="food">Miller Lite</li>
-            <li class="vc" data-col="b2c" data-cat="media">NBC (The Tonight Show)</li>
-            <li class="vc" data-col="b2c" data-cat="food">Odell Brewing Company</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Old Navy</li>
-            <li class="vc" data-col="b2c" data-cat="financial">OneMain Financial</li>
-            <li class="vc" data-col="b2c" data-cat="media">Outside Inc.</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Samsung</li>
-            <li class="vc" data-col="b2c" data-cat="food">Sprite</li>
-            <li class="vc" data-col="b2c" data-cat="retail">The Hillman Group</li>
-            <li class="vc" data-col="b2c" data-cat="media">The Planetary Society</li>
-            <li class="vc" data-col="b2c" data-cat="media">Toca Boca</li>
-            <li class="vc" data-col="b2c" data-cat="travel">Travelaer</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">WOW!</li>
-            <li class="vc" data-col="b2c" data-cat="tech-telecom">X (Twitter)</li>
-            <li class="vc" data-col="b2c" data-cat="retail">Zappos</li>
-          </ul>
+  <!-- Hero -->
+  <section class="px-6 py-16 md:py-24 lg:py-32 max-w-6xl mx-auto w-full">
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <div class="flex-1 flex flex-col gap-6 anim-fade-slide-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium w-fit">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          Available to help
         </div>
-
-        <!-- B2B COLUMN -->
-        <div class="col">
-          <div class="col-header">
-            <h3 class="col-label">B2B</h3>
-            <select class="col-filter" id="b2b-filter" aria-label="Filter B2B clients by category" onchange="filterClients('b2b', this.value)">
-              <option value="featured">Featured</option>
-              <option value="industrial">Industrial &amp; Services</option>
-              <option value="investment">Investment &amp; Finance</option>
-              <option value="technology">Technology &amp; SaaS</option>
-              <option value="trade">Trade Groups</option>
-              <option value="agencies">Agencies</option>
-            </select>
-          </div>
-          <ul class="vc-list" id="b2b-list" role="list">
-            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Charlesbank</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Elevate Sports Ventures</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">Fortune Brands Innovations (Moen &amp; Larson Doors)</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">Google</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">LexisNexis</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">QuantumBlack</li>
-            <li class="vc" data-col="b2b" data-cat="investment" data-featured="true">Techstars</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">The Hillman Group</li>
-            <li class="vc" data-col="b2b" data-cat="industrial" data-featured="true">WOW!</li>
-            <li class="vc" data-col="b2b" data-cat="technology" data-featured="true">X (Twitter)</li>
-            <li class="vc" data-col="b2b" data-cat="trade">4As</li>
-            <li class="vc" data-col="b2b" data-cat="technology">AbCellera</li>
-            <li class="vc" data-col="b2b" data-cat="trade">Ad Council</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">AKQA</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Alphia</li>
-            <li class="vc" data-col="b2b" data-cat="investment">American Express</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Apollo Program</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">B-Cycle</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Barbarian Group</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Barkley</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">BBDO</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Blinker</li>
-            <li class="vc" data-col="b2b" data-cat="investment">Blue Sage Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Brammo</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Butler Shine Stern &amp; Partners</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Civic Entertainment Group</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Climate Reality Project</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">CoCollective</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Code3</li>
-            <li class="vc" data-col="b2b" data-cat="trade">Concerned Children&rsquo;s Advertisers</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Crispin</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Deutsch LA</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Doctorpedia</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Economic Space Agency</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Edelman</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Eleven</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Erich-Kallman</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">EVB</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">FCB</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Gale Partners</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Hearthside Food Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Hill Holliday</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">I&amp;CO</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Ivanti</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">LegalShield</li>
-            <li class="vc" data-col="b2b" data-cat="technology">letgo</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">M&amp;C Saatchi</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">McCANN</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">MDC Partners</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Media Arts Lab</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Microsoft</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Neptune Retail Solutions</li>
-            <li class="vc" data-col="b2b" data-cat="investment">PAI Partners</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Pocket Outdoor Media</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">R/GA</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Tecomet</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">The Martin Agency</li>
-            <li class="vc" data-col="b2b" data-cat="trade">The One Club</li>
-            <li class="vc" data-col="b2b" data-cat="trade">The Planetary Society</li>
-            <li class="vc" data-col="b2b" data-cat="industrial">Uplight (Simple Energy)</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Whispir</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Work Market</li>
-            <li class="vc" data-col="b2b" data-cat="technology">Zappi</li>
-            <li class="vc" data-col="b2b" data-cat="agencies">Zeus Jones</li>
-          </ul>
+        <h1 class="text-balance text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.1]">
+          Building businesses from the <span class="text-[#004b46]">journey</span> up.
+        </h1>
+        <p class="text-xl md:text-2xl text-muted-foreground text-balance max-w-2xl leading-normal">
+          Matt operates at the intersection of business strategy and customer experience, where the gap between what a brand promises and what it actually delivers either builds loyalty or burns margin. He works with leadership teams who need that gap closed: thoughtfully, innovatively, and in ways that deliver meaningful value for all involved.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="work.html" class="inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-primary px-8 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 w-fit">
+            See the work <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
-
+      </div>
+      <div class="w-full max-w-md lg:w-1/3 shrink-0 anim-fade-slide-right">
+        <div class="relative aspect-square md:aspect-[3/4] rounded-[2rem] border-4 border-border/50 shadow-xl" data-parallax>
+          <div class="parallax-inner">
+            <img src="images/hero.jpg" alt="Matt Walsh" class="w-full h-full object-cover">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FULL-STACK MATT -->
-  <section class="network reveal" aria-labelledby="network-heading">
-    <div>
-      <p class="kicker">Full-Stack Matt</p>
-      <h2 id="network-heading" class="section-h2" data-parallax="0.025" data-parallax-type="y">One engagement.<br><em>Unlimited</em> expertise.</h2>
-      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);margin-bottom:1.2rem;">When you engage Matt, you're not just getting one person. Through his agency, <strong style="color:var(--ink);"><a href="https://www.greenstone.co" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:underline;text-underline-offset:2px;transition:color .2s;">Green Stone</a></strong>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
-      <p style="font-family:var(--b);font-size:.95rem;line-height:1.8;color:var(--ink2);">That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
+  <!-- Turn experience into a growth engine -->
+  <section class="px-6 py-16 md:py-24 bg-secondary/50">
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <div class="lg:col-span-5 flex flex-col">
+          <h2 class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.1]">
+            Turn experience from a cost center into a <span class="text-[#004b46]">growth engine.</span>
+          </h2>
+          <p class="text-lg md:text-xl text-muted-foreground mt-6 leading-normal max-w-lg">
+            With decades of experience leading teams and complex initiatives for world-class clients, Matt delivers CX value across a few core specialties.
+          </p>
+        </div>
+        <div class="lg:col-span-7 flex flex-col" id="methodology-list"></div>
+      </div>
     </div>
-    <dl class="network-numbers">
-      <div class="net-num-box">
-        <dd class="net-num">220<span>+</span></dd>
-        <dt class="net-label"><strong>Subject Matter Experts</strong>have already worked on projects with Green Stone</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num">23<span>+</span></dd>
-        <dt class="net-label"><strong>Years of Experience</strong>accelerates the speed and accuracy of insights and execution</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num">120<span>+</span></dd>
-        <dt class="net-label"><strong>Clients Engaged</strong>Green Stone through the last 13 years</dt>
-      </div>
-      <div class="net-num-box">
-        <dd class="net-num infinity">&#8734;</dd>
-        <dt class="net-label"><strong>Matt's Gratitude</strong>that he gets to do this for a living</dt>
-      </div>
-    </dl>
   </section>
 
+  <!-- Building Organizations -->
+  <section class="relative px-6 py-16 md:py-24 bg-[#171c1c] text-white overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-[0.12] mix-blend-luminosity pointer-events-none" style="background-image:url('images/World_Map.png'); background-size:cover; background-position:center;"></div>
+    <div class="max-w-6xl mx-auto relative">
+      <div class="flex flex-col mb-12 md:mb-16">
+        <h2 class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight leading-[1.1] text-white max-w-2xl mb-6">
+          Designing more than <span class="text-[#2dd4bf]">deliverables.</span>
+        </h2>
+        <p class="text-lg md:text-xl text-white/70 max-w-2xl leading-normal">
+          The best customer experiences are built on great employee experiences.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-4 mb-12">
+        <button id="org-tab-brands" onclick="setOrgTab('brands')" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all border bg-[#2dd4bf] text-[#171c1c] border-[#2dd4bf]">For Brands</button>
+        <button id="org-tab-agencies" onclick="setOrgTab('agencies')" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all border bg-transparent text-white/70 border-white/20 hover:border-white/40 hover:text-white">For Agencies</button>
+      </div>
+      <div id="org-grid" class="grid md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10 anim-fade-in"></div>
+    </div>
+  </section>
+
+  <!-- Clients / Recognition preview -->
+  <section class="px-6 py-24 md:py-32 bg-secondary/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col mb-16 md:mb-24">
+        <h2 class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight leading-[1.1] text-foreground max-w-2xl mb-6">
+          Trusted by <span class="text-[#004b46]">leaders.</span>
+        </h2>
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl">
+          A showcase of companies Matt has had the privilege of working with across his career.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div class="flex flex-col">
+          <div class="flex items-center justify-between border-b border-foreground/30 pb-4 mb-8">
+            <h3 class="text-sm font-bold tracking-widest uppercase text-[#004b46]">B2C</h3>
+            <div class="relative group cursor-pointer border border-border/60 rounded-full w-64 shrink-0 bg-background">
+              <select id="b2c-filter" aria-label="Filter B2C clients by category" class="bare-select bg-transparent text-sm font-medium text-foreground outline-none cursor-pointer pl-4 pr-10 py-1.5 w-full hover:text-[#004b46] transition-colors"></select>
+              <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none rotate-90 opacity-50 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+          <div id="b2c-client-list" class="flex flex-col border-t border-border/40 min-h-[400px]"></div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center justify-between border-b border-foreground/30 pb-4 mb-8">
+            <h3 class="text-sm font-bold tracking-widest uppercase text-[#004b46]">B2B</h3>
+            <div class="relative group cursor-pointer border border-border/60 rounded-full w-64 shrink-0 bg-background">
+              <select id="b2b-filter" aria-label="Filter B2B clients by category" class="bare-select bg-transparent text-sm font-medium text-foreground outline-none cursor-pointer pl-4 pr-10 py-1.5 w-full hover:text-[#004b46] transition-colors"></select>
+              <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none rotate-90 opacity-50 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+          <div id="b2b-client-list" class="flex flex-col border-t border-border/40 min-h-[400px]"></div>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <a href="recognition.html" class="inline-flex h-14 items-center justify-center rounded-full border border-border bg-background px-8 text-sm font-bold uppercase tracking-wider transition-colors hover:bg-secondary shrink-0 gap-2 hover:border-[#004b46] hover:text-[#004b46]">
+          View awards and testimonials <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- One engagement. Unlimited expertise. -->
+  <section class="px-6 py-16 md:py-24 bg-background">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="flex flex-col">
+          <h2 class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+            One engagement.<br><span class="text-[#004b46]">Unlimited</span> expertise.
+          </h2>
+          <div class="flex flex-col gap-5 text-lg text-muted-foreground leading-normal">
+            <p>When you engage Matt, you're not just getting one person. Through his agency, <a href="http://www.greenstone.co" target="_blank" rel="noopener noreferrer" class="text-foreground font-bold underline decoration-2 underline-offset-4 hover:text-[#004b46] transition-colors">Green Stone</a>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
+            <p>That number is a small fraction of a broader talent network, cultivated over 23+ years of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="bg-card p-6 rounded-2xl border border-border/50 hover:border-border transition-colors shadow-sm flex flex-col justify-center min-h-[200px]">
+            <div class="text-5xl font-bold text-foreground mb-4 tracking-tight">220<span class="text-[#004b46]">+</span></div>
+            <p class="font-bold text-foreground text-sm mb-1">Subject Matter Experts</p>
+            <p class="text-sm text-muted-foreground leading-normal">have already worked on projects with Green Stone</p>
+          </div>
+          <div class="bg-card p-6 rounded-2xl border border-border/50 hover:border-border transition-colors shadow-sm flex flex-col justify-center min-h-[200px]">
+            <div class="text-5xl font-bold text-foreground mb-4 tracking-tight">23<span class="text-[#004b46]">+</span></div>
+            <p class="font-bold text-foreground text-sm mb-1">Years of Experience</p>
+            <p class="text-sm text-muted-foreground leading-normal">accelerates the speed and accuracy of insights and execution</p>
+          </div>
+          <div class="bg-card p-6 rounded-2xl border border-border/50 hover:border-border transition-colors shadow-sm flex flex-col justify-center min-h-[200px]">
+            <div class="text-5xl font-bold text-foreground mb-4 tracking-tight">120<span class="text-[#004b46]">+</span></div>
+            <p class="font-bold text-foreground text-sm mb-1">Clients Engaged</p>
+            <p class="text-sm text-muted-foreground leading-normal">Green Stone through the last 13 years</p>
+          </div>
+          <div class="bg-card p-6 rounded-2xl border border-border/50 hover:border-border transition-colors shadow-sm flex flex-col justify-center min-h-[200px]">
+            <div class="text-5xl font-bold text-foreground mb-4 tracking-tight"><span class="inline-block transform scale-150 origin-left">&infin;</span></div>
+            <p class="font-bold text-foreground text-sm mb-1">Matt's Gratitude</p>
+            <p class="text-sm text-muted-foreground leading-normal">that he gets to do this for a living</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative px-6 py-8 md:py-12 bg-[#004b46] text-white mt-auto overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay grayscale pointer-events-none" style="background-image:url('images/World_Map.png'); background-size:cover; background-position:center;"></div>
+    <div class="relative z-10 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight leading-tight">Let's talk about what's next.</h2>
+      <a href="contact.html" class="inline-flex h-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-transparent px-6 text-xs font-bold uppercase tracking-wider transition-colors hover:border-white hover:bg-white hover:text-[#004b46] text-white gap-2">
+        Get in touch <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
 </main>
 
-<!-- CTA -->
-<section class="cta-band" aria-label="Call to action">
-  <div class="cta-inner">
-    <h2 class="cta-h2">Let's talk about what's next</h2>
-    <a href="contact.html" class="btn-white" aria-label="Get in touch with Matt Walsh">Get in touch &#8594;</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-meta">&copy; 2026 Matt Walsh. All rights reserved.</p>
-    <p class="footer-meta" style="text-align:right;max-width:40ch;">All client work shown remains the property of its respective owners.</p>
+<footer class="px-6 py-12 border-t border-border bg-background mt-auto">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <a href="index.html" class="font-display font-bold text-lg tracking-tight hover:opacity-80 transition-opacity">MattWalsh<span class="text-[#004b46]">CXO</span></a>
+    <div class="flex items-center gap-6 text-muted-foreground">
+      <a href="https://linkedin.com/in/mattwalsh" target="_blank" rel="noopener noreferrer" class="hover:text-foreground transition-colors" aria-label="LinkedIn">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 12.27h-3v-5.5c0-1.31-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9v5.6h-3v-11h2.88v1.5h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v6.47z"/></svg>
+      </a>
+      <a href="contact.html" class="hover:text-foreground transition-colors" aria-label="Email">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+      </a>
+    </div>
+    <p class="text-sm text-muted-foreground">&copy; <span id="year"></span> Matt Walsh. All rights reserved.</p>
   </div>
 </footer>
 
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    filterClients('b2c', 'featured');
-    filterClients('b2b', 'featured');
-  });
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
