@@ -29,7 +29,7 @@ const projects = [
     client: "WOW!",
     title: "Telecom Acquisition & Retention Platform",
     desc: "Redesigned and evolved WOW!’s digital acquisition and servicing journeys, optimizing plan browsing and purchasing, creating efficiencies, and giving customers compelling reasons to choose WOW! beyond the price.",
-    year: "2025",
+    year: "2026",
     sortYear: 2026,
     image: "https://mattwalshcxo.com/images/Portfolio/wow/hero_c.jpg",
     categories: ["RESEARCH & STRATEGY", "BRANDING", "DIGITAL PLATFORMS", "E-COMMERCE"],
