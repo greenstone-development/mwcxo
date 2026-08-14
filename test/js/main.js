@@ -451,10 +451,14 @@
     var imagesHTML = images.map(function (src, i) {
       var imgTag = '<img src="' + esc(src) + '" alt="' + esc(cs.title) + (i === 0 ? '' : ' screenshot') + '" loading="lazy" class="w-full h-auto block ' + imagePositionClass(src) + '">';
       if (i === 0 && cs.link) {
+        // Bar is stacked below the image in normal flow (not overlaid on top
+        // of it) — the shared rounded-2xl + overflow-hidden on this wrapper
+        // is what makes the image's top corners and the bar's bottom corners
+        // read as one continuous shape, on both desktop and mobile.
         return (
-          '<a href="' + esc(cs.link) + '" target="_blank" rel="noopener noreferrer" class="group block relative rounded-2xl overflow-hidden shadow-sm">' +
+          '<a href="' + esc(cs.link) + '" target="_blank" rel="noopener noreferrer" class="group block rounded-2xl overflow-hidden shadow-sm">' +
             imgTag +
-            '<div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-primary group-hover:bg-primary/90 transition-colors px-6 py-4">' +
+            '<div class="flex items-center justify-between gap-4 bg-primary group-hover:bg-primary/90 transition-colors px-6 py-4">' +
               '<span class="text-xs font-bold tracking-widest text-white uppercase">Launch Case Study on GreenStone.co</span>' +
               '<span class="shrink-0 w-8 h-8 rounded-full border border-white/40 group-hover:border-white group-hover:bg-white/15 transition-colors flex items-center justify-center">' +
                 '<svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>' +
