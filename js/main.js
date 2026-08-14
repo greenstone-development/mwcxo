@@ -65,17 +65,6 @@
     requestAnimationFrame(tick);
   }
 
-  function parallaxImage(src, alt, boxClasses) {
-    return (
-      '<div class="' + boxClasses + '" data-parallax>' +
-        '<div class="parallax-inner">' +
-          '<img src="' + esc(src) + '" alt="' + esc(alt) + '" class="w-full h-full object-cover">' +
-        '</div>' +
-      '</div>'
-    );
-  }
-  window.parallaxImage = parallaxImage;
-
   /* ---------------- Home: methodology list ---------------- */
   function renderMethodology() {
     var host = document.getElementById('methodology-list');
@@ -150,7 +139,6 @@
       ? filtered.map(clientRow).join('')
       : '<p class="text-sm font-medium text-muted-foreground py-8">No projects in this category yet.</p>';
   }
-  window.renderClientColumn = renderClientColumn;
 
   function initClientColumns() {
     ['b2c', 'b2b'].forEach(function (kind) {
