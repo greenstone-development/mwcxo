@@ -2582,7 +2582,6 @@ const featuredThoughts = [
 const thoughtsList = [
   { title: "Why You Should Treat Your Remote Workforce as Its Own Office", type: "ARTICLE", source: "Inc — 2022", url: "https://www.inc.com/matt-walsh/why-you-should-treat-your-remote-workforce-as-its-own-office.html" },
   { title: "The future of the agency is virtual and digital", type: "PODCAST", source: "Inspiring Futures — Apr 2020", url: "https://open.spotify.com/episode/4KJRGYmfNyUPHYkr3fBvrJ" },
-  { title: "Designing The Agency of The Future", type: "ARTICLE", source: "Filament — Dec 2019", url: "https://drive.google.com/open?id=1fyW7yGIrOecMUTnbzs4-G_stDltoxhXo" },
   { title: "Freelancers Deserve Better", type: "ARTICLE", source: "Minutes — Aug 2019", url: "https://minutes.co/freelancers-deserve-better-its-time-to-show-them-you-care/" },
   { title: "Five Lessons From Five Years", type: "ARTICLE", source: "LinkedIn — Jan 2019", url: "https://www.linkedin.com/pulse/five-lessons-from-years-matt-walsh/" },
   { title: "Getting Out of the Office", type: "PODCAST", source: "Second City Works — Oct 2018", url: "https://www.secondcityworks.com/podcast-posts/matt-walsh" },
