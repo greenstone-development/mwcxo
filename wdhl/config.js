@@ -12,6 +12,12 @@ const APP_CONFIG = {
 
   // Map internal field -> column header in your sheet.
   // The right-hand string must match the exact header text in the sheet.
+  //
+  // NOTE: the sheet reuses the same header text for the Winter block (H-N)
+  // and the Summer block (P-V). When a header appears more than once, the
+  // app uses the FIRST one, so the names below always resolve to the Winter
+  // columns. The Summer block is addressed by column letter in
+  // summerColumns, below.
   columns: {
     name:                "Name",
     rating:              "Rating",
@@ -30,6 +36,25 @@ const APP_CONFIG = {
     savePercentage:      "SV%",
     // "yes"/"no" → is this player signed up for Summer 2026?
     inSummer2026:        "Summer"
+  },
+
+  // ----- Summer 26 stats -----
+  // Addressed by COLUMN LETTER (not header text) because the sheet repeats
+  // the same header names for the Winter and Summer blocks.
+  //   P = GP | Q = P/G | R = Goals | S = Assists | T = GA | U = GAA | V = SV%
+  //   W = summer team (STeam)
+  // A player gets a "Summer 26 stats" row only when the GP column below
+  // holds at least one game played.
+  summerColumns: {
+    gamesPlayed:      "P",
+    pointsPerGame:    "Q",
+    goals:            "R",
+    assists:          "S",
+    // Goalie-specific stats
+    goalsAgainst:     "T",
+    goalsAgainstAvg:  "U",
+    savePercentage:   "V",
+    team:             "W"
   },
 
   // ----- Businesses tab -----

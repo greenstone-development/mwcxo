@@ -975,9 +975,27 @@
       .filter(r => r.some(c => c.trim() !== ''))
       .map(r => {
         const o = {};
-        headers.forEach((h, i) => o[h] = (r[i] || '').trim());
+        // FIRST occurrence of a header wins. The sheet repeats GP / P/G /
+        // Goals / Assists / GA / GAA / SV% for the Summer block (P-V), so
+        // this keeps the named lookups pointed at the Winter block (H-N).
+        headers.forEach((h, i) => {
+          if (!Object.prototype.hasOwnProperty.call(o, h)) o[h] = (r[i] || '').trim();
+        });
+        // Raw cells, so columns can also be read by letter (see summerColumns).
+        o.__cells = r.map(c => (c || '').trim());
         return o;
       });
+  }
+  // "A" -> 0, "P" -> 15, "AA" -> 26
+  function colLetterToIndex(letter) {
+    let n = 0;
+    const s = String(letter || '').toUpperCase();
+    for (let i = 0; i < s.length; i++) {
+      const code = s.charCodeAt(i) - 64;
+      if (code < 1 || code > 26) return -1;
+      n = n * 26 + code;
+    }
+    return n - 1;
   }
   function parsePositions(s) {
     if (!s) return [];
@@ -996,12 +1014,36 @@
   function slugify(s, idx) {
     return (s ? s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') : '') || `player-${idx}`;
   }
+  // Builds the Summer 26 stat block from the lettered columns in
+  // APP_CONFIG.summerColumns. Returns null when the player has no summer
+  // games played (GP blank, zero, or non-numeric).
+  function rowToSummer(row) {
+    const sc = APP_CONFIG.summerColumns;
+    if (!sc || !Array.isArray(row.__cells)) return null;
+    const cell = key => {
+      const i = colLetterToIndex(sc[key]);
+      return (i >= 0 && row.__cells[i] != null) ? row.__cells[i] : '';
+    };
+    const gp = cell('gamesPlayed');
+    if (!(parseFloat(gp) >= 1)) return null;
+    return {
+      gamesPlayed:     gp,
+      goals:           cell('goals'),
+      assists:         cell('assists'),
+      pointsPerGame:   cell('pointsPerGame'),
+      goalsAgainst:    cell('goalsAgainst'),
+      goalsAgainstAvg: cell('goalsAgainstAvg'),
+      savePercentage:  cell('savePercentage'),
+      team:            cell('team')
+    };
+  }
   function rowToPlayer(row, idx) {
     const c = APP_CONFIG.columns;
     const get = key => c[key] ? (row[c[key]] || '') : '';
     const fullName = get('name');
     const headshotFile = get('headshot');
     return {
+      summer: rowToSummer(row),
       id: slugify(fullName, idx),
       name: fullName,
       positions: parsePositions(get('positions')),
@@ -1052,8 +1094,12 @@
     String(name||'').trim().split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || '?';
 
   function renderRating(r) {
-    if (r === '?') return `<span class="rating runk" title="Rating not provided">?</span>`;
-    return `<span class="rating r${r}" title="Rating ${r} of 7">${r}</span>`;
+    // '?', blank, or a non-1-7 value all fall back to the grey "unknown" badge.
+    const n = parseInt(r, 10);
+    if (r === '?' || !(n >= 1 && n <= 7)) {
+      return `<span class="rating runk" title="Rating not provided">?</span>`;
+    }
+    return `<span class="rating r${n}" title="Rating ${n} of 7">${n}</span>`;
   }
 
   function renderSubBadge(p) {
@@ -1063,18 +1109,22 @@
     return '';
   }
 
-  function renderStatsCells(p) {
+  // `stats` is any object carrying the stat fields — the player itself for
+  // Winter 25/26, or p.summer for Summer 26. Goalies get GP/GA/GAA/SV%,
+  // everyone else GP/Goals/Assists/Pt/G.
+  function renderStatsCells(p, stats) {
+    const s = stats || p;
     const isGoalie = getPositions(p).includes('Goalie');
     const cells = isGoalie ? [
-      { value: p.gamesPlayed,      label: 'GP'  },
-      { value: p.goalsAgainst,     label: 'GA'  },
-      { value: p.goalsAgainstAvg,  label: 'GAA' },
-      { value: p.savePercentage,   label: 'SV%' }
+      { value: s.gamesPlayed,      label: 'GP'  },
+      { value: s.goalsAgainst,     label: 'GA'  },
+      { value: s.goalsAgainstAvg,  label: 'GAA' },
+      { value: s.savePercentage,   label: 'SV%' }
     ] : [
-      { value: p.gamesPlayed,      label: 'GP'      },
-      { value: p.goals,            label: 'Goals'   },
-      { value: p.assists,          label: 'Assists' },
-      { value: p.pointsPerGame,    label: 'Pt/G'    }
+      { value: s.gamesPlayed,      label: 'GP'      },
+      { value: s.goals,            label: 'Goals'   },
+      { value: s.assists,          label: 'Assists' },
+      { value: s.pointsPerGame,    label: 'Pt/G'    }
     ];
     return cells.map(c => `
       <div class="stat-cell">
@@ -1121,8 +1171,9 @@
           <div class="card-top-row">
             <div class="card-name">${escapeHtml(p.name)}</div>
             ${renderPositionCircle(p)}
+            ${renderRating(p.rating)}
           </div>
-          ${p.isSubstitute ? `<div class="card-sub-info">Sub - ${escapeHtml(p.rating)}</div>` : ''}
+          ${p.isSubstitute ? `<div class="card-sub-info">Sub</div>` : ''}
         </div>
       </div>
     `;
@@ -1198,13 +1249,22 @@
           <div class="modal-tags">
             <span class="position-badge">${escapeHtml(renderPositionsFull(positions))}</span>
             ${renderSubBadge(p)}
-            ${p.isSubstitute ? renderRating(p.rating) : ''}
+            ${renderRating(p.rating)}
           </div>
         </div>
       </div>
       <div class="modal-body">
         <div class="experience-label">Bio</div>
         <div class="experience" style="margin-bottom:24px">${escapeHtml(p.bio || '—')}</div>
+        ${p.summer ? `
+        <div class="experience-label">${(() => {
+          const team = (p.summer.team || '').trim();
+          if (!team) return 'Summer 26 stats';
+          if (team.toLowerCase() === 'substitute') return 'Summer 26 stats as a Substitute';
+          return 'Summer 26 stats with ' + escapeHtml(team);
+        })()}</div>
+        <div class="stats-row">${renderStatsCells(p, p.summer)}</div>
+        ` : ''}
         <div class="experience-label">${(() => {
           const team = (p.teamLastSeason || '').trim();
           if (!team) return 'Winter 25/26 stats';
