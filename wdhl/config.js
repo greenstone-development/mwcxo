@@ -35,7 +35,9 @@ const APP_CONFIG = {
     goalsAgainstAvg:     "GAA",
     savePercentage:      "SV%",
     // "yes"/"no" → is this player signed up for Summer 2026?
-    inSummer2026:        "Summer"
+    inSummer2026:        "Summer",
+    // column X — "yes" → playing in the Winter 26/27 season
+    inWinter2627:        "Winter2627"
   },
 
   // ----- Summer 26 stats -----

@@ -797,9 +797,10 @@
     <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">×</button>
   </div>
   <select id="seasonSelect" class="filter-select">
+    <option value="winter2627" selected>Winter 26/27</option>
     <option value="summer2026">Summer 2026</option>
     <option value="subs">Show Subs</option>
-    <option value="all" selected>Show all</option>
+    <option value="all">Show all</option>
   </select>
   <select id="positionSelect" class="filter-select">
     <option value="All">All Positions</option>
@@ -942,7 +943,7 @@
   let positionFilter = "All";
   let searchTerm = "";
   let sortKey = "gp-desc";
-  let seasonFilter = "all";
+  let seasonFilter = "winter2627";
 
   // ---------- CSV loader ----------
   function parseCSV(text) {
@@ -1037,9 +1038,18 @@
       team:            cell('team')
     };
   }
+  // Column X ("Winter2627") marks players in the Winter 26/27 season with
+  // "yes". Used only if config.js has no inWinter2627 header mapping.
+  const DEFAULT_WINTER2627_COLUMN = "X";
+  function cellByLetter(row, letter) {
+    if (!Array.isArray(row.__cells)) return '';
+    const i = colLetterToIndex(letter);
+    return (i >= 0 && row.__cells[i] != null) ? row.__cells[i] : '';
+  }
   function rowToPlayer(row, idx) {
     const c = APP_CONFIG.columns;
     const get = key => c[key] ? (row[c[key]] || '') : '';
+    const isYes = v => String(v || '').trim().toLowerCase() === 'yes';
     const fullName = get('name');
     const headshotFile = get('headshot');
     return {
@@ -1062,7 +1072,12 @@
       goalsAgainst: get('goalsAgainst'),
       goalsAgainstAvg: get('goalsAgainstAvg'),
       savePercentage: get('savePercentage'),
-      inSummer2026: (get('inSummer2026') || '').trim().toLowerCase() === 'yes',
+      inSummer2026: isYes(get('inSummer2026')),
+      // Falls back to column X when config.js doesn't map inWinter2627.
+      inWinter2627: isYes(
+        (c.inWinter2627 ? get('inWinter2627') : '') ||
+        cellByLetter(row, DEFAULT_WINTER2627_COLUMN)
+      ),
       headshot: headshotFile ? `headshots/${headshotFile}` : ''
     };
   }
@@ -1181,6 +1196,7 @@
 
   function filterPlayers() {
     return players.filter(p => {
+      if (seasonFilter === "winter2627" && !p.inWinter2627) return false;
       if (seasonFilter === "summer2026" && !p.inSummer2026) return false;
       if (seasonFilter === "subs" && !p.isSubstitute) return false;
       const positions = getPositions(p);
@@ -1605,7 +1621,7 @@
       positionFilter = 'All';
       searchTerm = '';
       sortKey = 'gp-desc';
-      seasonFilter = 'all';
+      seasonFilter = 'winter2627';
       const search = document.getElementById('search');
       if (search) search.value = '';
       const searchClear = document.getElementById('searchClear');
@@ -1615,7 +1631,7 @@
       const sortSel = document.getElementById('sortSelect');
       if (sortSel) sortSel.value = 'gp-desc';
       const seasonSel = document.getElementById('seasonSelect');
-      if (seasonSel) seasonSel.value = 'all';
+      if (seasonSel) seasonSel.value = 'winter2627';
       render();
     }
   }
