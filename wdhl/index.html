@@ -797,9 +797,9 @@
     <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">×</button>
   </div>
   <select id="seasonSelect" class="filter-select">
-    <option value="summer2026" selected>Summer 2026</option>
+    <option value="summer2026">Summer 2026</option>
     <option value="subs">Show Subs</option>
-    <option value="all">Show all</option>
+    <option value="all" selected>Show all</option>
   </select>
   <select id="positionSelect" class="filter-select">
     <option value="All">All Positions</option>
@@ -942,7 +942,7 @@
   let positionFilter = "All";
   let searchTerm = "";
   let sortKey = "gp-desc";
-  let seasonFilter = "summer2026";
+  let seasonFilter = "all";
 
   // ---------- CSV loader ----------
   function parseCSV(text) {
@@ -1605,7 +1605,7 @@
       positionFilter = 'All';
       searchTerm = '';
       sortKey = 'gp-desc';
-      seasonFilter = 'summer2026';
+      seasonFilter = 'all';
       const search = document.getElementById('search');
       if (search) search.value = '';
       const searchClear = document.getElementById('searchClear');
@@ -1615,7 +1615,7 @@
       const sortSel = document.getElementById('sortSelect');
       if (sortSel) sortSel.value = 'gp-desc';
       const seasonSel = document.getElementById('seasonSelect');
-      if (seasonSel) seasonSel.value = 'summer2026';
+      if (seasonSel) seasonSel.value = 'all';
       render();
     }
   }
