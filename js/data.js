@@ -1961,246 +1961,340 @@ const b2cClients = [
     "name": "American Express",
     "category": "financial",
     "featured": true,
-    "logo": "images/clients/american-express.png"
+    "logo": "images/clients/american-express.png",
+    "logoTrimmed": "images/clients/trimmed/american-express.png",
+    "ratio": 1.0
   },
   {
     "name": "Ariat",
     "category": "retail",
     "featured": true,
-    "logo": "images/clients/ariat.png"
+    "logo": "images/clients/ariat.png",
+    "logoTrimmed": "images/clients/trimmed/ariat.png",
+    "ratio": 1.421
   },
   {
     "name": "Best Buy",
     "category": "retail",
     "featured": true,
-    "logo": "images/clients/best-buy.png"
+    "logo": "images/clients/best-buy.png",
+    "logoTrimmed": "images/clients/trimmed/best-buy.png",
+    "ratio": 1.703
   },
   {
     "name": "Domino's",
     "category": "food",
     "featured": true,
-    "logo": "images/clients/domino-s.png"
+    "logo": "images/clients/domino-s.png",
+    "logoTrimmed": "images/clients/trimmed/domino-s.png",
+    "ratio": 1.0
   },
   {
     "name": "HBO",
     "category": "media",
     "featured": true,
-    "logo": "images/clients/hbo.png"
+    "logo": "images/clients/hbo.png",
+    "logoTrimmed": "images/clients/trimmed/hbo.png",
+    "ratio": 2.423
   },
   {
     "name": "Logitech",
     "category": "retail",
     "featured": true,
-    "logo": "images/clients/logitech.png"
+    "logo": "images/clients/logitech.png",
+    "logoTrimmed": "images/clients/trimmed/logitech.png",
+    "ratio": 3.308
   },
   {
     "name": "Microsoft",
     "category": "tech-telecom",
     "featured": true,
-    "logo": "images/clients/microsoft.png"
+    "logo": "images/clients/microsoft.png",
+    "logoTrimmed": "images/clients/trimmed/microsoft.png",
+    "ratio": 4.649
   },
   {
     "name": "Nike",
     "category": "retail",
     "featured": true,
-    "logo": "images/clients/nike.png"
+    "logo": "images/clients/nike.png",
+    "logoTrimmed": "images/clients/trimmed/nike.png",
+    "ratio": 2.85
   },
   {
     "name": "Vail Resorts",
     "category": "travel",
     "featured": true,
-    "logo": "images/clients/vail-resorts.png"
+    "logo": "images/clients/vail-resorts.png",
+    "logoTrimmed": "images/clients/trimmed/vail-resorts.png",
+    "ratio": 3.071
   },
   {
     "name": "Volkswagen",
     "category": "automotive",
     "featured": true,
-    "logo": "images/clients/volkswagen.png"
+    "logo": "images/clients/volkswagen.png",
+    "logoTrimmed": "images/clients/trimmed/volkswagen.png",
+    "ratio": 1.0
   },
   {
     "name": "Algenist",
     "category": "retail",
-    "logo": "images/clients/algenist.png"
+    "logo": "images/clients/algenist.png",
+    "logoTrimmed": "images/clients/trimmed/algenist.png",
+    "ratio": 6.88
   },
   {
     "name": "B-Cycle",
     "category": "travel",
-    "logo": "images/clients/b-cycle.png"
+    "logo": "images/clients/b-cycle.png",
+    "logoTrimmed": "images/clients/trimmed/b-cycle.png",
+    "ratio": 3.185
   },
   {
     "name": "Bark Box Inc",
     "category": "retail",
-    "logo": "images/clients/bark-box-inc.png"
+    "logo": "images/clients/bark-box-inc.png",
+    "logoTrimmed": "images/clients/trimmed/bark-box-inc.png",
+    "ratio": 4.41
   },
   {
     "name": "Beats",
     "category": "retail",
-    "logo": "images/clients/beats.png"
+    "logo": "images/clients/beats.png",
+    "logoTrimmed": "images/clients/trimmed/beats.png",
+    "ratio": 1.0
   },
   {
     "name": "BILLSHARK",
     "category": "tech-telecom",
-    "logo": "images/clients/billshark.png"
+    "logo": "images/clients/billshark.png",
+    "logoTrimmed": "images/clients/trimmed/billshark.png",
+    "ratio": 6.88
   },
   {
     "name": "Bolt Threads",
     "category": "retail",
-    "logo": "images/clients/bolt-threads.png"
+    "logo": "images/clients/bolt-threads.png",
+    "logoTrimmed": "images/clients/trimmed/bolt-threads.png",
+    "ratio": 2.915
   },
   {
     "name": "Brammo",
     "category": "tech-telecom",
-    "logo": "images/clients/brammo.png"
+    "logo": "images/clients/brammo.png",
+    "logoTrimmed": "images/clients/trimmed/brammo.png",
+    "ratio": 7.818
   },
   {
     "name": "Breville",
     "category": "retail",
-    "logo": "images/clients/breville.png"
+    "logo": "images/clients/breville.png",
+    "logoTrimmed": "images/clients/trimmed/breville.png",
+    "ratio": 4.095
   },
   {
     "name": "Burger King",
     "category": "food",
-    "logo": "images/clients/burger-king.png"
+    "logo": "images/clients/burger-king.png",
+    "logoTrimmed": "images/clients/trimmed/burger-king.png",
+    "ratio": 0.913
   },
   {
     "name": "City of Boulder",
     "category": "travel",
-    "logo": "images/clients/city-of-boulder.png"
+    "logo": "images/clients/city-of-boulder.png",
+    "logoTrimmed": "images/clients/trimmed/city-of-boulder.png",
+    "ratio": 1.049
   },
   {
     "name": "Clinton Global Initiative",
     "category": "media",
-    "logo": "images/clients/clinton-global-initiative.png"
+    "logo": "images/clients/clinton-global-initiative.png",
+    "logoTrimmed": "images/clients/trimmed/clinton-global-initiative.png",
+    "ratio": 1.849
   },
   {
     "name": "Coke Zero",
     "category": "food",
-    "logo": "images/clients/coke-zero.png"
+    "logo": "images/clients/coke-zero.png",
+    "logoTrimmed": "images/clients/trimmed/coke-zero.png",
+    "ratio": 2.389
   },
   {
     "name": "Connected Financial Solutions LLC",
     "category": "tech-telecom",
-    "logo": "images/clients/connected-financial-solutions-llc.png"
+    "logo": "images/clients/connected-financial-solutions-llc.png",
+    "logoTrimmed": "images/clients/trimmed/connected-financial-solutions-llc.png",
+    "ratio": 6.107
   },
   {
     "name": "Dagne Dover",
     "category": "retail",
-    "logo": "images/clients/dagne-dover.png"
+    "logo": "images/clients/dagne-dover.png",
+    "logoTrimmed": "images/clients/trimmed/dagne-dover.png",
+    "ratio": 13.231
   },
   {
     "name": "dosist",
     "category": "retail",
-    "logo": "images/clients/dosist.png"
+    "logo": "images/clients/dosist.png",
+    "logoTrimmed": "images/clients/trimmed/dosist.png",
+    "ratio": 5.212
   },
   {
     "name": "Driven Brands (Take5)",
     "category": "automotive",
-    "logo": "images/clients/driven-brands.png"
+    "logo": "images/clients/driven-brands.png",
+    "logoTrimmed": "images/clients/trimmed/driven-brands.png",
+    "ratio": 0.959
   },
   {
     "name": "Elevations Credit Union",
     "category": "financial",
-    "logo": "images/clients/elevations-credit-union.png"
+    "logo": "images/clients/elevations-credit-union.png",
+    "logoTrimmed": "images/clients/trimmed/elevations-credit-union.png",
+    "ratio": 4.649
   },
   {
     "name": "Finish Line",
     "category": "retail",
-    "logo": "images/clients/finish-line.png"
+    "logo": "images/clients/finish-line.png",
+    "logoTrimmed": "images/clients/trimmed/finish-line.png",
+    "ratio": 6.88
   },
   {
     "name": "Fortune Brands Innovations (Moen & Larson Doors)",
     "category": "retail",
-    "logo": "images/clients/fortune-brands-innovations.png"
+    "logo": "images/clients/fortune-brands-innovations.png",
+    "logoTrimmed": "images/clients/trimmed/fortune-brands-innovations.png",
+    "ratio": 5.212
   },
   {
     "name": "Haggar",
     "category": "retail",
-    "logo": "images/clients/haggar.png"
+    "logo": "images/clients/haggar.png",
+    "logoTrimmed": "images/clients/trimmed/haggar.png",
+    "ratio": 6.333
   },
   {
     "name": "Kraft (Jell-O & Grey Poupon)",
     "category": "food",
-    "logo": "images/clients/kraft.png"
+    "logo": "images/clients/kraft.png",
+    "logoTrimmed": "images/clients/trimmed/kraft.png",
+    "ratio": 2.606
   },
   {
     "name": "Michaels",
     "category": "retail",
-    "logo": "images/clients/michaels.png"
+    "logo": "images/clients/michaels.png",
+    "logoTrimmed": "images/clients/trimmed/michaels.png",
+    "ratio": 3.739
   },
   {
     "name": "Miller Lite",
     "category": "food",
-    "logo": "images/clients/miller-lite.png"
+    "logo": "images/clients/miller-lite.png",
+    "logoTrimmed": "images/clients/trimmed/miller-lite.png",
+    "ratio": 1.638
   },
   {
     "name": "NBC (The Tonight Show)",
     "category": "media",
-    "logo": "images/clients/nbc.png"
+    "logo": "images/clients/nbc.png",
+    "logoTrimmed": "images/clients/trimmed/nbc.png",
+    "ratio": 1.0
   },
   {
     "name": "Odell Brewing Company",
     "category": "food",
-    "logo": "images/clients/odell-brewing-company.png"
+    "logo": "images/clients/odell-brewing-company.png",
+    "logoTrimmed": "images/clients/trimmed/odell-brewing-company.png",
+    "ratio": 0.994
   },
   {
     "name": "Old Navy",
     "category": "retail",
-    "logo": "images/clients/old-navy.png"
+    "logo": "images/clients/old-navy.png",
+    "logoTrimmed": "images/clients/trimmed/old-navy.png",
+    "ratio": 3.071
   },
   {
     "name": "OneMain Financial",
     "category": "financial",
-    "logo": "images/clients/onemain-financial.png"
+    "logo": "images/clients/onemain-financial.png",
+    "logoTrimmed": "images/clients/trimmed/onemain-financial.png",
+    "ratio": 2.915
   },
   {
     "name": "Outside Inc.",
     "category": "media",
-    "logo": "images/clients/outside-inc.png"
+    "logo": "images/clients/outside-inc.png",
+    "logoTrimmed": "images/clients/trimmed/outside-inc.png",
+    "ratio": 3.909
   },
   {
     "name": "Samsung",
     "category": "retail",
-    "logo": "images/clients/samsung.png"
+    "logo": "images/clients/samsung.png",
+    "logoTrimmed": "images/clients/trimmed/samsung.png",
+    "ratio": 6.615
   },
   {
     "name": "Sprite",
     "category": "food",
-    "logo": "images/clients/sprite.png"
+    "logo": "images/clients/sprite.png",
+    "logoTrimmed": "images/clients/trimmed/sprite.png",
+    "ratio": 2.423
   },
   {
     "name": "The Hillman Group",
     "category": "retail",
-    "logo": "images/clients/the-hillman-group.png"
+    "logo": "images/clients/the-hillman-group.png",
+    "logoTrimmed": "images/clients/trimmed/the-hillman-group.png",
+    "ratio": 10.118
   },
   {
     "name": "The Planetary Society",
     "category": "media",
-    "logo": "images/clients/the-planetary-society.png"
+    "logo": "images/clients/the-planetary-society.png",
+    "logoTrimmed": "images/clients/trimmed/the-planetary-society.png",
+    "ratio": 3.208
   },
   {
     "name": "Toca Boca",
     "category": "media",
-    "logo": "images/clients/toca-boca.png"
+    "logo": "images/clients/toca-boca.png",
+    "logoTrimmed": "images/clients/trimmed/toca-boca.png",
+    "ratio": 1.265
   },
   {
     "name": "Travelaer",
     "category": "travel",
-    "logo": "images/clients/travelaer.png"
+    "logo": "images/clients/travelaer.png",
+    "logoTrimmed": "images/clients/trimmed/travelaer.png",
+    "ratio": 5.931
   },
   {
     "name": "WOW!",
     "category": "tech-telecom",
-    "logo": "images/clients/wow.png"
+    "logo": "images/clients/wow.png",
+    "logoTrimmed": "images/clients/trimmed/wow.png",
+    "ratio": 3.822
   },
   {
     "name": "X (Twitter)",
     "category": "tech-telecom",
-    "logo": "images/clients/x.png"
+    "logo": "images/clients/x.png",
+    "logoTrimmed": "images/clients/trimmed/x.png",
+    "ratio": 1.67
   },
   {
     "name": "Zappos",
     "category": "retail",
-    "logo": "images/clients/zappos.png"
+    "logo": "images/clients/zappos.png",
+    "logoTrimmed": "images/clients/trimmed/zappos.png",
+    "ratio": 2.263
   }
 ];
 
@@ -2236,331 +2330,459 @@ const b2bClients = [
     "name": "Charlesbank",
     "category": "investment",
     "featured": true,
-    "logo": "images/clients/charlesbank.png"
+    "logo": "images/clients/charlesbank.png",
+    "logoTrimmed": "images/clients/trimmed/charlesbank.png",
+    "ratio": 8.6
   },
   {
     "name": "Elevate Sports Ventures",
     "category": "technology",
     "featured": true,
-    "logo": "images/clients/elevate-sports-ventures.png"
+    "logo": "images/clients/elevate-sports-ventures.png",
+    "logoTrimmed": "images/clients/trimmed/elevate-sports-ventures.png",
+    "ratio": 8.19
   },
   {
     "name": "Fortune Brands Innovations (Moen & Larson Doors)",
     "category": "industrial",
     "featured": true,
-    "logo": "images/clients/fortune-brands-innovations.png"
+    "logo": "images/clients/fortune-brands-innovations.png",
+    "logoTrimmed": "images/clients/trimmed/fortune-brands-innovations.png",
+    "ratio": 5.212
   },
   {
     "name": "Google",
     "category": "technology",
     "featured": true,
-    "logo": "images/clients/google.png"
+    "logo": "images/clients/google.png",
+    "logoTrimmed": "images/clients/trimmed/google.png",
+    "ratio": 3.308
   },
   {
     "name": "LexisNexis",
     "category": "technology",
     "featured": true,
-    "logo": "images/clients/lexisnexis.png"
+    "logo": "images/clients/lexisnexis.png",
+    "logoTrimmed": "images/clients/trimmed/lexisnexis.png",
+    "ratio": 4.41
   },
   {
     "name": "QuantumBlack",
     "category": "technology",
     "featured": true,
-    "logo": "images/clients/quantumblack.png"
+    "logo": "images/clients/quantumblack.png",
+    "logoTrimmed": "images/clients/trimmed/quantumblack.png",
+    "ratio": 2.567
   },
   {
     "name": "Techstars",
     "category": "investment",
     "featured": true,
-    "logo": "images/clients/techstars.png"
+    "logo": "images/clients/techstars.png",
+    "logoTrimmed": "images/clients/trimmed/techstars.png",
+    "ratio": 5.375
   },
   {
     "name": "The Hillman Group",
     "category": "industrial",
     "featured": true,
-    "logo": "images/clients/the-hillman-group.png"
+    "logo": "images/clients/the-hillman-group.png",
+    "logoTrimmed": "images/clients/trimmed/the-hillman-group.png",
+    "ratio": 10.118
   },
   {
     "name": "WOW!",
     "category": "industrial",
     "featured": true,
-    "logo": "images/clients/wow.png"
+    "logo": "images/clients/wow.png",
+    "logoTrimmed": "images/clients/trimmed/wow.png",
+    "ratio": 3.822
   },
   {
     "name": "X (Twitter)",
     "category": "technology",
     "featured": true,
-    "logo": "images/clients/x.png"
+    "logo": "images/clients/x.png",
+    "logoTrimmed": "images/clients/trimmed/x.png",
+    "ratio": 1.67
   },
   {
     "name": "4As",
     "category": "trade",
-    "logo": "images/clients/4as.png"
+    "logo": "images/clients/4as.png",
+    "logoTrimmed": "images/clients/trimmed/4as.png",
+    "ratio": 1.17
   },
   {
     "name": "AbCellera",
     "category": "technology",
-    "logo": "images/clients/abcellera.png"
+    "logo": "images/clients/abcellera.png",
+    "logoTrimmed": "images/clients/trimmed/abcellera.png",
+    "ratio": 2.293
   },
   {
     "name": "Ad Council",
     "category": "trade",
-    "logo": "images/clients/ad-council.png"
+    "logo": "images/clients/ad-council.png",
+    "logoTrimmed": "images/clients/trimmed/ad-council.png",
+    "ratio": 1.0
   },
   {
     "name": "AKQA",
     "category": "agencies",
-    "logo": "images/clients/akqa.png"
+    "logo": "images/clients/akqa.png",
+    "logoTrimmed": "images/clients/trimmed/akqa.png",
+    "ratio": 2.867
   },
   {
     "name": "Alphia",
     "category": "industrial",
-    "logo": "images/clients/alphia.png"
+    "logo": "images/clients/alphia.png",
+    "logoTrimmed": "images/clients/trimmed/alphia.png",
+    "ratio": 2.0
   },
   {
     "name": "American Express",
     "category": "investment",
-    "logo": "images/clients/american-express.png"
+    "logo": "images/clients/american-express.png",
+    "logoTrimmed": "images/clients/trimmed/american-express.png",
+    "ratio": 1.0
   },
   {
     "name": "Apollo Program",
     "category": "technology",
-    "logo": "images/clients/apollo-program.png"
+    "logo": "images/clients/apollo-program.png",
+    "logoTrimmed": "images/clients/trimmed/apollo-program.png",
+    "ratio": 1.036
   },
   {
     "name": "B-Cycle",
     "category": "industrial",
-    "logo": "images/clients/b-cycle.png"
+    "logo": "images/clients/b-cycle.png",
+    "logoTrimmed": "images/clients/trimmed/b-cycle.png",
+    "ratio": 3.185
   },
   {
     "name": "Barbarian Group",
     "category": "agencies",
-    "logo": "images/clients/barbarian-group.png"
+    "logo": "images/clients/barbarian-group.png",
+    "logoTrimmed": "images/clients/trimmed/barbarian-group.png",
+    "ratio": 5.733
   },
   {
     "name": "Barkley",
     "category": "agencies",
-    "logo": "images/clients/barkley.png"
+    "logo": "images/clients/barkley.png",
+    "logoTrimmed": "images/clients/trimmed/barkley.png",
+    "ratio": 1.049
   },
   {
     "name": "BBDO",
     "category": "agencies",
-    "logo": "images/clients/bbdo.png"
+    "logo": "images/clients/bbdo.png",
+    "logoTrimmed": "images/clients/trimmed/bbdo.png",
+    "ratio": 3.51
   },
   {
     "name": "Blinker",
     "category": "technology",
-    "logo": "images/clients/blinker.png"
+    "logo": "images/clients/blinker.png",
+    "logoTrimmed": "images/clients/trimmed/blinker.png",
+    "ratio": 5.059
   },
   {
     "name": "Blue Sage Solutions",
     "category": "investment",
-    "logo": "images/clients/blue-sage-solutions.png"
+    "logo": "images/clients/blue-sage-solutions.png",
+    "logoTrimmed": "images/clients/trimmed/blue-sage-solutions.png",
+    "ratio": 1.103
   },
   {
     "name": "Brammo",
     "category": "industrial",
-    "logo": "images/clients/brammo.png"
+    "logo": "images/clients/brammo.png",
+    "logoTrimmed": "images/clients/trimmed/brammo.png",
+    "ratio": 7.818
   },
   {
     "name": "Butler Shine Stern & Partners",
     "category": "agencies",
-    "logo": "images/clients/butler-shine-stern-and-partners.png"
+    "logo": "images/clients/butler-shine-stern-and-partners.png",
+    "logoTrimmed": "images/clients/trimmed/butler-shine-stern-and-partners.png",
+    "ratio": 0.837
   },
   {
     "name": "Civic Entertainment Group",
     "category": "agencies",
-    "logo": "images/clients/civic-entertainment-group.png"
+    "logo": "images/clients/civic-entertainment-group.png",
+    "logoTrimmed": "images/clients/trimmed/civic-entertainment-group.png",
+    "ratio": 1.09
   },
   {
     "name": "Climate Reality Project",
     "category": "industrial",
-    "logo": "images/clients/climate-reality-project.png"
+    "logo": "images/clients/climate-reality-project.png",
+    "logoTrimmed": "images/clients/trimmed/climate-reality-project.png",
+    "ratio": 4.3
   },
   {
     "name": "CoCollective",
     "category": "agencies",
-    "logo": "images/clients/cocollective.png"
+    "logo": "images/clients/cocollective.png",
+    "logoTrimmed": "images/clients/trimmed/cocollective.png",
+    "ratio": 2.606
   },
   {
     "name": "Code3",
     "category": "agencies",
-    "logo": "images/clients/code3.png"
+    "logo": "images/clients/code3.png",
+    "logoTrimmed": "images/clients/trimmed/code3.png",
+    "ratio": 4.024
   },
   {
     "name": "Concerned Children's Advertisers",
     "category": "trade",
-    "logo": "images/clients/concerned-children-s-advertisers.png"
+    "logo": "images/clients/concerned-children-s-advertisers.png",
+    "logoTrimmed": "images/clients/trimmed/concerned-children-s-advertisers.png",
+    "ratio": 1.911
   },
   {
     "name": "Crispin",
     "category": "agencies",
-    "logo": "images/clients/crispin.png"
+    "logo": "images/clients/crispin.png",
+    "logoTrimmed": "images/clients/trimmed/crispin.png",
+    "ratio": 2.774
   },
   {
     "name": "Deutsch LA",
     "category": "agencies",
-    "logo": "images/clients/deutsch-la.png"
+    "logo": "images/clients/deutsch-la.png",
+    "logoTrimmed": "images/clients/trimmed/deutsch-la.png",
+    "ratio": 4.3
   },
   {
     "name": "Doctorpedia",
     "category": "technology",
-    "logo": "images/clients/doctorpedia.png"
+    "logo": "images/clients/doctorpedia.png",
+    "logoTrimmed": "images/clients/trimmed/doctorpedia.png",
+    "ratio": 6.615
   },
   {
     "name": "Economic Space Agency",
     "category": "technology",
-    "logo": "images/clients/economic-space-agency.png"
+    "logo": "images/clients/economic-space-agency.png",
+    "logoTrimmed": "images/clients/trimmed/economic-space-agency.png",
+    "ratio": 2.457
   },
   {
     "name": "Edelman",
     "category": "agencies",
-    "logo": "images/clients/edelman.png"
+    "logo": "images/clients/edelman.png",
+    "logoTrimmed": "images/clients/trimmed/edelman.png",
+    "ratio": 2.457
   },
   {
     "name": "Eleven",
     "category": "agencies",
-    "logo": "images/clients/eleven.png"
+    "logo": "images/clients/eleven.png",
+    "logoTrimmed": "images/clients/trimmed/eleven.png",
+    "ratio": 1.0
   },
   {
     "name": "Erich-Kallman",
     "category": "agencies",
-    "logo": "images/clients/erich-kallman.png"
+    "logo": "images/clients/erich-kallman.png",
+    "logoTrimmed": "images/clients/trimmed/erich-kallman.png",
+    "ratio": 3.909
   },
   {
     "name": "EVB",
     "category": "agencies",
-    "logo": "images/clients/evb.png"
+    "logo": "images/clients/evb.png",
+    "logoTrimmed": "images/clients/trimmed/evb.png",
+    "ratio": 0.709
   },
   {
     "name": "FCB",
     "category": "agencies",
-    "logo": "images/clients/fcb.png"
+    "logo": "images/clients/fcb.png",
+    "logoTrimmed": "images/clients/trimmed/fcb.png",
+    "ratio": 2.389
   },
   {
     "name": "Gale Partners",
     "category": "agencies",
-    "logo": "images/clients/gale-partners.png"
+    "logo": "images/clients/gale-partners.png",
+    "logoTrimmed": "images/clients/trimmed/gale-partners.png",
+    "ratio": 4.649
   },
   {
     "name": "Hearthside Food Solutions",
     "category": "industrial",
-    "logo": "images/clients/hearthside-food-solutions.png"
+    "logo": "images/clients/hearthside-food-solutions.png",
+    "logoTrimmed": "images/clients/trimmed/hearthside-food-solutions.png",
+    "ratio": 2.324
   },
   {
     "name": "Hill Holliday",
     "category": "agencies",
-    "logo": "images/clients/hill-holliday.png"
+    "logo": "images/clients/hill-holliday.png",
+    "logoTrimmed": "images/clients/trimmed/hill-holliday.png",
+    "ratio": 1.068
   },
   {
     "name": "I&CO",
     "category": "agencies",
-    "logo": "images/clients/iandco.png"
+    "logo": "images/clients/iandco.png",
+    "logoTrimmed": "images/clients/trimmed/iandco.png",
+    "ratio": 3.44
   },
   {
     "name": "Ivanti",
     "category": "technology",
-    "logo": "images/clients/ivanti.png"
+    "logo": "images/clients/ivanti.png",
+    "logoTrimmed": "images/clients/trimmed/ivanti.png",
+    "ratio": 2.82
   },
   {
     "name": "LegalShield",
     "category": "industrial",
-    "logo": "images/clients/legalshield.png"
+    "logo": "images/clients/legalshield.png",
+    "logoTrimmed": "images/clients/trimmed/legalshield.png",
+    "ratio": 5.059
   },
   {
     "name": "letgo",
     "category": "technology",
-    "logo": "images/clients/letgo.png"
+    "logo": "images/clients/letgo.png",
+    "logoTrimmed": "images/clients/trimmed/letgo.png",
+    "ratio": 1.0
   },
   {
     "name": "M&C Saatchi",
     "category": "agencies",
-    "logo": "images/clients/mandc-saatchi.png"
+    "logo": "images/clients/mandc-saatchi.png",
+    "logoTrimmed": "images/clients/trimmed/mandc-saatchi.png",
+    "ratio": 9.053
   },
   {
     "name": "McCANN",
     "category": "agencies",
-    "logo": "images/clients/mccann.png"
+    "logo": "images/clients/mccann.png",
+    "logoTrimmed": "images/clients/trimmed/mccann.png",
+    "ratio": 5.212
   },
   {
     "name": "MDC Partners",
     "category": "agencies",
-    "logo": "images/clients/mdc-partners.png"
+    "logo": "images/clients/mdc-partners.png",
+    "logoTrimmed": "images/clients/trimmed/mdc-partners.png",
+    "ratio": 5.931
   },
   {
     "name": "Media Arts Lab",
     "category": "agencies",
-    "logo": "images/clients/media-arts-lab.png"
+    "logo": "images/clients/media-arts-lab.png",
+    "logoTrimmed": "images/clients/trimmed/media-arts-lab.png",
+    "ratio": 2.024
   },
   {
     "name": "Microsoft",
     "category": "technology",
-    "logo": "images/clients/microsoft.png"
+    "logo": "images/clients/microsoft.png",
+    "logoTrimmed": "images/clients/trimmed/microsoft.png",
+    "ratio": 4.649
   },
   {
     "name": "Neptune Retail Solutions",
     "category": "industrial",
-    "logo": "images/clients/neptune-retail-solutions.png"
+    "logo": "images/clients/neptune-retail-solutions.png",
+    "logoTrimmed": "images/clients/trimmed/neptune-retail-solutions.png",
+    "ratio": 2.966
   },
   {
     "name": "PAI Partners",
     "category": "investment",
-    "logo": "images/clients/pai-partners.png"
+    "logo": "images/clients/pai-partners.png",
+    "logoTrimmed": "images/clients/trimmed/pai-partners.png",
+    "ratio": 1.0
   },
   {
     "name": "Pocket Outdoor Media",
     "category": "industrial",
-    "logo": "images/clients/pocket-outdoor-media.png"
+    "logo": "images/clients/pocket-outdoor-media.png",
+    "logoTrimmed": "images/clients/trimmed/pocket-outdoor-media.png",
+    "ratio": 3.909
   },
   {
     "name": "R/GA",
     "category": "agencies",
-    "logo": "images/clients/r-ga.png"
+    "logo": "images/clients/r-ga.png",
+    "logoTrimmed": "images/clients/trimmed/r-ga.png",
+    "ratio": 4.526
   },
   {
     "name": "Tecomet",
     "category": "technology",
-    "logo": "images/clients/tecomet.png"
+    "logo": "images/clients/tecomet.png",
+    "logoTrimmed": "images/clients/trimmed/tecomet.png",
+    "ratio": 3.717
   },
   {
     "name": "The Martin Agency",
     "category": "agencies",
-    "logo": "images/clients/the-martin-agency.png"
+    "logo": "images/clients/the-martin-agency.png",
+    "logoTrimmed": "images/clients/trimmed/the-martin-agency.png",
+    "ratio": 3.739
   },
   {
     "name": "The One Club",
     "category": "trade",
-    "logo": "images/clients/the-one-club.png"
+    "logo": "images/clients/the-one-club.png",
+    "logoTrimmed": "images/clients/trimmed/the-one-club.png",
+    "ratio": 1.313
   },
   {
     "name": "The Planetary Society",
     "category": "trade",
-    "logo": "images/clients/the-planetary-society.png"
+    "logo": "images/clients/the-planetary-society.png",
+    "logoTrimmed": "images/clients/trimmed/the-planetary-society.png",
+    "ratio": 3.208
   },
   {
     "name": "Uplight (Simple Energy)",
     "category": "industrial",
-    "logo": "images/clients/uplight.png"
+    "logo": "images/clients/uplight.png",
+    "logoTrimmed": "images/clients/trimmed/uplight.png",
+    "ratio": 3.44
   },
   {
     "name": "Whispir",
     "category": "technology",
-    "logo": "images/clients/whispir.png"
+    "logo": "images/clients/whispir.png",
+    "logoTrimmed": "images/clients/trimmed/whispir.png",
+    "ratio": 3.583
   },
   {
     "name": "Work Market",
     "category": "technology",
-    "logo": "images/clients/work-market.png"
+    "logo": "images/clients/work-market.png",
+    "logoTrimmed": "images/clients/trimmed/work-market.png",
+    "ratio": 4.526
   },
   {
     "name": "Zappi",
     "category": "technology",
-    "logo": "images/clients/zappi.png"
+    "logo": "images/clients/zappi.png",
+    "logoTrimmed": "images/clients/trimmed/zappi.png",
+    "ratio": 2.73
   },
   {
     "name": "Zeus Jones",
     "category": "agencies",
-    "logo": "images/clients/zeus-jones.png"
+    "logo": "images/clients/zeus-jones.png",
+    "logoTrimmed": "images/clients/trimmed/zeus-jones.png",
+    "ratio": 1.458
   }
 ];
 

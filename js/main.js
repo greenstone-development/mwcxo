@@ -139,13 +139,34 @@
     return out;
   }
 
+  // Optical sizing: square marks and long wordmarks get boxes of similar visual weight,
+  // instead of all being squeezed into the same square. Height shrinks as the logo gets
+  // wider (height = 80 * ratio^-0.55), capped at 160px wide. --logo-scale shrinks it on phones.
+  function opticalSize(ratio) {
+    var r = ratio || 1;
+    var h = 80 * Math.pow(r, -0.55);
+    var w = h * r;
+    if (w > 160) { w = 160; h = w / r; }
+    if (h > 80) { h = 80; w = h * r; }
+    return { w: Math.round(w), h: Math.round(h) };
+  }
+
+  function marqueeItem(c, hidden) {
+    var s = opticalSize(c.ratio);
+    var src = c.logoTrimmed || c.logo;
+    return '<li class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
+      '<img src="' + escAttr(src) + '" alt="' + (hidden ? '' : escAttr(c.name)) + '" title="' + escAttr(c.name) + '"' +
+      ' width="' + s.w + '" height="' + s.h + '" loading="lazy" decoding="async" class="client-logo"' +
+      ' style="width: calc(' + s.w + 'px * var(--logo-scale, 1)); height: calc(' + s.h + 'px * var(--logo-scale, 1));">' +
+    '</li>';
+  }
+
   function renderMarquee(id, clients) {
     var track = document.getElementById(id);
     if (!track || !clients.length) return;
-    var items = clients.map(function (c) { return '<li class="logo-item">' + logoImg(c, 104) + '</li>'; }).join('');
-    // Second copy makes the loop seamless; hidden from screen readers and skipped by lazy-loading heuristics.
-    var clone = clients.map(function (c) { return '<li class="logo-item" aria-hidden="true">' + logoImg(c, 104).replace(/ alt="[^"]*"/, ' alt=""') + '</li>'; }).join('');
-    track.innerHTML = items + clone;
+    // Second copy makes the loop seamless; it is hidden from screen readers.
+    track.innerHTML = clients.map(function (c) { return marqueeItem(c, false); }).join('') +
+                      clients.map(function (c) { return marqueeItem(c, true); }).join('');
     track.style.setProperty('--marquee-duration', Math.max(20, clients.length * 3.2) + 's');
   }
 
