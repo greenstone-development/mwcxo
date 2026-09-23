@@ -202,7 +202,7 @@
       if (open && !rendered) { renderSectors(clients); rendered = true; }
       panel.classList.toggle('hidden', !open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      label.textContent = open ? 'Show fewer' : 'Show all ' + clients.length + ' clients';
+      label.textContent = open ? 'Show fewer' : 'Show all clients by sector';
       icon.classList.toggle('rotate-180', open);
       if (open) {
         panel.classList.remove('anim-fade-slide-down');
