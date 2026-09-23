@@ -1960,242 +1960,247 @@ const b2cClients = [
   {
     "name": "American Express",
     "category": "financial",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/american-express.png"
   },
   {
     "name": "Ariat",
     "category": "retail",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/ariat.png"
   },
   {
     "name": "Best Buy",
     "category": "retail",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/best-buy.png"
   },
   {
     "name": "Domino's",
     "category": "food",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/domino-s.png"
   },
   {
     "name": "HBO",
     "category": "media",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/hbo.png"
   },
   {
     "name": "Logitech",
     "category": "retail",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/logitech.png"
   },
   {
     "name": "Microsoft",
     "category": "tech-telecom",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/microsoft.png"
   },
   {
     "name": "Nike",
     "category": "retail",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/nike.png"
   },
   {
     "name": "Vail Resorts",
     "category": "travel",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/vail-resorts.png"
   },
   {
     "name": "Volkswagen",
     "category": "automotive",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/volkswagen.png"
   },
   {
     "name": "Algenist",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/algenist.png"
   },
   {
     "name": "B-Cycle",
     "category": "travel",
-    "featured": false
+    "logo": "images/clients/b-cycle.png"
   },
   {
     "name": "Bark Box Inc",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/bark-box-inc.png"
   },
   {
     "name": "Beats",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/beats.png"
   },
   {
     "name": "BILLSHARK",
     "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/billshark.png"
   },
   {
     "name": "Bolt Threads",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/bolt-threads.png"
   },
   {
     "name": "Brammo",
     "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/brammo.png"
   },
   {
     "name": "Breville",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/breville.png"
   },
   {
     "name": "Burger King",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/burger-king.png"
   },
   {
     "name": "City of Boulder",
     "category": "travel",
-    "featured": false
-  },
-  {
-    "name": "ClearSpend",
-    "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/city-of-boulder.png"
   },
   {
     "name": "Clinton Global Initiative",
     "category": "media",
-    "featured": false
+    "logo": "images/clients/clinton-global-initiative.png"
   },
   {
     "name": "Coke Zero",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/coke-zero.png"
   },
   {
     "name": "Connected Financial Solutions LLC",
     "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/connected-financial-solutions-llc.png"
   },
   {
     "name": "Dagne Dover",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/dagne-dover.png"
   },
   {
     "name": "dosist",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/dosist.png"
   },
   {
     "name": "Driven Brands (Take5)",
     "category": "automotive",
-    "featured": false
+    "logo": "images/clients/driven-brands.png"
   },
   {
     "name": "Elevations Credit Union",
     "category": "financial",
-    "featured": false
+    "logo": "images/clients/elevations-credit-union.png"
   },
   {
     "name": "Finish Line",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/finish-line.png"
   },
   {
     "name": "Fortune Brands Innovations (Moen & Larson Doors)",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/fortune-brands-innovations.png"
   },
   {
     "name": "Haggar",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/haggar.png"
   },
   {
     "name": "Kraft (Jell-O & Grey Poupon)",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/kraft.png"
   },
   {
     "name": "Michaels",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/michaels.png"
   },
   {
     "name": "Miller Lite",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/miller-lite.png"
   },
   {
     "name": "NBC (The Tonight Show)",
     "category": "media",
-    "featured": false
+    "logo": "images/clients/nbc.png"
   },
   {
     "name": "Odell Brewing Company",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/odell-brewing-company.png"
   },
   {
     "name": "Old Navy",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/old-navy.png"
   },
   {
     "name": "OneMain Financial",
     "category": "financial",
-    "featured": false
+    "logo": "images/clients/onemain-financial.png"
   },
   {
     "name": "Outside Inc.",
     "category": "media",
-    "featured": false
+    "logo": "images/clients/outside-inc.png"
   },
   {
     "name": "Samsung",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/samsung.png"
   },
   {
     "name": "Sprite",
     "category": "food",
-    "featured": false
+    "logo": "images/clients/sprite.png"
   },
   {
     "name": "The Hillman Group",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/the-hillman-group.png"
   },
   {
     "name": "The Planetary Society",
     "category": "media",
-    "featured": false
+    "logo": "images/clients/the-planetary-society.png"
   },
   {
     "name": "Toca Boca",
     "category": "media",
-    "featured": false
+    "logo": "images/clients/toca-boca.png"
   },
   {
     "name": "Travelaer",
     "category": "travel",
-    "featured": false
+    "logo": "images/clients/travelaer.png"
   },
   {
     "name": "WOW!",
     "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/wow.png"
   },
   {
     "name": "X (Twitter)",
     "category": "tech-telecom",
-    "featured": false
+    "logo": "images/clients/x.png"
   },
   {
     "name": "Zappos",
     "category": "retail",
-    "featured": false
+    "logo": "images/clients/zappos.png"
   }
 ];
 
@@ -2230,322 +2235,332 @@ const b2bClients = [
   {
     "name": "Charlesbank",
     "category": "investment",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/charlesbank.png"
   },
   {
     "name": "Elevate Sports Ventures",
     "category": "technology",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/elevate-sports-ventures.png"
   },
   {
     "name": "Fortune Brands Innovations (Moen & Larson Doors)",
     "category": "industrial",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/fortune-brands-innovations.png"
   },
   {
     "name": "Google",
     "category": "technology",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/google.png"
   },
   {
     "name": "LexisNexis",
     "category": "technology",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/lexisnexis.png"
   },
   {
     "name": "QuantumBlack",
     "category": "technology",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/quantumblack.png"
   },
   {
     "name": "Techstars",
     "category": "investment",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/techstars.png"
   },
   {
     "name": "The Hillman Group",
     "category": "industrial",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/the-hillman-group.png"
   },
   {
     "name": "WOW!",
     "category": "industrial",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/wow.png"
   },
   {
     "name": "X (Twitter)",
     "category": "technology",
-    "featured": true
+    "featured": true,
+    "logo": "images/clients/x.png"
   },
   {
     "name": "4As",
     "category": "trade",
-    "featured": false
+    "logo": "images/clients/4as.png"
   },
   {
     "name": "AbCellera",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/abcellera.png"
   },
   {
     "name": "Ad Council",
     "category": "trade",
-    "featured": false
+    "logo": "images/clients/ad-council.png"
   },
   {
     "name": "AKQA",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/akqa.png"
   },
   {
     "name": "Alphia",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/alphia.png"
   },
   {
     "name": "American Express",
     "category": "investment",
-    "featured": false
+    "logo": "images/clients/american-express.png"
   },
   {
     "name": "Apollo Program",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/apollo-program.png"
   },
   {
     "name": "B-Cycle",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/b-cycle.png"
   },
   {
     "name": "Barbarian Group",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/barbarian-group.png"
   },
   {
     "name": "Barkley",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/barkley.png"
   },
   {
     "name": "BBDO",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/bbdo.png"
   },
   {
     "name": "Blinker",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/blinker.png"
   },
   {
     "name": "Blue Sage Solutions",
     "category": "investment",
-    "featured": false
+    "logo": "images/clients/blue-sage-solutions.png"
   },
   {
     "name": "Brammo",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/brammo.png"
   },
   {
     "name": "Butler Shine Stern & Partners",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/butler-shine-stern-and-partners.png"
   },
   {
     "name": "Civic Entertainment Group",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/civic-entertainment-group.png"
   },
   {
     "name": "Climate Reality Project",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/climate-reality-project.png"
   },
   {
     "name": "CoCollective",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/cocollective.png"
   },
   {
     "name": "Code3",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/code3.png"
   },
   {
     "name": "Concerned Children's Advertisers",
     "category": "trade",
-    "featured": false
+    "logo": "images/clients/concerned-children-s-advertisers.png"
   },
   {
     "name": "Crispin",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/crispin.png"
   },
   {
     "name": "Deutsch LA",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/deutsch-la.png"
   },
   {
     "name": "Doctorpedia",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/doctorpedia.png"
   },
   {
     "name": "Economic Space Agency",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/economic-space-agency.png"
   },
   {
     "name": "Edelman",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/edelman.png"
   },
   {
     "name": "Eleven",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/eleven.png"
   },
   {
     "name": "Erich-Kallman",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/erich-kallman.png"
   },
   {
     "name": "EVB",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/evb.png"
   },
   {
     "name": "FCB",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/fcb.png"
   },
   {
     "name": "Gale Partners",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/gale-partners.png"
   },
   {
     "name": "Hearthside Food Solutions",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/hearthside-food-solutions.png"
   },
   {
     "name": "Hill Holliday",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/hill-holliday.png"
   },
   {
     "name": "I&CO",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/iandco.png"
   },
   {
     "name": "Ivanti",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/ivanti.png"
   },
   {
     "name": "LegalShield",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/legalshield.png"
   },
   {
     "name": "letgo",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/letgo.png"
   },
   {
     "name": "M&C Saatchi",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/mandc-saatchi.png"
   },
   {
     "name": "McCANN",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/mccann.png"
   },
   {
     "name": "MDC Partners",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/mdc-partners.png"
   },
   {
     "name": "Media Arts Lab",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/media-arts-lab.png"
   },
   {
     "name": "Microsoft",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/microsoft.png"
   },
   {
     "name": "Neptune Retail Solutions",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/neptune-retail-solutions.png"
   },
   {
     "name": "PAI Partners",
     "category": "investment",
-    "featured": false
+    "logo": "images/clients/pai-partners.png"
   },
   {
     "name": "Pocket Outdoor Media",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/pocket-outdoor-media.png"
   },
   {
     "name": "R/GA",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/r-ga.png"
   },
   {
     "name": "Tecomet",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/tecomet.png"
   },
   {
     "name": "The Martin Agency",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/the-martin-agency.png"
   },
   {
     "name": "The One Club",
     "category": "trade",
-    "featured": false
+    "logo": "images/clients/the-one-club.png"
   },
   {
     "name": "The Planetary Society",
     "category": "trade",
-    "featured": false
+    "logo": "images/clients/the-planetary-society.png"
   },
   {
     "name": "Uplight (Simple Energy)",
     "category": "industrial",
-    "featured": false
+    "logo": "images/clients/uplight.png"
   },
   {
     "name": "Whispir",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/whispir.png"
   },
   {
     "name": "Work Market",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/work-market.png"
   },
   {
     "name": "Zappi",
     "category": "technology",
-    "featured": false
+    "logo": "images/clients/zappi.png"
   },
   {
     "name": "Zeus Jones",
     "category": "agencies",
-    "featured": false
+    "logo": "images/clients/zeus-jones.png"
   }
 ];
 
@@ -2623,4 +2638,29 @@ const orgAgencies = [
   { num: "05", title: "Bridging Decentralized Workforces", desc: "Matt built a fully distributed agency from the ground up. That journey gave him many actionable insights that he can leverage to ensure your multi-dimensional hybrid, fractional or remote workforce is as united and productive as possible." },
   { num: "06", title: "Keeping Perspective", desc: "Having personally carried the line of credit at Green Stone for over a decade, Matt brings a grounded, bottom-line sensibility to decisions that only comes from firsthand experience and accountability." }
 ];
-window.SITE = {testimonials, projects, caseStudies, awards, b2cCategories, b2cClients, b2bCategories, b2bClients, featuredThoughts, thoughtsList, methodology, orgBrands, orgAgencies};
+// Homepage client showcase: sector cards shown when "Show all" is expanded.
+// Each client appears once, under its B2C category if it has one, else its B2B category.
+// `columns` sets the desktop layout (top to bottom); on smaller screens the cards stack in this order.
+const clientSectors = {
+  labels: {
+    "retail": "Retail",
+    "industrial": "Industrial & Services",
+    "travel": "Travel & Hospitality",
+    "trade": "Trade Groups",
+    "investment": "Investment & Finance",
+    "technology": "B2B Technology & SaaS",
+    "food": "Food & Beverage",
+    "tech-telecom": "Consumer Tech & Telecom",
+    "financial": "Financial Services",
+    "automotive": "Automotive",
+    "media": "Media & Entertainment",
+    "agencies": "Agencies"
+  },
+  columns: [
+    ["retail", "industrial", "travel", "trade", "investment"],
+    ["technology", "food", "tech-telecom", "financial", "automotive"],
+    ["media", "agencies"]
+  ]
+};
+
+window.SITE = {clientSectors, testimonials, projects, caseStudies, awards, b2cCategories, b2cClients, b2bCategories, b2bClients, featuredThoughts, thoughtsList, methodology, orgBrands, orgAgencies};

@@ -119,37 +119,120 @@
     setOrgTab('brands');
   }
 
-  /* ---------------- Home: Clients (B2C / B2B) ---------------- */
-  function clientRow(client) {
-    return (
-      '<div class="py-4 px-4 -mx-4 border-b border-border/40 hover:bg-card/50 transition-colors group cursor-default rounded-xl anim-fade-in-fast">' +
-        '<span class="text-base md:text-lg font-bold text-foreground group-hover:text-[#004b46] transition-colors">' + esc(client.name) + '</span>' +
-      '</div>'
-    );
+  /* ---------------- Home: Clients (featured marquee + all-by-sector) ---------------- */
+  var escAttr = function (s) { return esc(s).replace(/"/g, '&quot;'); };
+
+  function logoImg(client, size, extraClass) {
+    return '<img src="' + escAttr(client.logo) + '" alt="' + escAttr(client.name) + '" title="' + escAttr(client.name) + '"' +
+      ' width="' + size + '" height="' + size + '" loading="lazy" decoding="async" class="client-logo ' + (extraClass || '') + '">';
   }
 
-  function renderClientColumn(kind) {
-    var listHost = document.getElementById(kind + '-client-list');
-    if (!listHost) return;
-    var select = document.getElementById(kind + '-filter');
-    var value = select ? select.value : 'featured';
-    var clients = kind === 'b2c' ? SITE.b2cClients : SITE.b2bClients;
-    var filtered = value === 'featured' ? clients.filter(function (c) { return c.featured; }) : clients.filter(function (c) { return c.category === value; });
-    listHost.innerHTML = filtered.length
-      ? filtered.map(clientRow).join('')
-      : '<p class="text-sm font-medium text-muted-foreground py-8">No projects in this category yet.</p>';
-  }
-
-  function initClientColumns() {
-    ['b2c', 'b2b'].forEach(function (kind) {
-      var select = document.getElementById(kind + '-filter');
-      var categories = kind === 'b2c' ? SITE.b2cCategories : SITE.b2bCategories;
-      if (select) {
-        select.innerHTML = categories.map(function (c) { return '<option value="' + esc(c.value) + '">' + esc(c.label) + '</option>'; }).join('');
-        select.addEventListener('change', function () { renderClientColumn(kind); });
-      }
-      renderClientColumn(kind);
+  // Every client once: B2C list first, then B2B clients not already listed.
+  function uniqueClients() {
+    var seen = {};
+    var out = [];
+    (SITE.b2cClients || []).concat(SITE.b2bClients || []).forEach(function (c) {
+      if (!c.logo || seen[c.name]) return;
+      seen[c.name] = true;
+      out.push(c);
     });
+    return out;
+  }
+
+  function renderMarquee(id, clients) {
+    var track = document.getElementById(id);
+    if (!track || !clients.length) return;
+    var items = clients.map(function (c) { return '<li class="logo-item">' + logoImg(c, 104) + '</li>'; }).join('');
+    // Second copy makes the loop seamless; hidden from screen readers and skipped by lazy-loading heuristics.
+    var clone = clients.map(function (c) { return '<li class="logo-item" aria-hidden="true">' + logoImg(c, 104).replace(/ alt="[^"]*"/, ' alt=""') + '</li>'; }).join('');
+    track.innerHTML = items + clone;
+    track.style.setProperty('--marquee-duration', Math.max(20, clients.length * 3.2) + 's');
+  }
+
+  function renderSectors(clients) {
+    var host = document.getElementById('sector-grid');
+    var cfg = SITE.clientSectors;
+    if (!host || !cfg) return;
+    var groups = {};
+    clients.forEach(function (c) { (groups[c.category] = groups[c.category] || []).push(c); });
+
+    function card(key) {
+      var list = groups[key];
+      if (!list || !list.length) return '';
+      return (
+        '<div class="sector-card bg-background border border-border rounded-2xl p-5 flex flex-col gap-3">' +
+          '<div class="flex items-baseline justify-between gap-4">' +
+            '<h4 class="text-xs font-bold tracking-widest uppercase text-[#004b46]">' + esc(cfg.labels[key] || key) + '</h4>' +
+            '<span class="text-sm text-muted-foreground">' + list.length + '</span>' +
+          '</div>' +
+          '<ul class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 gap-1">' +
+            list.map(function (c) { return '<li class="sector-logo">' + logoImg(c, 64) + '</li>'; }).join('') +
+          '</ul>' +
+        '</div>'
+      );
+    }
+
+    host.innerHTML = cfg.columns.map(function (col) {
+      return '<div class="flex flex-col gap-5">' + col.map(card).join('') + '</div>';
+    }).join('');
+
+    var summary = document.getElementById('sector-summary');
+    var used = cfg.columns.reduce(function (n, col) { return n + col.filter(function (k) { return groups[k]; }).length; }, 0);
+    if (summary) summary.textContent = clients.length + ' clients across ' + used + ' sectors';
+  }
+
+  function initClientShowcase() {
+    var section = document.getElementById('clients');
+    if (!section) return;
+    var clients = uniqueClients();
+
+    var count = document.getElementById('client-count');
+    if (count) count.textContent = clients.length;
+
+    renderMarquee('marquee-b2c', (SITE.b2cClients || []).filter(function (c) { return c.featured && c.logo; }));
+    renderMarquee('marquee-b2b', (SITE.b2bClients || []).filter(function (c) { return c.featured && c.logo; }));
+
+    // Show all / show fewer
+    var toggle = document.getElementById('clients-toggle');
+    var panel = document.getElementById('all-clients');
+    var label = document.getElementById('clients-toggle-label');
+    var icon = document.getElementById('clients-toggle-icon');
+    var rendered = false;
+    function setOpen(open) {
+      if (open && !rendered) { renderSectors(clients); rendered = true; }
+      panel.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      label.textContent = open ? 'Show fewer' : 'Show all ' + clients.length + ' clients';
+      icon.classList.toggle('rotate-180', open);
+      if (open) {
+        panel.classList.remove('anim-fade-slide-down');
+        void panel.offsetWidth;
+        panel.classList.add('anim-fade-slide-down');
+      } else {
+        // Bring the section back into view when collapsing from far down the list.
+        var top = section.getBoundingClientRect().top;
+        if (top < 0) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    if (toggle && panel) {
+      setOpen(false);
+      toggle.addEventListener('click', function () { setOpen(toggle.getAttribute('aria-expanded') !== 'true'); });
+    }
+
+    // Pause / play for the scrolling rows (WCAG 2.2.2)
+    var pause = document.getElementById('marquee-pause');
+    var marquees = document.getElementById('client-marquees');
+    if (pause && marquees) {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { pause.classList.add('hidden'); return; }
+      pause.addEventListener('click', function () {
+        var paused = marquees.classList.toggle('is-paused');
+        pause.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        pause.setAttribute('aria-label', paused ? 'Play scrolling logos' : 'Pause scrolling logos');
+        pause.querySelector('.icon-pause').classList.toggle('hidden', paused);
+        pause.querySelector('.icon-play').classList.toggle('hidden', !paused);
+      });
+    }
   }
 
   /* ---------------- Recognition: testimonials ---------------- */
@@ -649,7 +732,7 @@
     initNav();
     renderMethodology();
     initOrgSection();
-    initClientColumns();
+    initClientShowcase();
     initTestimonials();
     initAwards();
     initProjects();
