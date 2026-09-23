@@ -204,6 +204,9 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       label.textContent = open ? 'Show fewer' : 'Show all clients by sector';
       icon.classList.toggle('rotate-180', open);
+      // The scrolling rows sit above the fold of the expanded list, so hide their pause control while it is open.
+      var pauseBtn = document.getElementById('marquee-pause');
+      if (pauseBtn && !pauseBtn.dataset.reducedMotion) pauseBtn.classList.toggle('hidden', open);
       if (open) {
         panel.classList.remove('anim-fade-slide-down');
         void panel.offsetWidth;
@@ -224,7 +227,7 @@
     var marquees = document.getElementById('client-marquees');
     if (pause && marquees) {
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) { pause.classList.add('hidden'); return; }
+      if (reduce) { pause.dataset.reducedMotion = '1'; pause.classList.add('hidden'); return; }
       pause.addEventListener('click', function () {
         var paused = marquees.classList.toggle('is-paused');
         pause.setAttribute('aria-pressed', paused ? 'true' : 'false');
