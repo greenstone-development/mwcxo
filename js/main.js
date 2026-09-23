@@ -165,8 +165,8 @@
             '<h4 class="text-xs font-bold tracking-widest uppercase text-[#004b46]">' + esc(cfg.labels[key] || key) + '</h4>' +
             '<span class="text-sm text-muted-foreground">' + list.length + '</span>' +
           '</div>' +
-          '<ul class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 gap-1">' +
-            list.map(function (c) { return '<li class="sector-logo">' + logoImg(c, 64) + '</li>'; }).join('') +
+          '<ul class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-3 gap-2">' +
+            list.map(function (c) { return '<li class="sector-logo">' + logoImg(c, 120) + '</li>'; }).join('') +
           '</ul>' +
         '</div>'
       );

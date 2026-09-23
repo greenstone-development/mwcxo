@@ -161,10 +161,11 @@ select.bare-select {
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
-  padding: 4px;
+  padding: 2px;
   border-radius: 10px;
 }
-.sector-logo .client-logo { max-width: 64px; max-height: 64px; }
+/* Sector cards show many logos small, so give them a little more contrast than the marquee. */
+.sector-logo .client-logo { max-width: 120px; max-height: 120px; opacity: .8; }
 
 @media (max-width: 640px) {
   .logo-track { --marquee-gap: 1.5rem; }
