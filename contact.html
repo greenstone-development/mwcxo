@@ -17,28 +17,7 @@
 <meta name="twitter:title" content="Get In Touch — Matt Walsh CXO">
 <meta name="twitter:description" content="Contact Matt Walsh, Fractional CXO and founder of Green Stone. Available for fractional engagements, speaking, and consulting conversations.">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          background: '#ffffff', foreground: '#0f172a',
-          card: '#f8fafc', 'card-foreground': '#0f172a',
-          popover: '#ffffff', 'popover-foreground': '#0f172a',
-          primary: '#004b46', 'primary-foreground': '#ffffff',
-          secondary: '#f1f5f9', 'secondary-foreground': '#0f172a',
-          muted: '#f1f5f9', 'muted-foreground': '#64748b',
-          accent: '#e2e8f0', 'accent-foreground': '#0f172a',
-          destructive: '#ef4444', 'destructive-foreground': '#ffffff',
-          border: '#e2e8f0', input: 'transparent', 'input-background': '#f1f5f9', ring: '#94a3b8'
-        },
-        fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Plus Jakarta Sans"', 'sans-serif'] },
-        borderRadius: { sm: 'calc(0.75rem - 4px)', md: 'calc(0.75rem - 2px)', lg: '0.75rem', xl: 'calc(0.75rem + 4px)' }
-      }
-    }
-  };
-</script>
+<link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/site.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
@@ -60,7 +39,7 @@
       <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
       <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
       <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
-      <a href="contact.html" class="text-foreground bg-[#004b46]/10 px-4 py-2 rounded-full transition-colors">Get in touch</a>
+      <a aria-current="page" href="contact.html" class="text-foreground bg-[#004b46]/10 px-4 py-2 rounded-full transition-colors">Get in touch</a>
     </div>
     <button id="nav-toggle" class="md:hidden w-10 h-10 flex items-center justify-center text-foreground" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
       <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -71,7 +50,7 @@
     <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
     <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
     <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
-    <a href="contact.html" class="text-foreground font-bold">Get in touch</a>
+    <a aria-current="page" href="contact.html" class="text-foreground font-bold">Get in touch</a>
   </div>
 </nav>
 
@@ -87,7 +66,7 @@
         <a href="https://linkedin.com/in/mattwalsh" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-primary transition-colors w-fit">
           Connect on LinkedIn <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
         </a>
-        <a href="http://www.greenstone.co" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-primary transition-colors w-fit">
+        <a href="https://www.greenstone.co" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-primary transition-colors w-fit">
           Visit Green Stone <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
         </a>
       </div>

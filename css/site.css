@@ -1,12 +1,9 @@
-/* Matt Walsh CXO — rebuilt to match the Figma Make design exactly.
-   Tailwind (CDN, JIT) handles almost all layout/utility styling — see the
-   tailwind.config block inlined in each page's <head>, which mirrors
-   src/styles/theme.css from the Figma Make source 1:1 (light mode only,
-   since this production site doesn't have a dark-mode toggle).
-   This file only carries what Tailwind's CDN build can't: @font-face-driven
-   base type rules, and the hand-written entrance-animation utilities that
-   replace the tw-animate-css / Framer Motion "animate-in" classes used in
-   the Figma Make source (that plugin can't be loaded via the Play CDN). */
+/* Matt Walsh CXO — hand-written styles.
+   Layout and utility styling comes from Tailwind, compiled into
+   css/tailwind.css (see tailwind.config.js and src/tailwind.css; rebuild
+   with `npm run build:css` after changing classes in any page or in js/).
+   This file only carries base type rules, the entrance-animation
+   utilities, parallax geometry, and the homepage client showcase. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
@@ -29,15 +26,6 @@ h1, h2, h3, h4, h5, h6,
    fallback for browsers that don't yet support it natively. */
 .text-balance {
   text-wrap: balance;
-}
-
-/* Custom <select> chevron suppression so our own ChevronRight icon can sit
-   on top of the native control, matching the Figma markup exactly. */
-select.bare-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: none;
 }
 
 /* ---------- Entrance animations ----------
@@ -66,7 +54,6 @@ select.bare-select {
 }
 
 .anim-fade-in       { animation: fadeIn 500ms ease-out both; }
-.anim-fade-in-fast  { animation: fadeIn 300ms ease-out both; }
 .anim-fade-slide-up { animation: fadeSlideUp 1000ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .anim-fade-slide-right {
   animation: fadeSlideRight 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -77,7 +64,7 @@ select.bare-select {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .anim-fade-in, .anim-fade-in-fast, .anim-fade-slide-up,
+  .anim-fade-in, .anim-fade-slide-up,
   .anim-fade-slide-right, .anim-fade-slide-down, .anim-zoom-in {
     animation: none !important;
   }

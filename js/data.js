@@ -1921,41 +1921,6 @@ const awards = [
   { show: "AIGA 365", prize: "ANNUAL", project: "NikeGridiron.com • Nike", category: "Experience Design" }
 ];
 
-const b2cCategories = [
-  {
-    "value": "featured",
-    "label": "Featured"
-  },
-  {
-    "value": "automotive",
-    "label": "Automotive"
-  },
-  {
-    "value": "financial",
-    "label": "Financial Services"
-  },
-  {
-    "value": "food",
-    "label": "Food & Beverage"
-  },
-  {
-    "value": "media",
-    "label": "Media & Entertainment"
-  },
-  {
-    "value": "retail",
-    "label": "Retail"
-  },
-  {
-    "value": "tech-telecom",
-    "label": "Technology & Telecom"
-  },
-  {
-    "value": "travel",
-    "label": "Travel & Hospitality"
-  }
-];
-
 const b2cClients = [
   {
     "name": "American Express",
@@ -2295,33 +2260,6 @@ const b2cClients = [
     "logo": "images/clients/zappos.png",
     "logoTrimmed": "images/clients/trimmed/zappos.png",
     "ratio": 2.263
-  }
-];
-
-const b2bCategories = [
-  {
-    "value": "featured",
-    "label": "Featured"
-  },
-  {
-    "value": "industrial",
-    "label": "Industrial & Services"
-  },
-  {
-    "value": "investment",
-    "label": "Investment & Finance"
-  },
-  {
-    "value": "technology",
-    "label": "Technology & SaaS"
-  },
-  {
-    "value": "trade",
-    "label": "Trade Groups"
-  },
-  {
-    "value": "agencies",
-    "label": "Agencies"
   }
 ];
 
@@ -2885,4 +2823,4 @@ const clientSectors = {
   ]
 };
 
-window.SITE = {clientSectors, testimonials, projects, caseStudies, awards, b2cCategories, b2cClients, b2bCategories, b2bClients, featuredThoughts, thoughtsList, methodology, orgBrands, orgAgencies};
+window.SITE = {clientSectors, testimonials, projects, caseStudies, awards, b2cClients, b2bClients, featuredThoughts, thoughtsList, methodology, orgBrands, orgAgencies};

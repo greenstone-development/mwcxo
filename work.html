@@ -17,28 +17,7 @@
 <meta name="twitter:title" content="Past Projects — Matt Walsh CXO">
 <meta name="twitter:description" content="A selection of past projects spanning strategy, branding, digital platforms, and advertising for world-class clients.">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          background: '#ffffff', foreground: '#0f172a',
-          card: '#f8fafc', 'card-foreground': '#0f172a',
-          popover: '#ffffff', 'popover-foreground': '#0f172a',
-          primary: '#004b46', 'primary-foreground': '#ffffff',
-          secondary: '#f1f5f9', 'secondary-foreground': '#0f172a',
-          muted: '#f1f5f9', 'muted-foreground': '#64748b',
-          accent: '#e2e8f0', 'accent-foreground': '#0f172a',
-          destructive: '#ef4444', 'destructive-foreground': '#ffffff',
-          border: '#e2e8f0', input: 'transparent', 'input-background': '#f1f5f9', ring: '#94a3b8'
-        },
-        fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Plus Jakarta Sans"', 'sans-serif'] },
-        borderRadius: { sm: 'calc(0.75rem - 4px)', md: 'calc(0.75rem - 2px)', lg: '0.75rem', xl: 'calc(0.75rem + 4px)' }
-      }
-    }
-  };
-</script>
+<link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/site.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLYTNG2EBE"></script>
@@ -57,7 +36,7 @@
     <a href="index.html" class="font-display font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">MattWalsh<span class="text-[#004b46]">CXO</span></a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
       <a href="index.html" class="hover:text-foreground transition-colors">Home</a>
-      <a href="work.html" class="text-foreground transition-colors">Past Projects</a>
+      <a aria-current="page" href="work.html" class="text-foreground transition-colors">Past Projects</a>
       <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
       <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
       <a href="contact.html" class="text-foreground bg-[#004b46]/5 hover:bg-[#004b46]/10 px-4 py-2 rounded-full transition-colors">Get in touch</a>
@@ -68,7 +47,7 @@
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-foreground/10 bg-background px-6 py-4 flex flex-col gap-4 text-sm font-medium text-muted-foreground">
     <a href="index.html" class="hover:text-foreground transition-colors">Home</a>
-    <a href="work.html" class="text-foreground">Past Projects</a>
+    <a aria-current="page" href="work.html" class="text-foreground">Past Projects</a>
     <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
     <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
     <a href="contact.html" class="text-foreground font-bold">Get in touch</a>

@@ -50,7 +50,7 @@
         "@type": "Occupation",
         "name": "Fractional Chief Experience Officer",
         "description": "Aligning strategy, customer experience, and execution so growth is driven by loyalty rather than incentives",
-        "skills": "Customer Experience Strategy, Customer Journey Design, Digital Product Strategy, CRO, Organisational Design"
+        "skills": "Customer Experience Strategy, Customer Journey Design, Digital Product Strategy, CRO, Organizational Design"
       },
       "knowsAbout": [
         "Customer Experience",
@@ -59,8 +59,8 @@
         "UX Design",
         "Customer Journey Mapping",
         "E-Commerce",
-        "Organisational Transformation",
-        "AI-Empowered Organisations"
+        "Organizational Transformation",
+        "AI-Empowered Organizations"
       ]
     },
     {
@@ -86,36 +86,14 @@
         {"@type": "ListItem", "position": 2, "name": "Designing Innovative Journeys", "description": "Intentionally designed customer journeys that unlock meaningful value through exceptional experiences crafted within real-world constraints."},
         {"@type": "ListItem", "position": 3, "name": "Connecting Through Digital", "description": "Strategizing, designing, and building the digital products and platforms that enhance those journeys in a differentiated, ownable, and profitable way."},
         {"@type": "ListItem", "position": 4, "name": "Empowering Through AI", "description": "Transforming experiences and expectations through the smart, strategic deployment of AI-powered innovations."},
-        {"@type": "ListItem", "position": 5, "name": "Testing, Learning, and Leaping", "description": "Continuous measurement and optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move."},
-        {"@type": "ListItem", "position": 5, "name": "Evolve the Organization With It", "description": "Helping clients update their workflows, team structures, and operating models for a modern, distributed, AI-empowered era."}
+        {"@type": "ListItem", "position": 5, "name": "Testing, Learning, and Leaping", "description": "Continuous measurement and optimization alongside bold, evolutionary leaps. Knowing when to iterate and when to make the bigger move."}
       ]
     }
   ]
 }
 </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          background: '#ffffff', foreground: '#0f172a',
-          card: '#f8fafc', 'card-foreground': '#0f172a',
-          popover: '#ffffff', 'popover-foreground': '#0f172a',
-          primary: '#004b46', 'primary-foreground': '#ffffff',
-          secondary: '#f1f5f9', 'secondary-foreground': '#0f172a',
-          muted: '#f1f5f9', 'muted-foreground': '#64748b',
-          accent: '#e2e8f0', 'accent-foreground': '#0f172a',
-          destructive: '#ef4444', 'destructive-foreground': '#ffffff',
-          border: '#e2e8f0', input: 'transparent', 'input-background': '#f1f5f9', ring: '#94a3b8'
-        },
-        fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Plus Jakarta Sans"', 'sans-serif'] },
-        borderRadius: { sm: 'calc(0.75rem - 4px)', md: 'calc(0.75rem - 2px)', lg: '0.75rem', xl: 'calc(0.75rem + 4px)' }
-      }
-    }
-  };
-</script>
+<link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/site.css">
 
 <!-- Google Analytics -->
@@ -135,7 +113,7 @@
   <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="index.html" class="font-display font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">MattWalsh<span class="text-[#004b46]">CXO</span></a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-      <a href="index.html" class="text-foreground transition-colors">Home</a>
+      <a aria-current="page" href="index.html" class="text-foreground transition-colors">Home</a>
       <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
       <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
       <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
@@ -146,7 +124,7 @@
     </button>
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-foreground/10 bg-background px-6 py-4 flex flex-col gap-4 text-sm font-medium text-muted-foreground">
-    <a href="index.html" class="text-foreground">Home</a>
+    <a aria-current="page" href="index.html" class="text-foreground">Home</a>
     <a href="work.html" class="hover:text-foreground transition-colors">Past Projects</a>
     <a href="recognition.html" class="hover:text-foreground transition-colors">Recognition</a>
     <a href="thought-leadership.html" class="hover:text-foreground transition-colors">Thought Leadership</a>
@@ -229,15 +207,13 @@
   <!-- Clients: featured logo marquee + expandable "all clients" by sector -->
   <section id="clients" class="py-24 md:py-32 bg-secondary/50" aria-labelledby="clients-heading">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
-        <div class="flex flex-col max-w-2xl">
-          <h2 id="clients-heading" class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight leading-[1.1] text-foreground mb-6">
-            Trusted by <span class="text-[#004b46]">leaders.</span>
-          </h2>
-          <p class="text-lg md:text-xl text-muted-foreground">
-            A showcase of companies Matt has had the privilege of working with across his career.
-          </p>
-        </div>
+      <div class="flex flex-col max-w-2xl mb-12 md:mb-16">
+        <h2 id="clients-heading" class="text-4xl lg:text-5xl xl:text-[3.25rem] font-bold tracking-tight leading-[1.1] text-foreground mb-6">
+          Trusted by <span class="text-[#004b46]">leaders.</span>
+        </h2>
+        <p class="text-lg md:text-xl text-muted-foreground">
+          A showcase of companies Matt has had the privilege of working with across his career.
+        </p>
       </div>
     </div>
 
@@ -263,9 +239,7 @@
     <div class="max-w-6xl mx-auto px-6">
       <!-- All clients by sector (revealed by the toggle below) -->
       <div id="all-clients" class="hidden mt-12 md:mt-16 pt-10 border-t border-border">
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-8">
-          <h3 class="text-2xl font-bold tracking-tight text-foreground">Every client, by sector</h3>
-        </div>
+        <h3 class="text-2xl font-bold tracking-tight text-foreground mb-8">Every client, by sector</h3>
         <div id="sector-grid" class="grid lg:grid-cols-3 gap-5 items-start"></div>
       </div>
 
@@ -296,7 +270,7 @@
             One engagement.<br><span class="text-[#004b46]">Unlimited</span> expertise.
           </h2>
           <div class="flex flex-col gap-5 text-lg text-muted-foreground leading-normal">
-            <p>When you engage Matt, you're not just getting one person. Through his agency, <a href="http://www.greenstone.co" target="_blank" rel="noopener noreferrer" class="text-foreground font-bold underline decoration-2 underline-offset-4 hover:text-[#004b46] transition-colors">Green Stone</a>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
+            <p>When you engage Matt, you're not just getting one person. Through his agency, <a href="https://www.greenstone.co" target="_blank" rel="noopener noreferrer" class="text-foreground font-bold underline decoration-2 underline-offset-4 hover:text-[#004b46] transition-colors">Green Stone</a>, he has partnered with hundreds of experts across every discipline that modern experience design demands.</p>
             <p>That number is a small fraction of a broader talent network, cultivated over decades of relationships with individual practitioners and firms across the industry. Whatever your challenge requires, Matt can build the team.</p>
           </div>
         </div>
