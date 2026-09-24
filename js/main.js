@@ -154,7 +154,10 @@
   function marqueeItem(c, hidden) {
     var s = opticalSize(c.ratio);
     var src = c.logoTrimmed || c.logo;
-    return '<li class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
+    // Centering is set inline as well as in site.css so the logos stay vertically centred
+    // even if an older cached stylesheet is served.
+    return '<li class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') +
+      ' style="display: flex; align-items: center; justify-content: center; flex: 0 0 auto;">' +
       '<img src="' + escAttr(src) + '" alt="' + (hidden ? '' : escAttr(c.name)) + '" title="' + escAttr(c.name) + '"' +
       ' width="' + s.w + '" height="' + s.h + '" loading="lazy" decoding="async" class="client-logo"' +
       ' style="width: calc(' + s.w + 'px * var(--logo-scale, 1)); height: calc(' + s.h + 'px * var(--logo-scale, 1));">' +
@@ -197,18 +200,12 @@
       return '<div class="flex flex-col gap-5">' + col.map(card).join('') + '</div>';
     }).join('');
 
-    var summary = document.getElementById('sector-summary');
-    var used = cfg.columns.reduce(function (n, col) { return n + col.filter(function (k) { return groups[k]; }).length; }, 0);
-    if (summary) summary.textContent = clients.length + ' clients across ' + used + ' sectors';
   }
 
   function initClientShowcase() {
     var section = document.getElementById('clients');
     if (!section) return;
     var clients = uniqueClients();
-
-    var count = document.getElementById('client-count');
-    if (count) count.textContent = clients.length;
 
     renderMarquee('marquee-b2c', (SITE.b2cClients || []).filter(function (c) { return c.featured && c.logo; }));
     renderMarquee('marquee-b2b', (SITE.b2bClients || []).filter(function (c) { return c.featured && c.logo; }));
