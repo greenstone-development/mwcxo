@@ -693,6 +693,11 @@
   /* ---------------- Contact form (real Apps Script submission) ---------------- */
   var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby23JRcvVar1LkHf6whcYAWQ3K5wkSqodhqntahlcxjqd6WfxgVv88jGGHBZl_iEeJI8A/exec';
 
+  /* Sends a GA4 event if the gtag snippet loaded (it may be blocked). Never pass form contents. */
+  function trackEvent(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
   function initContactForm() {
     var form = document.getElementById('contactForm');
     if (!form) return;
@@ -735,10 +740,12 @@
         if (result.status === 'success') {
           if (formWrap) formWrap.classList.add('hidden');
           if (success) success.classList.remove('hidden');
+          trackEvent('generate_lead', { form_id: 'contactForm', has_company: !!data.company });
         } else {
           throw new Error(result.message || 'Something went wrong.');
         }
       }).catch(function () {
+        trackEvent('contact_form_error', { form_id: 'contactForm' });
         if (errorEl) {
           errorEl.textContent = 'There was a problem sending your message. Please try emailing matt.walsh@greenstone.co directly.';
           errorEl.classList.remove('hidden');
