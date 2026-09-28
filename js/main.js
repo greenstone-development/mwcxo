@@ -439,7 +439,10 @@
 
   function computeFilteredProjects() {
     if (activeProjectTab === 'SHOW ALL') return SITE.projects;
-    if (activeProjectTab === 'MOST RECENT') return SITE.projects.slice(0, 10);
+    if (activeProjectTab === 'MOST RECENT') {
+      // Newest first by year; projects in the same year keep their order in data.js.
+      return SITE.projects.slice().sort(function (a, b) { return (b.sortYear || 0) - (a.sortYear || 0); }).slice(0, 10);
+    }
 
     var items = SITE.projects.filter(function (p) { return p.categories && p.categories.indexOf(activeProjectTab) !== -1; });
     items = items.slice().sort(function (a, b) { return (b.sortYear || 0) - (a.sortYear || 0); });
