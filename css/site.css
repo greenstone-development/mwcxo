@@ -253,7 +253,7 @@ h1, h2, h3, h4, h5, h6,
 .learning-grid {
   display: grid;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
 }
 @media (min-width: 1024px) {
   .learning-grid { grid-template-columns: 7fr 5fr; gap: 5rem; }
@@ -270,6 +270,10 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: .6rem;
 }
 .learning-progress-label strong { color: #2dd4bf; font-weight: 700; }
+.learning-progress-label > * { white-space: nowrap; }
+@media (max-width: 640px) {
+  .learning-progress-label { font-size: .62rem; letter-spacing: .06em; }
+}
 .learning-bar { height: 6px; border-radius: 9999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
 .learning-bar span { display: block; height: 100%; border-radius: 9999px; background: #2dd4bf; }
 .learning-phases {
@@ -320,16 +324,7 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, .6);
 }
 .learning-cert-card img { display: block; width: 100%; height: auto; border-radius: .5rem; }
-.learning-cert-link {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .75);
-  transition: color .2s;
-}
+.learning-cert-progress { margin-bottom: 1.75rem; text-align: left; }
 .learning-phase-link {
   display: inline-block;
   align-self: flex-start;
@@ -342,15 +337,10 @@ h1, h2, h3, h4, h5, h6,
   color: rgba(255, 255, 255, .75);
   transition: color .2s;
 }
-.learning-cert-link:hover,
-.learning-cert-link:focus-visible,
 .learning-phase-link:hover,
 .learning-phase-link:focus-visible { color: #2dd4bf; }
-.learning-cert-link span,
 .learning-phase-link span { display: inline-block; margin-left: .3rem; transition: transform .2s; }
-.learning-cert-link:hover span,
 .learning-phase-link:hover span { transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) {
-  .learning-cert-link span,
   .learning-phase-link span { transition: none; }
 }
