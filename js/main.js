@@ -315,26 +315,35 @@
 
   /* ---------------- Recognition: awards ---------------- */
   var showAllAwards = false;
-  var AWARDS_GRID_COLS = 'grid-cols-[1fr_0.85fr_1.3fr_1fr] md:grid-cols-12';
+  // Awards grid: Show | Award (level + category) | Project (name + client) | Role.
+  // Layout and type live in css/site.css under "Awards grid", so no Tailwind rebuild is needed.
+
+  // "Whopper Sacrifice • Burger King" -> Whopper Sacrifice (Burger King).
+  // Entries without a " • " (e.g. a client name alone) render as plain text.
+  function awardProject(project) {
+    var parts = String(project || '').split(' • ');
+    if (parts.length < 2) return esc(project);
+    return esc(parts[0]) + '<span class="award-aside">(' + esc(parts.slice(1).join(' • ')) + ')</span>';
+  }
 
   function awardRow(a) {
     return (
-      '<div class="py-3 md:py-6 border-b border-white/10 grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 items-start hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-xl">' +
-        '<div class="font-bold text-white text-[0.7rem] leading-snug md:text-lg md:col-span-3">' + esc(a.show) + '</div>' +
-        '<div class="text-white/80 font-medium md:col-span-3 -mt-0.5 md:-mt-1"><span class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-white/10 rounded-full text-[0.5rem] leading-snug md:text-xs font-bold tracking-wider md:tracking-widest uppercase">' + esc(a.prize) + '</span></div>' +
-        '<div class="text-white/90 text-[0.7rem] leading-snug md:text-base md:col-span-4 font-medium">' + esc(a.project) + '</div>' +
-        '<div class="text-[#2dd4bf] text-[0.65rem] leading-snug md:text-sm md:text-right md:col-span-2 font-medium tracking-wide uppercase">' + esc(a.category) + '</div>' +
+      '<div class="award-row">' +
+        '<div class="award-show">' + esc(a.show) + '</div>' +
+        '<div class="award-level">' + esc(a.prize) + (a.category ? '<span class="award-aside">(' + esc(a.category) + ')</span>' : '') + '</div>' +
+        '<div class="award-project">' + awardProject(a.project) + '</div>' +
+        '<div class="award-role">' + esc(a.role) + '</div>' +
       '</div>'
     );
   }
 
   function awardsHeaderRow() {
     return (
-      '<div class="grid ' + AWARDS_GRID_COLS + ' gap-2 md:gap-6 px-4 -mx-4 pb-3 md:pb-4 border-b border-white/10 text-[0.55rem] md:text-xs font-bold uppercase tracking-widest text-white/40">' +
-        '<div class="md:col-span-3">Show</div>' +
-        '<div class="md:col-span-3">Level</div>' +
-        '<div class="md:col-span-4">Project</div>' +
-        '<div class="md:col-span-2">Category</div>' +
+      '<div class="award-row award-head">' +
+        '<div>Show</div>' +
+        '<div>Award</div>' +
+        '<div>Project</div>' +
+        '<div>Role</div>' +
       '</div>'
     );
   }
@@ -439,10 +448,7 @@
 
   function computeFilteredProjects() {
     if (activeProjectTab === 'SHOW ALL') return SITE.projects;
-    if (activeProjectTab === 'MOST RECENT') {
-      // Newest first by year; projects in the same year keep their order in data.js.
-      return SITE.projects.slice().sort(function (a, b) { return (b.sortYear || 0) - (a.sortYear || 0); }).slice(0, 10);
-    }
+    if (activeProjectTab === 'MOST RECENT') return SITE.projects.slice(0, 10);
 
     var items = SITE.projects.filter(function (p) { return p.categories && p.categories.indexOf(activeProjectTab) !== -1; });
     items = items.slice().sort(function (a, b) { return (b.sortYear || 0) - (a.sortYear || 0); });

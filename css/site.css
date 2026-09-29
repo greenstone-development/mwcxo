@@ -182,3 +182,156 @@ h1, h2, h3, h4, h5, h6,
   }
   .logo-item[aria-hidden="true"] { display: none; }
 }
+
+/* ---------- Awards grid (recognition.html) ----------
+   Four columns: Show | Award (level + category) | Project (name + client) | Role.
+   The parenthetical asides (category, client) share the Role column's type. */
+
+.award-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: .25rem 1rem;
+  align-items: start;
+  padding: .75rem 1rem;
+  margin: 0 -1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  border-radius: .75rem;
+  transition: background-color .15s;
+}
+.award-row > div { min-width: 0; overflow-wrap: break-word; }
+/* Phones: Show on the left; Award, Project and Role stack on the right. */
+.award-show { grid-row: span 3; }
+.award-head { display: none; }
+.award-row:not(.award-head):hover { background: rgba(255, 255, 255, .02); }
+.award-head {
+  padding-top: 0;
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .4);
+}
+.award-show { font-size: .9rem; line-height: 1.375; font-weight: 700; color: #fff; }
+.award-level {
+  font-size: .7rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #2dd4bf;
+}
+.award-project { font-size: .9rem; line-height: 1.375; font-weight: 500; color: rgba(255, 255, 255, .9); }
+.award-role,
+.award-aside {
+  font-size: .8rem;
+  line-height: 1.375;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(255, 255, 255, .6);
+}
+.award-aside { margin-left: .35rem; }
+
+@media (min-width: 768px) {
+  .award-show { grid-row: auto; }
+  .award-head { display: grid; }
+  .award-row {
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 3.8fr) minmax(0, 3fr) minmax(0, 2.2fr);
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  .award-head { padding: 0 1rem 1rem; font-size: .75rem; }
+  .award-show { font-size: 1.125rem; }
+  .award-level { font-size: .8rem; letter-spacing: .08em; }
+  .award-project { font-size: 1rem; }
+  .award-role,
+  .award-aside { font-size: .875rem; }
+}
+
+/* ---------- Always Learning (index.html) ---------- */
+
+.learning-grid {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .learning-grid { grid-template-columns: 7fr 5fr; gap: 5rem; }
+}
+.learning-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  margin-bottom: .6rem;
+}
+.learning-progress-label strong { color: #2dd4bf; font-weight: 700; }
+.learning-bar { height: 6px; border-radius: 9999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.learning-bar span { display: block; height: 100%; border-radius: 9999px; background: #2dd4bf; }
+.learning-phases {
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-left: 1px solid rgba(255, 255, 255, .1);
+}
+@media (min-width: 768px) {
+  .learning-phases { grid-template-columns: 1fr 1fr; }
+}
+.learning-phase {
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+.learning-phase-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.learning-phase h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.25; margin-bottom: .5rem; color: #fff; }
+.learning-phase p { font-size: .875rem; line-height: 1.4; color: rgba(255, 255, 255, .7); }
+.learning-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .3rem .7rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+.learning-pill-done { background: #2dd4bf; color: #171c1c; }
+.learning-pill-now { border: 1px solid rgba(45, 212, 191, .5); color: #2dd4bf; }
+.learning-pill-now::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, .25);
+}
+.learning-cert { text-align: center; }
+.learning-cert-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: .75rem;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, .6);
+}
+.learning-cert-card img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+.learning-cert-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .75);
+  transition: color .2s;
+}
+.learning-cert-link:hover,
+.learning-cert-link:focus-visible { color: #2dd4bf; }
+.learning-cert-link span { display: inline-block; margin-left: .3rem; transition: transform .2s; }
+.learning-cert-link:hover span { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .learning-cert-link span { transition: none; }
+}
