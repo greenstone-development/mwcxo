@@ -281,6 +281,8 @@ h1, h2, h3, h4, h5, h6,
   .learning-phases { grid-template-columns: 1fr 1fr; }
 }
 .learning-phase {
+  display: flex;
+  flex-direction: column;
   padding: 1.5rem 1.75rem;
   border-right: 1px solid rgba(255, 255, 255, .1);
   border-bottom: 1px solid rgba(255, 255, 255, .1);
@@ -328,10 +330,27 @@ h1, h2, h3, h4, h5, h6,
   color: rgba(255, 255, 255, .75);
   transition: color .2s;
 }
+.learning-phase-link {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .75);
+  transition: color .2s;
+}
 .learning-cert-link:hover,
-.learning-cert-link:focus-visible { color: #2dd4bf; }
-.learning-cert-link span { display: inline-block; margin-left: .3rem; transition: transform .2s; }
-.learning-cert-link:hover span { transform: translateX(3px); }
+.learning-cert-link:focus-visible,
+.learning-phase-link:hover,
+.learning-phase-link:focus-visible { color: #2dd4bf; }
+.learning-cert-link span,
+.learning-phase-link span { display: inline-block; margin-left: .3rem; transition: transform .2s; }
+.learning-cert-link:hover span,
+.learning-phase-link:hover span { transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) {
-  .learning-cert-link span { transition: none; }
+  .learning-cert-link span,
+  .learning-phase-link span { transition: none; }
 }
