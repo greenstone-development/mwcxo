@@ -432,13 +432,4 @@ h1, h2, h3, h4, h5, h6,
   pointer-events: none;
   color: rgba(255, 255, 255, .6);
 }
-.award-year {
-  display: block;
-  margin-top: .15rem;
-  font-size: .65rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .45);
-}
-@media (min-width: 768px) {
-  .award-year { font-size: .8rem; }
-}
+

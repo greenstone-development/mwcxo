@@ -329,7 +329,7 @@
   function awardRow(a) {
     return (
       '<div class="award-row">' +
-        '<div class="award-show">' + esc(a.show) + (a.year ? '<span class="award-year">' + esc(a.year) + '</span>' : '') + '</div>' +
+        '<div class="award-show">' + esc(a.show) + '</div>' +
         '<div class="award-level">' + esc(a.prize) + (a.category ? '<span class="award-aside">(' + esc(a.category) + ')</span>' : '') + '</div>' +
         '<div class="award-project">' + awardProject(a.project) + '</div>' +
         '<div class="award-role">' + esc(a.role) + '</div>' +
@@ -348,7 +348,8 @@
     );
   }
 
-  /* Sorting. "highest" ranks by award level first, then by how prestigious
+  /* Sorting. Years are used for sorting only, not displayed.
+     "highest" (labelled "Featured") ranks by award level first, then by how prestigious
      the show is, then newest first. "newest" sorts by year, and within a
      year puts the bigger awards first. Unknown levels or shows sort last
      within their group, so a new award never breaks the list. */
