@@ -329,7 +329,7 @@
   function awardRow(a) {
     return (
       '<div class="award-row">' +
-        '<div class="award-show">' + esc(a.show) + '</div>' +
+        '<div class="award-show">' + esc(a.show) + (a.year ? '<span class="award-year">' + esc(a.year) + '</span>' : '') + '</div>' +
         '<div class="award-level">' + esc(a.prize) + (a.category ? '<span class="award-aside">(' + esc(a.category) + ')</span>' : '') + '</div>' +
         '<div class="award-project">' + awardProject(a.project) + '</div>' +
         '<div class="award-role">' + esc(a.role) + '</div>' +
@@ -348,10 +348,52 @@
     );
   }
 
+  /* Sorting. "highest" ranks by award level first, then by how prestigious
+     the show is, then newest first. "newest" sorts by year, and within a
+     year puts the bigger awards first. Unknown levels or shows sort last
+     within their group, so a new award never breaks the list. */
+  var awardsSort = 'highest';
+  var AWARD_LEVEL_RANK = {
+    'EMMY AWARD': 0,
+    'TITANIUM': 1, 'GRAND PRIX': 1, 'GRAND LIA': 1, 'GRAND PRIZE': 1, 'BEST OF DECADE': 1, 'BEST IN SHOW': 1, 'BEST OF SHOW': 1,
+    'GOLD': 2, 'YELLOW PENCIL': 2, 'HYBRID CUBE': 2,
+    'SILVER': 3, "PEOPLE'S VOICE": 3, 'WINNER': 3, 'BEST RETAIL': 3,
+    'BRONZE': 4,
+    'HONOREE': 5, 'ANNUAL': 5
+  };
+  var AWARD_SHOW_RANK = [
+    ['Television Academy'],
+    ['Cannes Lions', 'Cannes Cyber Lions', 'Cannes Media Lions', 'Cannes Promo Lions'],
+    ['One Club', 'One Show', 'One Show Interactive', 'D&AD', 'D&AD Annual'],
+    ['Clio Awards', 'Art Directors Club'],
+    ['Effie Awards', 'LIA Awards'],
+    ['The Webbys', 'Webbys', 'Communication Arts', 'AIGA 365'],
+    ['MIXX Awards', 'Jay Chiat Awards', 'Shorty Awards', 'IXDA Interaction Awards'],
+    ['Addys New York', 'New York Festivals'],
+    ['WebAwards', 'W3 Awards']
+  ];
+  function levelRank(a) { var r = AWARD_LEVEL_RANK[a.prize]; return r == null ? 9 : r; }
+  function showRank(a) {
+    for (var i = 0; i < AWARD_SHOW_RANK.length; i++) if (AWARD_SHOW_RANK[i].indexOf(a.show) !== -1) return i;
+    return 99;
+  }
+  function sortedAwards() {
+    var list = SITE.awards.map(function (a, i) { return { a: a, i: i }; });
+    list.sort(function (x, y) {
+      var a = x.a, b = y.a;
+      if (awardsSort === 'newest') {
+        return (b.year || 0) - (a.year || 0) || levelRank(a) - levelRank(b) || showRank(a) - showRank(b) || x.i - y.i;
+      }
+      return levelRank(a) - levelRank(b) || showRank(a) - showRank(b) || (b.year || 0) - (a.year || 0) || x.i - y.i;
+    });
+    return list.map(function (x) { return x.a; });
+  }
+
   function renderAwards() {
     var host = document.getElementById('awards-list');
     if (!host) return;
-    var list = showAllAwards ? SITE.awards : SITE.awards.slice(0, 8);
+    var all = sortedAwards();
+    var list = showAllAwards ? all : all.slice(0, 8);
     host.innerHTML = awardsHeaderRow() + list.map(awardRow).join('');
     var btn = document.getElementById('awards-toggle');
     if (btn) {
@@ -365,6 +407,11 @@
     renderAwards();
     var btn = document.getElementById('awards-toggle');
     if (btn) btn.addEventListener('click', function () { showAllAwards = !showAllAwards; renderAwards(); });
+    var sort = document.getElementById('awards-sort');
+    if (sort) {
+      sort.value = awardsSort;
+      sort.addEventListener('change', function () { awardsSort = sort.value; renderAwards(); });
+    }
   }
 
   /* ---------------- Projects (work.html) ---------------- */
