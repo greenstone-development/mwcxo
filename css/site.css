@@ -258,24 +258,6 @@ h1, h2, h3, h4, h5, h6,
 @media (min-width: 1024px) {
   .learning-grid { grid-template-columns: 7fr 5fr; gap: 5rem; }
 }
-.learning-progress-label {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .5);
-  margin-bottom: .6rem;
-}
-.learning-progress-label strong { color: #2dd4bf; font-weight: 700; }
-.learning-progress-label > * { white-space: nowrap; }
-@media (max-width: 640px) {
-  .learning-progress-label { font-size: .62rem; letter-spacing: .06em; }
-}
-.learning-bar { height: 6px; border-radius: 9999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
-.learning-bar span { display: block; height: 100%; border-radius: 9999px; background: #2dd4bf; }
 .learning-phases {
   display: grid;
   border-top: 1px solid rgba(255, 255, 255, .1);
@@ -324,7 +306,37 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, .6);
 }
 .learning-cert-card img { display: block; width: 100%; height: auto; border-radius: .5rem; }
-.learning-cert-progress { margin-bottom: 1.75rem; text-align: left; }
+/* Two certificates fanned into one overlapping stack: the newest sits in
+   front, offset down and right; the earlier one peeks out behind it.
+   Hovering or focusing the back card brings it forward. */
+.learning-cert-stack {
+  position: relative;
+  padding-top: 22%;
+  padding-bottom: 2%;
+}
+.learning-cert-stack .learning-cert-card {
+  width: 84%;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.learning-cert-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: rotate(-4deg);
+}
+.learning-cert-front {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  transform: rotate(2deg);
+}
+.learning-cert-stack:hover .learning-cert-back { transform: rotate(-6deg) translate(-2%, -3%); }
+.learning-cert-back:hover { z-index: 3; transform: rotate(-2deg) translateY(-2%) !important; }
+.learning-cert-front:hover { transform: rotate(0deg) translateY(-2%); }
+@media (prefers-reduced-motion: reduce) {
+  .learning-cert-stack .learning-cert-card { transition: none; }
+}
 .learning-phase-link {
   display: inline-block;
   align-self: flex-start;
